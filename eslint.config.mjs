@@ -5,11 +5,11 @@ import withNuxt from './.nuxt/eslint.config.mjs'
 export default withNuxt(
   ...tailwind.configs['flat/recommended'],
   {
-    files: ['**/*.vue', '**/*.ts'],
+    files: ['**/*.vue', '**/*.ts', '**/*.mjs'],
     rules: {
       'no-console': 'off',
-      '@stylistic/comma-dangle': ['error', 'never'],
-    },
+      '@stylistic/comma-dangle': ['error', 'never']
+    }
   },
   {
     files: ['**/*.vue'],
@@ -18,9 +18,9 @@ export default withNuxt(
       'vue/component-tags-order': [
         'error',
         {
-          order: ['script', 'template', 'style'],
-        },
-      ],
-    },
-  },
+          order: ['script', 'template', 'style']
+        }
+      ]
+    }
+  }
 )

@@ -54,7 +54,7 @@ defineProps<Props>()
             <span> Q{{ i + 1 }}. </span>
             <span class="ml-1">{{ content.content }}</span>
             <div
-              class="absolute left-[-10px] top-2 h-0 w-0 origin-center rotate-12 border-[10px] border-transparent border-t-gray-100"
+              class="absolute left-[-10px] top-2 size-0 origin-center rotate-12 border-[10px] border-transparent border-t-gray-100"
             />
           </li>
         </ul>

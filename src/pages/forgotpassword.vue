@@ -3,7 +3,7 @@ import { useForm, useField } from 'vee-validate'
 import { sendPasswordResetEmail } from 'firebase/auth'
 
 definePageMeta({
-  middleware: ['route'],
+  middleware: ['route']
 })
 
 const isClick = ref(false)
@@ -12,8 +12,8 @@ const isEmailSent = ref(true)
 const { errors, handleSubmit } = useForm({
   validationSchema: PasswordResetSchema,
   initialValues: {
-    email: '',
-  },
+    email: ''
+  }
 })
 const { value: email } = useField<string>('email')
 
@@ -24,7 +24,7 @@ const handleResetPassword = handleSubmit(async (values, { resetForm }) => {
   isClick.value = true
   try {
     await sendPasswordResetEmail($firebaseAuth, values.email, {
-      url: REDIRECT_URL,
+      url: REDIRECT_URL
     })
 
     isEmailSent.value = false

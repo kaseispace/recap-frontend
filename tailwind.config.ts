@@ -4,12 +4,12 @@ module.exports = {
   theme: {
     extend: {
       maxWidth: {
-        '95/100': '95%',
+        '95/100': '95%'
       },
       screens: {
-        xs: '480px',
-      },
-    },
+        xs: '480px'
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 }

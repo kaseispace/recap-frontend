@@ -21,7 +21,7 @@ const {
   noChat,
   pendingChat,
   completeChat,
-  checkUserInputStatus,
+  checkUserInputStatus
 } = useChat()
 const { showSnackbar } = useSnackBar()
 const { isActive, openToggle } = useToggle()
@@ -36,7 +36,7 @@ const handleCreateReflection = async () => {
 
         message_type,
         message,
-        // eslint-disable-next-line
+
         message_time
       }))
 
@@ -44,7 +44,7 @@ const handleCreateReflection = async () => {
         courseUuid.value,
         todayCourseDate.value.id,
         chatHistoryData,
-        idToken,
+        idToken
       )
       if (studentReflections.value) {
         studentReflections.value.push(...reflectionInfo)
@@ -117,7 +117,7 @@ watch(
       chatContainer.value.scrollTop = chatContainer.value.scrollHeight
     }
   },
-  { deep: true },
+  { deep: true }
 )
 
 onMounted(async () => {
@@ -140,7 +140,7 @@ onMounted(async () => {
     const today = new Date(Date.now()).toLocaleDateString('ja-JP', {
       year: 'numeric',
       month: 'numeric',
-      day: 'numeric',
+      day: 'numeric'
     })
     // const today = new Date().toLocaleDateString()
     // getReflectionDataから今日の日付を同じデータを探す、1つでも見つけた時点でその値が代入される

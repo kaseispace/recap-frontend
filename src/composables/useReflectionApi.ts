@@ -12,8 +12,8 @@ export const useReflectionApi = () => {
     const data = await $fetch<StudentCourseReflection[]>(
       `${config.public.devBackendUrl}/reflections/student_reflections?uuid=${uuid}`,
       {
-        headers: { Authorization: `Bearer ${idToken}` },
-      },
+        headers: { Authorization: `Bearer ${idToken}` }
+      }
     )
     return data
   }
@@ -22,8 +22,8 @@ export const useReflectionApi = () => {
     const data = await $fetch<CourseReflections[]>(
       `${config.public.devBackendUrl}/reflections/all_student_reflection_status?uuid=${uuid}`,
       {
-        headers: { Authorization: `Bearer ${idToken}` },
-      },
+        headers: { Authorization: `Bearer ${idToken}` }
+      }
     )
     return data
   }
@@ -32,8 +32,8 @@ export const useReflectionApi = () => {
     const data = await $fetch<CourseUserReflections[]>(
       `${config.public.devBackendUrl}/reflections/all_student_reflections?uuid=${uuid}`,
       {
-        headers: { Authorization: `Bearer ${idToken}` },
-      },
+        headers: { Authorization: `Bearer ${idToken}` }
+      }
     )
     return data
   }
@@ -43,8 +43,8 @@ export const useReflectionApi = () => {
     const data = await $fetch<boolean>(
       `${config.public.devBackendUrl}/reflections/check_reflection_on_date?id=${courseId}&course_date_id=${courseDateId}`,
       {
-        headers: { Authorization: `Bearer ${idToken}` },
-      },
+        headers: { Authorization: `Bearer ${idToken}` }
+      }
     )
     return data
   }
@@ -53,13 +53,13 @@ export const useReflectionApi = () => {
     uuid: string,
     courseDateId: number,
     reflections: ChatMessage[],
-    idToken: string,
+    idToken: string
   ): Promise<StudentCourseReflection[]> => {
     const requestBody = { uuid, course_date_id: courseDateId, reflections }
     const data = await $fetch<StudentCourseReflection[]>(`${config.public.devBackendUrl}/reflections`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${idToken}` },
-      body: requestBody,
+      body: requestBody
     })
     return data
   }
@@ -69,7 +69,7 @@ export const useReflectionApi = () => {
     const data = await $fetch<Reflection>(`${config.public.devBackendUrl}/reflections/${reflectionId}`, {
       method: 'PATCH',
       headers: { Authorization: `Bearer ${idToken}` },
-      body: requestBody,
+      body: requestBody
     })
     return data
   }
@@ -85,6 +85,6 @@ export const useReflectionApi = () => {
     getAllStudentReflections,
     checkReflectionOnDate,
     createReflection,
-    updateReflection,
+    updateReflection
   }
 }

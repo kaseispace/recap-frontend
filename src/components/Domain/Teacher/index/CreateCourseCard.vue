@@ -15,8 +15,8 @@ const { errors, handleSubmit, resetForm } = useForm({
     name: '',
     teacherName: userInfo.value?.user.name,
     dayOfWeek: '',
-    courseTime: '',
-  },
+    courseTime: ''
+  }
 })
 const { value: name } = useField<string>('name')
 const { value: teacherName } = useField<string>('teacherName')
@@ -41,7 +41,7 @@ const handleCreateCourse = handleSubmit(async (values) => {
         values.teacherName,
         values.dayOfWeek,
         values.courseTime,
-        idToken,
+        idToken
       )
       if (teacherCourses.value) {
         teacherCourses.value.push(courseInfo)

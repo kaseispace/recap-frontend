@@ -36,7 +36,7 @@ const handleUpdateReflectionStatus = async () => {
         const index = dailyCourseReflections.value.findIndex(courseDay => courseDay.id === courseDateInfo.id)
         dailyCourseReflections.value[index] = {
           ...courseDateInfo,
-          users_reflections: dailyCourseReflections.value[index].users_reflections,
+          users_reflections: dailyCourseReflections.value[index].users_reflections
         }
       }
 

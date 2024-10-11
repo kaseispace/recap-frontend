@@ -19,8 +19,8 @@ const { errors, handleSubmit } = useForm({
   validationSchema: CourseDateSchema,
   initialValues: {
     courseSession: '',
-    courseDate: '',
-  },
+    courseDate: ''
+  }
 })
 const { value: courseSession } = useField<string>('courseSession')
 const { value: courseDate } = useField<string>('courseDate')
@@ -49,7 +49,7 @@ const handleEditCourseDay = handleSubmit(async (values) => {
         nextCourseDate.value.id,
         formattedSession,
         values.courseDate,
-        idToken,
+        idToken
       )
       if (courseDates.value) {
         // 更新
@@ -63,7 +63,7 @@ const handleEditCourseDay = handleSubmit(async (values) => {
         const index = dailyCourseReflections.value.findIndex(courseDay => courseDay.id === courseDateInfo.id)
         dailyCourseReflections.value[index] = {
           ...courseDateInfo,
-          users_reflections: dailyCourseReflections.value[index].users_reflections,
+          users_reflections: dailyCourseReflections.value[index].users_reflections
         }
       }
 

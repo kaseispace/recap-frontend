@@ -9,7 +9,7 @@ export const useCourseApi = () => {
 
   const getCourse = async (idToken: string): Promise<Course[]> => {
     const data = await $fetch<Course[]>(`${config.public.devBackendUrl}/courses`, {
-      headers: { Authorization: `Bearer ${idToken}` },
+      headers: { Authorization: `Bearer ${idToken}` }
     })
     return data
   }
@@ -17,14 +17,14 @@ export const useCourseApi = () => {
   // 見つからない場合はnullを返す
   const getCourseByUuid = async (courseUuid: string, idToken: string): Promise<Course | null> => {
     const data = await $fetch<Course | null>(`${config.public.devBackendUrl}/courses/${courseUuid}`, {
-      headers: { Authorization: `Bearer ${idToken}` },
+      headers: { Authorization: `Bearer ${idToken}` }
     })
     return data
   }
 
   const getJoinedUsers = async (courseUuid: string, idToken: string): Promise<SimplifiedUser[]> => {
     const data = await $fetch<SimplifiedUser[]>(`${config.public.devBackendUrl}/courses/${courseUuid}/joined_users`, {
-      headers: { Authorization: `Bearer ${idToken}` },
+      headers: { Authorization: `Bearer ${idToken}` }
     })
     return data
   }
@@ -35,19 +35,19 @@ export const useCourseApi = () => {
     teacherName: string,
     dayOfWeek: string,
     courseTime: string,
-    idToken: string,
+    idToken: string
   ): Promise<Course> => {
     const requestBody = {
       school_id: schoolId,
       name,
       teacher_name: teacherName,
       day_of_week: dayOfWeek,
-      course_time: courseTime,
+      course_time: courseTime
     }
     const data = await $fetch<Course>(`${config.public.devBackendUrl}/courses`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${idToken}` },
-      body: requestBody,
+      body: requestBody
     })
     return data
   }
@@ -58,18 +58,18 @@ export const useCourseApi = () => {
     teacherName: string,
     dayOfWeek: string,
     courseTime: string,
-    idToken: string,
+    idToken: string
   ): Promise<Course> => {
     const requestBody = {
       name,
       teacher_name: teacherName,
       day_of_week: dayOfWeek,
-      course_time: courseTime,
+      course_time: courseTime
     }
     const data = await $fetch<Course>(`${config.public.devBackendUrl}/courses/${courseUuid}`, {
       method: 'PUT',
       headers: { Authorization: `Bearer ${idToken}` },
-      body: requestBody,
+      body: requestBody
     })
     return data
   }
@@ -78,7 +78,7 @@ export const useCourseApi = () => {
   const deleteCourse = async (courseUuid: string, idToken: string): Promise<void> => {
     await $fetch(`${config.public.devBackendUrl}/courses/${courseUuid}`, {
       method: 'DELETE',
-      headers: { Authorization: `Bearer ${idToken}` },
+      headers: { Authorization: `Bearer ${idToken}` }
     })
   }
 
@@ -94,6 +94,6 @@ export const useCourseApi = () => {
     getCourseByUuid,
     getJoinedUsers,
     updateCourse,
-    deleteCourse,
+    deleteCourse
   }
 }

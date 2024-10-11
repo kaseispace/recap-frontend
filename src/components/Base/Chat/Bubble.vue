@@ -11,7 +11,7 @@ interface Props {
 withDefaults(defineProps<Props>(), {
   isBorder: true,
   borderColor: undefined,
-  maxWidth: 'max-w-[264px]',
+  maxWidth: 'max-w-[264px]'
 })
 </script>
 

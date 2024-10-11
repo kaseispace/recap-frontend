@@ -28,7 +28,7 @@ const handleChangePassword = async () => {
     }
 
     await sendPasswordResetEmail($firebaseAuth, authUser.value.email, {
-      url: REDIRECT_URL,
+      url: REDIRECT_URL
     })
     showSnackbar(SUCCESS_FIREBASE_PASSWORD_RESET_EMAIL_SENT, true)
     closeDialog()

@@ -17,7 +17,7 @@ export default defineNuxtPlugin(() => {
     projectId: firebase.projectId || 'dummy-project-id-1234567890abcdef',
     storageBucket: firebase.storageBucket || 'dummy-storage-bucket-1234567890abcdef.appspot.co',
     messagingSenderId: firebase.messagingSenderId || '1234567890',
-    appId: firebase.appId || '1:1234567890:web:abcdef1234567890abcdef',
+    appId: firebase.appId || '1:1234567890:web:abcdef1234567890abcdef'
   }
 
   const app = initializeApp(firebaseConfig)
@@ -40,7 +40,7 @@ export default defineNuxtPlugin(() => {
   return {
     provide: {
       firebaseApp: app,
-      firebaseAuth: auth,
-    },
+      firebaseAuth: auth
+    }
   }
 })

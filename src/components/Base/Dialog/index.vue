@@ -12,7 +12,7 @@ const styles = reactive<{
   [key: string]: string
 }>({
   small: 'max-w-[450px]',
-  large: 'max-w-[700px]',
+  large: 'max-w-[700px]'
 })
 
 const selectedWide = computed(() => styles[props.wide] || styles.small)

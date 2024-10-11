@@ -8,6 +8,7 @@ export default withNuxt(
     files: ['**/*.vue', '**/*.ts'],
     rules: {
       'no-console': 'off',
+      '@stylistic/comma-dangle': ['error', 'never'],
     },
   },
   {

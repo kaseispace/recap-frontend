@@ -6,8 +6,8 @@ export const useAnnouncementApi = () => {
     const data = await $fetch<Announcement[]>(
       `${config.public.devBackendUrl}/announcements/teacher_announcements?uuid=${uuid}`,
       {
-        headers: { Authorization: `Bearer ${idToken}` },
-      },
+        headers: { Authorization: `Bearer ${idToken}` }
+      }
     )
     return data
   }
@@ -16,8 +16,8 @@ export const useAnnouncementApi = () => {
     const data = await $fetch<Announcement[]>(
       `${config.public.devBackendUrl}/announcements/student_announcements?uuid=${uuid}`,
       {
-        headers: { Authorization: `Bearer ${idToken}` },
-      },
+        headers: { Authorization: `Bearer ${idToken}` }
+      }
     )
     return data
   }
@@ -27,7 +27,7 @@ export const useAnnouncementApi = () => {
     const data = await $fetch<Announcement>(`${config.public.devBackendUrl}/announcements`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${idToken}` },
-      body: requestBody,
+      body: requestBody
     })
     return data
   }
@@ -35,13 +35,13 @@ export const useAnnouncementApi = () => {
   const updateAnnouncement = async (
     announcementId: number,
     content: string,
-    idToken: string,
+    idToken: string
   ): Promise<Announcement> => {
     const requestBody = { content }
     const data = await $fetch<Announcement>(`${config.public.devBackendUrl}/announcements/${announcementId}`, {
       method: 'PUT',
       headers: { Authorization: `Bearer ${idToken}` },
-      body: requestBody,
+      body: requestBody
     })
     return data
   }
@@ -49,7 +49,7 @@ export const useAnnouncementApi = () => {
   const deleteAnnouncement = async (announcementId: number, idToken: string): Promise<void> => {
     await $fetch(`${config.public.devBackendUrl}/announcements/${announcementId}`, {
       method: 'DELETE',
-      headers: { Authorization: `Bearer ${idToken}` },
+      headers: { Authorization: `Bearer ${idToken}` }
     })
   }
 
@@ -59,6 +59,6 @@ export const useAnnouncementApi = () => {
     getStudentAnnouncements,
     createAnnouncement,
     updateAnnouncement,
-    deleteAnnouncement,
+    deleteAnnouncement
   }
 }

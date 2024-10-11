@@ -27,7 +27,7 @@ watch(
   () => props.modelValue,
   () => {
     resize()
-  },
+  }
 )
 
 // DOMのレンダリングが完了し、表示状態になった時点

@@ -18,8 +18,8 @@ const { errors, handleSubmit } = useForm({
     name: '',
     teacherName: '',
     dayOfWeek: '',
-    courseTime: '',
-  },
+    courseTime: ''
+  }
 })
 const { value: name } = useField<string>('name')
 const { value: teacherName } = useField<string>('teacherName')
@@ -60,7 +60,7 @@ const handleEditCourse = handleSubmit(async (values) => {
         values.teacherName,
         values.dayOfWeek,
         values.courseTime,
-        idToken,
+        idToken
       )
       if (teacherCourses.value) {
         const index = teacherCourses.value.findIndex(course => course.uuid === courseUuid.value)

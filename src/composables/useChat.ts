@@ -37,7 +37,7 @@ export const useChat = () => {
         message_type: 'user',
         message: userInput.value,
         message_time: reflectionTimeInSeconds.value,
-        isLoading: false,
+        isLoading: false
       }
 
       chatHistory.value.push(userMessage)
@@ -57,7 +57,7 @@ export const useChat = () => {
         message_type: 'bot',
         message: '',
         message_time: 0,
-        isLoading: true,
+        isLoading: true
       }
       chatHistory.value.push(botMessage)
 
@@ -72,7 +72,7 @@ export const useChat = () => {
           message_type: 'bot',
           message: currentPrompts.value[currentPromptIndex.value],
           message_time: 0,
-          isLoading: false,
+          isLoading: false
         }
       }
       // 計測開始
@@ -84,7 +84,7 @@ export const useChat = () => {
         message_type: 'bot',
         message: '',
         message_time: 0,
-        isLoading: true,
+        isLoading: true
       }
       chatHistory.value.push(botMessage)
 
@@ -119,7 +119,7 @@ export const useChat = () => {
         message_type: 'bot',
         message: currentMessage,
         message_time: 0,
-        isLoading: true,
+        isLoading: true
       }
       chatHistory.value.push(botMessage)
       if (process.env.NODE_ENV !== 'test') {
@@ -141,7 +141,7 @@ export const useChat = () => {
         message_type: 'bot',
         message: currentMessage,
         message_time: 0,
-        isLoading: true,
+        isLoading: true
       }
       chatHistory.value.push(botMessage)
       if (process.env.NODE_ENV !== 'test') {
@@ -162,7 +162,7 @@ export const useChat = () => {
         message_type: 'bot',
         message: currentMessage,
         message_time: 0,
-        isLoading: true,
+        isLoading: true
       }
       chatHistory.value.push(botMessage)
       if (process.env.NODE_ENV !== 'test') {
@@ -183,7 +183,7 @@ export const useChat = () => {
         message_type: 'bot',
         message: currentMessage,
         message_time: 0,
-        isLoading: true,
+        isLoading: true
       }
       chatHistory.value.push(botMessage)
       if (process.env.NODE_ENV !== 'test') {
@@ -215,6 +215,6 @@ export const useChat = () => {
     pendingChat,
     completeChat,
     checkUserInputStatus,
-    currentPromptIndex,
+    currentPromptIndex
   }
 }

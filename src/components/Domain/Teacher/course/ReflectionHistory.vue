@@ -29,7 +29,7 @@ watch(
     if (isDialog.value === false) {
       activeTabId.value = 0
     }
-  },
+  }
 )
 
 onMounted(async () => {

@@ -31,7 +31,7 @@ const handleDeleteCourseDay = async () => {
 
       if (dailyCourseReflections.value) {
         dailyCourseReflections.value = dailyCourseReflections.value.filter(
-          courseDay => courseDay.id !== nextCourseDate.value?.id,
+          courseDay => courseDay.id !== nextCourseDate.value?.id
         )
       }
 

@@ -19,8 +19,8 @@ const { showSnackbar } = useSnackBar()
 const { errors, handleSubmit } = useForm({
   validationSchema: ReflectionSchema,
   initialValues: {
-    message: '',
-  },
+    message: ''
+  }
 })
 const { value: message } = useField<string>('message')
 onClickOutside(dialogRef, closeDialog)

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 definePageMeta({
   middleware: ['student-permissions'],
-  layout: 'student',
+  layout: 'student'
 })
 
 const { snackbarMessage, snackbarStatus } = useSnackBar()

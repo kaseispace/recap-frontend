@@ -14,7 +14,7 @@ watch(
     setTimeout(() => {
       isSnackbarVisible.value = false
     }, 5000)
-  },
+  }
 )
 </script>
 

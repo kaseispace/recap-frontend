@@ -20,8 +20,8 @@ const { errors, handleSubmit } = useForm({
   validationSchema: CourseDateSchema,
   initialValues: {
     courseSession: '',
-    courseDate: '',
-  },
+    courseDate: ''
+  }
 })
 const { value: courseSession } = useField<string>('courseSession')
 const { value: courseDate } = useField<string>('courseDate')
@@ -51,7 +51,7 @@ const handleAddCourseDay = handleSubmit(async (values) => {
         const dummyUsersReflections = joinedUsers.value.map(user => ({
           id: user.id,
           name: user.name,
-          reflections: [],
+          reflections: []
         }))
         dailyCourseReflections.value.push({ ...courseDateInfo, users_reflections: dummyUsersReflections })
       }

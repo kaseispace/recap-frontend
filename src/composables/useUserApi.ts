@@ -8,7 +8,7 @@ export const useUserApi = () => {
     const data = await $fetch<User>(`${config.public.devBackendUrl}/users`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${idToken}` },
-      body: requestBody,
+      body: requestBody
     })
     return data
   }
@@ -16,7 +16,7 @@ export const useUserApi = () => {
   const deleteUser = async (uid: string, idToken: string) => {
     const data = await $fetch(`${config.public.devBackendUrl}/users/${uid}`, {
       method: 'DELETE',
-      headers: { Authorization: `Bearer ${idToken}` },
+      headers: { Authorization: `Bearer ${idToken}` }
     })
     return data
   }
@@ -27,7 +27,7 @@ export const useUserApi = () => {
     const data = await $fetch<UserSchool>(`${config.public.devBackendUrl}/user_schools`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${idToken}` },
-      body: requestBody,
+      body: requestBody
     })
     return data
   }
@@ -35,7 +35,7 @@ export const useUserApi = () => {
   // ユーザー情報を取得、stateには保存しない
   const getUserSchool = async (idToken: string): Promise<UserSchool> => {
     const data = await $fetch<UserSchool>(`${config.public.devBackendUrl}/user_schools`, {
-      headers: { Authorization: `Bearer ${idToken}` },
+      headers: { Authorization: `Bearer ${idToken}` }
     })
     console.log('ユーザーデータの取得完了')
     return data

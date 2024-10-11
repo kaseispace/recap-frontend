@@ -12,7 +12,7 @@ interface Emits {
 
 const props = withDefaults(defineProps<Props>(), {
   inputPlaceholder: '',
-  id: '',
+  id: ''
 })
 const emit = defineEmits<Emits>()
 const localArray = ref<string[]>([])
@@ -96,7 +96,7 @@ watch(
       closeSuggestion()
     }
     manuallyClosed = false
-  },
+  }
 )
 
 watch(filteredSuggestions, () => {

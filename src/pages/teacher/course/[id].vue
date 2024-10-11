@@ -1,7 +1,7 @@
 <script setup lang="ts">
 definePageMeta({
   middleware: ['teacher-permissions'],
-  layout: 'teacher',
+  layout: 'teacher'
 })
 
 const activeTabId = ref(1)
@@ -66,7 +66,7 @@ onMounted(async () => {
           teacherReflectionFlag.value = await checkReflectionOnDate(
             nextCourseDate.value.course_id,
             nextCourseDate.value.id,
-            idToken,
+            idToken
           )
           console.log('振り返りの有無', teacherReflectionFlag.value)
         }

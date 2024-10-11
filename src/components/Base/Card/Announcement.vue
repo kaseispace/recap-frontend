@@ -11,7 +11,7 @@ const timeUnits = {
   just: '今',
   minute: '分前',
   hour: '時間前',
-  yesterday: '昨日',
+  yesterday: '昨日'
 }
 
 // propsで渡された値を任意の形式として表示できるようにする

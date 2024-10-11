@@ -18,8 +18,8 @@ const { showSnackbar } = useSnackBar()
 const { errors, handleSubmit } = useForm({
   validationSchema: AnnouncementSchema,
   initialValues: {
-    content: '',
-  },
+    content: ''
+  }
 })
 const { value: content } = useField<string>('content')
 onClickOutside(editDialogRef, closeEditDialog)

@@ -3,7 +3,7 @@ import { useForm, useField } from 'vee-validate'
 import { FirebaseError } from 'firebase/app'
 
 definePageMeta({
-  middleware: ['route'],
+  middleware: ['route']
 })
 
 // Menuコンポーネントから取得されるtextと組になるvalueを保存する用
@@ -20,8 +20,8 @@ const { errors, handleSubmit } = useForm({
     password: '',
     passwordConfirm: '',
     roleText: '',
-    schoolName: '',
-  },
+    schoolName: ''
+  }
 })
 const { value: name } = useField<string>('name')
 const { value: email } = useField<string>('email')

@@ -3,7 +3,7 @@ import { useForm, useField } from 'vee-validate'
 import { FirebaseError } from 'firebase/app'
 
 definePageMeta({
-  middleware: ['route'],
+  middleware: ['route']
 })
 
 const isClick = ref(false)
@@ -13,8 +13,8 @@ const { errors, handleSubmit } = useForm({
   validationSchema: LoginFormSchema,
   initialValues: {
     email: '',
-    password: '',
-  },
+    password: ''
+  }
 })
 const { value: email } = useField<string>('email')
 const { value: password } = useField<string>('password')

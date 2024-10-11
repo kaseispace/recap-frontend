@@ -23,8 +23,8 @@ const { errors, handleSubmit } = useForm({
   validationSchema: PromptSchema,
   initialValues: {
     title: '',
-    content: '',
-  },
+    content: ''
+  }
 })
 const { value: title } = useField<string>('title')
 const { value: content } = useField<string>('content')

@@ -125,8 +125,8 @@ export const teacherSidebarMenuItems = [
     value: 1,
     title: 'ホーム',
     iconName: 'fluent-mdl2:home',
-    path: 'teacher',
-  },
+    path: 'teacher'
+  }
 ]
 
 export const studentSidebarMenuItems = [
@@ -134,14 +134,14 @@ export const studentSidebarMenuItems = [
     value: 1,
     title: 'ホーム',
     iconName: 'fluent-mdl2:home',
-    path: 'student',
-  },
+    path: 'student'
+  }
 ]
 
 export const semester = [
   { value: 1, text: '前期' },
   { value: 2, text: '後期' },
-  { value: 3, text: 'その他' },
+  { value: 3, text: 'その他' }
 ]
 
 export const dayOfTheWeek = [
@@ -151,7 +151,7 @@ export const dayOfTheWeek = [
   { value: 4, text: '木曜日' },
   { value: 5, text: '金曜日' },
   { value: 6, text: '土曜日' },
-  { value: 7, text: '日曜日' },
+  { value: 7, text: '日曜日' }
 ]
 
 export const schedule = [
@@ -161,56 +161,56 @@ export const schedule = [
   { value: 4, text: '4限' },
   { value: 5, text: '5限' },
   { value: 6, text: '6限' },
-  { value: 7, text: '7限' },
+  { value: 7, text: '7限' }
 ]
 
 export const userTypes = [
   { value: 0, text: '学生' },
-  { value: 1, text: '教員' },
+  { value: 1, text: '教員' }
 ]
 
 export const accountSetting = [
   { value: 1, text: 'パスワード変更', iconName: 'mdi:key' },
-  { value: 2, text: '退会', iconName: 'fluent:person-delete-20-filled' },
+  { value: 2, text: '退会', iconName: 'fluent:person-delete-20-filled' }
 ]
 
 export const teacherCourseSetting = [
   { value: 1, text: '編集' },
-  { value: 2, text: '削除' },
+  { value: 2, text: '削除' }
 ]
 
 export const NoCourseDateSettings = [
   { value: 1, text: 'クラスコード' },
-  { value: 2, text: '授業日の追加' },
+  { value: 2, text: '授業日の追加' }
 ]
 
 export const CourseDateAddedNoReflectionSettings = [
   { value: 1, text: 'クラスコード' },
   { value: 2, text: '振り返りの設定' },
   { value: 3, text: '授業日の編集' },
-  { value: 4, text: '授業日の削除' },
+  { value: 4, text: '授業日の削除' }
 ]
 
 export const CourseDateAndReflectionAddedSettings = [
   { value: 1, text: 'クラスコード' },
-  { value: 2, text: '授業日の削除' },
+  { value: 2, text: '授業日の削除' }
 ]
 
 export const teacherPromptSetting = [
   { value: 1, text: '編集' },
   { value: 2, text: '状態変更' },
-  { value: 3, text: '削除' },
+  { value: 3, text: '削除' }
 ]
 
 export const teacherTabs = [
   { id: 1, text: 'お知らせ' },
   { id: 2, text: '振り返り' },
-  { id: 3, text: '受講生振り返り履歴' },
+  { id: 3, text: '受講生振り返り履歴' }
 ]
 
 export const studentTabs = [
   { id: 1, text: 'お知らせ' },
-  { id: 2, text: '振り返り履歴' },
+  { id: 2, text: '振り返り履歴' }
 ]
 
 export const studentCourseSetting = [{ value: 1, text: '退出' }]
@@ -231,13 +231,13 @@ export const endChatMessage = 'お疲れ様でした！'
 export const completeChatMessage = [
   '本日の振り返りは登録済みです！お疲れ様でした。',
   '振り返り履歴から今日の学びを確認してみてください。',
-  '次回も一緒に頑張りましょう！',
+  '次回も一緒に頑張りましょう！'
 ]
 export const pendingChatMessage = ['本日の振り返りはまだ公開されていません。', 'もう少々お待ちください。']
 export const noChatMessage = [
   '本日の振り返りはありません。',
   '余裕があれば、これまでの振り返りを見直してみてはいかがでしょうか。',
-  '次回の振り返りでまたお会いしましょう！',
+  '次回の振り返りでまたお会いしましょう！'
 ]
 
 // テーブル
@@ -245,12 +245,12 @@ export const TABLE_STATUS = [
   { value: 1, name: 'gg:math-minus', color: 'gray', text: '：未開始' },
   { value: 2, name: 'gg:close-r', color: 'orange', text: '：振り返り未実施' },
   { value: 3, name: 'gg:check-o', color: 'green', text: '：記入あり' },
-  { value: 4, name: 'gg:close-o', color: 'red', text: '：記入なし' },
+  { value: 4, name: 'gg:close-o', color: 'red', text: '：記入なし' }
 ]
 
 // テスト用
 export const mockPrompts = [
   { id: 1, content: '今日のJavaScriptの学習で、新たに覚えた構文は何ですか？' },
   { id: 2, content: 'その構文をどのような場面で使用しましたか？' },
-  { id: 3, content: 'その他、授業への質問等はありますか？' },
+  { id: 3, content: 'その他、授業への質問等はありますか？' }
 ]

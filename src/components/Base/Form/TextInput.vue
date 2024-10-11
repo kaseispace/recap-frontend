@@ -10,7 +10,7 @@ withDefaults(defineProps<Props>(), {
   inputPlaceholder: '',
   inputId: '',
   inputType: 'text',
-  wide: '',
+  wide: ''
 })
 
 defineEmits(['update:modelValue'])

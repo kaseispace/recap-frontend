@@ -36,7 +36,7 @@ const setCurrentColumns = ({ currentPage, currentPageSize }: { currentPage: numb
 
 setCurrentColumns({
   currentPage: page.value,
-  currentPageSize: pageSize.value,
+  currentPageSize: pageSize.value
 })
 
 const { currentPage, isFirstPage, isLastPage, prev, next } = useOffsetPagination({
@@ -44,7 +44,7 @@ const { currentPage, isFirstPage, isLastPage, prev, next } = useOffsetPagination
   page: 1,
   pageSize,
   onPageChange: setCurrentColumns,
-  onPageSizeChange: setCurrentColumns,
+  onPageSizeChange: setCurrentColumns
 })
 
 // 全データ中のどこのデータを表示しているか
@@ -80,7 +80,7 @@ watch(
     // 全てリセットしたい場合
     // reflectionStatusCache.value = {}
   },
-  { deep: true },
+  { deep: true }
 )
 </script>
 

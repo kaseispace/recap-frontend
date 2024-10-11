@@ -14,7 +14,7 @@ const {
   sendUserMessage,
   nextBotMessage,
   startChat,
-  checkUserInputStatus,
+  checkUserInputStatus
 } = useChat()
 const { isActive, openToggle } = useToggle()
 
@@ -54,7 +54,7 @@ watch(
       chatContainer.value.scrollTop = chatContainer.value.scrollHeight
     }
   },
-  { deep: true },
+  { deep: true }
 )
 
 // 振り返りタブを開いたとき

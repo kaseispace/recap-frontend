@@ -12,8 +12,8 @@ const { showSnackbar } = useSnackBar()
 const { errors, handleSubmit, resetForm } = useForm({
   validationSchema: AnnouncementSchema,
   initialValues: {
-    content: '',
-  },
+    content: ''
+  }
 })
 const { value: content } = useField<string>('content')
 const { dialog: isDialog, openDialog, closeDialog } = useDialog(resetForm)

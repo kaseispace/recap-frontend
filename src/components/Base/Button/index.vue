@@ -9,7 +9,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   text: '',
   isEnabled: undefined,
-  isClicked: false,
+  isClicked: false
 })
 
 const styles = reactive<{
@@ -23,7 +23,7 @@ const styles = reactive<{
   circleNormal: 'flex items-center justify-center rounded-full p-1 hover:bg-slate-200',
   dialog:
     'relative inline-flex items-center justify-center space-x-2 rounded-md border px-2.5 py-1 text-center text-xs hover:bg-slate-100',
-  pagination: 'flex items-center justify-center rounded-full p-0.5',
+  pagination: 'flex items-center justify-center rounded-full p-0.5'
 })
 
 const selectedStyle = computed(() => (props.buttonType in styles ? styles[props.buttonType] : styles.none))

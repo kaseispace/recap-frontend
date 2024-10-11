@@ -28,7 +28,7 @@ const updateChartData = () => {
     // 少数点以下を切り捨て、記入率を算出
     reflectionRates.value = reflectionCounts.value.map(reflectionCount =>
     // @ts-expect-error: `joinedUsers.value.length` は一時的に未定義になる可能性があるが、後で処理されることが保証されているため無視
-      Math.floor((reflectionCount / joinedUsers.value.length) * 100),
+      Math.floor((reflectionCount / joinedUsers.value.length) * 100)
     )
   }
 }
@@ -38,7 +38,7 @@ const commonFont: Partial<FontSpec> = {
   family: 'Noto Sans JP',
   size: 12,
   style: 'normal',
-  weight: 'normal',
+  weight: 'normal'
 }
 
 const data: ComputedRef<ChartData<'line'>> = computed(() => ({
@@ -52,9 +52,9 @@ const data: ComputedRef<ChartData<'line'>> = computed(() => ({
       backgroundColor: '#3b82f6', // 点の中の色
       tension: 0, // 曲線の度合い
       pointRadius: 7, // 点のサイズ
-      pointStyle: 'rect', // 点の形
-    },
-  ],
+      pointStyle: 'rect' // 点の形
+    }
+  ]
 }))
 
 const options: ComputedRef<ChartOptions<'line'>> = computed(() => ({
@@ -69,11 +69,11 @@ const options: ComputedRef<ChartOptions<'line'>> = computed(() => ({
       font: { ...commonFont, size: 14, weight: 600 },
       color: 'black',
       padding: {
-        bottom: 20,
-      },
+        bottom: 20
+      }
     },
     legend: {
-      display: false, // ラベルを非表示に設定
+      display: false // ラベルを非表示に設定
     },
     tooltip: {
       callbacks: {
@@ -86,7 +86,7 @@ const options: ComputedRef<ChartOptions<'line'>> = computed(() => ({
             label += '振り返り率：' + context.parsed.y + '%' // ここで単位を追加
           }
           return label
-        },
+        }
       },
       titleFont: { ...commonFont, weight: 600 },
       bodyFont: { ...commonFont, weight: 600 },
@@ -97,34 +97,34 @@ const options: ComputedRef<ChartOptions<'line'>> = computed(() => ({
       padding: 7,
       backgroundColor: 'white', // 背景色
       borderColor: '#cbd5e1', // 枠線の色
-      borderWidth: 1.5, // 枠線の太さ
-    },
+      borderWidth: 1.5 // 枠線の太さ
+    }
   },
 
   scales: {
     x: {
       ticks: {
-        font: commonFont,
+        font: commonFont
       },
       grid: {
-        display: false,
-      },
+        display: false
+      }
     },
     y: {
       beginAtZero: true,
       suggestedMax: 100,
       border: {
-        display: false, // 縦線消す
+        display: false // 縦線消す
       },
       ticks: {
         font: commonFont,
         maxTicksLimit: 6, // 目盛りの最大表示数
         callback: function (value) {
           return value + '%' // ここで単位を追加
-        },
-      },
-    },
-  },
+        }
+      }
+    }
+  }
 }))
 
 // 授業日の追加・編集。削除を検知できるようにdailyCourseReflectionsを監視
@@ -133,7 +133,7 @@ watch(
   () => {
     updateChartData()
   },
-  { deep: true },
+  { deep: true }
 )
 
 updateChartData()

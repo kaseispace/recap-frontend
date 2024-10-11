@@ -5,7 +5,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  iconSize: 'large',
+  iconSize: 'large'
 })
 </script>
 

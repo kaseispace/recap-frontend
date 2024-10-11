@@ -18,7 +18,7 @@ const isActive = computed(() => route.name === props.pathName)
   >
     <div
       data-testId="propsBgColor"
-      class="group flex h-10 w-10 items-center justify-center rounded-md p-1"
+      class="group flex size-10 items-center justify-center rounded-md p-1"
       :class="isActive ? [activeBg] : [inactiveBg]"
     >
       <slot />

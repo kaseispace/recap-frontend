@@ -24,7 +24,7 @@ const handleLogout = async () => await logout()
         <ul class="flex flex-col">
           <button
             data-testId="propsBgColor"
-            class="group flex h-10 w-10 items-center justify-center rounded-md p-1"
+            class="group flex size-10 items-center justify-center rounded-md p-1"
             :class="[bgColor]"
             @click="handleLogout"
           >

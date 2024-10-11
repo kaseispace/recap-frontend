@@ -31,7 +31,7 @@ const isActive = computed(() => route.name === props.courseName)
     <div
       ref="listRef"
       data-testId="toggle"
-      class="group relative flex h-10 w-10 items-center justify-center rounded-md p-1"
+      class="group relative flex size-10 items-center justify-center rounded-md p-1"
       :class="isActive ? [activeBg] : [inactiveBg]"
       @click="openToggle"
     >

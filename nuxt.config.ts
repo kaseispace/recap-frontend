@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: false,
   srcDir: 'src/',
-  modules: ['@vueuse/nuxt', '@samk-dev/nuxt-vcalendar', '@nuxt/image', '@nuxt/icon', '@nuxtjs/tailwindcss', '@nuxt/eslint'],
+  modules: ['@vueuse/nuxt', '@samk-dev/nuxt-vcalendar', '@nuxt/image', '@nuxt/icon', '@nuxtjs/tailwindcss', '@nuxt/eslint', '@nuxt/test-utils/module'],
   runtimeConfig: {
     public: {
       firebase: {
@@ -14,26 +14,34 @@ export default defineNuxtConfig({
         storageBucket: '',
         messagingSenderId: '',
         appId: '',
-        recaptchaSiteKey: '',
+        recaptchaSiteKey: ''
       },
-      devBackendUrl: '',
-    },
+      devBackendUrl: ''
+    }
   },
   image: {
     screens: {
-      xs2: 480,
+      xs2: 480
     },
     cloudinary: {
-      baseURL: 'https://res.cloudinary.com/dbveryjmc/image/upload/',
-    },
+      baseURL: 'https://res.cloudinary.com/dbveryjmc/image/upload/'
+    }
   },
   css: ['~/assets/css/scrollbar.css'],
   tailwindcss: {
-    cssPath: '~/assets/css/tailwind.css',
+    cssPath: '~/assets/css/tailwind.css'
   },
   eslint: {
     config: {
-      stylistic: true,
-    },
+      stylistic: true
+    }
   },
+  typescript: {
+    typeCheck: false,
+    tsConfig: {
+      compilerOptions: {
+        types: ['vitest/globals']
+      }
+    }
+  }
 })

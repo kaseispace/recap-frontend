@@ -128,3 +128,17 @@ export interface ValueText {
   value: number
   text: string
 }
+
+// composableの戻り値の型
+export type AnnouncementApiReturnType = ReturnType<typeof useAnnouncementApi>
+export type AuthReturnType = ReturnType<typeof useAuth>
+export type ChatReturnType = ReturnType<typeof useChat>
+export type CourseApiReturnType = ReturnType<typeof useCourseApi>
+export type CourseDateApiReturnType = ReturnType<typeof useCourseDateApi>
+export type FeedbackApiReturnType = ReturnType<typeof useFeedbackApi>
+export type PromptApiReturnType = ReturnType<typeof usePromptApi>
+export type ReflectionApiReturnType = ReturnType<typeof useReflectionApi>
+export type ReflectionHistoryReturnType = ReturnType<typeof useReflectionHistory>
+export type SettingReturnType = ReturnType<typeof useSetting>
+export type UserApiReturnType = ReturnType<typeof useUserApi>
+export type UserCourseReturnType = ReturnType<typeof useUserCourseApi>

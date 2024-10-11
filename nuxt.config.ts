@@ -4,7 +4,15 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: false,
   srcDir: 'src/',
-  modules: ['@vueuse/nuxt', '@samk-dev/nuxt-vcalendar', '@nuxt/image', '@nuxt/icon', '@nuxtjs/tailwindcss', '@nuxt/eslint', '@nuxt/test-utils/module'],
+  modules: [
+    '@vueuse/nuxt',
+    '@samk-dev/nuxt-vcalendar',
+    '@nuxt/image',
+    '@nuxt/icon',
+    '@nuxtjs/tailwindcss',
+    '@nuxt/eslint',
+    '@nuxt/test-utils/module'
+  ],
   runtimeConfig: {
     public: {
       firebase: {

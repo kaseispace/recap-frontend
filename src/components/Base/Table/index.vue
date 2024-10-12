@@ -74,6 +74,7 @@ watch(
     const lastRow = props.rows[props.rows.length - 1]
     Object.keys(reflectionStatusCache.value).forEach((cacheKey) => {
       if (cacheKey.startsWith(`${lastRow.id}-`)) {
+        // eslint-disable-next-line
         delete reflectionStatusCache.value[cacheKey]
       }
     })

@@ -4,7 +4,8 @@ import type { FetchError } from 'ofetch'
 
 const dialogRef = ref(null)
 const isClick = ref(false)
-const contents = ref<Array<{ content: string }>>([])
+const contents = ref<PromptContent[]>([])
+const promptQuestions = ref<PromptContent[]>([])
 
 const { authUser } = useAuth()
 const { courseUuid } = useCourseApi()
@@ -27,14 +28,14 @@ const removePromptContent = (contentIndex: number) => contents.value.splice(cont
 
 // 振り返り作成
 const handleCreatePrompt = handleSubmit(async (values) => {
-  console.log('作成')
-  const extraContents = contents.value.map(prompt => prompt.content)
-  const promptContents = [values.content, ...extraContents].filter(content => content !== '')
+  // 空白・スペースの確認
+  const filteredContents = contents.value.filter(content => content.content && content.content.trim() !== '')
+  promptQuestions.value.push({ content: values.content }, ...filteredContents)
   if (authUser.value && courseUuid.value) {
     isClick.value = true
     try {
       const idToken = await authUser.value.getIdToken()
-      const promptInfo = await createPrompt(courseUuid.value, values.title, promptContents, idToken)
+      const promptInfo = await createPrompt(courseUuid.value, values.title, promptQuestions.value, idToken)
       if (prompts.value) {
         prompts.value.push(promptInfo)
         showSnackbar(SUCCESS_PROMPT_CREATION, true)

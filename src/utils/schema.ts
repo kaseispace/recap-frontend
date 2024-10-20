@@ -39,8 +39,8 @@ export const AnnouncementSchema = yup.object({
 })
 
 export const PromptSchema = yup.object({
-  title: yup.string().required('必須項目です'),
-  content: yup.string().required('必須項目です')
+  title: yup.string().trim().required('必須項目です'),
+  content: yup.string().trim().required('必須項目です')
 })
 
 export const ReflectionSchema = yup.object({

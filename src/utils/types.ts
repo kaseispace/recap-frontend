@@ -57,7 +57,9 @@ export interface Announcement {
 }
 
 export interface PromptContent {
+  id?: number
   content: string
+  _destroy?: boolean
 }
 
 // プロンプト型

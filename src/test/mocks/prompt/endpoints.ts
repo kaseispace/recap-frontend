@@ -2,7 +2,7 @@ import { registerEndpoint } from '@nuxt/test-utils/runtime'
 import { readBody } from 'h3'
 import { emptyDataUUID, dataUUID } from '@/test/mocks/index'
 import { mockPromptsData, mockStudentPromptsData } from '@/test/mocks/prompt/index'
-import type { promptRequestBody } from '@/test/mocks/prompt/index'
+import type { createPromptRequestBody, updatePromptRequestBody } from '@/test/mocks/prompt/index'
 
 const config = useRuntimeConfig()
 
@@ -39,12 +39,12 @@ export const registerPromptEndpoints = () => {
   registerEndpoint(`${config.public.devBackendUrl}/prompts`, {
     method: 'POST',
     handler: async (event) => {
-      const body = await readBody<promptRequestBody>(event)
+      const body = await readBody<createPromptRequestBody>(event)
       return {
         id: 1,
-        title: body.title,
-        activate: false,
-        prompt_questions: body.contents
+        title: body.prompt.title,
+        active: false,
+        prompt_questions: body.prompt.prompt_questions_attributes
       }
     }
   })
@@ -58,7 +58,7 @@ export const registerPromptEndpoints = () => {
       return {
         id: activePrompt?.id,
         title: activePrompt?.title,
-        activate: !activePrompt?.active,
+        active: !activePrompt?.active,
         prompt_questions: activePrompt?.prompt_questions
       }
     }
@@ -68,15 +68,13 @@ export const registerPromptEndpoints = () => {
   registerEndpoint(`${config.public.devBackendUrl}/prompts/1`, {
     method: 'PATCH',
     handler: async (event) => {
-      const prompt = usePromptApi()
-      const body = await readBody<promptRequestBody>(event)
-      if (prompt.prompts.value) {
-        return {
-          id: prompt.prompts.value[0].id,
-          title: body.title,
-          active: prompt.prompts.value[0].active,
-          prompt_questions: body.contents
-        }
+      const body = await readBody<updatePromptRequestBody>(event)
+      const filteredQuestions = body.prompt_questions_attributes.filter(question => !question._destroy)
+      return {
+        id: 1,
+        title: body.title,
+        active: true,
+        prompt_questions: filteredQuestions
       }
     }
   })

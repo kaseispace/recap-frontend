@@ -17,8 +17,8 @@ export const usePromptApi = () => {
     return data
   }
 
-  const createPrompt = async (uuid: string, title: string, contents: string[], idToken: string): Promise<Prompt> => {
-    const requestBody = { uuid, title, contents }
+  const createPrompt = async (uuid: string, title: string, contents: PromptContent[], idToken: string): Promise<Prompt> => {
+    const requestBody = { uuid, prompt: { title, prompt_questions_attributes: contents } }
     const data = await $fetch<Prompt>(`${config.public.devBackendUrl}/prompts`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${idToken}` },
@@ -30,10 +30,10 @@ export const usePromptApi = () => {
   const updatePrompt = async (
     promptId: number,
     title: string,
-    contents: string[],
+    prompt_questions: PromptContent[],
     idToken: string
   ): Promise<Prompt> => {
-    const requestBody = { title, contents }
+    const requestBody = { title, prompt_questions_attributes: prompt_questions }
     const data = await $fetch<Prompt>(`${config.public.devBackendUrl}/prompts/${promptId}`, {
       method: 'PATCH',
       headers: { Authorization: `Bearer ${idToken}` },

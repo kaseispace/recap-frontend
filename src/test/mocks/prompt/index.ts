@@ -1,6 +1,14 @@
-export interface promptRequestBody {
+export interface createPromptRequestBody {
+  id: number
+  prompt: {
+    title: string
+    prompt_questions_attributes: PromptContent[]
+  }
+}
+
+export interface updatePromptRequestBody {
   title: string
-  contents: PromptContent[]
+  prompt_questions_attributes: PromptContent[]
 }
 
 export const mockPromptsData = [

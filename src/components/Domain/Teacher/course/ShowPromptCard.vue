@@ -10,7 +10,8 @@ const editDialogRef = ref(null)
 const enableDialogRef = ref(null)
 const deleteDialogRef = ref(null)
 const promptId = ref(0)
-const contents = ref<Array<{ content: string }>>([])
+const displayedContents = ref<PromptContent[]>([]) // 画面に表示する用
+const updatedPrompt = ref<Prompt>() // _destroy: trueを含める用
 
 const { authUser } = useAuth()
 const { courseUuid } = useCourseApi()
@@ -32,19 +33,32 @@ onClickOutside(editDialogRef, closeEditDialog)
 onClickOutside(enableDialogRef, closeEnableDialog)
 onClickOutside(deleteDialogRef, closeDeleteDialog)
 
-const addPromptContent = () => contents.value.push({ content: '' })
-const removePromptContent = (contentIndex: number) => contents.value.splice(contentIndex, 1)
+const addPromptContent = () => displayedContents.value.push({ content: '' })
+const removePromptContent = (contentIndex: number, prompt: PromptContent) => {
+  // 指定されたindexを削除し、画面に片影させる
+  displayedContents.value.splice(contentIndex, 1)
+
+  // indexと同じ要素を引数で渡されるpromptを利用して、updatedPromptにdestroyを追加する
+  if (updatedPrompt.value) {
+    updatedPrompt.value.prompt_questions = updatedPrompt.value.prompt_questions.map(question =>
+      question.id === prompt.id ? { ...question, _destroy: true } : question
+    )
+  }
+}
 
 const handlePromptMultipleActions = (actionId: number, prompt: Prompt) => {
+  // セットアップ
   promptId.value = prompt.id
   title.value = prompt.title
-  // 現在登録されているプロンプト
-  const registeredContents = prompt.prompt_questions.map(prompt => prompt.content)
-  content.value = registeredContents[0]
-  contents.value = []
-  registeredContents.slice(1).forEach((prompt) => {
-    contents.value.push({ content: prompt })
+  content.value = prompt.prompt_questions[0].content
+  updatedPrompt.value = prompt
+
+  // displayedContents.value = []
+  // 必須項目である1つ目の質問を除いた質問を抽出
+  prompt.prompt_questions.slice(1).forEach((prompt) => {
+    displayedContents.value.push({ id: prompt.id, content: prompt.content })
   })
+
   if (actionId === 1) {
     openEditDialog()
   }
@@ -58,41 +72,48 @@ const handlePromptMultipleActions = (actionId: number, prompt: Prompt) => {
 
 // 編集
 const handleEditPrompt = handleSubmit(async (values) => {
-  const extraContents = contents.value.map(item => item.content)
-  const promptContents = [values.content, ...extraContents].filter(content => content !== '')
-  if (authUser.value) {
-    isEditClick.value = true
-    try {
-      const idToken = await authUser.value.getIdToken()
-      const promptInfo = await updatePrompt(promptId.value, values.title, promptContents, idToken)
-      if (prompts.value) {
-        const index = prompts.value.findIndex(prompt => prompt.id === promptId.value)
-        prompts.value[index] = promptInfo
-        if (promptId.value === activePrompt.value?.id) {
-          activePrompt.value = promptInfo
+  // idの付与されていない追加分のcontentを探す（この際に空白やスペースを事前に取り除く）
+  const newContents = displayedContents.value.filter(content => content.id === undefined && content.content && content.content.trim() !== '')
+  if (updatedPrompt.value) {
+    // 変更あり・なしに関わらず、更新する
+    updatedPrompt.value.title = values.title
+    // 追加分の質問を含める
+    updatedPrompt.value.prompt_questions.push(...newContents)
+
+    if (authUser.value) {
+      isEditClick.value = true
+      try {
+        const idToken = await authUser.value.getIdToken()
+        const promptInfo = await updatePrompt(updatedPrompt.value.id, updatedPrompt.value.title, updatedPrompt.value.prompt_questions, idToken)
+        if (prompts.value) {
+          const index = prompts.value.findIndex(prompt => prompt.id === promptId.value)
+          prompts.value[index] = promptInfo
+          if (promptId.value === activePrompt.value?.id) {
+            activePrompt.value = promptInfo
+          }
+          showSnackbar(SUCCESS_PROMPT_UPDATE, true)
+          closeEditDialog()
         }
-        showSnackbar(SUCCESS_PROMPT_UPDATE, true)
-        closeEditDialog()
+      }
+      catch (error) {
+        switch ((error as FetchError).status) {
+          case 403:
+            showSnackbar(ERROR_PROMPT_CANNOT_UPDATE, false)
+            break
+          case 404:
+            showSnackbar(ERROR_PROMPT_NOT_FOUND, false)
+            break
+          default:
+            showSnackbar(ERROR_PROMPT_UPDATE_FAILED, false)
+        }
+      }
+      finally {
+        isEditClick.value = false
       }
     }
-    catch (error) {
-      switch ((error as FetchError).status) {
-        case 403:
-          showSnackbar(ERROR_PROMPT_CANNOT_UPDATE, false)
-          break
-        case 404:
-          showSnackbar(ERROR_PROMPT_NOT_FOUND, false)
-          break
-        default:
-          showSnackbar(ERROR_PROMPT_UPDATE_FAILED, false)
-      }
+    else {
+      showSnackbar(UNEXPECTED_ERROR_MESSAGE, false)
     }
-    finally {
-      isEditClick.value = false
-    }
-  }
-  else {
-    showSnackbar(UNEXPECTED_ERROR_MESSAGE, false)
   }
 })
 
@@ -196,6 +217,13 @@ const handleDeletePrompt = async () => {
     showSnackbar(UNEXPECTED_ERROR_MESSAGE, false)
   }
 }
+
+watch(isEditDialog, () => {
+  if (isEditDialog.value === false) {
+    displayedContents.value = []
+    updatedPrompt.value = undefined
+  }
+})
 
 onMounted(async () => {
   try {
@@ -326,7 +354,7 @@ onMounted(async () => {
             </div>
 
             <template
-              v-for="(extraContent, i) in contents"
+              v-for="(extraContent, i) in displayedContents"
               :key="i"
             >
               <div>
@@ -345,7 +373,7 @@ onMounted(async () => {
                     :data-testId="`removeButton-${i}`"
                     button-type="icon"
                     class="ml-4 border border-slate-400 hover:bg-slate-100"
-                    @click="removePromptContent(i)"
+                    @click="removePromptContent(i, extraContent)"
                   >
                     <Icon
                       name="mdi:delete-outline"

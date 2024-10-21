@@ -47,7 +47,7 @@ onUpdated(() => {
     <div
       v-if="wide === 'large'"
       ref="el"
-      class="dialog-scrollbar flex max-h-[500px] flex-col space-y-4 overflow-y-auto"
+      class="dialog-scrollbar flex max-h-[350px] flex-col space-y-4 overflow-y-auto sm:max-h-[500px]"
     >
       <slot />
     </div>

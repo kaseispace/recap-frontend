@@ -29,13 +29,13 @@ export const registerReflectionEndpoints = () => {
       const body = await readBody<createReflectionRequestBody>(event)
       const reflections: Reflection[] = []
       const startingId = 15
-      for (let i = 0; i < body.reflections.length; i++) {
+      for (let i = 0; i < body.reflection.reflections.length; i++) {
         reflections.push({
           id: startingId + i,
-          course_date_id: body.course_date_id,
-          message: body.reflections[i].message,
-          message_type: body.reflections[i].message_type,
-          message_time: body.reflections[i].message_time
+          course_date_id: body.reflection.course_date_id,
+          message: body.reflection.reflections[i].message,
+          message_type: body.reflection.reflections[i].message_type,
+          message_time: body.reflection.reflections[i].message_time
         })
       }
       return [

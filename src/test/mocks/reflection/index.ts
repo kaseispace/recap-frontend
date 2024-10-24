@@ -1,6 +1,8 @@
 export interface createReflectionRequestBody {
-  course_date_id: number
-  reflections: ChatMessage[]
+  reflection: {
+    course_date_id: number
+    reflections: ChatMessage[]
+  }
 }
 
 export interface updateReflectionRequestBody {

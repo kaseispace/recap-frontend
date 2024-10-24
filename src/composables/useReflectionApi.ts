@@ -55,7 +55,7 @@ export const useReflectionApi = () => {
     reflections: ChatMessage[],
     idToken: string
   ): Promise<StudentCourseReflection[]> => {
-    const requestBody = { uuid, course_date_id: courseDateId, reflections }
+    const requestBody = { uuid, reflection: { course_date_id: courseDateId, reflections } }
     const data = await $fetch<StudentCourseReflection[]>(`${config.public.devBackendUrl}/reflections`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${idToken}` },

@@ -72,13 +72,18 @@ const handlePromptMultipleActions = (actionId: number, prompt: Prompt) => {
 
 // 編集
 const handleEditPrompt = handleSubmit(async (values) => {
+  const existingContents = displayedContents.value.filter(content => content.id !== undefined)
   // idの付与されていない追加分のcontentを探す（この際に空白やスペースを事前に取り除く）
   const newContents = displayedContents.value.filter(content => content.id === undefined && content.content && content.content.trim() !== '')
   if (updatedPrompt.value) {
     // 変更あり・なしに関わらず、更新する
     updatedPrompt.value.title = values.title
+    updatedPrompt.value.prompt_questions[0].content = values.content
+    const firstContent = updatedPrompt.value.prompt_questions[0]
+    updatedPrompt.value.prompt_questions = updatedPrompt.value.prompt_questions.filter(question => question._destroy === true)
+
     // 追加分の質問を含める
-    updatedPrompt.value.prompt_questions.push(...newContents)
+    updatedPrompt.value.prompt_questions.push(firstContent, ...existingContents, ...newContents)
 
     if (authUser.value) {
       isEditClick.value = true

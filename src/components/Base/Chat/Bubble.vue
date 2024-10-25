@@ -23,7 +23,7 @@ withDefaults(defineProps<Props>(), {
     :class="[bgColor, maxWidth]"
   >
     <span
-      class="text-sm"
+      class="break-words text-sm"
       :class="messageType === 'bot' ? 'text-black' : 'text-white'"
     > {{ message }}</span>
     <div

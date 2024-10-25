@@ -58,6 +58,13 @@ watch(
   { deep: true }
 )
 
+// チャット画面を閉じた際に、デフォルトの画面サイズに戻しておく
+watch(isActive, () => {
+  if (isActive.value === false) {
+    isExpanded.value = false
+  }
+})
+
 // 振り返りタブを開いたとき
 onMounted(() => {
   if (activePrompt.value) {
@@ -94,7 +101,7 @@ onMounted(() => {
     v-else
     data-testId="chatBot"
     class="fixed bottom-10"
-    :class="isExpanded ? 'left-8 right-0 flex items-center justify-center' : ' right-8'"
+    :class="isExpanded ? 'left-8 right-0 flex items-center justify-center sm:px-7' : ' right-8'"
   >
     <BaseChat
       title="振り返りプレビュー"

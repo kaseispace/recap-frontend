@@ -176,7 +176,7 @@ onUnmounted(() => {
               <DomainTeacherCourseShowPromptCard />
               <DomainTeacherCourseReflectionBot
                 v-if="activePrompt"
-                class="fixed bottom-10 right-8 z-20"
+                class="fixed bottom-10 right-8 z-10"
               />
             </div>
             <div

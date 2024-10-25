@@ -52,7 +52,7 @@ defineProps<Props>()
             class="relative flex rounded-lg bg-gray-100 px-3 py-2"
           >
             <span> Q{{ i + 1 }}. </span>
-            <span class="ml-1">{{ content.content }}</span>
+            <span class="ml-1 break-all">{{ content.content }}</span>
             <div
               class="absolute left-[-10px] top-2 size-0 origin-center rotate-12 border-[10px] border-transparent border-t-gray-100"
             />

@@ -63,6 +63,7 @@ const handleCreatePrompt = handleSubmit(async (values) => {
 // 振り返りの追加用変数contentsは、resetFormの対処以外なので、isDialogを監視して初期化
 watch(isDialog, () => {
   contents.value = []
+  promptQuestions.value = []
 })
 </script>
 

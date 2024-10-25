@@ -12,10 +12,10 @@ describe('Chatコンポーネントのテスト', () => {
     expect(wrapper.get('span').text()).toBe('テストチャット')
     expect(wrapper.find(`[data-testId="propsBgColor"]`).classes()).toContain('bg-cyan-800')
     expect(wrapper.find(`[data-testId="propsIsExpanded"]`).classes()).toEqual(
-      expect.arrayContaining(['h-[570px]', 'w-[370px]', 'max-w-[80vw]'])
+      expect.arrayContaining(['h-[570px]', 'w-[370px]', 'max-w-[70vw]', 'max-h-[75vh]'])
     )
     expect(wrapper.find(`[data-testId="propsIsExpanded"]`).classes()).not.toEqual(
-      expect.arrayContaining(['h-[90vh]', 'w-[90vw]', 'max-w-screen-xl'])
+      expect.arrayContaining(['h-[75vh]', 'w-[90vw]', 'max-w-screen-xl'])
     )
   })
 

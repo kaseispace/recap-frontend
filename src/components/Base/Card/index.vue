@@ -20,7 +20,7 @@ defineProps<Props>()
         <div class="flex flex-col justify-end">
           <p
             data-testId="propsSubjectName"
-            class="line-clamp-3 text-base font-normal text-white md:text-lg"
+            class="line-clamp-3 break-all text-base font-normal text-white md:text-lg"
           >
             {{ subjectName }}
           </p>

@@ -186,7 +186,7 @@ onMounted(async () => {
                             />
                           </BaseCardAvatar>
 
-                          <div class="ml-2 pt-[8px] text-sm">
+                          <div class="ml-2 break-all pt-[8px] text-sm">
                             {{ reflection.message }}
                           </div>
                         </div>
@@ -203,7 +203,7 @@ onMounted(async () => {
                             />
                           </BaseCardAvatar>
 
-                          <div class="ml-2 pt-[8px] text-sm">
+                          <div class="ml-2 break-all pt-[8px] text-sm">
                             {{ reflection.message }}
                           </div>
                         </div>

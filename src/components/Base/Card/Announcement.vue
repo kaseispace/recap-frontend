@@ -44,7 +44,7 @@ onMounted(timeCheck)
 
       <div
         data-testId="propsContent"
-        class="whitespace-pre-wrap"
+        class="whitespace-pre-wrap break-all"
       >
         {{ content }}
       </div>

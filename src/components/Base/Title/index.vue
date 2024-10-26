@@ -6,7 +6,7 @@ defineProps<Props>()
 </script>
 
 <template>
-  <h1 class="text-xl sm:text-2xl">
+  <h1 class="break-all text-xl sm:text-2xl">
     {{ text }}
   </h1>
 </template>

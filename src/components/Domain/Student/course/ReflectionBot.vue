@@ -25,6 +25,7 @@ const {
 } = useChat()
 const { showSnackbar } = useSnackBar()
 const { isActive, openToggle } = useToggle()
+const { isActive: isExpanded, openToggle: toggleExpanded } = useToggle()
 
 // 振り返り登録
 const handleCreateReflection = async () => {
@@ -120,6 +121,13 @@ watch(
   { deep: true }
 )
 
+// チャット画面を閉じた際に、デフォルトの画面サイズに戻しておく
+watch(isActive, () => {
+  if (isActive.value === false) {
+    isExpanded.value = false
+  }
+})
+
 onMounted(async () => {
   await nextTick()
   try {
@@ -166,7 +174,7 @@ onMounted(async () => {
     v-if="!isActive"
     data-testId="botButton"
     button-type="circle"
-    class="group fixed bottom-12 right-8 bg-cyan-800 p-2"
+    class="group bg-cyan-800 p-2"
     @click="chatToggle"
   >
     <Icon
@@ -180,134 +188,151 @@ onMounted(async () => {
     />
   </BaseButton>
 
-  <!-- ボタンを開けている状態 -->
+  <!-- チャットが開いている状態 -->
   <div
     v-else
     data-testId="chatBot"
+    class="fixed bottom-10"
+    :class="isExpanded ? 'left-8 right-0 flex items-center justify-center sm:px-7' : 'right-8'"
   >
-    <!-- チャットが会話中のアイコン -->
-    <BaseButton
-      v-if="isBotChatting"
-      button-type="circle"
-      class="group fixed bottom-12 right-8 bg-cyan-800 p-2"
+    <BaseChat
+      title="振り返り"
+      bg-color="bg-cyan-800"
+      :is-expanded="isExpanded"
     >
-      <Icon
-        name="eos-icons:bubble-loading"
-        size="30px"
-        style="color: white"
-      />
-      <BaseTooltip
-        class="top-14"
-        message="読み込み中"
-      />
-    </BaseButton>
+      <template #icon>
+        <div class="flex items-center justify-center space-x-1">
+          <!-- 拡大縮小 -->
+          <BaseButton
+            button-type="icon"
+            @click="toggleExpanded"
+          >
+            <Icon
+              v-if="!isExpanded"
+              name="mdi:arrow-expand"
+              size="20px"
+              style="color: white"
+            />
+            <Icon
+              v-else
+              name="mdi:arrow-collapse"
+              size="20px"
+              style="color: white"
+            />
+          </BaseButton>
 
-    <!-- userが入力ができる（操作できる）状態のアイコン -->
-    <BaseButton
-      v-else-if="!isBotChatting"
-      button-type="circle"
-      class="group fixed bottom-12 right-8 bg-red-600 p-2"
-      @click="chatToggle"
-    >
-      <Icon
-        name="ic:baseline-close"
-        size="30px"
-        style="color: white"
-      />
-      <BaseTooltip
-        class="top-14"
-        message="閉じる"
-      />
-    </BaseButton>
+          <!-- チャットが会話中のアイコン -->
+          <BaseButton
+            v-if="isBotChatting"
+            button-type="icon"
+          >
+            <Icon
+              name="eos-icons:bubble-loading"
+              size="20px"
+              style="color: white"
+            />
+          </BaseButton>
 
-    <!-- 表示位置 -->
-    <div class="fixed bottom-0 right-0">
-      <BaseChat
-        title="振り返り"
-        bg-color="bg-cyan-800"
+          <!-- userが入力ができる（操作できる）状態のアイコン -->
+          <BaseButton
+            v-else-if="!isBotChatting"
+            button-type="icon"
+            @click="chatToggle"
+          >
+            <Icon
+              name="ic:baseline-close"
+              size="20px"
+              style="color: white"
+            />
+          </BaseButton>
+        </div>
+      </template>
+
+      <!-- main -->
+      <div
+        ref="chatContainer"
+        class="chat-scrollbar grow overflow-y-auto bg-white p-2"
       >
-        <!-- main -->
-        <div
-          ref="chatContainer"
-          class="chat-scrollbar grow overflow-y-auto bg-white p-2"
-        >
-          <div class="mt-2 flex flex-col space-y-4">
-            <div
-              v-for="(message, i) in chatHistory"
-              :key="i"
-              class="mx-3 flex items-center"
-              :class="message.message_type === 'bot' ? 'justify-start' : 'justify-end'"
-            >
-              <div v-if="message.isLoading">
-                <BaseChatLoading
-                  bg-color="bg-slate-200"
-                  border-color="border-t-slate-200"
-                />
-              </div>
+        <div class="mt-2 flex flex-col space-y-4">
+          <div
+            v-for="(message, i) in chatHistory"
+            :key="i"
+            class="mx-3 flex items-center"
+            :class="message.message_type === 'bot' ? 'justify-start' : 'justify-end'"
+          >
+            <div v-if="message.isLoading">
+              <BaseChatLoading
+                bg-color="bg-slate-200"
+                border-color="border-t-slate-200"
+              />
+            </div>
 
-              <div v-else>
-                <BaseChatBubble
-                  v-if="message.message_type === 'bot'"
-                  :data-testId="`botChat-${i}`"
-                  :message="message.message"
-                  message-type="bot"
-                  bg-color="bg-slate-200"
-                  border-color="border-t-slate-200"
-                />
+            <div v-else>
+              <BaseChatBubble
+                v-if="message.message_type === 'bot'"
+                :data-testId="`botChat-${i}`"
+                :message="message.message"
+                message-type="bot"
+                bg-color="bg-slate-200"
+                border-color="border-t-slate-200"
+                :max-width="isExpanded ? 'max-w-[70vw]' : 'max-w-[264px]'"
+              />
 
-                <BaseChatBubble
-                  v-else
-                  data-testId="userChat"
-                  :message="message.message"
-                  message-type="user"
-                  bg-color="bg-cyan-800"
-                  border-color="border-t-cyan-800"
-                />
-              </div>
+              <BaseChatBubble
+                v-else
+                data-testId="userChat"
+                :message="message.message"
+                message-type="user"
+                bg-color="bg-cyan-800"
+                border-color="border-t-cyan-800"
+                :max-width="isExpanded ? 'max-w-[70vw]' : 'max-w-[264px]'"
+              />
             </div>
           </div>
         </div>
+      </div>
 
-        <div
-          v-if="!isChatEnded"
-          class="flex h-[60px] items-center rounded-b-sm border-t border-slate-200 bg-white p-2.5"
+      <div
+        v-if="!isChatEnded"
+        class="flex h-[60px] items-center rounded-b-sm border-t border-slate-200 bg-white p-2.5"
+      >
+        <!-- @keydown.shift.enter.preventでデフォルトの改行を阻止しつつ、関数の実行（改行されなくなる） -->
+        <!-- ボタンが押せないよう状態でも、Shift + Enterで送信できてしまわないように注意 -->
+        <BaseFormTextarea
+          v-model="userInput"
+          data-testId="userInput"
+          class="textarea-scrollbar mr-2 max-h-[50px] overflow-y-auto border-none bg-white"
+          textarea-placeholder="ここに入力（Shift + Enterで送信）"
+          default-height="44px"
+          @keydown.shift.enter.prevent="handleSendUserMessage"
+        />
+
+        <!-- 送信できないようのボタン -->
+        <button
+          v-show="!isUserInputEmpty || isBotChatting"
+          disabled
+          class="flex items-center"
         >
-          <!-- @keydown.shift.enter.preventでデフォルトの改行を阻止しつつ、関数の実行（改行されなくなる） -->
-          <!-- ボタンが押せないよう状態でも、Shift + Enterで送信できてしまわないように注意 -->
-          <BaseFormTextarea
-            v-model="userInput"
-            data-testId="userInput"
-            class="textarea-scrollbar mr-2 max-h-[50px] overflow-y-auto border-none bg-white"
-            textarea-placeholder="ここに入力（Shift + Enterで送信）"
-            default-height="44px"
-            @keydown.shift.enter.prevent="handleSendUserMessage"
+          <Icon
+            name="fluent:send-24-regular"
+            size="24px"
+            style="color: gray"
           />
+        </button>
 
-          <!-- 送信できないようのボタン -->
-          <button
-            v-show="!isUserInputEmpty || isBotChatting"
-            disabled
-          >
-            <Icon
-              name="fluent:send-24-regular"
-              size="24px"
-              style="color: gray"
-            />
-          </button>
-
-          <button
-            v-show="isUserInputEmpty && !isBotChatting"
-            data-testId="sendMessage"
-            @click="handleSendUserMessage"
-          >
-            <Icon
-              name="fluent:send-24-filled"
-              size="24px"
-              style="color: #155e75"
-            />
-          </button>
-        </div>
-      </BaseChat>
-    </div>
+        <button
+          v-show="isUserInputEmpty && !isBotChatting"
+          data-testId="sendMessage"
+          class="flex items-center"
+          @click="handleSendUserMessage"
+        >
+          <Icon
+            name="fluent:send-24-filled"
+            size="24px"
+            style="color: #155e75"
+          />
+        </button>
+      </div>
+    </BaseChat>
   </div>
 </template>

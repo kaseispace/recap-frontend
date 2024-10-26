@@ -36,12 +36,12 @@ const handleMenuSelection = (item: string) => {
     >
       <span class="text-sm">{{ selectedText || '選択してください' }}</span>
       <Icon
-        v-if="!isDropdown"
+        v-show="!isDropdown"
         name="mdi:chevron-down"
         size="24px"
       />
       <Icon
-        v-else
+        v-show="isDropdown"
         name="mdi:chevron-up"
         size="24px"
       />

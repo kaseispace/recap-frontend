@@ -101,7 +101,7 @@ onMounted(() => {
     v-else
     data-testId="chatBot"
     class="fixed bottom-10"
-    :class="isExpanded ? 'left-8 right-0 flex items-center justify-center sm:px-7' : ' right-8'"
+    :class="isExpanded ? 'left-8 right-0 flex items-center justify-center sm:px-7' : 'right-8'"
   >
     <BaseChat
       title="振り返りプレビュー"
@@ -220,6 +220,7 @@ onMounted(() => {
           v-show="!isUserInputEmpty || isBotChatting"
           data-testId="sendMessageDisabled"
           disabled
+          class="flex items-center"
         >
           <Icon
             name="fluent:send-24-regular"
@@ -231,6 +232,7 @@ onMounted(() => {
         <button
           v-show="isUserInputEmpty && !isBotChatting"
           data-testId="sendMessage"
+          class="flex items-center"
           @click="handleSendUserMessage"
         >
           <Icon

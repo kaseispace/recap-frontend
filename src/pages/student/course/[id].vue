@@ -161,7 +161,10 @@ onUnmounted(() => {
       </div>
 
       <!-- 振り返りbotをどのタブでも表示 -->
-      <DomainStudentCourseReflectionBot v-if="showChat" />
+      <DomainStudentCourseReflectionBot
+        v-if="showChat"
+        class="fixed bottom-10 right-8 z-10"
+      />
     </div>
 
     <!-- マウントが完了するまで表示するやつ -->

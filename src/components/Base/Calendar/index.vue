@@ -51,10 +51,10 @@ onMounted(() => {
       <div
         v-if="!isCalendarActive"
         data-testId="clickIcon"
-        class="cursor-pointer"
+        class="flex cursor-pointer items-center justify-center"
         @click="toggleCalendar"
       >
-        <icon
+        <Icon
           name="mdi:calendar-month-outline"
           size="24px"
         />
@@ -62,9 +62,9 @@ onMounted(() => {
 
       <div
         v-else
-        class="cursor-pointer"
+        class="flex cursor-pointer items-center justify-center"
       >
-        <icon
+        <Icon
           name="mdi:calendar-month-outline"
           size="24px"
         />

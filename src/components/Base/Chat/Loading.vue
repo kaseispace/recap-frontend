@@ -10,7 +10,7 @@ defineProps<Props>()
   <!-- 背景色は利用側で（例：bg-slate-200） -->
   <div
     data-testId="propsBgColor"
-    class="relative max-w-[264px] rounded-lg px-3 py-2"
+    class="relative flex h-10 max-w-[264px] items-end justify-center rounded-lg px-3 py-2"
     :class="[bgColor]"
   >
     <Icon

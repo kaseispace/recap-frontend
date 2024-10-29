@@ -223,10 +223,14 @@ const handleDeletePrompt = async () => {
   }
 }
 
-watch(isEditDialog, () => {
-  if (isEditDialog.value === false) {
-    displayedContents.value = []
-    updatedPrompt.value = undefined
+const resetState = () => {
+  displayedContents.value = []
+  updatedPrompt.value = undefined
+}
+
+watch([isEditDialog, isEnableDialog, isDeleteDialog], ([edit, enable, del]) => {
+  if (!edit && !enable && !del) {
+    resetState()
   }
 })
 

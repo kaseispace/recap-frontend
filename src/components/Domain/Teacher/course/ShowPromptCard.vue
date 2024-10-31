@@ -381,9 +381,13 @@ onMounted(async () => {
                   <BaseButton
                     :data-testId="`removeButton-${i}`"
                     button-type="icon"
-                    class="ml-4 border border-slate-400 hover:bg-slate-100"
+                    class="group relative ml-4 border border-slate-400 p-2 hover:bg-slate-100"
                     @click="removePromptContent(i, extraContent)"
                   >
+                    <BaseTooltip
+                      class="bottom-12"
+                      message="削除"
+                    />
                     <Icon
                       name="mdi:delete-outline"
                       size="24px"

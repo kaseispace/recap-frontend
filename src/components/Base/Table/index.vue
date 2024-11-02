@@ -128,7 +128,7 @@ watch(
             class="border-b"
           >
             <td
-              class="sticky left-0 top-0 flex items-center justify-start whitespace-pre bg-white p-3 px-4 text-left text-slate-700"
+              class="sticky left-0 top-0 z-10 flex items-center justify-start whitespace-pre bg-white p-3 px-4 text-left text-slate-700"
             >
               {{ column.name }}
               <div class="group relative cursor-pointer">
@@ -235,3 +235,9 @@ watch(
     </div>
   </div>
 </template>
+
+<style scoped>
+tbody tr:hover td {
+  background-color: #f1f5f9;
+}
+</style>

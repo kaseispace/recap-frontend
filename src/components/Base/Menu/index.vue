@@ -11,8 +11,9 @@ const props = defineProps<Props>()
 const emit = defineEmits<Emits>()
 
 const localArray = ref(props.menuArray)
-const menuRef = ref(null)
+const menuRef = ref<HTMLElement | null>(null)
 const newArray = localArray.value.map(item => item.text)
+const isMenuAbove = ref(false)
 
 const { isActive: isDropdown, openToggle: openDropdown, closeToggle: closeDropdown } = useToggle()
 onClickOutside(menuRef, closeDropdown)
@@ -23,6 +24,21 @@ const handleMenuSelection = (item: string) => {
     emit('selectMenu', selectedItem)
   }
 }
+
+const checkMenuPosition = () => {
+  const rect = menuRef.value?.getBoundingClientRect()
+  if (rect) {
+    const windowHeight = window.innerHeight
+    isMenuAbove.value = rect.bottom + 200 > windowHeight
+  }
+}
+
+watch(isDropdown, async (newVal) => {
+  if (newVal) {
+    await nextTick()
+    checkMenuPosition()
+  }
+})
 </script>
 
 <template>
@@ -49,7 +65,8 @@ const handleMenuSelection = (item: string) => {
     <ul
       v-show="isDropdown"
       data-testId="invisible"
-      class="menu-scrollbar absolute top-[50px] z-10 max-h-40 w-full overflow-hidden overflow-y-auto rounded border border-slate-300 bg-white shadow-md"
+      class="menu-scrollbar absolute z-10 max-h-40 w-full overflow-hidden overflow-y-auto rounded border border-slate-300 bg-white shadow-md"
+      :class="isMenuAbove ? 'bottom-[50px]' : 'top-[50px]'"
     >
       <li
         v-for="(item, index) in newArray"

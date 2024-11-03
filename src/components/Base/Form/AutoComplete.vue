@@ -23,6 +23,8 @@ const selectedSuggestionIndex = ref(-1)
 // サジェストが手動で閉じられたかどうかをチェックするフラグ
 let manuallyClosed = false
 
+const { isMenuAbove, checkMenuPosition } = useDropdownPosition(suggestRef)
+
 const openSuggestion = () => (isSuggestionVisible.value = true)
 const closeSuggestion = () => {
   isSuggestionVisible.value = false
@@ -102,6 +104,13 @@ watch(
 watch(filteredSuggestions, () => {
   selectedSuggestionIndex.value = -1
 })
+
+watch(isSuggestionVisible, async (newVal) => {
+  if (newVal) {
+    await nextTick()
+    checkMenuPosition()
+  }
+})
 </script>
 
 <template>
@@ -123,6 +132,7 @@ watch(filteredSuggestions, () => {
       <ul
         v-show="isSuggestionVisible"
         class="absolute z-10 w-full overflow-hidden rounded border bg-gray-50"
+        :class="isMenuAbove ? 'bottom-[50px]' : 'top-[50px]'"
       >
         <li
           v-for="(item, index) in filteredSuggestions"

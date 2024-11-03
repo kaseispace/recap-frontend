@@ -13,8 +13,8 @@ const emit = defineEmits<Emits>()
 const localArray = ref(props.menuArray)
 const menuRef = ref<HTMLElement | null>(null)
 const newArray = localArray.value.map(item => item.text)
-const isMenuAbove = ref(false)
 
+const { isMenuAbove, checkMenuPosition } = useDropdownPosition(menuRef)
 const { isActive: isDropdown, openToggle: openDropdown, closeToggle: closeDropdown } = useToggle()
 onClickOutside(menuRef, closeDropdown)
 
@@ -22,14 +22,6 @@ const handleMenuSelection = (item: string) => {
   const selectedItem = localArray.value.find(menuItem => menuItem.text === item)
   if (selectedItem) {
     emit('selectMenu', selectedItem)
-  }
-}
-
-const checkMenuPosition = () => {
-  const rect = menuRef.value?.getBoundingClientRect()
-  if (rect) {
-    const windowHeight = window.innerHeight
-    isMenuAbove.value = rect.bottom + 200 > windowHeight
   }
 }
 

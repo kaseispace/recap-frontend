@@ -248,6 +248,90 @@ export const TABLE_STATUS = [
   { value: 4, name: 'gg:close-o', color: 'red', text: '：記入なし' }
 ]
 
+export const loginMeta = {
+  title: 'ログイン',
+  meta: [
+    {
+      name: 'description',
+      content: 'ログインページです。ReCapにログインして、授業の振り返りや学習管理をしましょう。'
+    }
+  ]
+}
+
+export const signupMeta = {
+  title: '新規登録',
+  meta: [
+    {
+      name: 'description',
+      content: '新規登録ページです。ReCapに新規登録して、授業の振り返りを手軽に始めてみませんか。数分で新しいアカウントを作成できます。'
+    }
+  ]
+}
+
+export const forgotPasswordMeta = {
+  title: 'パスワード再設定',
+  meta: [
+    {
+      name: 'description',
+      content: 'パスワード再設定ページです。新しいパスワードを作成してアカウントに再度アクセスしましょう。'
+    }
+  ]
+}
+
+export const teacherCourseListMeta = {
+  title: '担当授業一覧',
+  meta: [
+    {
+      name: 'description',
+      content: '教員が担当する授業の一覧ページです。授業の詳細や管理ができます。'
+    }
+  ]
+}
+
+export const teacherCourseMeta = (title: string) => {
+  return {
+    title: title,
+    meta: [
+      {
+        name: 'description',
+        content: `${title}の授業ページです。振り返りのプロンプトの作成や、学生の振り返り履歴を閲覧することができます。`
+      }
+    ]
+  }
+}
+
+export const studentCourseListMeta = {
+  title: '受講一覧',
+  meta: [
+    {
+      name: 'description',
+      content: '学生が受講する授業の一覧ページです。授業への参加や退出ができます。'
+    }
+  ]
+}
+
+export const studentCourseMeta = (title: string) => {
+  return {
+    title: title,
+    meta: [
+      {
+        name: 'description',
+        content: `${title}の授業ページです。授業の振り返りや自分の振り返り履歴を閲覧することができます。`
+      }
+    ]
+  }
+}
+
+export const notFoundMeta = {
+  title: 'ページが見つかりませんでした',
+  meta: [
+    {
+      name: 'description',
+      content: 'お探しのページが見つかりませんでした。URLが正しいかご確認ください。'
+    }
+  ]
+}
+
 // テスト用
 export const mockPrompts = [
   { id: 1, content: '今日のJavaScriptの学習で、新たに覚えた構文は何ですか？' },

@@ -6,6 +6,8 @@ definePageMeta({
   middleware: ['route']
 })
 
+useHead(forgotPasswordMeta)
+
 const isClick = ref(false)
 const isEmailSent = ref(true)
 

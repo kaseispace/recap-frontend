@@ -6,6 +6,8 @@ definePageMeta({
   middleware: ['route']
 })
 
+useHead(signupMeta)
+
 // Menuコンポーネントから取得されるtextと組になるvalueを保存する用
 const roleValue = ref(0)
 const inputSchoolId = ref(0)

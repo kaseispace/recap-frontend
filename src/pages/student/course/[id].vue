@@ -45,6 +45,7 @@ onMounted(async () => {
     }
 
     if (currentStudentCourse.value) {
+      useHead(studentCourseMeta(currentStudentCourse.value.name))
       courseDates.value = await getStudentCourseDate(courseUuid.value, idToken)
       console.log('授業日を取得', courseDates.value)
       const today = new Date()
@@ -59,6 +60,9 @@ onMounted(async () => {
       else {
         console.log('今日は授業日ではありません')
       }
+    }
+    else {
+      useHead(notFoundMeta)
     }
   }
   catch {

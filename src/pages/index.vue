@@ -6,6 +6,8 @@ definePageMeta({
   middleware: ['route']
 })
 
+useHead(loginMeta)
+
 const isClick = ref(false)
 const isLoading = ref(false)
 

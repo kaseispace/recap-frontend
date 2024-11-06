@@ -1,4 +1,6 @@
 <script setup lang="ts">
+useHead(notFoundMeta)
+
 interface Props {
   error: {
     statusCode?: number

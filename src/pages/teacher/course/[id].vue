@@ -49,6 +49,7 @@ onMounted(async () => {
     }
 
     if (currentCourse.value) {
+      useHead(teacherCourseMeta(currentCourse.value.name))
       courseCode.value = currentCourse.value.course_code
       joinedUsers.value = await getJoinedUsers(courseUuid.value, idToken)
       // 授業日一覧の取得
@@ -72,6 +73,9 @@ onMounted(async () => {
         }
         console.log('振り返りの有無', teacherReflectionFlag.value)
       }
+    }
+    else {
+      useHead(notFoundMeta)
     }
   }
   catch {

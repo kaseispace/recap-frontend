@@ -4,6 +4,8 @@ definePageMeta({
   layout: 'student'
 })
 
+useHead(studentCourseListMeta)
+
 const { snackbarMessage, snackbarStatus } = useSnackBar()
 </script>
 

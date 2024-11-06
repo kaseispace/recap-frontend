@@ -5,6 +5,17 @@ export default defineNuxtConfig({
   ssr: false,
   spaLoadingTemplate: './spa-loading-template.html',
   srcDir: 'src/',
+  app: {
+    head: {
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1',
+      title: '学びを振り返る',
+      titleTemplate: '%s - ReCap',
+      htmlAttrs: {
+        lang: 'ja'
+      }
+    }
+  },
   modules: [
     '@vueuse/nuxt',
     '@samk-dev/nuxt-vcalendar',

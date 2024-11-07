@@ -50,6 +50,7 @@ const handleCreateReflection = async () => {
       if (studentReflections.value) {
         studentReflections.value.push(...reflectionInfo)
         isTodayReflected.value = true
+        showSnackbar(SUCCESS_REFLECTION_CREATION, true)
 
         const format = chatHistory.value.map((chat) => {
           return `${chat.message_type}：${chat.message}`
@@ -58,7 +59,6 @@ const handleCreateReflection = async () => {
         try {
           const feedbackInfo = await createFeedback(courseUuid.value, todayCourseDate.value.id, format, idToken)
           studentFeedbacks.value?.push(feedbackInfo)
-          showSnackbar(SUCCESS_REFLECTION_CREATION, true)
         }
         catch (error) {
           console.log(error)

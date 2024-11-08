@@ -7,14 +7,14 @@ import type { createReflectionRequestBody, updateReflectionRequestBody } from '@
 const config = useRuntimeConfig()
 
 export const registerReflectionEndpoints = () => {
-  registerEndpoint(`${config.public.devBackendUrl}/reflections/student_reflections?uuid=${emptyDataUUID}`, {
+  registerEndpoint(`${config.public.backendUrl}/reflections/student_reflections?uuid=${emptyDataUUID}`, {
     method: 'GET',
     handler: () => {
       return []
     }
   })
 
-  registerEndpoint(`${config.public.devBackendUrl}/reflections/student_reflections?uuid=${dataUUID}`, {
+  registerEndpoint(`${config.public.backendUrl}/reflections/student_reflections?uuid=${dataUUID}`, {
     method: 'GET',
     handler: () => {
       return mockStudentReflectionsData
@@ -22,7 +22,7 @@ export const registerReflectionEndpoints = () => {
   })
 
   // 振り返りの登録
-  registerEndpoint(`${config.public.devBackendUrl}/reflections`, {
+  registerEndpoint(`${config.public.backendUrl}/reflections`, {
     method: 'POST',
     handler: async (event) => {
       const courseDate = useCourseDateApi()
@@ -52,7 +52,7 @@ export const registerReflectionEndpoints = () => {
   })
 
   // 振り返りの編集
-  registerEndpoint(`${config.public.devBackendUrl}/reflections/4`, {
+  registerEndpoint(`${config.public.backendUrl}/reflections/4`, {
     method: 'PATCH',
     handler: async (event) => {
       const reflection = useReflectionApi()

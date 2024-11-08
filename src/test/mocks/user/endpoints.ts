@@ -6,7 +6,7 @@ const config = useRuntimeConfig()
 
 export const registerUserEndpoints = () => {
   // ユーザーの削除
-  registerEndpoint(`${config.public.devBackendUrl}/users/${mockAuthUser.uid}`, {
+  registerEndpoint(`${config.public.backendUrl}/users/${mockAuthUser.uid}`, {
     method: 'DELETE',
     handler: () => {
       const deleteUser = mockCurrentUserData.find(user => user.uid === mockAuthUser.uid)

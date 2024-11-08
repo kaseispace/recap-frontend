@@ -6,28 +6,28 @@ import { mockAnnouncementsData } from '@/test/mocks/announcement'
 const config = useRuntimeConfig()
 
 export const registerAnnouncementEndpoints = () => {
-  registerEndpoint(`${config.public.devBackendUrl}/announcements/student_announcements?uuid=${emptyDataUUID}`, {
+  registerEndpoint(`${config.public.backendUrl}/announcements/student_announcements?uuid=${emptyDataUUID}`, {
     method: 'GET',
     handler: () => {
       return []
     }
   })
 
-  registerEndpoint(`${config.public.devBackendUrl}/announcements/student_announcements?uuid=${dataUUID}`, {
+  registerEndpoint(`${config.public.backendUrl}/announcements/student_announcements?uuid=${dataUUID}`, {
     method: 'GET',
     handler: () => {
       return mockAnnouncementsData
     }
   })
 
-  registerEndpoint(`${config.public.devBackendUrl}/announcements/teacher_announcements?uuid=${emptyDataUUID}`, {
+  registerEndpoint(`${config.public.backendUrl}/announcements/teacher_announcements?uuid=${emptyDataUUID}`, {
     method: 'GET',
     handler: () => {
       return []
     }
   })
 
-  registerEndpoint(`${config.public.devBackendUrl}/announcements/teacher_announcements?uuid=${dataUUID}`, {
+  registerEndpoint(`${config.public.backendUrl}/announcements/teacher_announcements?uuid=${dataUUID}`, {
     method: 'GET',
     handler: () => {
       return mockAnnouncementsData
@@ -35,7 +35,7 @@ export const registerAnnouncementEndpoints = () => {
   })
 
   // お知らせの作成
-  registerEndpoint(`${config.public.devBackendUrl}/announcements`, {
+  registerEndpoint(`${config.public.backendUrl}/announcements`, {
     method: 'POST',
     handler: async (event) => {
       const body = await readBody<Announcement>(event)
@@ -49,7 +49,7 @@ export const registerAnnouncementEndpoints = () => {
   })
 
   // お知らせの編集
-  registerEndpoint(`${config.public.devBackendUrl}/announcements/5`, {
+  registerEndpoint(`${config.public.backendUrl}/announcements/5`, {
     method: 'PUT',
     handler: async (event) => {
       const announcement = useAnnouncementApi()
@@ -66,7 +66,7 @@ export const registerAnnouncementEndpoints = () => {
   })
 
   // お知らせの削除
-  registerEndpoint(`${config.public.devBackendUrl}/announcements/1`, {
+  registerEndpoint(`${config.public.backendUrl}/announcements/1`, {
     method: 'DELETE',
     handler: () => {
       const announcement = useAnnouncementApi()

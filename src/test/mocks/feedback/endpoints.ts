@@ -5,21 +5,21 @@ import { mockFeedbacksData } from '@/test/mocks/feedback/index'
 const config = useRuntimeConfig()
 
 export const registerFeedbackEndpoints = () => {
-  registerEndpoint(`${config.public.devBackendUrl}/feedbacks/student_feedbacks?uuid=${emptyDataUUID}`, {
+  registerEndpoint(`${config.public.backendUrl}/feedbacks/student_feedbacks?uuid=${emptyDataUUID}`, {
     method: 'GET',
     handler: () => {
       return []
     }
   })
 
-  registerEndpoint(`${config.public.devBackendUrl}/feedbacks/student_feedbacks?uuid=${dataUUID}`, {
+  registerEndpoint(`${config.public.backendUrl}/feedbacks/student_feedbacks?uuid=${dataUUID}`, {
     method: 'GET',
     handler: () => {
       return mockFeedbacksData
     }
   })
 
-  registerEndpoint(`${config.public.devBackendUrl}/feedbacks`, {
+  registerEndpoint(`${config.public.backendUrl}/feedbacks`, {
     method: 'POST',
     handler: () => {
       return {

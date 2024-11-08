@@ -10,7 +10,7 @@ const generatedCourseCode = 'aBc103'
 
 export const registerCourseEndpoints = () => {
   // 授業の作成
-  registerEndpoint(`${config.public.devBackendUrl}/courses`, {
+  registerEndpoint(`${config.public.backendUrl}/courses`, {
     method: 'POST',
     handler: async (event) => {
       const body = await readBody<Course>(event)
@@ -27,7 +27,7 @@ export const registerCourseEndpoints = () => {
   })
 
   // 授業の編集
-  registerEndpoint(`${config.public.devBackendUrl}/courses/${uuid}`, {
+  registerEndpoint(`${config.public.backendUrl}/courses/${uuid}`, {
     method: 'PUT',
     handler: async (event) => {
       const course = useCourseApi()
@@ -47,7 +47,7 @@ export const registerCourseEndpoints = () => {
   })
 
   // 授業の削除
-  registerEndpoint(`${config.public.devBackendUrl}/courses/${uuid}`, {
+  registerEndpoint(`${config.public.backendUrl}/courses/${uuid}`, {
     method: 'DELETE',
     handler: () => {
       const course = useCourseApi()
@@ -60,14 +60,14 @@ export const registerCourseEndpoints = () => {
 }
 
 export const registerCourseAdditionalEndpoints = () => {
-  registerEndpoint(`${config.public.devBackendUrl}/courses/${courseUuid}`, {
+  registerEndpoint(`${config.public.backendUrl}/courses/${courseUuid}`, {
     method: 'GET',
     handler: () => {
       return mockTeacherCourseData
     }
   })
 
-  registerEndpoint(`${config.public.devBackendUrl}/courses/${courseUuid}/joined_users`, {
+  registerEndpoint(`${config.public.backendUrl}/courses/${courseUuid}/joined_users`, {
     method: 'GET',
     handler: () => {
       return mockJoinedUsers

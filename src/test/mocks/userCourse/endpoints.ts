@@ -8,7 +8,7 @@ const uuid = 'f47ac10b-58cc-4372-a567-0e02b2c3d479'
 
 export const registerUserCourseEndpoints = () => {
   // 授業への参加
-  registerEndpoint(`${config.public.devBackendUrl}/user_courses`, {
+  registerEndpoint(`${config.public.backendUrl}/user_courses`, {
     method: 'POST',
     handler: async (event) => {
       const body = await readBody<userCourseRequestBody>(event)
@@ -24,7 +24,7 @@ export const registerUserCourseEndpoints = () => {
   })
 
   // 授業から退出
-  registerEndpoint(`${config.public.devBackendUrl}/user_courses/${courseUuid}`, {
+  registerEndpoint(`${config.public.backendUrl}/user_courses/${courseUuid}`, {
     method: 'DELETE',
     handler: () => {
       const userCourse = useUserCourseApi()
@@ -38,7 +38,7 @@ export const registerUserCourseEndpoints = () => {
 
 export const registerUserCourseAdditionalEndpoints = () => {
   // uuidに一致する授業を返す
-  registerEndpoint(`${config.public.devBackendUrl}/user_courses/${uuid}`, {
+  registerEndpoint(`${config.public.backendUrl}/user_courses/${uuid}`, {
     method: 'GET',
     handler: () => {
       return mockJoinedCourseData

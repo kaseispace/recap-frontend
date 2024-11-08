@@ -3,7 +3,7 @@ export const useSchoolApi = () => {
   const schoolInfo = useState<University[] | null>('schoolInfo', () => null)
 
   const getSchool = async (): Promise<University[]> => {
-    const data = await $fetch<University[]>(`${config.public.devBackendUrl}/schools`)
+    const data = await $fetch<University[]>(`${config.public.backendUrl}/schools`)
     return data
   }
 

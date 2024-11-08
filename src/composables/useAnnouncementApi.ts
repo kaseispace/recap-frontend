@@ -4,7 +4,7 @@ export const useAnnouncementApi = () => {
 
   const getTeacherAnnouncements = async (uuid: string, idToken: string): Promise<Announcement[]> => {
     const data = await $fetch<Announcement[]>(
-      `${config.public.devBackendUrl}/announcements/teacher_announcements?uuid=${uuid}`,
+      `${config.public.backendUrl}/announcements/teacher_announcements?uuid=${uuid}`,
       {
         headers: { Authorization: `Bearer ${idToken}` }
       }
@@ -14,7 +14,7 @@ export const useAnnouncementApi = () => {
 
   const getStudentAnnouncements = async (uuid: string, idToken: string): Promise<Announcement[]> => {
     const data = await $fetch<Announcement[]>(
-      `${config.public.devBackendUrl}/announcements/student_announcements?uuid=${uuid}`,
+      `${config.public.backendUrl}/announcements/student_announcements?uuid=${uuid}`,
       {
         headers: { Authorization: `Bearer ${idToken}` }
       }
@@ -24,7 +24,7 @@ export const useAnnouncementApi = () => {
 
   const createAnnouncement = async (courseUuid: string, content: string, idToken: string): Promise<Announcement> => {
     const requestBody = { uuid: courseUuid, content }
-    const data = await $fetch<Announcement>(`${config.public.devBackendUrl}/announcements`, {
+    const data = await $fetch<Announcement>(`${config.public.backendUrl}/announcements`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${idToken}` },
       body: requestBody
@@ -38,7 +38,7 @@ export const useAnnouncementApi = () => {
     idToken: string
   ): Promise<Announcement> => {
     const requestBody = { content }
-    const data = await $fetch<Announcement>(`${config.public.devBackendUrl}/announcements/${announcementId}`, {
+    const data = await $fetch<Announcement>(`${config.public.backendUrl}/announcements/${announcementId}`, {
       method: 'PUT',
       headers: { Authorization: `Bearer ${idToken}` },
       body: requestBody
@@ -47,7 +47,7 @@ export const useAnnouncementApi = () => {
   }
 
   const deleteAnnouncement = async (announcementId: number, idToken: string): Promise<void> => {
-    await $fetch(`${config.public.devBackendUrl}/announcements/${announcementId}`, {
+    await $fetch(`${config.public.backendUrl}/announcements/${announcementId}`, {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${idToken}` }
     })

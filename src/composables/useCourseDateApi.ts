@@ -5,7 +5,7 @@ export const useCourseDateApi = () => {
 
   const getTeacherCourseDate = async (uuid: string, idToken: string): Promise<CourseDate[]> => {
     const data = await $fetch<CourseDate[]>(
-      `${config.public.devBackendUrl}/course_dates/teacher_course_dates?uuid=${uuid}`,
+      `${config.public.backendUrl}/course_dates/teacher_course_dates?uuid=${uuid}`,
       {
         headers: { Authorization: `Bearer ${idToken}` }
       }
@@ -15,7 +15,7 @@ export const useCourseDateApi = () => {
 
   const getStudentCourseDate = async (uuid: string, idToken: string): Promise<CourseDate[]> => {
     const data = await $fetch<CourseDate[]>(
-      `${config.public.devBackendUrl}/course_dates/student_course_dates?uuid=${uuid}`,
+      `${config.public.backendUrl}/course_dates/student_course_dates?uuid=${uuid}`,
       {
         headers: { Authorization: `Bearer ${idToken}` }
       }
@@ -31,7 +31,7 @@ export const useCourseDateApi = () => {
     idToken: string
   ): Promise<CourseDate> => {
     const requestBody = { uuid, course_date: { course_number: courseNumber, course_date: courseDate } }
-    const data = await $fetch<CourseDate>(`${config.public.devBackendUrl}/course_dates`, {
+    const data = await $fetch<CourseDate>(`${config.public.backendUrl}/course_dates`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${idToken}` },
       body: requestBody
@@ -46,7 +46,7 @@ export const useCourseDateApi = () => {
     idToken: string
   ): Promise<CourseDate> => {
     const requestBody = { course_date: { course_number: courseNumber, course_date: courseDate } }
-    const data = await $fetch<CourseDate>(`${config.public.devBackendUrl}/course_dates/${courseDateId}`, {
+    const data = await $fetch<CourseDate>(`${config.public.backendUrl}/course_dates/${courseDateId}`, {
       method: 'PATCH',
       headers: { Authorization: `Bearer ${idToken}` },
       body: requestBody
@@ -56,7 +56,7 @@ export const useCourseDateApi = () => {
 
   const updateReflectionStatus = async (courseDateId: number, idToken: string): Promise<CourseDate> => {
     const data = await $fetch<CourseDate>(
-      `${config.public.devBackendUrl}/course_dates/${courseDateId}/reflection_status`,
+      `${config.public.backendUrl}/course_dates/${courseDateId}/reflection_status`,
       {
         method: 'PATCH',
         headers: { Authorization: `Bearer ${idToken}` }
@@ -66,7 +66,7 @@ export const useCourseDateApi = () => {
   }
 
   const deleteCourseDate = async (courseDateId: number, idToken: string): Promise<void> => {
-    await $fetch(`${config.public.devBackendUrl}/course_dates/${courseDateId}`, {
+    await $fetch(`${config.public.backendUrl}/course_dates/${courseDateId}`, {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${idToken}` }
     })

@@ -10,7 +10,7 @@ export const useReflectionApi = () => {
 
   const getStudentReflection = async (uuid: string, idToken: string): Promise<StudentCourseReflection[]> => {
     const data = await $fetch<StudentCourseReflection[]>(
-      `${config.public.devBackendUrl}/reflections/student_reflections?uuid=${uuid}`,
+      `${config.public.backendUrl}/reflections/student_reflections?uuid=${uuid}`,
       {
         headers: { Authorization: `Bearer ${idToken}` }
       }
@@ -20,7 +20,7 @@ export const useReflectionApi = () => {
 
   const getAllStudentReflectionStatus = async (uuid: string, idToken: string): Promise<CourseReflections[]> => {
     const data = await $fetch<CourseReflections[]>(
-      `${config.public.devBackendUrl}/reflections/all_student_reflection_status?uuid=${uuid}`,
+      `${config.public.backendUrl}/reflections/all_student_reflection_status?uuid=${uuid}`,
       {
         headers: { Authorization: `Bearer ${idToken}` }
       }
@@ -30,7 +30,7 @@ export const useReflectionApi = () => {
 
   const getAllStudentReflections = async (uuid: string, idToken: string): Promise<CourseUserReflections[]> => {
     const data = await $fetch<CourseUserReflections[]>(
-      `${config.public.devBackendUrl}/reflections/all_student_reflections?uuid=${uuid}`,
+      `${config.public.backendUrl}/reflections/all_student_reflections?uuid=${uuid}`,
       {
         headers: { Authorization: `Bearer ${idToken}` }
       }
@@ -41,7 +41,7 @@ export const useReflectionApi = () => {
   // 授業日当日に既に灯篭済みの振り返りがあるかどうかの確認
   const checkReflectionOnDate = async (courseId: number, courseDateId: number, idToken: string): Promise<boolean> => {
     const data = await $fetch<boolean>(
-      `${config.public.devBackendUrl}/reflections/check_reflection_on_date?id=${courseId}&course_date_id=${courseDateId}`,
+      `${config.public.backendUrl}/reflections/check_reflection_on_date?id=${courseId}&course_date_id=${courseDateId}`,
       {
         headers: { Authorization: `Bearer ${idToken}` }
       }
@@ -56,7 +56,7 @@ export const useReflectionApi = () => {
     idToken: string
   ): Promise<StudentCourseReflection[]> => {
     const requestBody = { uuid, reflection: { course_date_id: courseDateId, reflections } }
-    const data = await $fetch<StudentCourseReflection[]>(`${config.public.devBackendUrl}/reflections`, {
+    const data = await $fetch<StudentCourseReflection[]>(`${config.public.backendUrl}/reflections`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${idToken}` },
       body: requestBody
@@ -66,7 +66,7 @@ export const useReflectionApi = () => {
 
   const updateReflection = async (reflectionId: number, message: string, idToken: string): Promise<Reflection> => {
     const requestBody = { message }
-    const data = await $fetch<Reflection>(`${config.public.devBackendUrl}/reflections/${reflectionId}`, {
+    const data = await $fetch<Reflection>(`${config.public.backendUrl}/reflections/${reflectionId}`, {
       method: 'PATCH',
       headers: { Authorization: `Bearer ${idToken}` },
       body: requestBody
@@ -76,7 +76,6 @@ export const useReflectionApi = () => {
 
   return {
     studentReflections,
-    // courseReflections,
     isTodayReflected,
     teacherReflectionFlag,
     courseUserReflections,

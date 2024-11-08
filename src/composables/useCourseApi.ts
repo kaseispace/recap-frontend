@@ -8,7 +8,7 @@ export const useCourseApi = () => {
   const isTeacherCourseLoading = useState<boolean>('isTeacherCourseLoading', () => true)
 
   const getCourse = async (idToken: string): Promise<Course[]> => {
-    const data = await $fetch<Course[]>(`${config.public.devBackendUrl}/courses`, {
+    const data = await $fetch<Course[]>(`${config.public.backendUrl}/courses`, {
       headers: { Authorization: `Bearer ${idToken}` }
     })
     return data
@@ -16,14 +16,14 @@ export const useCourseApi = () => {
 
   // 見つからない場合はnullを返す
   const getCourseByUuid = async (courseUuid: string, idToken: string): Promise<Course | null> => {
-    const data = await $fetch<Course | null>(`${config.public.devBackendUrl}/courses/${courseUuid}`, {
+    const data = await $fetch<Course | null>(`${config.public.backendUrl}/courses/${courseUuid}`, {
       headers: { Authorization: `Bearer ${idToken}` }
     })
     return data
   }
 
   const getJoinedUsers = async (courseUuid: string, idToken: string): Promise<SimplifiedUser[]> => {
-    const data = await $fetch<SimplifiedUser[]>(`${config.public.devBackendUrl}/courses/${courseUuid}/joined_users`, {
+    const data = await $fetch<SimplifiedUser[]>(`${config.public.backendUrl}/courses/${courseUuid}/joined_users`, {
       headers: { Authorization: `Bearer ${idToken}` }
     })
     return data
@@ -44,7 +44,7 @@ export const useCourseApi = () => {
       day_of_week: dayOfWeek,
       course_time: courseTime
     }
-    const data = await $fetch<Course>(`${config.public.devBackendUrl}/courses`, {
+    const data = await $fetch<Course>(`${config.public.backendUrl}/courses`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${idToken}` },
       body: requestBody
@@ -66,7 +66,7 @@ export const useCourseApi = () => {
       day_of_week: dayOfWeek,
       course_time: courseTime
     }
-    const data = await $fetch<Course>(`${config.public.devBackendUrl}/courses/${courseUuid}`, {
+    const data = await $fetch<Course>(`${config.public.backendUrl}/courses/${courseUuid}`, {
       method: 'PUT',
       headers: { Authorization: `Bearer ${idToken}` },
       body: requestBody
@@ -76,7 +76,7 @@ export const useCourseApi = () => {
 
   // 教師が作成した授業を削除（授業に参加していたユーザーの関連も削除）
   const deleteCourse = async (courseUuid: string, idToken: string): Promise<void> => {
-    await $fetch(`${config.public.devBackendUrl}/courses/${courseUuid}`, {
+    await $fetch(`${config.public.backendUrl}/courses/${courseUuid}`, {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${idToken}` }
     })

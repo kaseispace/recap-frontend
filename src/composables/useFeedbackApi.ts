@@ -4,7 +4,7 @@ export const useFeedbackApi = () => {
 
   const getStudentFeedbacks = async (uuid: string, idToken: string): Promise<Feedback[] | null> => {
     const data = await $fetch<Feedback[] | null>(
-      `${config.public.devBackendUrl}/feedbacks/student_feedbacks?uuid=${uuid}`,
+      `${config.public.backendUrl}/feedbacks/student_feedbacks?uuid=${uuid}`,
       {
         headers: { Authorization: `Bearer ${idToken}` }
       }
@@ -19,7 +19,7 @@ export const useFeedbackApi = () => {
     idToken: string
   ): Promise<Feedback> => {
     const requestBody = { feedback: { uuid, course_date_id: courseDateId, reflection_history: message } }
-    const data = await $fetch<Feedback>(`${config.public.devBackendUrl}/feedbacks`, {
+    const data = await $fetch<Feedback>(`${config.public.backendUrl}/feedbacks`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${idToken}` },
       body: requestBody

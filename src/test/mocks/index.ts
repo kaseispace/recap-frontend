@@ -1,7 +1,7 @@
-export const emptyDataUUID = 'empty-data-uuid-0000' // 空のデータが返されるときに使用
-export const dataUUID = 'data-uuid-1111' // データが返されるときに使用
+export const MOCK_EMPTY_UUID = 'empty-data-uuid-0000' // 空のデータが返されるときに使用
+export const MOCK_UUID = 'data-uuid-1111' // データが返されるときに使用
 export const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
-export const mockAuthUser = {
+export const MOCK_AUTH_USER = {
   delete: vi.fn(),
   displayName: null,
   email: 'mockuser@example.com',

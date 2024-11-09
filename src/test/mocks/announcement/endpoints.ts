@@ -1,36 +1,36 @@
 import { registerEndpoint } from '@nuxt/test-utils/runtime'
 import { readBody } from 'h3'
-import { emptyDataUUID, dataUUID } from '@/test/mocks/index'
-import { mockAnnouncementsData } from '@/test/mocks/announcement'
+import { MOCK_EMPTY_UUID, MOCK_UUID } from '@/test/mocks/index'
+import { MOCK_ANNOUNCEMENTS } from '@/test/mocks/announcement'
 
 const config = useRuntimeConfig()
 
 export const registerAnnouncementEndpoints = () => {
-  registerEndpoint(`${config.public.backendUrl}/announcements/student_announcements?uuid=${emptyDataUUID}`, {
+  registerEndpoint(`${config.public.backendUrl}/announcements/student_announcements?uuid=${MOCK_EMPTY_UUID}`, {
     method: 'GET',
     handler: () => {
       return []
     }
   })
 
-  registerEndpoint(`${config.public.backendUrl}/announcements/student_announcements?uuid=${dataUUID}`, {
+  registerEndpoint(`${config.public.backendUrl}/announcements/student_announcements?uuid=${MOCK_UUID}`, {
     method: 'GET',
     handler: () => {
-      return mockAnnouncementsData
+      return MOCK_ANNOUNCEMENTS
     }
   })
 
-  registerEndpoint(`${config.public.backendUrl}/announcements/teacher_announcements?uuid=${emptyDataUUID}`, {
+  registerEndpoint(`${config.public.backendUrl}/announcements/teacher_announcements?uuid=${MOCK_EMPTY_UUID}`, {
     method: 'GET',
     handler: () => {
       return []
     }
   })
 
-  registerEndpoint(`${config.public.backendUrl}/announcements/teacher_announcements?uuid=${dataUUID}`, {
+  registerEndpoint(`${config.public.backendUrl}/announcements/teacher_announcements?uuid=${MOCK_UUID}`, {
     method: 'GET',
     handler: () => {
-      return mockAnnouncementsData
+      return MOCK_ANNOUNCEMENTS
     }
   })
 

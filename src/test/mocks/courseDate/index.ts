@@ -5,7 +5,7 @@ export interface CourseDateRequestBody {
   }
 }
 
-export const expectedCreateCourseDateData = {
+export const EXPECTED_CREATE_COURSE_DATE = {
   id: 1,
   course_id: 1,
   course_number: '第1回',
@@ -13,15 +13,7 @@ export const expectedCreateCourseDateData = {
   is_reflection: true
 }
 
-export const nextCourseDateData = {
-  id: 2,
-  course_id: 1,
-  course_number: '第2回',
-  course_date: '2024/4/8',
-  is_reflection: true
-}
-
-export const mockCourseDatesData = [
+export const MOCK_COURSE_DATES = [
   {
     id: 1,
     course_id: 1,

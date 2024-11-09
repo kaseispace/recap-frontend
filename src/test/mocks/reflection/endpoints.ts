@@ -1,23 +1,23 @@
 import { registerEndpoint } from '@nuxt/test-utils/runtime'
 import { readBody } from 'h3'
-import { emptyDataUUID, dataUUID } from '@/test/mocks/index'
-import { mockStudentReflectionsData } from '@/test/mocks/reflection/index'
+import { MOCK_EMPTY_UUID, MOCK_UUID } from '@/test/mocks/index'
+import { MOCK_STUDENT_REFLECTIONS } from '@/test/mocks/reflection/index'
 import type { createReflectionRequestBody, updateReflectionRequestBody } from '@/test/mocks/reflection/index'
 
 const config = useRuntimeConfig()
 
 export const registerReflectionEndpoints = () => {
-  registerEndpoint(`${config.public.backendUrl}/reflections/student_reflections?uuid=${emptyDataUUID}`, {
+  registerEndpoint(`${config.public.backendUrl}/reflections/student_reflections?uuid=${MOCK_EMPTY_UUID}`, {
     method: 'GET',
     handler: () => {
       return []
     }
   })
 
-  registerEndpoint(`${config.public.backendUrl}/reflections/student_reflections?uuid=${dataUUID}`, {
+  registerEndpoint(`${config.public.backendUrl}/reflections/student_reflections?uuid=${MOCK_UUID}`, {
     method: 'GET',
     handler: () => {
-      return mockStudentReflectionsData
+      return MOCK_STUDENT_REFLECTIONS
     }
   })
 

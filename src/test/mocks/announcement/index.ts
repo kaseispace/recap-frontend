@@ -1,4 +1,4 @@
-export const mockAnnouncementsData = [
+export const MOCK_ANNOUNCEMENTS = [
   {
     id: 1,
     content: '数学の課題が更新されました。詳細はLMSをご確認ください。',

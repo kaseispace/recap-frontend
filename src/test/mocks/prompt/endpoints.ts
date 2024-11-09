@@ -1,37 +1,37 @@
 import { registerEndpoint } from '@nuxt/test-utils/runtime'
 import { readBody } from 'h3'
-import { emptyDataUUID, dataUUID } from '@/test/mocks/index'
-import { mockPromptsData, mockStudentPromptsData } from '@/test/mocks/prompt/index'
+import { MOCK_EMPTY_UUID, MOCK_UUID } from '@/test/mocks/index'
+import { MOCK_PROMPTS, MOCK_STUDENT_PROMPTS } from '@/test/mocks/prompt/index'
 import type { createPromptRequestBody, updatePromptRequestBody } from '@/test/mocks/prompt/index'
 
 const config = useRuntimeConfig()
 
 export const registerPromptEndpoints = () => {
-  registerEndpoint(`${config.public.backendUrl}/prompts/teacher_prompts?uuid=${emptyDataUUID}`, {
+  registerEndpoint(`${config.public.backendUrl}/prompts/teacher_prompts?uuid=${MOCK_EMPTY_UUID}`, {
     method: 'GET',
     handler: () => {
       return []
     }
   })
 
-  registerEndpoint(`${config.public.backendUrl}/prompts/teacher_prompts?uuid=${dataUUID}`, {
+  registerEndpoint(`${config.public.backendUrl}/prompts/teacher_prompts?uuid=${MOCK_UUID}`, {
     method: 'GET',
     handler: () => {
-      return mockPromptsData
+      return MOCK_PROMPTS
     }
   })
 
-  registerEndpoint(`${config.public.backendUrl}/prompts/student_prompt?uuid=${emptyDataUUID}`, {
+  registerEndpoint(`${config.public.backendUrl}/prompts/student_prompt?uuid=${MOCK_EMPTY_UUID}`, {
     method: 'GET',
     handler: () => {
       return []
     }
   })
 
-  registerEndpoint(`${config.public.backendUrl}/prompts/student_prompt?uuid=${dataUUID}`, {
+  registerEndpoint(`${config.public.backendUrl}/prompts/student_prompt?uuid=${MOCK_UUID}`, {
     method: 'GET',
     handler: () => {
-      return mockStudentPromptsData
+      return MOCK_STUDENT_PROMPTS
     }
   })
 

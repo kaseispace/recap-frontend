@@ -1,4 +1,4 @@
-export const mockCoursesData = [
+export const MOCK_COURSES = [
   {
     id: 1,
     name: '数学',
@@ -46,7 +46,7 @@ export const mockCoursesData = [
   }
 ]
 
-export const mockCoursesDataWithError = [
+export const MOCK_COURSES_WITH_ERROR = [
   {
     id: 1,
     name: 'コンピュータサイエンス入門',
@@ -94,7 +94,7 @@ export const mockCoursesDataWithError = [
   }
 ]
 
-export const mockTeacherCourseData = [
+export const MOCK_TEACHER_COURSE = [
   {
     id: 1,
     name: '英語',
@@ -106,7 +106,7 @@ export const mockTeacherCourseData = [
   }
 ]
 
-export const mockStudentCourseData = [
+export const MOCK_STUDENT_COURSE = [
   {
     name: '数学',
     teacher_name: '山田',
@@ -116,7 +116,7 @@ export const mockStudentCourseData = [
   }
 ]
 
-export const mockStudentCoursesDataWithError = [
+export const MOCK_STUDENT_COURSES_WITH_ERROR = [
   {
     name: '国際関係論',
     teacher_name: '中村',
@@ -154,7 +154,7 @@ export const mockStudentCoursesDataWithError = [
   }
 ]
 
-export const mockStudentCoursesData = [
+export const MOCK_STUDENT_COURSES = [
   {
     name: 'データサイエンス入門',
     teacher_name: '田中',
@@ -192,7 +192,7 @@ export const mockStudentCoursesData = [
   }
 ]
 
-export const mockJoinedCourseData = {
+export const MOCK_JOINED_COURSE = {
   name: '解析学',
   teacher_name: '佐々木',
   day_of_week: '火曜日',
@@ -200,9 +200,9 @@ export const mockJoinedCourseData = {
   uuid: 'f47ac10b-58cc-4372-a567-0e02b2c3d479'
 }
 
-export const courseUuid = '3e25d276-da75-4b8f-97fa-10ed3df0c1a6'
+export const MOCK_COURSE_UUID = '3e25d276-da75-4b8f-97fa-10ed3df0c1a6'
 
-export const mockJoinedUsers = [
+export const MOCK_JOINED_USERS = [
   { id: 1, name: '山田花子' },
   { id: 2, name: '鈴木一郎' },
   { id: 3, name: '高橋次郎' },

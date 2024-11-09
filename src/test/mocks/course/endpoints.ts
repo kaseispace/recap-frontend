@@ -1,6 +1,6 @@
 import { registerEndpoint } from '@nuxt/test-utils/runtime'
 import { readBody } from 'h3'
-import { mockTeacherCourseData, mockJoinedUsers } from '@/test/mocks/course/index'
+import { MOCK_TEACHER_COURSE, MOCK_JOINED_USERS } from '@/test/mocks/course/index'
 
 const config = useRuntimeConfig()
 const uuid = '3e25d276-da75-4b8f-97fa-10ed3df0c1a6'
@@ -63,14 +63,14 @@ export const registerCourseAdditionalEndpoints = () => {
   registerEndpoint(`${config.public.backendUrl}/courses/${courseUuid}`, {
     method: 'GET',
     handler: () => {
-      return mockTeacherCourseData
+      return MOCK_TEACHER_COURSE
     }
   })
 
   registerEndpoint(`${config.public.backendUrl}/courses/${courseUuid}/joined_users`, {
     method: 'GET',
     handler: () => {
-      return mockJoinedUsers
+      return MOCK_JOINED_USERS
     }
   })
 }

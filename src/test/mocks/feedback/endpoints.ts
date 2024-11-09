@@ -1,21 +1,21 @@
 import { registerEndpoint } from '@nuxt/test-utils/runtime'
-import { emptyDataUUID, dataUUID } from '@/test/mocks/index'
-import { mockFeedbacksData } from '@/test/mocks/feedback/index'
+import { MOCK_EMPTY_UUID, MOCK_UUID } from '@/test/mocks/index'
+import { MOCK_FEEDBACKS } from '@/test/mocks/feedback/index'
 
 const config = useRuntimeConfig()
 
 export const registerFeedbackEndpoints = () => {
-  registerEndpoint(`${config.public.backendUrl}/feedbacks/student_feedbacks?uuid=${emptyDataUUID}`, {
+  registerEndpoint(`${config.public.backendUrl}/feedbacks/student_feedbacks?uuid=${MOCK_EMPTY_UUID}`, {
     method: 'GET',
     handler: () => {
       return []
     }
   })
 
-  registerEndpoint(`${config.public.backendUrl}/feedbacks/student_feedbacks?uuid=${dataUUID}`, {
+  registerEndpoint(`${config.public.backendUrl}/feedbacks/student_feedbacks?uuid=${MOCK_UUID}`, {
     method: 'GET',
     handler: () => {
-      return mockFeedbacksData
+      return MOCK_FEEDBACKS
     }
   })
 

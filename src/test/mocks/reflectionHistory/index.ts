@@ -1,4 +1,4 @@
-export const mockUsersList = [
+export const MOCK_USERS_LIST = [
   {
     id: 1,
     name: '佐藤太郎',
@@ -113,7 +113,7 @@ export const mockUsersList = [
   }
 ]
 
-export const mockUsersReflection = {
+export const MOCK_USERS_REFLECTION = {
   id: 1,
   name: '佐藤太郎',
   reflections: [
@@ -170,10 +170,10 @@ export const mockUsersReflection = {
   ]
 }
 
-export const mockUsersNotReflection1 = { id: 1, name: '佐藤太郎' }
-export const mockUsersNotReflection2 = { id: 2, name: '佐藤次郎' }
+export const MOCK_USER_NOT_REFLECTION_1 = { id: 1, name: '佐藤太郎' }
+export const MOCK_USER_NOT_REFLECTION_2 = { id: 2, name: '佐藤次郎' }
 
-export const mockCourseDateReflectionsData = {
+export const MOCK_COURSE_DATE_REFLECTIONS_1 = {
   id: 1,
   course_id: 1,
   course_number: '第1回',
@@ -244,7 +244,7 @@ export const mockCourseDateReflectionsData = {
   ]
 }
 
-export const mockCourseDateReflectionsData2 = {
+export const MOCK_COURSE_DATE_REFLECTIONS_2 = {
   id: 1,
   course_id: 1,
   course_number: '第6回',
@@ -264,7 +264,7 @@ export const mockCourseDateReflectionsData2 = {
   ]
 }
 
-export const mockCourseDateNotReflectionsData = {
+export const MOCK_COURSE_DATE_NOT_REFLECTIONS = {
   id: 1,
   course_id: 1,
   course_number: '第1回',

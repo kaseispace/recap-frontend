@@ -1,4 +1,4 @@
-export const mockSchoolsData = [
+export const MOCK_SCHOOLS = [
   { id: 1, name: '東京大学' },
   { id: 2, name: '京都大学' },
   { id: 3, name: '大阪大学' },

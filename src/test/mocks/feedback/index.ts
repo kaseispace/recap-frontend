@@ -1,4 +1,4 @@
-export const mockFeedbacksData = [
+export const MOCK_FEEDBACKS = [
   {
     id: 1,
     user_id: 1,

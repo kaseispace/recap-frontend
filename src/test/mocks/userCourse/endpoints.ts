@@ -1,6 +1,6 @@
 import { registerEndpoint } from '@nuxt/test-utils/runtime'
 import { readBody } from 'h3'
-import { mockCoursesData, courseUuid, mockJoinedCourseData } from '@/test/mocks/course/index'
+import { MOCK_COURSES, MOCK_COURSE_UUID, MOCK_JOINED_COURSE } from '@/test/mocks/course/index'
 import type { userCourseRequestBody } from '@/test/mocks/userCourse'
 
 const config = useRuntimeConfig()
@@ -12,7 +12,7 @@ export const registerUserCourseEndpoints = () => {
     method: 'POST',
     handler: async (event) => {
       const body = await readBody<userCourseRequestBody>(event)
-      const course = mockCoursesData.find(course => course.course_code === body.course_code)
+      const course = MOCK_COURSES.find(course => course.course_code === body.course_code)
       return {
         name: course?.name,
         teacher_name: course?.teacher_name,
@@ -24,11 +24,11 @@ export const registerUserCourseEndpoints = () => {
   })
 
   // 授業から退出
-  registerEndpoint(`${config.public.backendUrl}/user_courses/${courseUuid}`, {
+  registerEndpoint(`${config.public.backendUrl}/user_courses/${MOCK_COURSE_UUID}`, {
     method: 'DELETE',
     handler: () => {
       const userCourse = useUserCourseApi()
-      const deleteCourse = userCourse.studentCourses.value?.find(course => course.uuid === courseUuid)
+      const deleteCourse = userCourse.studentCourses.value?.find(course => course.uuid === MOCK_COURSE_UUID)
       if (deleteCourse) {
         return {}
       }
@@ -41,7 +41,7 @@ export const registerUserCourseAdditionalEndpoints = () => {
   registerEndpoint(`${config.public.backendUrl}/user_courses/${uuid}`, {
     method: 'GET',
     handler: () => {
-      return mockJoinedCourseData
+      return MOCK_JOINED_COURSE
     }
   })
 }

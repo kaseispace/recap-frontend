@@ -1,15 +1,15 @@
 import { registerEndpoint } from '@nuxt/test-utils/runtime'
-import { mockAuthUser } from '@/test/mocks/index'
-import { mockCurrentUserData } from '@/test/mocks/user/index'
+import { MOCK_AUTH_USER } from '@/test/mocks/index'
+import { MOCK_CURRENT_USER } from '@/test/mocks/user/index'
 
 const config = useRuntimeConfig()
 
 export const registerUserEndpoints = () => {
   // ユーザーの削除
-  registerEndpoint(`${config.public.backendUrl}/users/${mockAuthUser.uid}`, {
+  registerEndpoint(`${config.public.backendUrl}/users/${MOCK_AUTH_USER.uid}`, {
     method: 'DELETE',
     handler: () => {
-      const deleteUser = mockCurrentUserData.find(user => user.uid === mockAuthUser.uid)
+      const deleteUser = MOCK_CURRENT_USER.find(user => user.uid === MOCK_AUTH_USER.uid)
       if (deleteUser) {
         return {}
       }

@@ -11,7 +11,7 @@ export interface updatePromptRequestBody {
   prompt_questions_attributes: PromptContent[]
 }
 
-export const mockPromptsData = [
+export const MOCK_PROMPTS = [
   {
     id: 1,
     course_id: 1,
@@ -67,8 +67,14 @@ export const mockPromptsData = [
   }
 ]
 
-export const mockStudentPromptsData = [
+export const MOCK_STUDENT_PROMPTS = [
   '「データサイエンス」とは何だと思いますか？',
   'データサイエンスを学ぶことで何を達成したいですか？',
   'これまでに統計やプログラミングに関する経験はありますか？それはどのようなものでしたか？'
+]
+
+export const MOCK_PROMPT_CONTENTS = [
+  { id: 1, content: '今日のJavaScriptの学習で、新たに覚えた構文は何ですか？' },
+  { id: 2, content: 'その構文をどのような場面で使用しましたか？' },
+  { id: 3, content: 'その他、授業への質問等はありますか？' }
 ]

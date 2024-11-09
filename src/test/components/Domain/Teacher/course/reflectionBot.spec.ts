@@ -1,7 +1,7 @@
 // @vitest-environment nuxt
 import { mockComponent, mountSuspended } from '@nuxt/test-utils/runtime'
 import ReflectionBot from '@/components/Domain/Teacher/course/ReflectionBot.vue'
-import { mockPromptsData } from '@/test/mocks/prompt/index'
+import { MOCK_PROMPTS } from '@/test/mocks/prompt/index'
 
 mockComponent('BaseButton', {
   template: '<button>stub button</button>'
@@ -36,7 +36,7 @@ describe('ReflectionBotコンポーネントのテスト', () => {
 
   describe('送信ボタンの表示状態', () => {
     it('ボタンが非活性のときは表示されない', async () => {
-      prompt.activePrompt.value = mockPromptsData[0]
+      prompt.activePrompt.value = MOCK_PROMPTS[0]
       const wrapper = await mountSuspended(ReflectionBot)
 
       await wrapper.find(`[data-testId="botButton"]`).trigger('click')
@@ -47,7 +47,7 @@ describe('ReflectionBotコンポーネントのテスト', () => {
     })
 
     it('テキスト入力後、ボタンが活性化し表示される', async () => {
-      prompt.activePrompt.value = mockPromptsData[0]
+      prompt.activePrompt.value = MOCK_PROMPTS[0]
       const wrapper = await mountSuspended(ReflectionBot)
 
       await wrapper.find(`[data-testId="botButton"]`).trigger('click')
@@ -61,7 +61,7 @@ describe('ReflectionBotコンポーネントのテスト', () => {
 
   describe('メッセージ送信', () => {
     it('テキスト入力後、送信ボタンをクリックしてメッセージを送信できる', async () => {
-      prompt.activePrompt.value = mockPromptsData[0]
+      prompt.activePrompt.value = MOCK_PROMPTS[0]
       const wrapper = await mountSuspended(ReflectionBot)
 
       await wrapper.find(`[data-testId="botButton"]`).trigger('click')
@@ -75,7 +75,7 @@ describe('ReflectionBotコンポーネントのテスト', () => {
     })
 
     it('テキスト入力後、Shift+Enterキー操作でメッセージを送信できる', async () => {
-      prompt.activePrompt.value = mockPromptsData[0]
+      prompt.activePrompt.value = MOCK_PROMPTS[0]
       const wrapper = await mountSuspended(ReflectionBot)
 
       await wrapper.find(`[data-testId="botButton"]`).trigger('click')
@@ -89,7 +89,7 @@ describe('ReflectionBotコンポーネントのテスト', () => {
     })
 
     it('チャット終了後に入力フィールドが非表示になる', async () => {
-      prompt.activePrompt.value = mockPromptsData[0]
+      prompt.activePrompt.value = MOCK_PROMPTS[0]
       const wrapper = await mountSuspended(ReflectionBot)
 
       await wrapper.find(`[data-testId="botButton"]`).trigger('click')

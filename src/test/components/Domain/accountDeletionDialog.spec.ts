@@ -1,8 +1,8 @@
 // @vitest-environment nuxt
 import { mockComponent, mountSuspended } from '@nuxt/test-utils/runtime'
 import AccountDeletionDialog from '@/components/Domain/AccountDeletionDialog.vue'
-import { mockAuthUser, wait } from '@/test/mocks/index'
-import { mockCurrentUserSchoolData } from '@/test/mocks/user/index'
+import { MOCK_AUTH_USER, wait } from '@/test/mocks/index'
+import { MOCK_CURRENT_USER_SCHOOL } from '@/test/mocks/user/index'
 import { registerUserEndpoints } from '@/test/mocks/user/endpoints'
 
 mockComponent('BaseButton', {
@@ -25,8 +25,8 @@ describe('AccountDeletionDialogコンポーネントのテスト', () => {
   })
 
   it('アカウント削除時、ユーザー情報が初期化され、ダイアログが閉じる', async () => {
-    auth.authUser.value = mockAuthUser
-    user.userInfo.value = mockCurrentUserSchoolData
+    auth.authUser.value = MOCK_AUTH_USER
+    user.userInfo.value = MOCK_CURRENT_USER_SCHOOL
     const wrapper = await mountSuspended(AccountDeletionDialog)
 
     await wrapper.find(`[data-testId="clickDelete"]`).trigger('click')

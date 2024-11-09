@@ -1,7 +1,7 @@
 // @vitest-environment nuxt
 import { mockNuxtImport, mountSuspended } from '@nuxt/test-utils/runtime'
 import IconMenuList from '@/components/Base/Layout/IconMenuList.vue'
-import { mockCoursesData } from '@/test/mocks/course/index'
+import { MOCK_COURSES } from '@/test/mocks/course/index'
 
 mockNuxtImport('useRoute', () => {
   return () => ({
@@ -16,7 +16,7 @@ describe('IconMenuListコンポーネントのテスト', () => {
   it('初期表示はメニューリストが表示されていない', async () => {
     const wrapper = await mountSuspended(IconMenuList, {
       props: {
-        courses: mockCoursesData,
+        courses: MOCK_COURSES,
         title: '受講一覧',
         courseName: STUDENT_COURSE_DETAIL,
         activeBg: 'bg-cyan-600/40',
@@ -32,7 +32,7 @@ describe('IconMenuListコンポーネントのテスト', () => {
   it('propsで値が渡された場合、正しく値が適用される', async () => {
     const wrapper = await mountSuspended(IconMenuList, {
       props: {
-        courses: mockCoursesData,
+        courses: MOCK_COURSES,
         title: '受講一覧',
         courseName: STUDENT_COURSE_DETAIL,
         activeBg: 'bg-cyan-600/40',
@@ -49,13 +49,13 @@ describe('IconMenuListコンポーネントのテスト', () => {
     expect(wrapper.find(`[data-testId="menuList"]`).exists()).toBe(true)
     expect(wrapper.find(`[data-testId="title"]`).text()).toBe('受講一覧')
 
-    for (let i = 0; i < mockCoursesData.length; i++) {
-      expect(wrapper.find(`[data-testId="menuList"]`).text()).toContain(mockCoursesData[i].name)
+    for (let i = 0; i < MOCK_COURSES.length; i++) {
+      expect(wrapper.find(`[data-testId="menuList"]`).text()).toContain(MOCK_COURSES[i].name)
       expect(wrapper.find(`[data-testId="link-${i}"]`).attributes('href')).toBe(
-        `/student/course/${mockCoursesData[i].uuid}`
+        `/student/course/${MOCK_COURSES[i].uuid}`
       )
 
-      if (mockCoursesData[i].uuid === '6dcd4ce8-d0f6-4a9d-b36d-8fe6500d384f') {
+      if (MOCK_COURSES[i].uuid === '6dcd4ce8-d0f6-4a9d-b36d-8fe6500d384f') {
         expect(wrapper.get(`[data-testId="propsBgColor-${i}"]`).classes()).toEqual(
           expect.arrayContaining(['bg-cyan-600/10', 'text-cyan-900'])
         )

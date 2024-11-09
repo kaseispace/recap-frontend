@@ -1,7 +1,7 @@
 // @vitest-environment nuxt
 import { mockComponent, mountSuspended } from '@nuxt/test-utils/runtime'
 import CreatePromptCard from '@/components/Domain/Teacher/course/CreatePromptCard.vue'
-import { mockAuthUser, dataUUID, wait } from '@/test/mocks/index'
+import { MOCK_AUTH_USER, MOCK_UUID, wait } from '@/test/mocks/index'
 import { registerPromptEndpoints } from '@/test/mocks/prompt/endpoints'
 
 mockComponent('BaseButton', {
@@ -82,8 +82,8 @@ describe('CreatePromptCardコンポーネントのテスト', () => {
     })
 
     it('全ての入力フィールドに有効な値が入力されている場合、エラーメッセージが表示されず、プロンプトを作成できる', async () => {
-      auth.authUser.value = mockAuthUser
-      course.courseUuid.value = dataUUID
+      auth.authUser.value = MOCK_AUTH_USER
+      course.courseUuid.value = MOCK_UUID
       prompt.prompts.value = []
       const wrapper = await mountSuspended(CreatePromptCard)
 

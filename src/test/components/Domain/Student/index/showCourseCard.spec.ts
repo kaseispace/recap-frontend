@@ -1,9 +1,9 @@
 // @vitest-environment nuxt
 import { mockComponent, mountSuspended } from '@nuxt/test-utils/runtime'
 import ShowCourseCard from '@/components/Domain/Student/index/ShowCourseCard.vue'
-import { mockAuthUser, wait } from '@/test/mocks/index'
+import { MOCK_AUTH_USER, wait } from '@/test/mocks/index'
 import { registerUserCourseEndpoints } from '@/test/mocks/userCourse/endpoints'
-import { mockStudentCourseData } from '@/test/mocks/course/index'
+import { MOCK_STUDENT_COURSE } from '@/test/mocks/course/index'
 
 mockComponent('BaseEmpty', {
   template: '<div data-testId="empty">stub empty course</div>'
@@ -46,7 +46,7 @@ describe('ShowCourseCardコンポーネントのテスト', () => {
   describe('受講中の授業が存在する場合', () => {
     it('授業カードが表示される', async () => {
       const wrapper = await mountSuspended(ShowCourseCard)
-      userCourse.studentCourses.value = mockStudentCourseData
+      userCourse.studentCourses.value = MOCK_STUDENT_COURSE
       userCourse.isStudentCourseLoading.value = false
 
       await wrapper.vm.$nextTick()
@@ -67,9 +67,9 @@ describe('ShowCourseCardコンポーネントのテスト', () => {
     })
 
     it('選択した授業から退出することができる', async () => {
-      auth.authUser.value = mockAuthUser
+      auth.authUser.value = MOCK_AUTH_USER
       const wrapper = await mountSuspended(ShowCourseCard)
-      userCourse.studentCourses.value = mockStudentCourseData
+      userCourse.studentCourses.value = MOCK_STUDENT_COURSE
       userCourse.isStudentCourseLoading.value = false
 
       await wrapper.vm.$nextTick()

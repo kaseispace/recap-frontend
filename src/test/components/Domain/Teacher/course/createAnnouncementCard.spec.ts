@@ -1,9 +1,9 @@
 // @vitest-environment nuxt
 import { mockComponent, mountSuspended } from '@nuxt/test-utils/runtime'
 import CreateAnnouncementCard from '@/components/Domain/Teacher/course/CreateAnnouncementCard.vue'
-import { mockAuthUser, dataUUID, wait } from '@/test/mocks/index'
+import { MOCK_AUTH_USER, MOCK_UUID, wait } from '@/test/mocks/index'
 import { registerAnnouncementEndpoints } from '@/test/mocks/announcement/endpoints'
-import { mockAnnouncementsData } from '@/test/mocks/announcement/index'
+import { MOCK_ANNOUNCEMENTS } from '@/test/mocks/announcement/index'
 
 mockComponent('BaseButton', {
   template: '<button>stub button</button>'
@@ -53,9 +53,9 @@ describe('CreateAnnouncementCardコンポーネントのテスト', () => {
     })
 
     it('テキストエリアが空でない場合、エラーメッセージが表示されず、お知らせを投稿できる', async () => {
-      auth.authUser.value = mockAuthUser
-      course.courseUuid.value = dataUUID
-      announcement.announcements.value = mockAnnouncementsData
+      auth.authUser.value = MOCK_AUTH_USER
+      course.courseUuid.value = MOCK_UUID
+      announcement.announcements.value = MOCK_ANNOUNCEMENTS
       const wrapper = await mountSuspended(CreateAnnouncementCard)
 
       await wrapper.get(`[data-testId="button"]`).trigger('click')

@@ -1,7 +1,7 @@
 // @vitest-environment nuxt
 import { mockNuxtImport, mockComponent, mountSuspended } from '@nuxt/test-utils/runtime'
 import MobileSideBar from '@/components/Base/Layout/MobileSideBar.vue'
-import { mockCoursesData } from '@/test/mocks/course/index'
+import { MOCK_COURSES } from '@/test/mocks/course/index'
 
 mockNuxtImport('useRoute', () => {
   return () => ({
@@ -20,7 +20,7 @@ describe('MobileSideBarコンポーネントのテスト', () => {
   it('初期表示はダイアログは表示されていない', async () => {
     const wrapper = await mountSuspended(MobileSideBar, {
       props: {
-        courses: mockCoursesData,
+        courses: MOCK_COURSES,
         title: '受講一覧',
         courseName: STUDENT_COURSE_DETAIL,
         listActiveBg: 'bg-cyan-600/10 text-cyan-900',
@@ -35,7 +35,7 @@ describe('MobileSideBarコンポーネントのテスト', () => {
   it('参加中の授業のナビゲーションメニューが表示される', async () => {
     const wrapper = await mountSuspended(MobileSideBar, {
       props: {
-        courses: mockCoursesData,
+        courses: MOCK_COURSES,
         title: '受講一覧',
         courseName: STUDENT_COURSE_DETAIL,
         listActiveBg: 'bg-cyan-600/10 text-cyan-900',
@@ -55,13 +55,13 @@ describe('MobileSideBarコンポーネントのテスト', () => {
     )
     expect(wrapper.find(`[data-testId="title"]`).text()).toBe('受講一覧')
 
-    for (let i = 0; i < mockCoursesData.length; i++) {
-      expect(wrapper.find(`[data-testId="menuList"]`).text()).toContain(mockCoursesData[i].name)
+    for (let i = 0; i < MOCK_COURSES.length; i++) {
+      expect(wrapper.find(`[data-testId="menuList"]`).text()).toContain(MOCK_COURSES[i].name)
       expect(wrapper.find(`[data-testId="link-${i}"]`).attributes('href')).toBe(
-        `/student/course/${mockCoursesData[i].uuid}`
+        `/student/course/${MOCK_COURSES[i].uuid}`
       )
 
-      if (mockCoursesData[i].uuid === '6dcd4ce8-d0f6-4a9d-b36d-8fe6500d384f') {
+      if (MOCK_COURSES[i].uuid === '6dcd4ce8-d0f6-4a9d-b36d-8fe6500d384f') {
         expect(wrapper.get(`[data-testId="propsBgColor-${i}"]`).classes()).toEqual(
           expect.arrayContaining(['bg-cyan-600/10', 'text-cyan-900'])
         )

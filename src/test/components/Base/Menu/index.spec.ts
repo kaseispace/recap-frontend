@@ -31,7 +31,7 @@ describe('Menuコンポーネントのテスト', () => {
 
     await wrapper.get(`[data-testId="clickIcon"]`).trigger('click')
 
-    dayOfTheWeek.forEach((day) => {
+    DAYS_OF_THE_WEEK.forEach((day) => {
       expect(wrapper.find(`[data-testId="invisible"]`).text()).toContain(day.text)
     })
   })

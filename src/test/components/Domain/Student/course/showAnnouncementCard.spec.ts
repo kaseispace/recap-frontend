@@ -1,7 +1,7 @@
 // @vitest-environment nuxt
 import { mockComponent, mountSuspended } from '@nuxt/test-utils/runtime'
 import ShowAnnouncementCard from '@/components/Domain/Student/course/ShowAnnouncementCard.vue'
-import { mockAuthUser, emptyDataUUID, dataUUID, wait } from '@/test/mocks/index'
+import { MOCK_AUTH_USER, MOCK_EMPTY_UUID, MOCK_UUID, wait } from '@/test/mocks/index'
 import { registerAnnouncementEndpoints } from '@/test/mocks/announcement/endpoints'
 
 mockComponent('BaseEmpty', {
@@ -27,8 +27,8 @@ describe('ShowAnnouncementCardコンポーネントのテスト', () => {
 
   describe('お知らせが存在しない場合', () => {
     it('お知らせがないことを示すコンポーネントが表示される', async () => {
-      auth.authUser.value = mockAuthUser
-      course.courseUuid.value = emptyDataUUID
+      auth.authUser.value = MOCK_AUTH_USER
+      course.courseUuid.value = MOCK_EMPTY_UUID
       const wrapper = await mountSuspended(ShowAnnouncementCard)
 
       await wait(10)
@@ -39,8 +39,8 @@ describe('ShowAnnouncementCardコンポーネントのテスト', () => {
 
   describe('お知らせが存在する場合', () => {
     it('各お知らせカードにお知らせ内容が表示される', async () => {
-      auth.authUser.value = mockAuthUser
-      course.courseUuid.value = dataUUID
+      auth.authUser.value = MOCK_AUTH_USER
+      course.courseUuid.value = MOCK_UUID
       const wrapper = await mountSuspended(ShowAnnouncementCard)
 
       await wait(10)

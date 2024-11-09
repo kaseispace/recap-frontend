@@ -1,9 +1,9 @@
 // @vitest-environment nuxt
 import { mockComponent, mountSuspended } from '@nuxt/test-utils/runtime'
 import ShowCourseCard from '@/components/Domain/Teacher/index/ShowCourseCard.vue'
-import { mockAuthUser, wait } from '@/test/mocks/index'
+import { MOCK_AUTH_USER, wait } from '@/test/mocks/index'
 import { registerCourseEndpoints } from '@/test/mocks/course/endpoints'
-import { mockCoursesData } from '@/test/mocks/course/index'
+import { MOCK_COURSES } from '@/test/mocks/course/index'
 
 mockComponent('BaseEmpty', {
   template: '<div data-testId="empty">stub empty course</div>'
@@ -46,7 +46,7 @@ describe('ShowCourseCardコンポーネントのテスト', () => {
   describe('担当授業が存在する場合', () => {
     it('授業カードが表示される', async () => {
       const wrapper = await mountSuspended(ShowCourseCard)
-      course.teacherCourses.value = mockCoursesData
+      course.teacherCourses.value = MOCK_COURSES
       course.isTeacherCourseLoading.value = false
 
       await wrapper.vm.$nextTick()
@@ -68,10 +68,10 @@ describe('ShowCourseCardコンポーネントのテスト', () => {
     })
 
     it('編集用ダイアログが表示され、授業の編集ができる', async () => {
-      auth.authUser.value = mockAuthUser
+      auth.authUser.value = MOCK_AUTH_USER
       const wrapper = await mountSuspended(ShowCourseCard)
 
-      course.teacherCourses.value = mockCoursesData
+      course.teacherCourses.value = MOCK_COURSES
       course.isTeacherCourseLoading.value = false
 
       await wrapper.vm.$nextTick()
@@ -94,10 +94,10 @@ describe('ShowCourseCardコンポーネントのテスト', () => {
     })
 
     it('削除用ダイアログが表示され、授業を削除できる', async () => {
-      auth.authUser.value = mockAuthUser
+      auth.authUser.value = MOCK_AUTH_USER
       const wrapper = await mountSuspended(ShowCourseCard)
 
-      course.teacherCourses.value = mockCoursesData
+      course.teacherCourses.value = MOCK_COURSES
       course.isTeacherCourseLoading.value = false
 
       await wrapper.vm.$nextTick()
@@ -115,7 +115,7 @@ describe('ShowCourseCardコンポーネントのテスト', () => {
       await wrapper.find(`[data-testId="clickDelete"]`).trigger('click')
       await wait(100)
 
-      expect(course.teacherCourses.value).not.toEqual(mockCoursesData[0])
+      expect(course.teacherCourses.value).not.toEqual(MOCK_COURSES[0])
     })
   })
 })

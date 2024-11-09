@@ -1,9 +1,9 @@
 // @vitest-environment nuxt
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import DeleteDialog from '@/components/Domain/Teacher/course/SettingsMenu/DeleteDialog.vue'
-import { mockAuthUser, wait } from '@/test/mocks/index'
+import { MOCK_AUTH_USER, wait } from '@/test/mocks/index'
 import { registerCourseDateEndpoints } from '@/test/mocks/courseDate/endpoints'
-import { mockCourseDatesData } from '@/test/mocks/courseDate/index'
+import { MOCK_COURSE_DATES } from '@/test/mocks/courseDate/index'
 
 describe('DeleteDialogコンポーネントのテスト', () => {
   let auth: AuthReturnType
@@ -25,9 +25,9 @@ describe('DeleteDialogコンポーネントのテスト', () => {
 
   describe('次回授業日がある場合', () => {
     it('授業日を削除できる', async () => {
-      auth.authUser.value = mockAuthUser
-      setting.nextCourseDate.value = mockCourseDatesData[4]
-      courseDate.courseDates.value = mockCourseDatesData
+      auth.authUser.value = MOCK_AUTH_USER
+      setting.nextCourseDate.value = MOCK_COURSE_DATES[4]
+      courseDate.courseDates.value = MOCK_COURSE_DATES
       const wrapper = await mountSuspended(DeleteDialog)
 
       expect(wrapper.find(`[data-testId="nextCourse"]`).exists()).toBe(true)
@@ -35,12 +35,12 @@ describe('DeleteDialogコンポーネントのテスト', () => {
       await wrapper.find(`[data-testId="clickDelete"]`).trigger('click')
       await wait(300)
 
-      expect(courseDate.courseDates.value).not.toEqual(mockCourseDatesData[4])
+      expect(courseDate.courseDates.value).not.toEqual(MOCK_COURSE_DATES[4])
     })
 
     it('キャンセルボタンを押すと、ダイアログが閉じる', async () => {
-      setting.nextCourseDate.value = mockCourseDatesData[4]
-      courseDate.courseDates.value = mockCourseDatesData
+      setting.nextCourseDate.value = MOCK_COURSE_DATES[4]
+      courseDate.courseDates.value = MOCK_COURSE_DATES
       const wrapper = await mountSuspended(DeleteDialog)
 
       expect(wrapper.find(`[data-testId="dialog"]`).exists()).toBe(true)

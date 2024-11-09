@@ -45,7 +45,7 @@ onMounted(async () => {
     }
 
     if (currentStudentCourse.value) {
-      useHead(studentCourseMeta(currentStudentCourse.value.name))
+      useHead(STUDENT_COURSE_META(currentStudentCourse.value.name))
       courseDates.value = await getStudentCourseDate(courseUuid.value, idToken)
       console.log('授業日を取得', courseDates.value)
       const today = new Date()
@@ -62,7 +62,7 @@ onMounted(async () => {
       }
     }
     else {
-      useHead(notFoundMeta)
+      useHead(NOT_FOUND_META)
     }
   }
   catch {
@@ -130,7 +130,7 @@ onUnmounted(() => {
             <div class="no-scrollbar flex w-full overflow-x-auto border-b text-center text-sm font-medium">
               <ul class="flex">
                 <BaseTab
-                  v-for="(tab, i) in studentTabs"
+                  v-for="(tab, i) in STUDENT_TABS"
                   :key="i"
                   :data-testId="`tabIndex-${i}`"
                   :text="tab.text"

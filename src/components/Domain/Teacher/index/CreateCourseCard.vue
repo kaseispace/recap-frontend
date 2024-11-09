@@ -142,7 +142,7 @@ const handleCreateCourse = handleSubmit(async (values) => {
             <BaseFormLabel text="曜日" />
             <BaseMenu
               :selected-text="dayOfWeek"
-              :menu-array="dayOfTheWeek"
+              :menu-array="DAYS_OF_THE_WEEK"
               @select-menu="onSelectWeek"
             />
             <BaseErrorValidationMessage
@@ -157,7 +157,7 @@ const handleCreateCourse = handleSubmit(async (values) => {
             <BaseFormLabel text="時限" />
             <BaseMenu
               :selected-text="courseTime"
-              :menu-array="schedule"
+              :menu-array="COURSE_SCHEDULE"
               @select-menu="onSelectSchedule"
             />
             <BaseErrorValidationMessage

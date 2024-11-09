@@ -40,7 +40,7 @@ onUnmounted(() => {
     <!-- サイドバー -->
     <BaseLayoutSideBar bg-color="hover:bg-cyan-600/10">
       <template
-        v-for="item in studentSidebarMenuItems"
+        v-for="item in STUDENT_SIDEBAR_MENU_ITEMS"
         :key="item"
       >
         <BaseLayoutNavIcon
@@ -59,7 +59,7 @@ onUnmounted(() => {
       <BaseLayoutIconMenuList
         :courses="studentCourses"
         title="受講一覧"
-        :course-name="StudentCourseDetail"
+        :course-name="STUDENT_COURSE_DETAIL"
         active-bg="bg-cyan-600/40"
         list-active-bg="bg-cyan-600/10 text-cyan-900"
         inactive-bg="hover:bg-cyan-600/10"
@@ -84,7 +84,7 @@ onUnmounted(() => {
           <BaseLayoutMobileSideBar
             :courses="studentCourses"
             title="受講一覧"
-            :course-name="StudentCourseDetail"
+            :course-name="STUDENT_COURSE_DETAIL"
             list-active-bg="bg-cyan-600/10 text-cyan-900"
             list-inactive-bg="hover:bg-slate-100 text-gray-500 hover:text-black"
             path-name="student"

@@ -155,7 +155,7 @@ onMounted(async () => {
               :date-time="announcement.updated_at"
             >
               <BaseMore
-                :menu-array="teacherCourseSetting"
+                :menu-array="TEACHER_COURSE_SETTINGS"
                 hover-bgcolor="hover:bg-slate-300/50"
                 :icon-color="false"
                 @select-menu="(emittedItem) => handleAnnouncementEditOrDeleteAction(emittedItem, announcement)"

@@ -64,7 +64,7 @@ onClickOutside(menuRef, (event) => {
         </li>
       </ul>
       <ul
-        v-for="(item, i) in accountSetting"
+        v-for="(item, i) in ACCOUNT_SETTINGS"
         :key="i"
       >
         <li

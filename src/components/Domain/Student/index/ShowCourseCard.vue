@@ -73,13 +73,13 @@ const handleLeaveCourse = async () => {
             :data-testId="`card-${i}`"
             :subject-name="course.name"
             :teacher-name="course.teacher_name"
-            :path-name="StudentCourseDetail"
+            :path-name="STUDENT_COURSE_DETAIL"
             :param-id="course.uuid"
             bg-color="bg-cyan-900"
           >
             <template #moreIcon>
               <BaseMore
-                :menu-array="studentCourseSetting"
+                :menu-array="STUDENT_COURSE_SETTING"
                 hover-bgcolor="hover:bg-cyan-400/50"
                 @click.prevent
                 @select-menu="(emittedItem) => handleLeaveAction(emittedItem, course)"
@@ -94,11 +94,11 @@ const handleLeaveCourse = async () => {
             <template #chip>
               <BaseCardChips
                 :text="course.day_of_week"
-                :icon-type="calendarIcon"
+                :icon-type="CALENDAR_ICON"
               />
               <BaseCardChips
                 :text="course.course_time"
-                :icon-type="timetableIcon"
+                :icon-type="TIMETABLE_ICON"
               />
             </template>
           </BaseCard>

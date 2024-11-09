@@ -120,7 +120,7 @@ watch(isDialog, () => {
               v-model="content"
               data-testId="content"
               input-id="content1"
-              :input-placeholder="examplePrompt"
+              :input-placeholder="EXAMPLE_PROMPT"
             />
             <BaseErrorValidationMessage
               v-if="errors.content"

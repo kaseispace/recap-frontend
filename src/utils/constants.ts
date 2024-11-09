@@ -120,7 +120,7 @@ export const REDIRECT_URL = 'http://localhost:3001'
 export const PASSWORD_RESET_MESSAGE = '登録済みメールアドレスにパスワード再設定用リンクを送信しますか？'
 export const ACCOUNT_DELETION_MESSAGE = 'アカウントを退会すると、以下のことが発生します'
 
-export const teacherSidebarMenuItems = [
+export const TEACHER_SIDEBAR_MENU_ITEMS = [
   {
     value: 1,
     title: 'ホーム',
@@ -129,7 +129,7 @@ export const teacherSidebarMenuItems = [
   }
 ]
 
-export const studentSidebarMenuItems = [
+export const STUDENT_SIDEBAR_MENU_ITEMS = [
   {
     value: 1,
     title: 'ホーム',
@@ -138,13 +138,7 @@ export const studentSidebarMenuItems = [
   }
 ]
 
-export const semester = [
-  { value: 1, text: '前期' },
-  { value: 2, text: '後期' },
-  { value: 3, text: 'その他' }
-]
-
-export const dayOfTheWeek = [
+export const DAYS_OF_THE_WEEK = [
   { value: 1, text: '月曜日' },
   { value: 2, text: '火曜日' },
   { value: 3, text: '水曜日' },
@@ -154,7 +148,7 @@ export const dayOfTheWeek = [
   { value: 7, text: '日曜日' }
 ]
 
-export const schedule = [
+export const COURSE_SCHEDULE = [
   { value: 1, text: '1限' },
   { value: 2, text: '2限' },
   { value: 3, text: '3限' },
@@ -164,91 +158,91 @@ export const schedule = [
   { value: 7, text: '7限' }
 ]
 
-export const userTypes = [
+export const USER_TYPES = [
   { value: 0, text: '学生' },
   { value: 1, text: '教員' }
 ]
 
-export const accountSetting = [
+export const ACCOUNT_SETTINGS = [
   { value: 1, text: 'パスワード変更', iconName: 'mdi:key' },
   { value: 2, text: '退会', iconName: 'fluent:person-delete-20-filled' }
 ]
 
-export const teacherCourseSetting = [
+export const TEACHER_COURSE_SETTINGS = [
   { value: 1, text: '編集' },
   { value: 2, text: '削除' }
 ]
 
-export const NoCourseDateSettings = [
+export const NO_COURSE_DATE_SETTINGS = [
   { value: 1, text: 'クラスコード' },
   { value: 2, text: '授業日の追加' }
 ]
 
-export const CourseDateAddedNoReflectionSettings = [
+export const COURSE_DATE_ADDED_NO_REFLECTION_SETTINGS = [
   { value: 1, text: 'クラスコード' },
   { value: 2, text: '振り返りの設定' },
   { value: 3, text: '授業日の編集' },
   { value: 4, text: '授業日の削除' }
 ]
 
-export const CourseDateAndReflectionAddedSettings = [
+export const COURSE_DATE_AND_REFLECTION_ADDED_SETTINGS = [
   { value: 1, text: 'クラスコード' },
   { value: 2, text: '授業日の削除' }
 ]
 
-export const teacherPromptSetting = [
+export const TEACHER_PROMPT_SETTINGS = [
   { value: 1, text: '編集' },
   { value: 2, text: '状態変更' },
   { value: 3, text: '削除' }
 ]
 
-export const teacherTabs = [
+export const TEACHER_TABS = [
   { id: 1, text: 'お知らせ' },
   { id: 2, text: '振り返り' },
   { id: 3, text: '受講生振り返り履歴' }
 ]
 
-export const studentTabs = [
+export const STUDENT_TABS = [
   { id: 1, text: 'お知らせ' },
   { id: 2, text: '振り返り履歴' }
 ]
 
-export const studentCourseSetting = [{ value: 1, text: '退出' }]
+export const STUDENT_COURSE_SETTING = [{ value: 1, text: '退出' }]
 
 // ルーティング名
-export const TeacherCourseDetail: string = 'teacher-course-id'
-export const StudentCourseDetail: string = 'student-course-id'
+export const TEACHER_COURSE_DETAIL: string = 'teacher-course-id'
+export const STUDENT_COURSE_DETAIL: string = 'student-course-id'
 
 // アイコン
-export const calendarIcon = 'calendar' as const
-export const timetableIcon = 'timetable' as const
+export const CALENDAR_ICON = 'calendar' as const
+export const TIMETABLE_ICON = 'timetable' as const
 
-export const examplePrompt = '今日学んだことで理解できなかったことは何ですか？'
+export const EXAMPLE_PROMPT = '今日学んだことで理解できなかったことは何ですか？'
 
 // Chat
-export const startChatMessage = ['こんにちは！', '振り返りを始めましょう！']
-export const endChatMessage = 'お疲れ様でした！'
-export const completeChatMessage = [
+export const START_CHAT_MESSAGES = ['こんにちは！', '振り返りを始めましょう！']
+export const END_CHAT_MESSAGE = 'お疲れ様でした！'
+export const COMPLETE_CHAT_MESSAGES = [
   '本日の振り返りは登録済みです！お疲れ様でした。',
   '振り返り履歴から今日の学びを確認してみてください。',
   '次回も一緒に頑張りましょう！'
 ]
-export const pendingChatMessage = ['本日の振り返りはまだ公開されていません。', 'もう少々お待ちください。']
-export const noChatMessage = [
+export const PENDING_CHAT_MESSAGES = ['本日の振り返りはまだ公開されていません。', 'もう少々お待ちください。']
+export const NO_CHAT_MESSAGES = [
   '本日の振り返りはありません。',
   '余裕があれば、これまでの振り返りを見直してみてはいかがでしょうか。',
   '次回の振り返りでまたお会いしましょう！'
 ]
 
 // テーブル
-export const TABLE_STATUS = [
+export const TABLE_STATUSES = [
   { value: 1, name: 'gg:math-minus', color: 'gray', text: '：未開始' },
   { value: 2, name: 'gg:close-r', color: 'orange', text: '：振り返り未実施' },
   { value: 3, name: 'gg:check-o', color: 'green', text: '：記入あり' },
   { value: 4, name: 'gg:close-o', color: 'red', text: '：記入なし' }
 ]
 
-export const loginMeta = {
+export const LOGIN_META = {
   title: 'ログイン',
   meta: [
     {
@@ -258,7 +252,7 @@ export const loginMeta = {
   ]
 }
 
-export const signupMeta = {
+export const SIGNUP_META = {
   title: '新規登録',
   meta: [
     {
@@ -268,7 +262,7 @@ export const signupMeta = {
   ]
 }
 
-export const forgotPasswordMeta = {
+export const FORGOT_PASSWORD_META = {
   title: 'パスワード再設定',
   meta: [
     {
@@ -278,7 +272,7 @@ export const forgotPasswordMeta = {
   ]
 }
 
-export const teacherCourseListMeta = {
+export const TEACHER_COURSE_LIST_META = {
   title: '担当授業一覧',
   meta: [
     {
@@ -288,7 +282,7 @@ export const teacherCourseListMeta = {
   ]
 }
 
-export const teacherCourseMeta = (title: string) => {
+export const TEACHER_COURSE_META = (title: string) => {
   return {
     title: title,
     meta: [
@@ -300,7 +294,7 @@ export const teacherCourseMeta = (title: string) => {
   }
 }
 
-export const studentCourseListMeta = {
+export const STUDENT_COURSE_LIST_META = {
   title: '受講一覧',
   meta: [
     {
@@ -310,7 +304,7 @@ export const studentCourseListMeta = {
   ]
 }
 
-export const studentCourseMeta = (title: string) => {
+export const STUDENT_COURSE_META = (title: string) => {
   return {
     title: title,
     meta: [
@@ -322,7 +316,7 @@ export const studentCourseMeta = (title: string) => {
   }
 }
 
-export const notFoundMeta = {
+export const NOT_FOUND_META = {
   title: 'ページが見つかりませんでした',
   meta: [
     {
@@ -333,7 +327,7 @@ export const notFoundMeta = {
 }
 
 // テスト用
-export const mockPrompts = [
+export const MOCK_PROMPTS = [
   { id: 1, content: '今日のJavaScriptの学習で、新たに覚えた構文は何ですか？' },
   { id: 2, content: 'その構文をどのような場面で使用しましたか？' },
   { id: 3, content: 'その他、授業への質問等はありますか？' }

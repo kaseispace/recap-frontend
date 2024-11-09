@@ -49,7 +49,7 @@ onMounted(async () => {
     }
 
     if (currentCourse.value) {
-      useHead(teacherCourseMeta(currentCourse.value.name))
+      useHead(TEACHER_COURSE_META(currentCourse.value.name))
       courseCode.value = currentCourse.value.course_code
       joinedUsers.value = await getJoinedUsers(courseUuid.value, idToken)
       // 授業日一覧の取得
@@ -75,7 +75,7 @@ onMounted(async () => {
       }
     }
     else {
-      useHead(notFoundMeta)
+      useHead(NOT_FOUND_META)
     }
   }
   catch {
@@ -142,7 +142,7 @@ onUnmounted(() => {
             <div class="no-scrollbar flex overflow-x-auto text-center text-sm font-medium">
               <ul class="flex">
                 <BaseTab
-                  v-for="(tab, i) in teacherTabs"
+                  v-for="(tab, i) in TEACHER_TABS"
                   :key="i"
                   :data-testId="`tabIndex-${i}`"
                   :text="tab.text"

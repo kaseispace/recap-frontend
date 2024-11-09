@@ -89,7 +89,7 @@ watch(
   <div>
     <div class="flex flex-col items-end space-x-4 bg-white px-4 pt-4 text-sm sm:flex-row sm:justify-end">
       <div
-        v-for="(status, i) in TABLE_STATUS"
+        v-for="(status, i) in TABLE_STATUSES"
         :key="i"
         class="flex items-center"
       >

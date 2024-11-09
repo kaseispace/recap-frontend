@@ -21,7 +21,7 @@ const handleMultipleActions = (actionId: number) => {
   <div>
     <BaseMore
       data-testId="settingsMenu"
-      :menu-array="CourseDateAndReflectionAddedSettings"
+      :menu-array="COURSE_DATE_AND_REFLECTION_ADDED_SETTINGS"
       hover-bgcolor="hover:bg-slate-300/50"
       :icon-color="false"
       @select-menu="handleMultipleActions"

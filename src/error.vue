@@ -1,5 +1,5 @@
 <script setup lang="ts">
-useHead(notFoundMeta)
+useHead(NOT_FOUND_META)
 
 interface Props {
   error: {
@@ -76,7 +76,7 @@ onMounted(async () => {
       <BaseLayoutIconMenuList
         :courses="teacherCourses ? teacherCourses : studentCourses"
         :title="teacherCourses ? '担当授業一覧' : '受講一覧'"
-        :course-name="teacherCourses ? TeacherCourseDetail : StudentCourseDetail"
+        :course-name="teacherCourses ? TEACHER_COURSE_DETAIL : STUDENT_COURSE_DETAIL"
         :active-bg="teacherCourses ? 'bg-blue-600/40' : 'bg-cyan-600/40'"
         :list-active-bg="teacherCourses ? 'bg-blue-600/10 text-blue-900' : 'bg-cyan-600/10 text-cyan-900'"
         :inactive-bg="teacherCourses ? 'hover:bg-blue-600/10' : 'hover:bg-cyan-600/10'"
@@ -105,7 +105,7 @@ onMounted(async () => {
           <BaseLayoutMobileSideBar
             :courses="teacherCourses ? teacherCourses : studentCourses"
             :title="teacherCourses ? '担当授業一覧' : '受講一覧'"
-            :course-name="teacherCourses ? TeacherCourseDetail : StudentCourseDetail"
+            :course-name="teacherCourses ? TEACHER_COURSE_DETAIL : STUDENT_COURSE_DETAIL"
             :list-active-bg="teacherCourses ? 'bg-blue-600/10 text-blue-900' : 'bg-cyan-600/10 text-cyan-900'"
             list-inactive-bg="hover:bg-slate-100 text-gray-500 hover:text-black"
             :path-name="teacherCourses ? 'teacher' : 'student'"

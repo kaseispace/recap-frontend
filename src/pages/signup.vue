@@ -6,7 +6,7 @@ definePageMeta({
   middleware: ['route']
 })
 
-useHead(signupMeta)
+useHead(SIGNUP_META)
 
 // Menuコンポーネントから取得されるtextと組になるvalueを保存する用
 const roleValue = ref(0)
@@ -224,7 +224,7 @@ onMounted(async () => {
         <BaseFormLabel text="ユーザータイプ" />
         <BaseMenu
           :selected-text="roleText"
-          :menu-array="userTypes"
+          :menu-array="USER_TYPES"
           class="max-w-[180px]"
           @select-menu="onSelectMenu"
         />

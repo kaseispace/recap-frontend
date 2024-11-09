@@ -143,13 +143,13 @@ const handleDeleteCourse = async () => {
           <BaseCard
             :data-testId="`card-${i}`"
             :subject-name="course.name"
-            :path-name="TeacherCourseDetail"
+            :path-name="TEACHER_COURSE_DETAIL"
             :param-id="course.uuid"
             bg-color="bg-blue-900"
           >
             <template #moreIcon>
               <BaseMore
-                :menu-array="teacherCourseSetting"
+                :menu-array="TEACHER_COURSE_SETTINGS"
                 hover-bgcolor="hover:bg-blue-400/50"
                 @click.prevent
                 @select-menu="(emittedItem) => handleEditOrDeleteAction(emittedItem, course)"
@@ -164,11 +164,11 @@ const handleDeleteCourse = async () => {
             <template #chip>
               <BaseCardChips
                 :text="course.day_of_week"
-                :icon-type="calendarIcon"
+                :icon-type="CALENDAR_ICON"
               />
               <BaseCardChips
                 :text="course.course_time"
-                :icon-type="timetableIcon"
+                :icon-type="TIMETABLE_ICON"
               />
             </template>
           </BaseCard>
@@ -226,7 +226,7 @@ const handleDeleteCourse = async () => {
                 <BaseFormLabel text="曜日" />
                 <BaseMenu
                   :selected-text="dayOfWeek"
-                  :menu-array="dayOfTheWeek"
+                  :menu-array="DAYS_OF_THE_WEEK"
                   @select-menu="onSelectWeek"
                 />
                 <BaseErrorValidationMessage
@@ -240,7 +240,7 @@ const handleDeleteCourse = async () => {
                 <BaseFormLabel text="時限" />
                 <BaseMenu
                   :selected-text="courseTime"
-                  :menu-array="schedule"
+                  :menu-array="COURSE_SCHEDULE"
                   @select-menu="onSelectSchedule"
                 />
                 <BaseErrorValidationMessage

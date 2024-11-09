@@ -95,7 +95,7 @@ export const useChat = () => {
       const index = chatHistory.value.findIndex(message => message.isLoading === true)
       if (index !== -1) {
         // 先ほど作成したloading用オブジェクトをmessage用オブジェクトに上書き
-        chatHistory.value[index] = { message_type: 'bot', message: endChatMessage, message_time: 0, isLoading: false }
+        chatHistory.value[index] = { message_type: 'bot', message: END_CHAT_MESSAGE, message_time: 0, isLoading: false }
       }
       if (saveChatHistory) {
         saveChatHistory()
@@ -113,8 +113,8 @@ export const useChat = () => {
       currentPrompts.value = []
       currentPrompts.value.push(...activePrompts.value)
     }
-    for (let i = 0; i < startChatMessage.length; i++) {
-      const currentMessage = startChatMessage[i]
+    for (let i = 0; i < START_CHAT_MESSAGES.length; i++) {
+      const currentMessage = START_CHAT_MESSAGES[i]
       const botMessage: ChatMessage = {
         message_type: 'bot',
         message: currentMessage,
@@ -135,8 +135,8 @@ export const useChat = () => {
   const noChat = async () => {
     isChatEnded.value = true // ユーザーの入力はない
     isBotChatting.value = true
-    for (let i = 0; i < noChatMessage.length; i++) {
-      const currentMessage = noChatMessage[i]
+    for (let i = 0; i < NO_CHAT_MESSAGES.length; i++) {
+      const currentMessage = NO_CHAT_MESSAGES[i]
       const botMessage: ChatMessage = {
         message_type: 'bot',
         message: currentMessage,
@@ -156,8 +156,8 @@ export const useChat = () => {
   const pendingChat = async () => {
     isChatEnded.value = true // ユーザーの入力はない
     isBotChatting.value = true
-    for (let i = 0; i < pendingChatMessage.length; i++) {
-      const currentMessage = pendingChatMessage[i]
+    for (let i = 0; i < PENDING_CHAT_MESSAGES.length; i++) {
+      const currentMessage = PENDING_CHAT_MESSAGES[i]
       const botMessage: ChatMessage = {
         message_type: 'bot',
         message: currentMessage,
@@ -177,8 +177,8 @@ export const useChat = () => {
   const completeChat = async () => {
     isChatEnded.value = true // ユーザーの入力はない
     isBotChatting.value = true
-    for (let i = 0; i < completeChatMessage.length; i++) {
-      const currentMessage = completeChatMessage[i]
+    for (let i = 0; i < COMPLETE_CHAT_MESSAGES.length; i++) {
+      const currentMessage = COMPLETE_CHAT_MESSAGES[i]
       const botMessage: ChatMessage = {
         message_type: 'bot',
         message: currentMessage,

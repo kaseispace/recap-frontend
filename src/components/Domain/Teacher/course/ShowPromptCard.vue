@@ -285,7 +285,7 @@ onMounted(async () => {
           >
             <template #moreIcon>
               <BaseMore
-                :menu-array="teacherPromptSetting"
+                :menu-array="TEACHER_PROMPT_SETTINGS"
                 hover-bgcolor="hover:bg-blue-400/50"
                 @select-menu="(emittedItem) => handlePromptMultipleActions(emittedItem, prompt)"
               >
@@ -354,7 +354,7 @@ onMounted(async () => {
               <BaseFormTextInput
                 v-model="content"
                 input-id="content1"
-                :input-placeholder="examplePrompt"
+                :input-placeholder="EXAMPLE_PROMPT"
               />
               <BaseErrorValidationMessage
                 v-if="errors.content"

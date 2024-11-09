@@ -7,7 +7,7 @@ describe('Promptコンポーネントのテスト', () => {
     const wrapper = await mountSuspended(Prompt, {
       props: {
         title: '第1回目の振り返り',
-        contents: mockPrompts,
+        contents: MOCK_PROMPTS,
         isSelected: false,
         bgColor: 'bg-blue-900'
       }
@@ -15,7 +15,7 @@ describe('Promptコンポーネントのテスト', () => {
 
     expect(wrapper.get(`[data-testId="propsBgColor"]`).classes()).toContain('bg-blue-900')
     expect(wrapper.get(`[data-testId="propsTitle"]`).text()).toBe('第1回目の振り返り')
-    mockPrompts.forEach((contents) => {
+    MOCK_PROMPTS.forEach((contents) => {
       expect(wrapper.get(`[data-testId="propsContents"]`).text()).toContain(contents.content)
     })
   })

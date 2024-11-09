@@ -8,7 +8,7 @@ describe('Cardコンポーネントのテスト', () => {
     const wrapper = await mountSuspended(Card, {
       props: {
         subjectName: 'JavaScript',
-        pathName: StudentCourseDetail,
+        pathName: STUDENT_COURSE_DETAIL,
         paramId: '123e4567-e89b-12d3-a456-426614174000',
         bgColor: 'bg-cyan-900'
       }
@@ -23,7 +23,7 @@ describe('Cardコンポーネントのテスト', () => {
     const wrapper = await mountSuspended(Card, {
       props: {
         subjectName: 'JavaScript',
-        pathName: StudentCourseDetail,
+        pathName: STUDENT_COURSE_DETAIL,
         paramId: '123e4567-e89b-12d3-a456-426614174000',
         bgColor: 'bg-cyan-900',
         teacherName: '佐藤太郎'
@@ -37,7 +37,7 @@ describe('Cardコンポーネントのテスト', () => {
     const wrapper = await mountSuspended(Card, {
       props: {
         subjectName: 'JavaScript',
-        pathName: StudentCourseDetail,
+        pathName: STUDENT_COURSE_DETAIL,
         paramId: '123e4567-e89b-12d3-a456-426614174000',
         bgColor: 'bg-cyan-900'
       },

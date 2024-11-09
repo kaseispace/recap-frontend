@@ -5,7 +5,7 @@ import Menu from '@/components/Base/Menu/index.vue'
 describe('Menuコンポーネントのテスト', () => {
   it('propsからselectedTextに値が渡されなかった場合、デフォルト値が表示される', async () => {
     const wrapper = await mountSuspended(Menu, {
-      props: { selectedText: '', menuArray: dayOfTheWeek }
+      props: { selectedText: '', menuArray: DAYS_OF_THE_WEEK }
     })
 
     expect(wrapper.get('span').text()).toBe('選択してください')
@@ -13,7 +13,7 @@ describe('Menuコンポーネントのテスト', () => {
 
   it('アイコンを1回クリックした場合、メニューリストが表示される', async () => {
     const wrapper = await mountSuspended(Menu, {
-      props: { selectedText: '', menuArray: dayOfTheWeek }
+      props: { selectedText: '', menuArray: DAYS_OF_THE_WEEK }
     })
 
     await wrapper.get(`[data-testId="clickIcon"]`).trigger('click')
@@ -26,7 +26,7 @@ describe('Menuコンポーネントのテスト', () => {
 
   it('propsから渡されたdayOfTheWeekが、メニューリスト内に表示される', async () => {
     const wrapper = await mountSuspended(Menu, {
-      props: { selectedText: '', menuArray: dayOfTheWeek }
+      props: { selectedText: '', menuArray: DAYS_OF_THE_WEEK }
     })
 
     await wrapper.get(`[data-testId="clickIcon"]`).trigger('click')
@@ -38,7 +38,7 @@ describe('Menuコンポーネントのテスト', () => {
 
   it('メニューリストから「月曜日」を選択した場合、emitが実行され、値が正しく渡されている', async () => {
     const wrapper = await mountSuspended(Menu, {
-      props: { selectedText: '', menuArray: dayOfTheWeek }
+      props: { selectedText: '', menuArray: DAYS_OF_THE_WEEK }
     })
 
     await wrapper.get(`[data-testId="clickIcon"]`).trigger('click')

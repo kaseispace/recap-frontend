@@ -77,8 +77,8 @@ describe('ReflectionBotコンポーネントのテスト', () => {
       await wait(50)
       await wrapper.find(`[data-testId="botButton"]`).trigger('click')
 
-      for (let i = 0; i < pendingChatMessage.length; i++) {
-        expect(wrapper.find(`[data-testId="botChat-${i}"]`).text()).toBe(pendingChatMessage[i])
+      for (let i = 0; i < PENDING_CHAT_MESSAGES.length; i++) {
+        expect(wrapper.find(`[data-testId="botChat-${i}"]`).text()).toBe(PENDING_CHAT_MESSAGES[i])
       }
     })
 
@@ -91,8 +91,8 @@ describe('ReflectionBotコンポーネントのテスト', () => {
       await wait(50)
       await wrapper.find(`[data-testId="botButton"]`).trigger('click')
 
-      for (let i = 0; i < noChatMessage.length; i++) {
-        expect(wrapper.find(`[data-testId="botChat-${i}"]`).text()).toBe(noChatMessage[i])
+      for (let i = 0; i < NO_CHAT_MESSAGES.length; i++) {
+        expect(wrapper.find(`[data-testId="botChat-${i}"]`).text()).toBe(NO_CHAT_MESSAGES[i])
       }
     })
 
@@ -105,8 +105,8 @@ describe('ReflectionBotコンポーネントのテスト', () => {
       await wait(50)
       await wrapper.find(`[data-testId="botButton"]`).trigger('click')
 
-      for (let i = 0; i < startChatMessage.length; i++) {
-        expect(wrapper.find(`[data-testId="botChat-${i}"]`).text()).toBe(startChatMessage[i])
+      for (let i = 0; i < START_CHAT_MESSAGES.length; i++) {
+        expect(wrapper.find(`[data-testId="botChat-${i}"]`).text()).toBe(START_CHAT_MESSAGES[i])
       }
     })
 
@@ -122,8 +122,8 @@ describe('ReflectionBotコンポーネントのテスト', () => {
       await wait(50)
       await wrapper.find(`[data-testId="botButton"]`).trigger('click')
 
-      for (let i = 0; i < completeChatMessage.length; i++) {
-        expect(wrapper.find(`[data-testId="botChat-${i}"]`).text()).toBe(completeChatMessage[i])
+      for (let i = 0; i < COMPLETE_CHAT_MESSAGES.length; i++) {
+        expect(wrapper.find(`[data-testId="botChat-${i}"]`).text()).toBe(COMPLETE_CHAT_MESSAGES[i])
       }
     })
   })

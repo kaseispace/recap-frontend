@@ -18,7 +18,7 @@ describe('IconMenuListコンポーネントのテスト', () => {
       props: {
         courses: mockCoursesData,
         title: '受講一覧',
-        courseName: StudentCourseDetail,
+        courseName: STUDENT_COURSE_DETAIL,
         activeBg: 'bg-cyan-600/40',
         listActiveBg: 'bg-cyan-600/10 text-cyan-900',
         inactiveBg: 'hover:bg-cyan-600/10',
@@ -34,7 +34,7 @@ describe('IconMenuListコンポーネントのテスト', () => {
       props: {
         courses: mockCoursesData,
         title: '受講一覧',
-        courseName: StudentCourseDetail,
+        courseName: STUDENT_COURSE_DETAIL,
         activeBg: 'bg-cyan-600/40',
         listActiveBg: 'bg-cyan-600/10 text-cyan-900',
         inactiveBg: 'hover:bg-cyan-600/10',

@@ -325,10 +325,3 @@ export const NOT_FOUND_META = {
     }
   ]
 }
-
-// テスト用
-export const MOCK_PROMPTS = [
-  { id: 1, content: '今日のJavaScriptの学習で、新たに覚えた構文は何ですか？' },
-  { id: 2, content: 'その構文をどのような場面で使用しましたか？' },
-  { id: 3, content: 'その他、授業への質問等はありますか？' }
-]

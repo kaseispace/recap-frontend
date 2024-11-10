@@ -7,7 +7,9 @@ interface Props {
 }
 defineProps<Props>()
 
-const imageLoaded = ref(false)
+const isImageLoaded = ref(false)
+
+const handleImageLoad = () => isImageLoaded.value = true
 </script>
 
 <template>
@@ -20,12 +22,12 @@ const imageLoaded = ref(false)
         :src="imgPath"
         sizes="150px sm:300px"
         :alt="imgAlt"
-        @load="imageLoaded = true"
+        @load="handleImageLoad"
       />
     </div>
 
     <div
-      v-if="imageLoaded && (explanation1 || explanation2)"
+      v-if="isImageLoaded && (explanation1 || explanation2)"
       data-testId="propsExplanation"
       class="flex flex-col items-center"
     >

@@ -11,6 +11,8 @@ const emit = defineEmits<Emits>()
 
 const isImageLoaded = ref(false)
 
+const handleImageLoad = () => isImageLoaded.value = true
+
 watch(isImageLoaded, () => {
   if (isImageLoaded.value === true) {
     emit('imageLoad', isImageLoaded.value)
@@ -28,7 +30,7 @@ watch(isImageLoaded, () => {
         :src="imgPath"
         sizes="150px sm:300px"
         alt="ページが見つかりません"
-        @load="isImageLoaded = true"
+        @load="handleImageLoad"
       />
     </div>
 

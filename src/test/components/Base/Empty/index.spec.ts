@@ -6,12 +6,6 @@ mockComponent('NuxtImg', {
   template: '<div>stub img</div>'
 })
 
-declare module '@vue/runtime-core' {
-  interface ComponentCustomProperties {
-    imageLoaded: Ref<boolean>
-  }
-}
-
 describe('Emptyコンポーネントのテスト', () => {
   it('propsが正しく渡される', async () => {
     const wrapper = await mountSuspended(Empty, {
@@ -23,7 +17,7 @@ describe('Emptyコンポーネントのテスト', () => {
       }
     })
 
-    wrapper.vm.imageLoaded.value = true
+    wrapper.vm.isImageLoaded.value = true
 
     await wrapper.vm.$nextTick()
 

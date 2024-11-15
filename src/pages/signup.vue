@@ -150,7 +150,7 @@ onMounted(async () => {
           input-for="name"
         />
         <BaseFormTextInput
-          v-model="name"
+          v-model.trim="name"
           input-id="name"
           input-placeholder="佐藤太郎"
           autocomplete="username"
@@ -170,7 +170,7 @@ onMounted(async () => {
           input-for="email"
         />
         <BaseFormTextInput
-          v-model="email"
+          v-model.trim="email"
           input-id="email"
           input-placeholder="mail@sample.com"
           autocomplete="email"
@@ -190,7 +190,7 @@ onMounted(async () => {
           input-for="password"
         />
         <BaseFormTextInput
-          v-model="password"
+          v-model.trim="password"
           input-id="password"
           input-type="password"
           autocomplete="new-password"
@@ -208,7 +208,7 @@ onMounted(async () => {
           input-for="passwordConfirm"
         />
         <BaseFormTextInput
-          v-model="passwordConfirm"
+          v-model.trim="passwordConfirm"
           input-id="passwordConfirm"
           input-type="password"
           autocomplete="new-password"

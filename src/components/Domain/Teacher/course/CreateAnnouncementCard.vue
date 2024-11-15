@@ -77,7 +77,7 @@ const handleCreateAnnouncement = handleSubmit(async (values) => {
           <!-- 中身スタート -->
 
           <BaseFormTextarea
-            v-model="content"
+            v-model.trim="content"
             data-testId="content"
             class="px-3"
             textarea-placeholder="ここにお知らせを入力"

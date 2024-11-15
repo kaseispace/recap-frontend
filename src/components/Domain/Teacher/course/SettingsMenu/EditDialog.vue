@@ -128,7 +128,7 @@ onMounted(() => {
               input-for="courseNumber"
             />
             <BaseFormTextInput
-              v-model="courseSession"
+              v-model.trim="courseSession"
               input-id="courseNumber"
               input-placeholder="1"
               wide="w-20"

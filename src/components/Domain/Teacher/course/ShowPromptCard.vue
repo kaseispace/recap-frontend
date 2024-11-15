@@ -336,7 +336,7 @@ onMounted(async () => {
                 input-for="title"
               />
               <BaseFormTextInput
-                v-model="title"
+                v-model.trim="title"
                 input-id="title"
                 input-placeholder="第〇回目の振り返り"
               />
@@ -352,7 +352,7 @@ onMounted(async () => {
                 input-for="content1"
               />
               <BaseFormTextInput
-                v-model="content"
+                v-model.trim="content"
                 input-id="content1"
                 :input-placeholder="EXAMPLE_PROMPT"
               />
@@ -373,7 +373,7 @@ onMounted(async () => {
                 />
                 <div class="flex">
                   <BaseFormTextInput
-                    v-model="extraContent.content"
+                    v-model.trim="extraContent.content"
                     :data-testId="`extraContent-${i}`"
                     :input-id="'content' + (i + 2)"
                   />

@@ -226,9 +226,8 @@ onMounted(async () => {
             title="振り返りの編集"
             wide="large"
           >
-            <!-- お知らせ入力 -->
             <BaseFormTextarea
-              v-model="message"
+              v-model.trim="message"
               data-testId="message"
               class="border-none px-3"
               textarea-placeholder="ここに振り返りを入力"

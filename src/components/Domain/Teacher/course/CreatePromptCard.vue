@@ -99,7 +99,7 @@ watch(isDialog, () => {
               input-for="title"
             />
             <BaseFormTextInput
-              v-model="title"
+              v-model.trim="title"
               data-testId="title"
               input-id="title"
               input-placeholder="第〇回目の振り返り"
@@ -117,7 +117,7 @@ watch(isDialog, () => {
               input-for="content1"
             />
             <BaseFormTextInput
-              v-model="content"
+              v-model.trim="content"
               data-testId="content"
               input-id="content1"
               :input-placeholder="EXAMPLE_PROMPT"
@@ -140,7 +140,7 @@ watch(isDialog, () => {
               />
               <div class="flex">
                 <BaseFormTextInput
-                  v-model="extraContent.content"
+                  v-model.trim="extraContent.content"
                   :data-testId="`extraContent-${i}`"
                   :input-id="'content' + (i + 2)"
                 />

@@ -193,7 +193,7 @@ const handleDeleteCourse = async () => {
                   input-for="name"
                 />
                 <BaseFormTextInput
-                  v-model="name"
+                  v-model.trim="name"
                   data-testId="name"
                   input-id="name"
                   input-placeholder="データサイエンス入門"
@@ -211,7 +211,7 @@ const handleDeleteCourse = async () => {
                   input-for="teacherName"
                 />
                 <BaseFormTextInput
-                  v-model="teacherName"
+                  v-model.trim="teacherName"
                   input-id="teacherName"
                   input-placeholder="佐藤太郎"
                 />

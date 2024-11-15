@@ -5,6 +5,13 @@
       school-name="ReCap"
       title-font="font-bold"
     >
+      <template #icon>
+        <NuxtImg
+          src="/logo.png"
+          width="32px"
+          class="mr-1"
+        />
+      </template>
       <div class="flex items-center justify-center">
         <BaseLink
           text="ログイン"

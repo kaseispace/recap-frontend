@@ -50,22 +50,14 @@ const isMobile = computed(() => width.value < 640)
       ref="dialogRef"
       class="slide-in-left flex w-full max-w-[320px] flex-col bg-white px-4 py-3"
     >
-      <!-- ホームアイコン -->
-      <div class="flex flex-none items-center justify-between border-b pb-3">
-        <NuxtLink
-          data-testId="home"
-          class="flex w-full items-center space-x-2 rounded-md px-2 py-1.5"
-          :class="route.name === pathName ? [listActiveBg] : [listInactiveBg]"
-          to="/student"
-          @click="closeDialog"
-        >
-          <Icon
-            name="fluent-mdl2:home"
-            size="18px"
-            style="color: #1f2937"
+      <div class="flex items-center justify-between border-b pb-3">
+        <div class="flex items-center">
+          <NuxtImg
+            src="/logo.png"
+            width="32px"
           />
-          <span class="text-sm text-gray-800">ホーム</span>
-        </NuxtLink>
+          <span class="ml-2 text-base font-black text-slate-400">ReCap</span>
+        </div>
 
         <BaseButton
           class="p-2"
@@ -80,7 +72,25 @@ const isMobile = computed(() => width.value < 640)
         </BaseButton>
       </div>
 
-      <div class="mb-1 mt-3 flex w-full flex-none items-center space-x-2 px-2 py-1.5">
+      <!-- ホームアイコン -->
+      <div class="flex items-center justify-between">
+        <NuxtLink
+          data-testId="home"
+          class="flex w-full items-center space-x-2 rounded-md px-2 py-1.5"
+          :class="route.name === pathName ? [listActiveBg] : [listInactiveBg]"
+          to="/student"
+          @click="closeDialog"
+        >
+          <Icon
+            name="fluent-mdl2:home"
+            size="18px"
+            style="color: #1f2937"
+          />
+          <span class="text-sm text-gray-800">ホーム</span>
+        </NuxtLink>
+      </div>
+
+      <div class="mb-1 mt-3 flex w-full items-center space-x-2 px-2 py-1.5">
         <Icon
           name="streamline:class-lesson"
           size="18px"

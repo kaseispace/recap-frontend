@@ -112,6 +112,17 @@ onMounted(async () => {
           />
         </template>
 
+        <template
+          v-else
+          #icon
+        >
+          <NuxtImg
+            src="/logo.png"
+            width="32px"
+            class="mr-1"
+          />
+        </template>
+
         <BaseMoreAccount
           v-if="authUser?.email && userInfo"
           :name="userInfo.user.name"

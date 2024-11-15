@@ -16,8 +16,15 @@ const handleLogout = async () => await logout()
     <!-- sticky,top-0でサイドバーを固定 -->
     <aside class="sticky top-0 z-20 h-screen w-14">
       <!-- アイコンの開始位置を48px下に修正 -->
-      <div class="flex h-full flex-col justify-between border-r bg-gray-100 px-2 pb-2 pt-12">
-        <ul class="flex flex-col space-y-3">
+      <div class="flex h-full flex-col justify-between border-r bg-gray-100 p-2">
+        <ul class="flex flex-col">
+          <div class="mb-1.5 flex size-10 items-center justify-center">
+            <NuxtImg
+              src="/logo.png"
+              width="35px"
+            />
+          </div>
+
           <slot />
         </ul>
 

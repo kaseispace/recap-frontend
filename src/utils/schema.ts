@@ -8,14 +8,20 @@ export const LoginFormSchema = yup.object({
 
 export const SignUpFormSchema = yup.object({
   name: yup.string().trim().required('必須項目です'),
-  email: yup.string().required('必須項目です').email('メールアドレスの形式で入力してください'),
-  password: yup.string().required('必須項目です').min(8, '8文字以上で入力してください'),
+  email: yup.string().trim().required('必須項目です').email('メールアドレスの形式で入力してください'),
+  password: yup
+    .string()
+    .trim()
+    .required('必須項目です')
+    .test('no-spaces', 'パスワードに空白を含めることはできません', value => value !== undefined && !/\s/.test(value))
+    .min(8, '8文字以上で入力してください'),
   passwordConfirm: yup
     .string()
+    .trim()
     .required('必須項目です')
     .oneOf([yup.ref('password')], 'パスワードが一致しません'),
   roleText: yup.string().required('必須項目です'),
-  schoolName: yup.string().trim().required('必須項目です')
+  schoolName: yup.string().required('必須項目です')
 })
 
 export const CourseFormSchema = yup.object({
@@ -48,5 +54,5 @@ export const ReflectionSchema = yup.object({
 })
 
 export const PasswordResetSchema = yup.object({
-  email: yup.string().required('必須項目です').email('メールアドレスの形式で入力してください')
+  email: yup.string().trim().required('必須項目です').email('メールアドレスの形式で入力してください')
 })

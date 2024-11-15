@@ -14,6 +14,7 @@ const isActive = computed(() => route.name === props.pathName)
 <template>
   <NuxtLink
     data-testId="link"
+    class="mb-3"
     :to="{ name: pathName }"
   >
     <div

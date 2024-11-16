@@ -19,8 +19,6 @@ const { showSnackbar } = useSnackBar()
 const { dialog, openDialog, closeDialog } = useDialog()
 onClickOutside(dialogRef, closeDialog)
 
-const config = useRuntimeConfig()
-
 const handleChangePassword = async () => {
   isClick.value = true
   try {
@@ -30,7 +28,7 @@ const handleChangePassword = async () => {
     }
 
     await sendPasswordResetEmail($firebaseAuth, authUser.value.email, {
-      url: config.public.backendUrl
+      url: REDIRECT_URL
     })
     showSnackbar(SUCCESS_FIREBASE_PASSWORD_RESET_EMAIL_SENT, true)
     closeDialog()

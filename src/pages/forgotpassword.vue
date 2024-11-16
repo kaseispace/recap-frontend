@@ -22,13 +22,11 @@ const { value: email } = useField<string>('email')
 const { $firebaseAuth } = useNuxtApp()
 const { snackbarMessage, snackbarStatus, showSnackbar } = useSnackBar()
 
-const config = useRuntimeConfig()
-
 const handleResetPassword = handleSubmit(async (values, { resetForm }) => {
   isClick.value = true
   try {
     await sendPasswordResetEmail($firebaseAuth, values.email, {
-      url: config.public.backendUrl
+      url: REDIRECT_URL
     })
 
     isEmailSent.value = false

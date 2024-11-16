@@ -299,7 +299,7 @@ onMounted(async () => {
         <!-- @keydown.shift.enter.preventでデフォルトの改行を阻止しつつ、関数の実行（改行されなくなる） -->
         <!-- ボタンが押せないよう状態でも、Shift + Enterで送信できてしまわないように注意 -->
         <BaseFormTextarea
-          v-model="userInput"
+          v-model.trim="userInput"
           data-testId="userInput"
           class="textarea-scrollbar mr-2 max-h-[50px] overflow-y-auto border-none bg-white"
           textarea-placeholder="ここに入力（Shift + Enterで送信）"

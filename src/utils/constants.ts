@@ -116,7 +116,7 @@ export const ERROR_REFLECTION_NOT_FOUND
 // other
 export const UNEXPECTED_ERROR_MESSAGE = '予期しないエラーが発生しました、ページをリロードしてみてください'
 export const MESSAGE_DELETION = '本当に削除してもよろしいですか？'
-export const REDIRECT_URL = 'http://localhost:3001'
+// export const REDIRECT_URL = 'http://localhost:3001'
 export const PASSWORD_RESET_MESSAGE = '登録済みメールアドレスにパスワード再設定用リンクを送信しますか？'
 export const ACCOUNT_DELETION_MESSAGE = 'アカウントを退会すると、以下のことが発生します'
 

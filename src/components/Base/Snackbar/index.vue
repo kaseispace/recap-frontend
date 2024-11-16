@@ -22,7 +22,7 @@ watch(
   <div
     v-if="isSnackbarVisible"
     data-testId="invisible"
-    class="fixed right-2 top-2 z-30"
+    class="fixed right-2 top-2 z-40"
   >
     <div
       data-testId="propsStatus"

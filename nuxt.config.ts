@@ -11,6 +11,15 @@ export default defineNuxtConfig({
       viewport: 'width=device-width, initial-scale=1',
       title: '学びを振り返る',
       titleTemplate: '%s - ReCap',
+      meta: [
+        { property: 'og:title', content: '学びを振り返る - ReCap' },
+        { property: 'og:description', content: '学びを振り返るための最適なプラットフォーム' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:url', content: 'https://www.recaplearning.com' },
+        { property: 'og:image', content: '/OGP.png' },
+        { property: 'og:site_name', content: 'ReCap' },
+        { property: 'og:locale', content: 'ja_JP' }
+      ],
       htmlAttrs: {
         lang: 'ja'
       }

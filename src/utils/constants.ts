@@ -204,7 +204,8 @@ export const TEACHER_TABS = [
 
 export const STUDENT_TABS = [
   { id: 1, text: 'お知らせ' },
-  { id: 2, text: '振り返り履歴' }
+  { id: 2, text: '振り返り履歴' },
+  { id: 3, text: 'みんなの振り返り' }
 ]
 
 export const STUDENT_COURSE_SETTING = [{ value: 1, text: '退出' }]

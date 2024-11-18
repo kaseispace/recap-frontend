@@ -146,19 +146,16 @@ onUnmounted(() => {
             </div>
             <!-- タブ終了 -->
 
-            <div>
-              <div
-                v-if="activeTabId === 1"
-                class="flex flex-col py-2"
-              >
+            <div class="flex flex-col py-2">
+              <div v-if="activeTabId === 1">
                 <DomainStudentCourseShowAnnouncementCard />
               </div>
-              <div
-                v-if="activeTabId === 2"
-                class="flex flex-col py-2"
-              >
+
+              <div v-else-if="activeTabId === 2">
                 <DomainStudentCourseReflectionHistory />
               </div>
+
+              <div v-else-if="activeTabId === 3" />
             </div>
           </div>
         </div>

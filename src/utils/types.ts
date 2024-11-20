@@ -117,6 +117,11 @@ export interface CourseUserReflections {
   user_reflections: StudentCourseReflection[]
 }
 
+// 各ユーザーの振り返り（学生が他学生の振り返りをみる）
+export interface SharedReflectionRecord extends CourseDate {
+  users_reflections: UserReflections[]
+}
+
 // isLoadingはチャット画面で使うようにオプショナル
 export interface ChatMessage {
   message_type: 'bot' | 'user'

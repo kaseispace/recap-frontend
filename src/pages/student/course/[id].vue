@@ -155,7 +155,9 @@ onUnmounted(() => {
                 <DomainStudentCourseReflectionHistory />
               </div>
 
-              <div v-else-if="activeTabId === 3" />
+              <div v-else-if="activeTabId === 3">
+                <DomainStudentCourseSharedReflections />
+              </div>
             </div>
           </div>
         </div>

@@ -1,4 +1,11 @@
 /** @type {import('tailwindcss').Config} */
+
+function generateSafelist(color: string) {
+  return [
+    `bg-${color}-100`, `bg-${color}-200`, `bg-${color}-600/70`, `bg-${color}-100/70`
+  ]
+}
+
 module.exports = {
   content: ['./src/app.vue', './src/components/**/*.{js,vue,ts}', './src/layouts/**/*.vue', './src/pages/**/*.vue'],
   theme: {
@@ -11,5 +18,24 @@ module.exports = {
       }
     }
   },
-  plugins: []
+  plugins: [],
+  safelist: [
+    ...generateSafelist('red'),
+    ...generateSafelist('orange'),
+    ...generateSafelist('amber'),
+    ...generateSafelist('yellow'),
+    ...generateSafelist('lime'),
+    ...generateSafelist('green'),
+    ...generateSafelist('emerald'),
+    ...generateSafelist('teal'),
+    ...generateSafelist('cyan'),
+    ...generateSafelist('sky'),
+    ...generateSafelist('blue'),
+    ...generateSafelist('indigo'),
+    ...generateSafelist('violet'),
+    ...generateSafelist('purple'),
+    ...generateSafelist('fuchsia'),
+    ...generateSafelist('pink'),
+    ...generateSafelist('rose')
+  ]
 }

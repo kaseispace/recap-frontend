@@ -7,6 +7,8 @@ export const useReflectionApi = () => {
 
   // 授業内に登録された各ユーザーの振り返り
   const courseUserReflections = useState<CourseUserReflections[] | null>('courseUserReflections', () => null)
+  const sharedCourseReflections = useState<SharedReflectionRecord[] | null>('sharedCourseReflections', () => null)
+  const selectedCourseDateReflections = useState<UserReflections[] | null>('selectedCourseDateReflections', () => null)
 
   const getStudentReflection = async (uuid: string, idToken: string): Promise<StudentCourseReflection[]> => {
     const data = await $fetch<StudentCourseReflection[]>(
@@ -49,6 +51,16 @@ export const useReflectionApi = () => {
     return data
   }
 
+  const getSharedReflections = async (uuid: string, idToken: string): Promise<SharedReflectionRecord[]> => {
+    const data = await $fetch<SharedReflectionRecord[]>(
+      `${config.public.backendUrl}/reflections/shared_reflections?uuid=${uuid}`,
+      {
+        headers: { Authorization: `Bearer ${idToken}` }
+      }
+    )
+    return data
+  }
+
   const createReflection = async (
     uuid: string,
     courseDateId: number,
@@ -79,10 +91,13 @@ export const useReflectionApi = () => {
     isTodayReflected,
     teacherReflectionFlag,
     courseUserReflections,
+    sharedCourseReflections,
+    selectedCourseDateReflections,
     getStudentReflection,
     getAllStudentReflectionStatus,
     getAllStudentReflections,
     checkReflectionOnDate,
+    getSharedReflections,
     createReflection,
     updateReflection
   }

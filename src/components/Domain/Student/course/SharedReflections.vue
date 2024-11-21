@@ -90,7 +90,10 @@ onMounted(async () => {
               v-for="(message, j) in reflection.reflections"
               :key="j"
             >
-              <p v-if="message.message_type === 'user'">
+              <p
+                v-if="message.message_type === 'user'"
+                class="text-start"
+              >
                 {{ message.message }}
               </p>
             </template>

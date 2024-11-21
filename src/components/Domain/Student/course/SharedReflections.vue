@@ -27,17 +27,24 @@ onMounted(async () => {
       return
     }
 
-    // 既に取得済みの場合は始めのデータをセットし直す
     if (sharedCourseReflections.value) {
-      setTab(sharedCourseReflections.value[0].id)
-      return
+      if (sharedCourseReflections.value.length === 0) {
+        return
+      }
+      else {
+        // 既に取得済みの場合は始めのデータをセットし直す
+        setTab(sharedCourseReflections.value[0].id)
+        return
+      }
     }
 
     // 各受講生の振り返りを見るとき用
     const idToken = await authUser.value.getIdToken()
     sharedCourseReflections.value = await getSharedReflections(courseUuid.value, idToken)
     // マウント時は手動で授業日データをセット
-    setTab(sharedCourseReflections.value[0].id)
+    if (sharedCourseReflections.value.length > 0) {
+      setTab(sharedCourseReflections.value[0].id)
+    }
   }
   catch {
     showSnackbar(UNEXPECTED_ERROR_MESSAGE, false)
@@ -79,7 +86,10 @@ onMounted(async () => {
       <!-- Chips閉じ -->
 
       <!-- 付箋表示 -->
-      <div class="grid grid-cols-1 place-items-center gap-y-3 pt-2 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div
+        v-if="selectedCourseDateReflections && selectedCourseDateReflections.length > 0"
+        class="grid grid-cols-1 place-items-center gap-y-3 pt-2 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+      >
         <div
           v-for="(reflection, i) in selectedCourseDateReflections"
           :key="i"
@@ -100,7 +110,37 @@ onMounted(async () => {
           </BaseCardPostIt>
         </div>
       </div>
+
+      <!-- 授業日の振り返りがない -->
+      <div
+        v-else
+        class="mt-10"
+      >
+        <div class="flex flex-col items-center">
+          <BaseEmpty
+            img-path="s-empty-shared-reflections_k3ozby.png"
+            img-alt="みんなの振り返りはありません"
+            explanation1="まだこの授業回には振り返りがありません"
+            explanation2="振り返りが登録され次第、こちらでご覧いただけます"
+          />
+        </div>
+      </div>
       <!-- 付箋閉じ -->
+    </div>
+
+    <!-- 授業日が1つもなく、表示できる振り返りが無い -->
+    <div
+      v-else
+      class="mt-10"
+    >
+      <div class="flex flex-col items-center">
+        <BaseEmpty
+          img-path="s-empty-shared-reflections_k3ozby.png"
+          img-alt="みんなの振り返りはありません"
+          explanation1="みんなの振り返りはここに集まります"
+          explanation2="他の人の振り返りを見て、学びを深めましょう！"
+        />
+      </div>
     </div>
   </div>
 </template>

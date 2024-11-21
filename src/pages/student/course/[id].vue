@@ -15,7 +15,7 @@ const { courseUuid } = useCourseApi()
 const { studentCourses, currentStudentCourse, getJoinedCourse } = useUserCourseApi()
 const { courseDates, todayCourseDate, getStudentCourseDate } = useCourseDateApi()
 const { announcements } = useAnnouncementApi()
-const { studentReflections } = useReflectionApi()
+const { studentReflections, sharedCourseReflections, selectedCourseDateReflections } = useReflectionApi()
 const { studentFeedbacks } = useFeedbackApi()
 const { currentPrompts } = useChat()
 const { snackbarMessage, snackbarStatus, showSnackbar } = useSnackBar()
@@ -79,6 +79,8 @@ onUnmounted(() => {
   todayCourseDate.value = null
   announcements.value = null
   studentReflections.value = null
+  sharedCourseReflections.value = null
+  selectedCourseDateReflections.value = null
   studentFeedbacks.value = null
   currentPrompts.value = []
 })

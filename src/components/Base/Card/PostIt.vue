@@ -46,7 +46,10 @@ onMounted(() => {
 
 <template>
   <div>
-    <div :class="rotationAngle">
+    <div
+      class="duration-300 ease-in-out hover:scale-110"
+      :class="rotationAngle"
+    >
       <div
         class="relative flex size-60 items-center justify-center text-gray-800"
         :class="cardBgColor"

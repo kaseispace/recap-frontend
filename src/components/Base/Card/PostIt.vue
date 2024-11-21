@@ -47,7 +47,7 @@ onMounted(() => {
 <template>
   <div>
     <div
-      class="duration-300 ease-in-out hover:scale-110"
+      class="cursor-pointer duration-300 ease-in-out hover:scale-110"
       :class="rotationAngle"
     >
       <div

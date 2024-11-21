@@ -2,11 +2,15 @@
 const activeTabId = ref(0)
 const isLoading = ref(true)
 const reflectionKey = ref(0) // 新しいkeyを持たせるための変数
+const selectedReflection = ref<UserReflections | null>(null)
+const dialogRef = ref(null)
 
 const { authUser } = useAuth()
 const { courseUuid } = useCourseApi()
 const { sharedCourseReflections, selectedCourseDateReflections, getSharedReflections } = useReflectionApi()
+const { dialog, openDialog, closeDialog } = useDialog()
 const { showSnackbar } = useSnackBar()
+onClickOutside(dialogRef, closeDialog)
 
 const setTab = (num: number) => {
   activeTabId.value = num
@@ -18,6 +22,11 @@ const setTab = (num: number) => {
   }
 
   reflectionKey.value++ // keyを更新して再生成をトリガー
+}
+
+const handleShowReflectionDialog = (reflection: UserReflections) => {
+  selectedReflection.value = reflection
+  openDialog()
 }
 
 onMounted(async () => {
@@ -95,7 +104,10 @@ onMounted(async () => {
           :key="i"
           class="p-3"
         >
-          <BaseCardPostIt :key="reflectionKey">
+          <BaseCardPostIt
+            :key="reflectionKey"
+            @click="handleShowReflectionDialog(reflection)"
+          >
             <template
               v-for="(message, j) in reflection.reflections"
               :key="j"
@@ -126,6 +138,67 @@ onMounted(async () => {
         </div>
       </div>
       <!-- 付箋閉じ -->
+
+      <!-- みんなの振り返り用ダイアログ -->
+      <BaseDialogOverlay v-if="dialog">
+        <div class="flex w-full justify-center px-4">
+          <BaseDialog
+            ref="dialogRef"
+            title="振り返り詳細"
+            wide="large"
+          >
+            <template #icon>
+              <BaseButton
+                button-type="circleNormal"
+                @click="closeDialog"
+              >
+                <Icon
+                  name="ic:baseline-close"
+                  size="30px"
+                />
+              </BaseButton>
+            </template>
+
+            <div
+              v-for="(reflection, i) in selectedReflection?.reflections"
+              :key="i"
+              class="flex items-center justify-start"
+            >
+              <div
+                v-if="reflection.message_type === 'bot'"
+                class="flex items-start justify-start"
+              >
+                <BaseCardAvatar bg-color="bg-cyan-600/10">
+                  <Icon
+                    name="fluent-mdl2:chat-bot"
+                    size="24px"
+                    style="color: #164e63"
+                  />
+                </BaseCardAvatar>
+                <div class="max-w-95/100 break-all px-3 py-2">
+                  {{ reflection.message }}
+                </div>
+              </div>
+
+              <div
+                v-else
+                class="flex items-start justify-start"
+              >
+                <BaseCardAvatar bg-color="bg-slate-600/10">
+                  <Icon
+                    name="mdi:user"
+                    size="24px"
+                    style="color: #475569"
+                  />
+                </BaseCardAvatar>
+                <div class="max-w-95/100 break-all px-3 py-2">
+                  {{ reflection.message }}
+                </div>
+              </div>
+            </div>
+          </BaseDialog>
+        </div>
+      </BaseDialogOverlay>
     </div>
 
     <!-- 授業日が1つもなく、表示できる振り返りが無い -->

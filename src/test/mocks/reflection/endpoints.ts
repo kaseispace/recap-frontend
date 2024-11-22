@@ -1,7 +1,7 @@
 import { registerEndpoint } from '@nuxt/test-utils/runtime'
 import { readBody } from 'h3'
 import { MOCK_EMPTY_UUID, MOCK_UUID } from '@/test/mocks/index'
-import { MOCK_STUDENT_REFLECTIONS } from '@/test/mocks/reflection/index'
+import { MOCK_STUDENT_REFLECTIONS, MOCK_GROUP_REFLECTIONS } from '@/test/mocks/reflection/index'
 import type { createReflectionRequestBody, updateReflectionRequestBody } from '@/test/mocks/reflection/index'
 
 const config = useRuntimeConfig()
@@ -18,6 +18,20 @@ export const registerReflectionEndpoints = () => {
     method: 'GET',
     handler: () => {
       return MOCK_STUDENT_REFLECTIONS
+    }
+  })
+
+  registerEndpoint(`${config.public.backendUrl}/reflections/shared_reflections?uuid=${MOCK_EMPTY_UUID}`, {
+    method: 'GET',
+    handler: () => {
+      return []
+    }
+  })
+
+  registerEndpoint(`${config.public.backendUrl}/reflections/shared_reflections?uuid=${MOCK_UUID}`, {
+    method: 'GET',
+    handler: () => {
+      return MOCK_GROUP_REFLECTIONS
     }
   })
 

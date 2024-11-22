@@ -106,6 +106,7 @@ onMounted(async () => {
         >
           <BaseCardPostIt
             :key="reflectionKey"
+            :data-testId="`postIt-${i}`"
             @click="handleShowReflectionDialog(reflection)"
           >
             <template

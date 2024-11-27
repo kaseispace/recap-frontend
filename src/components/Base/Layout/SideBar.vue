@@ -19,10 +19,7 @@ const handleLogout = async () => await logout()
       <div class="flex h-full flex-col justify-between border-r bg-gray-100 p-2">
         <ul class="flex flex-col">
           <div class="mb-1.5 flex size-10 items-center justify-center">
-            <NuxtImg
-              src="/logo.png"
-              width="35px"
-            />
+            <!-- <NuxtImg /> -->
           </div>
 
           <slot />

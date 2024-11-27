@@ -2,9 +2,10 @@
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-## Setup
+## サービス概要
 
-Make sure to install the dependencies:
+「ReCap」は、**教員と学生のための振り返り学習プラットフォーム**です。
+学びを深め、新たな気づきを得るためのサポートを提供します。
 
 ```bash
 # npm

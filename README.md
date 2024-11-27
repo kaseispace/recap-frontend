@@ -1,3 +1,5 @@
+このREADMEは、Qiitaに掲載したポートフォリオの紹介記事と同じ内容です。元の記事は[こちら](URL)でご覧いただけます。
+
 # Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.

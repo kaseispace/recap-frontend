@@ -53,7 +53,8 @@ const isMobile = computed(() => width.value < 640)
       <div class="flex items-center justify-between border-b pb-3">
         <div class="flex items-center">
           <NuxtImg
-            src="/logo.png"
+            provider="cloudinary"
+            src="logo_bc5hbs.png"
             width="32px"
           />
           <span class="ml-2 text-base font-black text-slate-400">ReCap</span>

@@ -7,7 +7,8 @@
     >
       <template #icon>
         <NuxtImg
-          src="/logo.png"
+          provider="cloudinary"
+          src="logo_bc5hbs.png"
           width="32px"
           class="mr-1"
         />

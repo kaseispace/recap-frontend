@@ -10,7 +10,7 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "format": "eslint --fix . ",
-    "test": "vitest"
+    "test": "vitest run"
   },
   "dependencies": {
     "@vee-validate/yup": "^4.13.2",

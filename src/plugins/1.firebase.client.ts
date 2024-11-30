@@ -12,12 +12,12 @@ export default defineNuxtPlugin(() => {
   const { firebase } = config.public
   // const app = initializeApp({ ...firebase })
   const firebaseConfig = {
-    apiKey: firebase.apiKey || 'dummy-api-key-1234567890abcdef',
-    authDomain: firebase.authDomain || 'dummy-auth-domain-1234567890abcdef.firebaseapp.com',
-    projectId: firebase.projectId || 'dummy-project-id-1234567890abcdef',
-    storageBucket: firebase.storageBucket || 'dummy-storage-bucket-1234567890abcdef.appspot.co',
-    messagingSenderId: firebase.messagingSenderId || '1234567890',
-    appId: firebase.appId || '1:1234567890:web:abcdef1234567890abcdef'
+    apiKey: firebase.apiKey,
+    authDomain: firebase.authDomain,
+    projectId: firebase.projectId,
+    storageBucket: firebase.storageBucket,
+    messagingSenderId: firebase.messagingSenderId,
+    appId: firebase.appId
   }
 
   const app = initializeApp(firebaseConfig)

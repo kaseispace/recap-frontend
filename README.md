@@ -1,13 +1,8 @@
-このREADMEは、Qiitaに掲載したポートフォリオの紹介記事と同じ内容です。  
-元の記事は[こちら](URL)でご覧いただけます。
-
-# Nuxt 3 Minimal Starter
-
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
-
-## サービス概要
+# ReCap / 対話型振り返りシステム
 
 ![サイトのOGP画像](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3776221/562c85fc-22f7-8ee0-483d-4f97ae8d29dd.png)
+
+## サービス概要
 
 「**ReCap**」は、**教員と学生のための振り返り学習プラットフォーム**です。  
 学びを深め、新たな気づきを得るためのサポートを提供します。

@@ -17,13 +17,13 @@
         <BaseLink
           text="ログイン"
           path="index"
-          class="font-medium hover:text-sky-600"
+          class="font-medium hover:text-emerald-600"
         />
         <span class="mx-1.5">/</span>
         <BaseLink
           text="新規登録"
           path="signup"
-          class="font-medium hover:text-sky-600"
+          class="font-medium hover:text-emerald-600"
         />
       </div>
     </BaseLayoutAppBar>

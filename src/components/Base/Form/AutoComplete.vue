@@ -121,7 +121,7 @@ watch(isSuggestionVisible, async (newVal) => {
       type="text"
       :value="modelValue"
       :placeholder="inputPlaceholder"
-      class="block w-full rounded border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900"
+      class="block w-full rounded border border-gray-300 bg-white p-2.5 text-sm text-gray-900"
       @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
       @keydown.up.exact="handleUpKey"
       @keydown.down.exact="handleDownKey"
@@ -131,15 +131,15 @@ watch(isSuggestionVisible, async (newVal) => {
     <div>
       <ul
         v-show="isSuggestionVisible"
-        class="absolute z-10 w-full overflow-hidden rounded border bg-gray-50"
+        class="absolute z-10 w-full overflow-hidden rounded border border-slate-300 bg-white"
         :class="isMenuAbove ? 'bottom-[50px]' : 'top-[50px]'"
       >
         <li
           v-for="(item, index) in filteredSuggestions"
           :key="index"
           :data-testId="`suggest-${index}`"
-          :class="[index === selectedSuggestionIndex ? ' border-sky-600 bg-zinc-200' : 'border-gray-50']"
-          class="cursor-default border-l-4 p-1.5 text-sm hover:border-zinc-200 hover:bg-zinc-200"
+          :class="[index === selectedSuggestionIndex ? ' border-emerald-600 bg-slate-100' : 'border-white']"
+          class="cursor-default border-l-4 p-1.5 text-sm hover:border-slate-100 hover:bg-slate-100"
           @click="selectSuggestion(item)"
         >
           {{ item }}

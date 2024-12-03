@@ -5,12 +5,14 @@ interface Props {
   inputPlaceholder?: string
   inputType?: string
   wide?: string
+  isBgColor?: boolean
 }
 withDefaults(defineProps<Props>(), {
   inputPlaceholder: '',
   inputId: '',
   inputType: 'text',
-  wide: ''
+  wide: '',
+  isBgColor: true
 })
 
 defineEmits(['update:modelValue'])
@@ -22,8 +24,8 @@ defineEmits(['update:modelValue'])
     :value="modelValue"
     :placeholder="inputPlaceholder"
     :type="inputType"
-    class="block rounded border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900"
-    :class="[wide || 'w-full']"
+    class="block rounded border border-gray-300 p-2.5 text-sm text-gray-900"
+    :class="[wide || 'w-full', isBgColor? 'bg-gray-50': 'bg-white']"
     @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
     @keydown.enter.prevent
   >

@@ -38,6 +38,14 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/test-utils/module'
   ],
+  icon: {
+    clientBundle: {
+      scan: {
+        globInclude: ['src/components/**/*.vue', 'src/layouts/*.vue', 'src/pages/**/*.vue'],
+        globExclude: ['node_modules']
+      }
+    }
+  },
   runtimeConfig: {
     public: {
       firebase: {

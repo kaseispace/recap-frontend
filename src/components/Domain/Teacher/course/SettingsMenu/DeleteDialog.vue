@@ -98,7 +98,7 @@ onMounted(() => {
             v-if="teacherReflectionFlag"
             class="text-sm"
           >
-            本日の振り返りを既に登録している学生がいます
+            本日、振り返りを既に登録している学生がいます
           </p>
           <p
             v-if="teacherReflectionFlag"

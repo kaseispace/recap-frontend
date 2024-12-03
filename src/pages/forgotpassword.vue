@@ -60,6 +60,7 @@ const handleResetPassword = handleSubmit(async (values, { resetForm }) => {
           input-id="email"
           input-placeholder="mail@sample.com"
           autocomplete="email"
+          :is-bg-color="false"
         />
         <BaseErrorValidationMessage
           v-if="errors.email"
@@ -75,7 +76,7 @@ const handleResetPassword = handleSubmit(async (values, { resetForm }) => {
           text="送信"
           button-type="none"
           :is-clicked="isClick"
-          class="w-full bg-sky-500 text-white hover:bg-sky-500/75"
+          class="w-full bg-emerald-600 text-white hover:bg-emerald-600/75"
           @click="handleResetPassword"
         />
       </div>
@@ -84,8 +85,7 @@ const handleResetPassword = handleSubmit(async (values, { resetForm }) => {
         v-else
         class="w-full rounded-md bg-slate-100 p-3 text-sm"
       >
-        <p>再設定用のURLを記載した</p>
-        <p>メールを送信しました</p>
+        <p>再設定用URLを記載したメールを送信しました</p>
       </div>
     </BaseForm>
   </div>

@@ -155,6 +155,7 @@ onMounted(async () => {
           input-placeholder="佐藤太郎"
           autocomplete="username"
           data-testId="nameInput"
+          :is-bg-color="false"
         />
         <BaseErrorValidationMessage
           v-if="errors.name"
@@ -175,6 +176,7 @@ onMounted(async () => {
           input-placeholder="mail@sample.com"
           autocomplete="email"
           data-testId="emailInput"
+          :is-bg-color="false"
         />
         <BaseErrorValidationMessage
           v-if="errors.email"
@@ -194,6 +196,7 @@ onMounted(async () => {
           input-id="password"
           input-type="password"
           autocomplete="new-password"
+          :is-bg-color="false"
         />
         <BaseErrorValidationMessage
           v-if="errors.password"
@@ -212,6 +215,7 @@ onMounted(async () => {
           input-id="passwordConfirm"
           input-type="password"
           autocomplete="new-password"
+          :is-bg-color="false"
         />
         <BaseErrorValidationMessage
           v-if="errors.passwordConfirm"
@@ -225,6 +229,7 @@ onMounted(async () => {
         <BaseMenu
           :selected-text="roleText"
           :menu-array="USER_TYPES"
+          :is-bg-color="false"
           class="max-w-[180px]"
           @select-menu="onSelectMenu"
         />
@@ -258,17 +263,17 @@ onMounted(async () => {
           text="登録"
           button-type="none"
           :is-clicked="isClick"
-          class="w-full bg-sky-500 text-white hover:bg-sky-500/75"
+          class="w-full bg-emerald-600 text-white hover:bg-emerald-600/75"
           @click="handleRegistration"
         />
       </div>
 
       <template #footer>
-        <div class="border-t pt-5">
+        <div class="border-t border-slate-300 pt-5">
           <BaseLink
             text="アカウントをお持ちの方はこちら"
             path="index"
-            class="text-center text-sky-600 underline"
+            class="text-center text-blue-700 hover:underline"
           />
         </div>
       </template>

@@ -103,6 +103,7 @@ onMounted(() => {
           input-id="email"
           input-placeholder="mail@sample.com"
           autocomplete="email"
+          :is-bg-color="false"
         />
         <BaseErrorValidationMessage
           v-if="errors.email"
@@ -121,6 +122,7 @@ onMounted(() => {
           input-id="password"
           input-type="password"
           autocomplete="current-password"
+          :is-bg-color="false"
         />
         <BaseErrorValidationMessage
           v-if="errors.password"
@@ -132,7 +134,7 @@ onMounted(() => {
         <BaseLink
           text="パスワードを忘れた方"
           path="forgotpassword"
-          class="text-center text-sky-600 underline"
+          class="text-center text-blue-700 hover:underline"
         />
       </div>
 
@@ -141,17 +143,17 @@ onMounted(() => {
           text="ログイン"
           button-type="none"
           :is-clicked="isClick"
-          class="w-full bg-sky-500 text-white hover:bg-sky-500/75"
+          class="w-full bg-emerald-600 text-white hover:bg-emerald-600/75"
           @click="handleLogin"
         />
       </div>
 
       <template #footer>
-        <div class="border-t pt-5">
+        <div class="border-t border-slate-300 pt-5">
           <BaseLink
             text="アカウントをお持ちでない方はこちら"
             path="signup"
-            class="text-center text-sky-600 underline"
+            class="text-center text-blue-700 hover:underline"
           />
         </div>
       </template>

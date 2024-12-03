@@ -2,12 +2,15 @@
 interface Props {
   selectedText: string
   menuArray: ValueText[]
+  isBgColor?: boolean
 }
 interface Emits {
   (event: 'selectMenu', selectedItem: ValueText): void
 }
 
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+  isBgColor: true
+})
 const emit = defineEmits<Emits>()
 
 const localArray = ref(props.menuArray)
@@ -39,7 +42,8 @@ watch(isDropdown, async (newVal) => {
     <div
       ref="menuRef"
       data-testId="clickIcon"
-      class="flex cursor-pointer justify-between rounded border border-gray-300 bg-gray-50 p-2.5 sm:text-sm"
+      class="flex cursor-pointer justify-between rounded border border-gray-300 p-2.5 sm:text-sm"
+      :class="isBgColor ? 'bg-gray-50' : 'bg-white'"
       @click="openDropdown"
     >
       <span class="text-sm">{{ selectedText || '選択してください' }}</span>

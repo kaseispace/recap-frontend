@@ -14,7 +14,11 @@ module.exports = {
         '95/100': '95%'
       },
       screens: {
-        xs: '480px'
+        xs: '480px',
+        xs2: '564px',
+        sm2: '729px',
+        md2: '863px',
+        lg2: '1142px'
       }
     }
   },

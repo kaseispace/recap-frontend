@@ -74,7 +74,6 @@ onMounted(async () => {
   </div>
   <div
     v-else
-    class="sm:px-[52px]"
   >
     <div v-if="sharedCourseReflections && sharedCourseReflections.length > 0">
       <!-- Chips表示 -->
@@ -97,12 +96,11 @@ onMounted(async () => {
       <!-- 付箋表示 -->
       <div
         v-if="selectedCourseDateReflections && selectedCourseDateReflections.length > 0"
-        class="grid grid-cols-1 place-items-center gap-y-3 pt-2 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+        class="grid grid-cols-1 place-items-center gap-x-5 gap-y-7 pt-2 xs2:grid-cols-2 xs2:place-items-stretch md2:grid-cols-3 lg2:grid-cols-4"
       >
         <div
           v-for="(reflection, i) in selectedCourseDateReflections"
           :key="i"
-          class="p-3"
         >
           <BaseCardPostIt
             :key="reflectionKey"

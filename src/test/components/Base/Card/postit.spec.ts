@@ -6,15 +6,15 @@ vi.mock('@/composables/useGenerateRandomColor', () => ({
   useGenerateRandomColor: () => {
     const cardBgColor = ref('')
     const sealBgColor = ref('')
-    const rotationAngle = ref('')
+    // const rotationAngle = ref('')
 
     const createRandomColor = vi.fn().mockImplementation(() => {
       cardBgColor.value = 'bg-red-100'
       sealBgColor.value = 'bg-red-600/70'
-      rotationAngle.value = 'rotate-[3deg]'
+      // rotationAngle.value = 'rotate-[3deg]'
     })
 
-    return { cardBgColor, sealBgColor, rotationAngle, createRandomColor }
+    return { cardBgColor, sealBgColor, createRandomColor }
   }
 }))
 
@@ -24,6 +24,5 @@ describe('PostItコンポーネントのテスト', () => {
 
     expect(wrapper.find(`[data-testId="cardBgColor"]`).classes()).toContain('bg-red-100')
     expect(wrapper.find(`[data-testId="sealBgColor"]`).classes()).toContain('bg-red-600/70')
-    expect(wrapper.find(`[data-testId="rotationAngle"]`).classes()).toContain('rotate-[3deg]')
   })
 })

@@ -84,7 +84,7 @@ describe('ShowAnnouncementCardコンポーネントのテスト', () => {
       await wrapper.find(`[data-testId="clickEdit"]`).trigger('click')
       await wait(100)
 
-      expect(announcement.announcements.value[0].content).toBe(
+      expect(announcement.announcements.value[4].content).toBe(
         '課題の提出期限を来週の月曜日に延長しました。間違わないように注意してください。'
       )
     })

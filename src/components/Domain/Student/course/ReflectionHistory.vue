@@ -123,7 +123,6 @@ onMounted(async () => {
   <div v-else>
     <div
       v-if="studentReflections && studentReflections.length > 0"
-      class="sm:px-[52px]"
     >
       <!-- Chips表示 -->
       <div class="my-4 flex flex-wrap">

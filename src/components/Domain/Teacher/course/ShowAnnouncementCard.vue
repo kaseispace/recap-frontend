@@ -45,10 +45,8 @@ const handleEditAnnouncement = handleSubmit(async (values) => {
       const announcementInfo = await updateAnnouncement(announcementId.value, values.content, idToken)
       if (announcements.value) {
         const index = announcements.value.findIndex(announcement => announcement.id === announcementId.value)
-        // 編集したデータを配列から削除
-        announcements.value.splice(index, 1)
-        // 編集したデータを配列の先頭に追加
-        announcements.value.unshift(announcementInfo)
+        // 編集したデータの更新
+        announcements.value[index] = announcementInfo
         showSnackbar(SUCCESS_ANNOUNCEMENT_UPDATE, true)
         closeEditDialog()
       }
@@ -152,7 +150,8 @@ onMounted(async () => {
               :data-testId="`announcement-${i}`"
               class="sm:col-span-6 sm:col-start-2"
               :content="announcement.content"
-              :date-time="announcement.updated_at"
+              :date-time="announcement.created_at"
+              :is-edited="announcement.created_at !== announcement.updated_at"
             >
               <BaseMore
                 :menu-array="TEACHER_COURSE_SETTINGS"

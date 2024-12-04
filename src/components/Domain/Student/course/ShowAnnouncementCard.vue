@@ -53,7 +53,8 @@ onMounted(async () => {
             :data-testId="`announcement-${i}`"
             class="sm:col-span-6 sm:col-start-2"
             :content="announcement.content"
-            :date-time="announcement.updated_at"
+            :date-time="announcement.created_at"
+            :is-edited="announcement.created_at !== announcement.updated_at"
           />
         </div>
       </template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { cardBgColor, sealBgColor, rotationAngle, createRandomColor } = useGenerateRandomColor()
+const { cardBgColor, sealBgColor, createRandomColor } = useGenerateRandomColor()
 
 onMounted(() => {
   createRandomColor()
@@ -11,14 +11,13 @@ onMounted(() => {
     <div
       data-testId="rotationAngle"
       class="cursor-pointer duration-300 ease-in-out hover:scale-110"
-      :class="rotationAngle"
     >
       <div
         data-testId="cardBgColor"
-        class="relative flex size-60 items-center justify-center text-gray-800"
+        class="relative flex h-60 min-w-60 max-w-96 items-center justify-center text-gray-800"
         :class="cardBgColor"
       >
-        <div class="line-clamp-[8] size-48">
+        <div class="mx-6 my-12 line-clamp-[8] w-full">
           <slot />
         </div>
 

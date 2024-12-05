@@ -26,6 +26,9 @@ const {
 const { showSnackbar } = useSnackBar()
 const { isActive, openToggle } = useToggle()
 const { isActive: isExpanded, openToggle: toggleExpanded } = useToggle()
+const { width } = useWindowSize()
+
+const isMobile = computed(() => width.value < 640)
 
 // 振り返り登録
 const handleCreateReflection = async () => {
@@ -302,7 +305,7 @@ onMounted(async () => {
           v-model.trim="userInput"
           data-testId="userInput"
           class="textarea-scrollbar mr-2 max-h-[50px] overflow-y-auto border-none bg-white"
-          textarea-placeholder="ここに入力（Shift + Enterで送信）"
+          :textarea-placeholder="isMobile ? 'ここに入力' : 'ここに入力（Shift + Enterで送信）'"
           default-height="44px"
           @keydown.shift.enter.prevent="handleSendUserMessage"
         />

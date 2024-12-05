@@ -41,7 +41,7 @@ onMounted(async () => {
     ref="area"
     :value="modelValue"
     :style="{ height: styles }"
-    class="w-full resize-none overflow-hidden bg-gray-100 py-3 text-xs outline-none focus:border-b-2 focus:border-blue-900 xs:text-sm"
+    class="w-full resize-none overflow-hidden bg-gray-100 py-3 text-sm outline-none focus:border-b-2 focus:border-blue-900"
     :placeholder="textareaPlaceholder"
     @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
   />

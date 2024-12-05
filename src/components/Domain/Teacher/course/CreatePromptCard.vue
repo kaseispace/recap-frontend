@@ -148,13 +148,9 @@ watch(isDialog, () => {
                 <BaseButton
                   :data-testId="`removeButton-${i}`"
                   button-type="icon"
-                  class="group relative ml-4 border border-slate-400 p-2 hover:bg-slate-100"
+                  class="ml-4 border border-slate-400 p-2 hover:bg-slate-100"
                   @click="removePromptContent(i)"
                 >
-                  <BaseTooltip
-                    class="bottom-12"
-                    message="削除"
-                  />
                   <Icon
                     name="mdi:delete-outline"
                     size="24px"
@@ -167,14 +163,10 @@ watch(isDialog, () => {
           <template #footer>
             <BaseButton
               data-testId="addButton"
-              class="group relative border border-slate-400 p-2 hover:bg-slate-100"
+              class="border border-slate-400 p-2 hover:bg-slate-100"
               button-type="icon"
               @click="addPromptContent"
             >
-              <BaseTooltip
-                class="bottom-12"
-                message="追加"
-              />
               <Icon
                 name="mdi:add-circle-outline"
                 size="24px"

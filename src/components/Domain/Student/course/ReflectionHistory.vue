@@ -194,17 +194,12 @@ onMounted(async () => {
                   <BaseButton
                     :data-testId="`button-${reflection.id}`"
                     button-type="square"
-                    class="group relative"
                     @click="handleEditAction(courseDate, reflection)"
                   >
                     <Icon
                       name="mdi:lead-pencil"
                       size="20px"
                       style="color: #64748b"
-                    />
-                    <BaseTooltip
-                      class="-top-7"
-                      message="編集"
                     />
                   </BaseButton>
                 </div>

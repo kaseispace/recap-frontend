@@ -177,17 +177,13 @@ onMounted(async () => {
     v-if="!isActive"
     data-testId="botButton"
     button-type="circle"
-    class="group bg-cyan-800 p-2"
+    class="bg-cyan-800 p-2"
     @click="chatToggle"
   >
     <Icon
       name="mdi:chat-processing-outline"
       size="30px"
       style="color: white"
-    />
-    <BaseTooltip
-      class="top-14"
-      message="振り返り"
     />
   </BaseButton>
 

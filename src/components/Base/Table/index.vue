@@ -131,18 +131,13 @@ watch(
               class="sticky left-0 top-0 z-10 flex items-center justify-start whitespace-pre bg-white p-3 px-4 text-left text-slate-700"
             >
               {{ column.name }}
-              <div class="group relative cursor-pointer">
-                <BaseTooltip
-                  class="-top-0.5 left-6"
-                  message="詳細を表示"
-                />
-                <Icon
-                  name="pajamas:details-block"
-                  size="14px"
-                  style="color: #1e3a8a"
-                  @click="selectUser(column.id, column.name)"
-                />
-              </div>
+              <Icon
+                class="cursor-pointer"
+                name="pajamas:details-block"
+                size="14px"
+                style="color: #1e3a8a"
+                @click="selectUser(column.id, column.name)"
+              />
             </td>
             <td
               v-for="row in rows"

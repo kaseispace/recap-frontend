@@ -47,6 +47,9 @@ const removePromptContent = (contentIndex: number, prompt: PromptContent) => {
 }
 
 const handlePromptMultipleActions = (actionId: number, prompt: Prompt) => {
+  prompt.prompt_questions.forEach((question) => {
+    delete question._destroy
+  })
   // セットアップ
   promptId.value = prompt.id
   title.value = prompt.title
@@ -381,13 +384,9 @@ onMounted(async () => {
                   <BaseButton
                     :data-testId="`removeButton-${i}`"
                     button-type="icon"
-                    class="group relative ml-4 border border-slate-400 p-2 hover:bg-slate-100"
+                    class="ml-4 border border-slate-400 p-2 hover:bg-slate-100"
                     @click="removePromptContent(i, extraContent)"
                   >
-                    <BaseTooltip
-                      class="bottom-12"
-                      message="削除"
-                    />
                     <Icon
                       name="mdi:delete-outline"
                       size="24px"
@@ -400,14 +399,10 @@ onMounted(async () => {
             <template #footer>
               <BaseButton
                 data-testId="addButton"
-                class="group relative border border-slate-400 p-2 hover:bg-slate-100"
+                class="border border-slate-400 p-2 hover:bg-slate-100"
                 button-type="icon"
                 @click="addPromptContent"
               >
-                <BaseTooltip
-                  class="bottom-12"
-                  message="追加"
-                />
                 <Icon
                   name="mdi:add-circle-outline"
                   size="24px"

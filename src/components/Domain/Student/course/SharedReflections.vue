@@ -96,7 +96,7 @@ onMounted(async () => {
       <!-- 付箋表示 -->
       <div
         v-if="selectedCourseDateReflections && selectedCourseDateReflections.length > 0"
-        class="grid grid-cols-1 place-items-center gap-x-5 gap-y-7 pt-2 xs2:grid-cols-2 xs2:place-items-stretch md2:grid-cols-3 lg2:grid-cols-4"
+        class="grid grid-cols-1 place-items-center gap-x-5 gap-y-7 pt-4 xs2:grid-cols-2 xs2:place-items-stretch md2:grid-cols-3 lg2:grid-cols-4"
       >
         <div
           v-for="(reflection, i) in selectedCourseDateReflections"

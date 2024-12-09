@@ -17,9 +17,14 @@ export default defineNuxtConfig({
           content: 'ReCapは、教員と学生のための振り返り学習プラットフォームです。学びを深め、新たな気づきを得るためのサポートを提供します。' },
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: 'https://www.recaplearning.com' },
-        { property: 'og:image', content: '/OGP.png' },
+        { property: 'og:image', content: 'https://res.cloudinary.com/dbveryjmc/image/upload/v1733711476/OGP_zwixhe.png' },
         { property: 'og:site_name', content: 'ReCap' },
-        { property: 'og:locale', content: 'ja_JP' }
+        { property: 'og:locale', content: 'ja_JP' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:site', content: '@your_twitter_handle' },
+        { name: 'twitter:title', content: '教員と学生のための振り返り学習プラットフォーム - ReCap' },
+        { name: 'twitter:description', content: 'ReCapは、教員と学生のための振り返り学習プラットフォームです。学びを深め、新たな気づきを得るためのサポートを提供します。' },
+        { name: 'twitter:image', content: 'https://res.cloudinary.com/dbveryjmc/image/upload/v1733711476/OGP_zwixhe.png' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }

@@ -17,7 +17,7 @@ export default defineNuxtConfig({
           content: 'ReCapは、教員と学生のための振り返り学習プラットフォームです。学びを深め、新たな気づきを得るためのサポートを提供します。' },
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: 'https://www.recaplearning.com' },
-        { property: 'og:image', content: 'https://res.cloudinary.com/dbveryjmc/image/upload/v1733711476/OGP_zwixhe.png' },
+        { property: 'og:image', content: 'https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3776221/562c85fc-22f7-8ee0-483d-4f97ae8d29dd.png' },
         { property: 'og:site_name', content: 'ReCap' },
         { property: 'og:locale', content: 'ja_JP' }
       ],

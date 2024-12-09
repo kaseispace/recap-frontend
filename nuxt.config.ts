@@ -9,10 +9,10 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      title: '学びを振り返る',
+      title: '教員と学生のための振り返り学習プラットフォーム',
       titleTemplate: '%s - ReCap',
       meta: [
-        { property: 'og:title', content: '学びを振り返る - ReCap' },
+        { property: 'og:title', content: '教員と学生のための振り返り学習プラットフォーム - ReCap' },
         { property: 'og:description',
           content: 'ReCapは、教員と学生のための振り返り学習プラットフォームです。学びを深め、新たな気づきを得るためのサポートを提供します。' },
         { property: 'og:type', content: 'website' },

@@ -11,7 +11,7 @@ module.exports = {
   theme: {
     extend: {
       maxWidth: {
-        '3/4': '75%',
+        '85/100': '85%',
         '95/100': '95%'
       },
       screens: {

@@ -56,3 +56,7 @@ export const ReflectionSchema = yup.object({
 export const PasswordResetSchema = yup.object({
   email: yup.string().trim().required('必須項目です').email('メールアドレスの形式で入力してください')
 })
+
+export const AccountDeletionSchema = yup.object({
+  password: yup.string().required('必須項目です')
+})

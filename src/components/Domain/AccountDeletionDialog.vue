@@ -25,8 +25,14 @@ const handleDeleteAccount = async () => {
 
     const idToken = await authUser.value.getIdToken()
 
+    // Firebase認証情報の削除
+    await authUser.value.delete()
+
     try {
       await deleteUser(authUser.value.uid, idToken)
+      userInfo.value = null
+      closeDialog()
+      await navigateTo('/')
     }
     catch (error) {
       switch ((error as FetchError).status) {
@@ -37,15 +43,7 @@ const handleDeleteAccount = async () => {
           showSnackbar(ERROR_USER_DELETION_FAILED, false)
           break
       }
-      return
     }
-
-    await authUser.value.delete()
-
-    // Stateの削除
-    userInfo.value = null
-    closeDialog()
-    await navigateTo('/')
   }
   catch {
     showSnackbar(ERROR_FIREBASE_USER_DELETION_FAILED, false)

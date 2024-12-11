@@ -9,6 +9,8 @@ export const ERROR_FIREBASE_AUTHENTICATION_FAILED = 'ユーザー認証に失敗
 export const ERROR_FIREBASE_PASSWORD_RESET_EMAIL_FAILED = 'パスワード再設定メールの送信に失敗しました'
 export const ERROR_FIREBASE_USER_DELETION_FAILED = 'ユーザーの削除に失敗しました。再度お試しください'
 export const ERROR_FIREBASE_USER_NOT_FOUND = '該当するユーザーが見つかりませんでした'
+export const ERROR_FIREBASE_EMAIL_NOT_FOUND = 'ユーザーのメールアドレスが見つかりません。アプリを再起動してみてください'
+export const ERROR_FIREBASE_RE_AUTHENTICATION_FAILED = '再認証に失敗しました。パスワードが間違っている可能性がありますので、確認してもう一度お試しください'
 
 // userApi
 export const ERROR_USER_REGISTRATION_FAILED = '新規アカウントの作成に失敗しました、再度試してみてください'
@@ -20,7 +22,7 @@ export const ERROR_SCHOOL_NOT_FOUND = '指定された学校が見つかりま�
 export const ERROR_LOGIN_FAILED = 'ログインに失敗しました'
 
 // courseApi
-export const SUCCESS_COURSE_CREATION = '新しい授業が登録されました。'
+export const SUCCESS_COURSE_CREATION = '新しい授業が登録されました'
 export const SUCCESS_COURSE_UPDATE = '授業の情報が更新されました'
 export const SUCCESS_COURSE_DELETION = '授業を削除しました'
 export const ERROR_COURSE_CREATION_FAILED = '授業の作成に失敗しました、再度試してみてください'
@@ -38,8 +40,8 @@ export const SUCCESS_COURSE_EXIT = '授業から退出しました'
 export const ERROR_COURSE_JOIN_FAILURE = '授業の参加に失敗しました、再度試してみてください'
 export const ERROR_COURSE_JOIN_NOT_FOUND = '授業が見つかりませんでした、再度確認して入力してください'
 export const ERROR_COURSE_ALREADY_JOINED = 'あなたは既にこの授業に参加しています'
-export const ERROR_COURSE_EXIT_FAILURE = 'コースから退出できませんでした。'
-export const ERROR_COURSE_NOT_A_PARTICIPANT = 'あなたはこのコースの参加者ではないため、退出できません。'
+export const ERROR_COURSE_EXIT_FAILURE = 'コースから退出できませんでした'
+export const ERROR_COURSE_NOT_A_PARTICIPANT = 'あなたはこのコースの参加者ではないため、退出できません'
 export const ERROR_COURSE_EXIT_NOT_FOUND = '該当するコースが存在しませんでした'
 export const MESSAGE_COURSE_ENROLLMENT = '参加する授業のクラスコードを入力してください'
 export const MESSAGE_COURSE_EXIT = '退出すると以下のことが起こります'

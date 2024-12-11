@@ -9,7 +9,7 @@ const emit = defineEmits<Emits>()
 const dialogRef = ref(null)
 const isClick = ref(false)
 
-const { authUser } = useAuth()
+const { $firebaseAuth } = useNuxtApp()
 const { userInfo, deleteUser } = useUserApi()
 const { showSnackbar } = useSnackBar()
 const { dialog, openDialog, closeDialog } = useDialog()
@@ -18,18 +18,18 @@ onClickOutside(dialogRef, closeDialog)
 const handleDeleteAccount = async () => {
   isClick.value = true
   try {
-    if (!authUser.value) {
+    if (!$firebaseAuth.currentUser) {
       showSnackbar(ERROR_FIREBASE_AUTHENTICATION_FAILED, false)
       return
     }
 
-    const idToken = await authUser.value.getIdToken()
+    const idToken = await $firebaseAuth.currentUser.getIdToken()
 
     // Firebase認証情報の削除
-    await authUser.value.delete()
+    await $firebaseAuth.currentUser.delete()
 
     try {
-      await deleteUser(authUser.value.uid, idToken)
+      await deleteUser($firebaseAuth.currentUser.uid, idToken)
       userInfo.value = null
       closeDialog()
       await navigateTo('/')

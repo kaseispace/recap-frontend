@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useForm, useField } from 'vee-validate'
+import { EmailAuthProvider, reauthenticateWithCredential } from 'firebase/auth'
 import type { FetchError } from 'ofetch'
 
 interface Emits {
@@ -9,32 +11,55 @@ const emit = defineEmits<Emits>()
 const dialogRef = ref(null)
 const isClick = ref(false)
 
-const { $firebaseAuth } = useNuxtApp()
+const { errors, handleSubmit } = useForm({
+  validationSchema: AccountDeletionSchema,
+  initialValues: {
+    password: ''
+  }
+})
+const { value: password } = useField<string>('password')
+
+const { authUser } = useAuth()
 const { userInfo, deleteUser } = useUserApi()
 const { showSnackbar } = useSnackBar()
 const { dialog, openDialog, closeDialog } = useDialog()
 onClickOutside(dialogRef, closeDialog)
 
-const handleDeleteAccount = async () => {
+const handleDeleteAccount = handleSubmit(async (values, { resetForm }) => {
   isClick.value = true
   try {
-    if (!$firebaseAuth.currentUser) {
+    if (!authUser.value) {
       showSnackbar(ERROR_FIREBASE_AUTHENTICATION_FAILED, false)
       return
     }
 
-    const idToken = await $firebaseAuth.currentUser.getIdToken()
-    console.log('ユーザー情報', $firebaseAuth.currentUser)
-
-    // Firebase認証情報の削除
-    await $firebaseAuth.currentUser.delete()
-      .catch((error) => {
-        console.error('ユーザーの削除に失敗しました:', error)
-        throw error
-      })
+    if (!authUser.value.email) {
+      showSnackbar(ERROR_FIREBASE_EMAIL_NOT_FOUND, false)
+      return
+    }
 
     try {
-      await deleteUser($firebaseAuth.currentUser.uid, idToken)
+      const credential = EmailAuthProvider.credential(
+        authUser.value.email,
+        values.password
+      )
+
+      await reauthenticateWithCredential(authUser.value, credential)
+    }
+    catch (error) {
+      console.log('削除エラー', error)
+      showSnackbar(ERROR_FIREBASE_RE_AUTHENTICATION_FAILED, false)
+      return
+    }
+
+    const idToken = await authUser.value.getIdToken()
+
+    // Firebase認証情報の削除
+    await authUser.value.delete()
+
+    try {
+      await deleteUser(authUser.value.uid, idToken)
+      resetForm()
       userInfo.value = null
       closeDialog()
       await navigateTo('/')
@@ -56,7 +81,7 @@ const handleDeleteAccount = async () => {
   finally {
     isClick.value = false
   }
-}
+})
 
 watch(dialog, () => {
   if (dialog.value === false) {
@@ -90,6 +115,33 @@ onMounted(() => {
           </p>
           <p>この操作は元に戻せません</p>
         </div>
+
+        <form>
+          <!-- ユーザー名フィールド（隠しフィールドとして追加） -->
+          <input
+            id="username"
+            type="text"
+            name="username"
+            class="hidden"
+            autocomplete="username"
+          >
+
+          <BaseFormLabel
+            text="再認証のためにパスワードを入力してください"
+            input-for="password"
+          />
+          <BaseFormTextInput
+            v-model="password"
+            input-id="password"
+            input-type="password"
+            autocomplete="current-password"
+            :is-bg-color="false"
+          />
+          <BaseErrorValidationMessage
+            v-if="errors.password"
+            :text="errors.password"
+          />
+        </form>
 
         <template #footer>
           <BaseButton

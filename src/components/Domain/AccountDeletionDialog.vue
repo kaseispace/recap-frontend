@@ -24,9 +24,14 @@ const handleDeleteAccount = async () => {
     }
 
     const idToken = await $firebaseAuth.currentUser.getIdToken()
+    console.log('ユーザー情報', $firebaseAuth.currentUser)
 
     // Firebase認証情報の削除
     await $firebaseAuth.currentUser.delete()
+      .catch((error) => {
+        console.error('ユーザーの削除に失敗しました:', error)
+        throw error
+      })
 
     try {
       await deleteUser($firebaseAuth.currentUser.uid, idToken)

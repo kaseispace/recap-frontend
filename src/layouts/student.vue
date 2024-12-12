@@ -110,6 +110,8 @@ onUnmounted(() => {
         />
         <slot />
       </div>
+
+      <BaseLayoutFooter />
     </main>
   </div>
 </template>

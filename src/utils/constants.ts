@@ -328,3 +328,13 @@ export const NOT_FOUND_META = {
     }
   ]
 }
+
+export const POLICY_LINKS = [
+  { value: 1, name: '利用規約', path: 'terms' },
+  { value: 2, name: 'プライバシーポリシー', path: 'privacy' }
+]
+
+export const SNS_LINKS = [
+  { value: 1, path: 'https://github.com/', iconName: 'fe:github', iconSize: '18px' },
+  { value: 2, path: 'https://github.com/', iconName: 'prime:twitter', iconSize: '16px' }
+]

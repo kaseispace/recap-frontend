@@ -1,6 +1,6 @@
 <!-- 真ん中に配置したい場合はh-screenを追加 -->
 <template>
-  <div class="flex flex-col">
+  <div class="flex min-h-screen flex-col">
     <BaseLayoutAppBar
       school-name="ReCap"
       title-font="font-bold"
@@ -27,8 +27,9 @@
         />
       </div>
     </BaseLayoutAppBar>
-    <main class="flex flex-1 items-center justify-center overflow-y-auto py-10">
+    <main class="flex flex-1 flex-col py-10">
       <slot />
     </main>
+    <BaseLayoutFooter />
   </div>
 </template>

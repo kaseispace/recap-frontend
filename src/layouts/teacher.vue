@@ -79,7 +79,7 @@ onUnmounted(() => {
       </BaseLayoutIconMenuList>
     </BaseLayoutSideBar>
     <!-- サイドバー -->
-    <main class="flex w-full flex-1 flex-col">
+    <main class="flex min-h-screen w-full flex-1 flex-col">
       <!-- アプリケーションバー -->
       <BaseLayoutAppBar :school-name="userInfo.school.name">
         <template #icon>

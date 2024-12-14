@@ -95,7 +95,7 @@ onMounted(async () => {
 
     <main class="flex w-full flex-1 flex-col">
       <!-- アプリケーションバー -->
-      <BaseLayoutAppBar :school-name="userInfo ? userInfo.school.name : 'LMS'">
+      <BaseLayoutAppBar :school-name="userInfo ? userInfo.school.name : ''">
         <!-- エラーの際もユーザーアイコンを表示させるかどうか -->
 
         <template
@@ -116,12 +116,20 @@ onMounted(async () => {
           v-else
           #icon
         >
-          <NuxtImg
-            provider="cloudinary"
-            src="logo_bc5hbs.png"
-            width="32px"
-            class="mr-1"
-          />
+          <NuxtLink
+            class="flex items-center"
+            to="/"
+          >
+            <NuxtImg
+              provider="cloudinary"
+              src="logo_bc5hbs.png"
+              width="32px"
+              class="mr-1"
+            />
+            <span class="font-bold">
+              ReCap
+            </span>
+          </NuxtLink>
         </template>
 
         <BaseMoreAccount

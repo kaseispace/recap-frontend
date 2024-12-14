@@ -27,6 +27,18 @@
       transform: translateX(0);
     }
   }
+
+  .section-header { 
+    @apply w-full border-b-[1.5px] border-emerald-600 pb-2 font-bold; 
+  }
+
+  .numbered-list { 
+    @apply list-decimal pl-[18px] text-[15px] text-gray-900; 
+  }
+
+  .small-gray-text {
+    @apply   text-[15px] text-gray-900; 
+  }
 }
 
 .slide-in-right {

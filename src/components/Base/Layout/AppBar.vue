@@ -1,6 +1,6 @@
 <script setup lang="ts">
 interface Props {
-  schoolName: string
+  schoolName?: string
   titleFont?: string
 }
 

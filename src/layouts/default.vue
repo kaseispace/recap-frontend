@@ -1,19 +1,31 @@
+<script setup lang="ts">
+const { userInfo } = useUserApi()
+</script>
+
 <!-- 真ん中に配置したい場合はh-screenを追加 -->
 <template>
   <div class="flex min-h-screen flex-col">
-    <BaseLayoutAppBar
-      school-name="ReCap"
-      title-font="font-bold"
-    >
+    <BaseLayoutAppBar>
       <template #icon>
-        <NuxtImg
-          provider="cloudinary"
-          src="logo_bc5hbs.png"
-          width="32px"
-          class="mr-1"
-        />
+        <NuxtLink
+          class="flex items-center"
+          to="/"
+        >
+          <NuxtImg
+            provider="cloudinary"
+            src="logo_bc5hbs.png"
+            width="32px"
+            class="mr-1"
+          />
+          <span class="font-bold">
+            ReCap
+          </span>
+        </NuxtLink>
       </template>
-      <div class="flex items-center justify-center">
+      <div
+        v-if="!userInfo"
+        class="flex items-center justify-center"
+      >
         <BaseLink
           text="ログイン"
           path="index"

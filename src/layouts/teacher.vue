@@ -25,6 +25,9 @@ onMounted(async () => {
     teacherCourses.value = await getCourse(idToken)
     isTeacherCourseLoading.value = false
   }
+  else {
+    isTeacherCourseLoading.value = false
+  }
 })
 
 onUnmounted(() => {

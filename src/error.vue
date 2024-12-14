@@ -93,7 +93,7 @@ onMounted(async () => {
       </BaseLayoutIconMenuList>
     </BaseLayoutSideBar>
 
-    <main class="flex w-full flex-1 flex-col">
+    <main class="flex min-h-screen w-full flex-1 flex-col">
       <!-- アプリケーションバー -->
       <BaseLayoutAppBar :school-name="userInfo ? userInfo.school.name : ''">
         <!-- エラーの際もユーザーアイコンを表示させるかどうか -->
@@ -200,6 +200,8 @@ onMounted(async () => {
           />
         </div>
       </div>
+
+      <BaseLayoutFooter />
     </main>
   </div>
 </template>

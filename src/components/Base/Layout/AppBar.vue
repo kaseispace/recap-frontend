@@ -5,6 +5,10 @@ interface Props {
 }
 
 defineProps<Props>()
+
+const { width } = useWindowSize()
+
+const isMobile = computed(() => width.value < 640)
 </script>
 
 <template>
@@ -12,6 +16,7 @@ defineProps<Props>()
     <div class="flex items-center">
       <slot name="icon" />
       <span
+        v-show="!isMobile"
         :class="titleFont ? titleFont : 'text-lg font-medium'"
         data-testId="schoolName"
       >{{ schoolName }}</span>

@@ -25,7 +25,8 @@ describe('MobileSideBarコンポーネントのテスト', () => {
         courseName: STUDENT_COURSE_DETAIL,
         listActiveBg: 'bg-cyan-600/10 text-cyan-900',
         listInactiveBg: 'hover:bg-slate-100 text-gray-500 hover:text-black',
-        pathName: 'student'
+        pathName: 'student',
+        schoolName: 'フルスタック大学'
       }
     })
 
@@ -40,7 +41,8 @@ describe('MobileSideBarコンポーネントのテスト', () => {
         courseName: STUDENT_COURSE_DETAIL,
         listActiveBg: 'bg-cyan-600/10 text-cyan-900',
         listInactiveBg: 'hover:bg-slate-100 text-gray-500 hover:text-black',
-        pathName: 'student'
+        pathName: 'student',
+        schoolName: 'フルスタック大学'
       }
     })
 
@@ -88,7 +90,8 @@ describe('MobileSideBarコンポーネントのテスト', () => {
         courseName: STUDENT_COURSE_DETAIL,
         listActiveBg: 'bg-cyan-600/10 text-cyan-900',
         listInactiveBg: 'hover:bg-slate-100 text-gray-500 hover:text-black',
-        pathName: 'student'
+        pathName: 'student',
+        schoolName: 'フルスタック大学'
       }
     })
 

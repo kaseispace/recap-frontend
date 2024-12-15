@@ -91,6 +91,7 @@ onUnmounted(() => {
             list-active-bg="bg-cyan-600/10 text-cyan-900"
             list-inactive-bg="hover:bg-slate-100 text-gray-500 hover:text-black"
             path-name="student"
+            :school-name="userInfo.school.name"
           />
         </template>
 

@@ -109,6 +109,7 @@ onMounted(async () => {
             :list-active-bg="teacherCourses ? 'bg-blue-600/10 text-blue-900' : 'bg-cyan-600/10 text-cyan-900'"
             list-inactive-bg="hover:bg-slate-100 text-gray-500 hover:text-black"
             :path-name="teacherCourses ? 'teacher' : 'student'"
+            :school-name="userInfo.school.name"
           />
         </template>
 

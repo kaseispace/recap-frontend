@@ -6,6 +6,7 @@ interface Props {
   listActiveBg: string
   listInactiveBg: string
   pathName: string
+  schoolName: string
 }
 defineProps<Props>()
 
@@ -50,7 +51,7 @@ const isMobile = computed(() => width.value < 640)
       ref="dialogRef"
       class="slide-in-left flex w-full max-w-[320px] flex-col bg-white px-4 py-3"
     >
-      <div class="flex items-center justify-between border-b pb-3">
+      <div class="flex items-center justify-between pb-3">
         <div class="flex items-center">
           <NuxtImg
             provider="cloudinary"
@@ -73,8 +74,14 @@ const isMobile = computed(() => width.value < 640)
         </BaseButton>
       </div>
 
+      <div class="flex items-center border-b pb-3">
+        <span class="text-sm">
+          {{ schoolName }}
+        </span>
+      </div>
+
       <!-- ホームアイコン -->
-      <div class="flex items-center justify-between">
+      <div class="mt-2 flex items-center justify-between">
         <NuxtLink
           data-testId="home"
           class="flex w-full items-center space-x-2 rounded-md px-2 py-1.5"

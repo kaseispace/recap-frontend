@@ -1,3 +1,7 @@
+<script setup lang="ts">
+useHead(TERMS_OF_SERVICE_META)
+</script>
+
 <template>
   <div class="flex justify-center">
     <div class="flex max-w-[880px] flex-col items-center space-y-10 px-10">

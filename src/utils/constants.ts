@@ -275,6 +275,26 @@ export const FORGOT_PASSWORD_META = {
   ]
 }
 
+export const TERMS_OF_SERVICE_META = {
+  title: '利用規約',
+  meta: [
+    {
+      name: 'description',
+      content: '本サービスの利用条件を定めた利用規約ページです。ユーザーは本規約に従って本サービスをご利用いただきます。'
+    }
+  ]
+}
+
+export const PRIVACY_POLICY_META = {
+  title: 'プライバシーポリシー',
+  meta: [
+    {
+      name: 'description',
+      content: '本サービスのプライバシーポリシーページです。ユーザーの個人情報の取り扱いについて説明しています。'
+    }
+  ]
+}
+
 export const TEACHER_COURSE_LIST_META = {
   title: '担当授業一覧',
   meta: [

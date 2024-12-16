@@ -418,4 +418,16 @@ describe('バリデーションテスト', () => {
       }).toThrow('メールアドレスの形式で入力してください')
     })
   })
+
+  describe('AccountDeletionSchemaのテスト', () => {
+    it('passwordが空の場合、エラーが発生', () => {
+      const testValue = {
+        password: ''
+      }
+
+      expect(() => {
+        AccountDeletionSchema.validateSync(testValue)
+      }).toThrow('必須項目です')
+    })
+  })
 })

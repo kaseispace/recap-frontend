@@ -87,28 +87,3 @@ useHead(PRIVACY_POLICY_META)
     </div>
   </div>
 </template>
-
-<style scoped>
-.section-header {
-  width: 100%;
-  border-bottom-width: 1.5px;
-  --tw-border-opacity: 1;
-  border-color: rgb(5 150 105 / var(--tw-border-opacity));
-  padding-bottom: 0.5rem;
-  font-weight: bold;
-}
-
-.numbered-list {
-  font-size: 15px;
-  --tw-text-opacity: 1;
-  color: rgb(17 24 39 / var(--tw-text-opacity));
-  list-style-type: decimal;
-  padding-left: 18px;
-}
-
-.small-gray-text {
-  font-size: 15px;
-  --tw-text-opacity: 1;
-  color: rgb(17 24 39 / var(--tw-text-opacity));
-}
-</style>

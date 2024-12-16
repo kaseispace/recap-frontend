@@ -57,6 +57,7 @@ const handleResetPassword = handleSubmit(async (values, { resetForm }) => {
         />
         <BaseFormTextInput
           v-model="email"
+          data-testId="textInput"
           input-id="email"
           input-placeholder="mail@sample.com"
           autocomplete="email"
@@ -64,6 +65,7 @@ const handleResetPassword = handleSubmit(async (values, { resetForm }) => {
         />
         <BaseErrorValidationMessage
           v-if="errors.email"
+          data-testId="errorEmail"
           :text="errors.email"
         />
       </div>
@@ -73,6 +75,7 @@ const handleResetPassword = handleSubmit(async (values, { resetForm }) => {
         class="pt-5"
       >
         <BaseButton
+          data-testId="clickSend"
           text="送信"
           button-type="none"
           :is-clicked="isClick"
@@ -85,7 +88,9 @@ const handleResetPassword = handleSubmit(async (values, { resetForm }) => {
         v-else
         class="w-full rounded-md bg-slate-100 p-3 text-sm"
       >
-        <p>再設定用URLを記載したメールを送信しました</p>
+        <p data-testId="emailSent">
+          再設定用URLを記載したメールを送信しました
+        </p>
       </div>
     </BaseForm>
   </div>

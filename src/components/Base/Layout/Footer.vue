@@ -10,6 +10,7 @@
         :key="link.value"
       >
         <BaseLink
+          :data-testId="link.value"
           :text="link.name"
           :path="link.path"
           class="hover:underline"
@@ -21,6 +22,7 @@
         :key="link.value"
       >
         <NuxtLink
+          :data-test-linkId="link.value"
           class="flex items-center"
           :to="link.path"
           target="_blank"

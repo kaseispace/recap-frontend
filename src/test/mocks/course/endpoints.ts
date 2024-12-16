@@ -9,6 +9,14 @@ const generatedUuid = '123e4567-e89b-12d3-a456-426614174000'
 const generatedCourseCode = 'aBc103'
 
 export const registerCourseEndpoints = () => {
+  // 担当授業
+  registerEndpoint(`${config.public.backendUrl}/courses`, {
+    method: 'GET',
+    handler: () => {
+      return MOCK_TEACHER_COURSE
+    }
+  })
+
   // 授業の作成
   registerEndpoint(`${config.public.backendUrl}/courses`, {
     method: 'POST',

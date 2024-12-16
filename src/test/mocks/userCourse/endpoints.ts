@@ -1,12 +1,20 @@
 import { registerEndpoint } from '@nuxt/test-utils/runtime'
 import { readBody } from 'h3'
-import { MOCK_COURSES, MOCK_COURSE_UUID, MOCK_JOINED_COURSE } from '@/test/mocks/course/index'
+import { MOCK_COURSES, MOCK_COURSE_UUID, MOCK_STUDENT_COURSE, MOCK_JOINED_COURSE } from '@/test/mocks/course/index'
 import type { userCourseRequestBody } from '@/test/mocks/userCourse'
 
 const config = useRuntimeConfig()
 const uuid = 'f47ac10b-58cc-4372-a567-0e02b2c3d479'
 
 export const registerUserCourseEndpoints = () => {
+  // 参加済み授業
+  registerEndpoint(`${config.public.backendUrl}/user_courses`, {
+    method: 'GET',
+    handler: () => {
+      return MOCK_STUDENT_COURSE
+    }
+  })
+
   // 授業への参加
   registerEndpoint(`${config.public.backendUrl}/user_courses`, {
     method: 'POST',

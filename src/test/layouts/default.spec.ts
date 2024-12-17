@@ -1,7 +1,7 @@
 // @vitest-environment nuxt
 import { mockComponent, mountSuspended } from '@nuxt/test-utils/runtime'
 import defaultLayout from '@/layouts/default.vue'
-import { MOCK_USER_SCHOOL } from '@/test/mocks/user/index'
+import { MOCK_STUDENT_USER_SCHOOL } from '@/test/mocks/user/index'
 
 mockComponent('NuxtLink', {
   template: '<a data-testId="nuxt-link">stub nuxt-link</a>'
@@ -39,7 +39,7 @@ describe('defaultLayoutのテスト', () => {
 
   describe('ログイン時', () => {
     it('ログインと新規登録リンクが表示されない', async () => {
-      user.userInfo.value = MOCK_USER_SCHOOL
+      user.userInfo.value = MOCK_STUDENT_USER_SCHOOL
       const wrapper = await mountSuspended(defaultLayout)
 
       expect(wrapper.find(`[data-testId="link"]`).exists()).toBe(false)

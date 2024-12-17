@@ -1,8 +1,8 @@
 // @vitest-environment nuxt
 import { mockComponent, mountSuspended } from '@nuxt/test-utils/runtime'
 import JoinCourseCard from '@/components/Domain/Student/index/JoinCourseCard.vue'
-import { MOCK_AUTH_USER, wait } from '@/test/mocks/index'
-import { MOCK_USER_SCHOOL } from '@/test/mocks/user/index'
+import { MOCK_STUDENT_AUTH_USER, wait } from '@/test/mocks/index'
+import { MOCK_STUDENT_USER_SCHOOL } from '@/test/mocks/user/index'
 import { registerUserCourseEndpoints } from '@/test/mocks/userCourse/endpoints'
 
 mockComponent('BaseButton', {
@@ -54,8 +54,8 @@ describe('JoinCourseCardコンポーネントのテスト', () => {
     })
 
     it('クラスコード入力フィールドに有効な値が入力されている場合、エラーメッセージが表示されず、授業に参加できる', async () => {
-      auth.authUser.value = MOCK_AUTH_USER
-      user.userInfo.value = MOCK_USER_SCHOOL
+      auth.authUser.value = MOCK_STUDENT_AUTH_USER
+      user.userInfo.value = MOCK_STUDENT_USER_SCHOOL
       userCourse.studentCourses.value = [] // まだ参加している授業がない
       const wrapper = await mountSuspended(JoinCourseCard)
 

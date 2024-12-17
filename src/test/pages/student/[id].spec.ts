@@ -1,7 +1,7 @@
 // @vitest-environment nuxt
 import { mockNuxtImport, mockComponent, mountSuspended } from '@nuxt/test-utils/runtime'
 import idPage from '@/pages/student/course/[id].vue'
-import { MOCK_AUTH_USER, wait } from '@/test/mocks/index'
+import { MOCK_STUDENT_AUTH_USER, wait } from '@/test/mocks/index'
 import { registerUserCourseAdditionalEndpoints } from '@/test/mocks/userCourse/endpoints'
 import { registerCourseDateEndpoints } from '@/test/mocks/courseDate/endpoints'
 import { MOCK_STUDENT_COURSES_WITH_ERROR, MOCK_STUDENT_COURSES } from '@/test/mocks/course/index'
@@ -57,7 +57,7 @@ describe('授業ページのテスト', () => {
 
   describe('studentCoursesを既に取得済みの場合', () => {
     it('ルートパラメータと一致する授業が存在しない場合、エラーコンポーネントを表示する', async () => {
-      auth.authUser.value = MOCK_AUTH_USER
+      auth.authUser.value = MOCK_STUDENT_AUTH_USER
       userCourse.studentCourses.value = MOCK_STUDENT_COURSES_WITH_ERROR
       const wrapper = await mountSuspended(idPage)
 
@@ -67,7 +67,7 @@ describe('授業ページのテスト', () => {
     })
 
     it('ルートパラメータと一致する授業が存在する場合、お知らせコンポーネントが表示される', async () => {
-      auth.authUser.value = MOCK_AUTH_USER
+      auth.authUser.value = MOCK_STUDENT_AUTH_USER
       userCourse.studentCourses.value = MOCK_STUDENT_COURSES
       const wrapper = await mountSuspended(idPage)
 
@@ -80,7 +80,7 @@ describe('授業ページのテスト', () => {
 
   describe('studentCoursesがnullの場合', () => {
     it('ルートパラメータと一致する授業が存在する場合、お知らせコンポーネントが表示される', async () => {
-      auth.authUser.value = MOCK_AUTH_USER
+      auth.authUser.value = MOCK_STUDENT_AUTH_USER
       const wrapper = await mountSuspended(idPage)
 
       await wait(100)
@@ -90,7 +90,7 @@ describe('授業ページのテスト', () => {
     })
 
     it('振り返り履歴タブをクリックすると、振り返り履歴コンポーネントに切り替わる', async () => {
-      auth.authUser.value = MOCK_AUTH_USER
+      auth.authUser.value = MOCK_STUDENT_AUTH_USER
       const wrapper = await mountSuspended(idPage)
 
       await wait(100)

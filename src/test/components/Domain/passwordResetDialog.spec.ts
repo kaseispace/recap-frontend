@@ -1,7 +1,7 @@
 // @vitest-environment nuxt
 import { mockComponent, mountSuspended } from '@nuxt/test-utils/runtime'
 import PasswordResetDialog from '@/components/Domain/PasswordResetDialog.vue'
-import { MOCK_AUTH_USER, wait } from '@/test/mocks/index'
+import { MOCK_STUDENT_AUTH_USER, wait } from '@/test/mocks/index'
 
 mockComponent('BaseButton', {
   template: '<div>stub button</div>'
@@ -23,7 +23,7 @@ describe('PasswordResetDialogコンポーネントのテスト', () => {
   })
 
   it('パスワードリセット関数が呼び出され、正常に処理されるとダイアログが閉じる', async () => {
-    auth.authUser.value = MOCK_AUTH_USER
+    auth.authUser.value = MOCK_STUDENT_AUTH_USER
     const wrapper = await mountSuspended(PasswordResetDialog, { props: { bgColor: 'bg-blue-600' } })
 
     await wrapper.find(`[data-testId="clickSend"]`).trigger('click')

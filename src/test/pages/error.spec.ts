@@ -2,8 +2,8 @@
 import { mount } from '@vue/test-utils'
 import { mockComponent } from '@nuxt/test-utils/runtime'
 import errorPage from '@/error.vue'
-import { MOCK_AUTH_USER, wait } from '@/test/mocks/index'
-import { MOCK_USER_SCHOOL } from '@/test/mocks/user/index'
+import { MOCK_STUDENT_AUTH_USER, wait } from '@/test/mocks/index'
+import { MOCK_STUDENT_USER_SCHOOL } from '@/test/mocks/user/index'
 import { registerUserCourseEndpoints } from '@/test/mocks/userCourse/endpoints'
 
 mockComponent('BaseLayoutSideBar', {
@@ -81,8 +81,8 @@ describe('errorPageページのテスト', () => {
 
   describe('ログイン時', () => {
     it('404エラーページが正しく表示される', async () => {
-      auth.authUser.value = MOCK_AUTH_USER
-      user.userInfo.value = MOCK_USER_SCHOOL
+      auth.authUser.value = MOCK_STUDENT_AUTH_USER
+      user.userInfo.value = MOCK_STUDENT_USER_SCHOOL
       const wrapper = mount(errorPage, {
         props: { error: { statusCode: 404 } }
       })

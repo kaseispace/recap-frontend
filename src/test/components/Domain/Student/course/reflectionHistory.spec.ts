@@ -1,7 +1,7 @@
 // @vitest-environment nuxt
 import { mockComponent, mountSuspended } from '@nuxt/test-utils/runtime'
 import ReflectionHistory from '@/components/Domain/Student/course/ReflectionHistory.vue'
-import { MOCK_AUTH_USER, MOCK_EMPTY_UUID, MOCK_UUID, wait } from '@/test/mocks/index'
+import { MOCK_STUDENT_AUTH_USER, MOCK_EMPTY_UUID, MOCK_UUID, wait } from '@/test/mocks/index'
 import { registerReflectionEndpoints } from '@/test/mocks/reflection/endpoints'
 import { registerFeedbackEndpoints } from '@/test/mocks/feedback/endpoints'
 
@@ -40,7 +40,7 @@ describe('ReflectionHistoryコンポーネントのテスト', () => {
 
   describe('振り返りが存在しない場合', () => {
     it('振り返りがないことを示すコンポーネントが表示される', async () => {
-      auth.authUser.value = MOCK_AUTH_USER
+      auth.authUser.value = MOCK_STUDENT_AUTH_USER
       course.courseUuid.value = MOCK_EMPTY_UUID
       const wrapper = await mountSuspended(ReflectionHistory)
 
@@ -52,7 +52,7 @@ describe('ReflectionHistoryコンポーネントのテスト', () => {
 
   describe('振り返りが存在する場合', () => {
     it('振り返り済みの授業回がChipsに表示される', async () => {
-      auth.authUser.value = MOCK_AUTH_USER
+      auth.authUser.value = MOCK_STUDENT_AUTH_USER
       course.courseUuid.value = MOCK_UUID
       const wrapper = await mountSuspended(ReflectionHistory)
 
@@ -67,7 +67,7 @@ describe('ReflectionHistoryコンポーネントのテスト', () => {
     })
 
     it('初期表示は最初の振り返り履歴が表示される', async () => {
-      auth.authUser.value = MOCK_AUTH_USER
+      auth.authUser.value = MOCK_STUDENT_AUTH_USER
       course.courseUuid.value = MOCK_UUID
       const wrapper = await mountSuspended(ReflectionHistory)
 
@@ -93,7 +93,7 @@ describe('ReflectionHistoryコンポーネントのテスト', () => {
     })
 
     it('選択した授業回の振り返り履歴が表示される', async () => {
-      auth.authUser.value = MOCK_AUTH_USER
+      auth.authUser.value = MOCK_STUDENT_AUTH_USER
       course.courseUuid.value = MOCK_UUID
       const wrapper = await mountSuspended(ReflectionHistory)
 
@@ -120,7 +120,7 @@ describe('ReflectionHistoryコンポーネントのテスト', () => {
     })
 
     it('編集用ダイアログが表示され、振り返りの編集ができる', async () => {
-      auth.authUser.value = MOCK_AUTH_USER
+      auth.authUser.value = MOCK_STUDENT_AUTH_USER
       course.courseUuid.value = MOCK_UUID
       const wrapper = await mountSuspended(ReflectionHistory)
 

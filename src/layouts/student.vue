@@ -5,6 +5,8 @@ const isDeleteDialogOpen = ref(false)
 const { authUser } = useAuth()
 const { userInfo } = useUserApi()
 const { studentCourses, isStudentCourseLoading, getJoinedCourses } = useUserCourseApi()
+const { showSnackbar } = useSnackBar()
+
 const closeResetDialog = () => (isResetDialogOpen.value = false)
 const closeDeleteDialog = () => (isDeleteDialogOpen.value = false)
 
@@ -20,13 +22,18 @@ const handleEditOrDeleteAction = (actionId: number) => {
 }
 
 onMounted(async () => {
-  if (authUser.value && !studentCourses.value) {
-    const idToken = await authUser.value.getIdToken()
-    studentCourses.value = await getJoinedCourses(idToken)
-    isStudentCourseLoading.value = false
+  try {
+    if (authUser.value && !studentCourses.value) {
+      const idToken = await authUser.value.getIdToken()
+      studentCourses.value = await getJoinedCourses(idToken)
+      isStudentCourseLoading.value = false
+    }
+    else {
+      isStudentCourseLoading.value = false
+    }
   }
-  else {
-    isStudentCourseLoading.value = false
+  catch {
+    showSnackbar(UNEXPECTED_ERROR_MESSAGE, false)
   }
 })
 

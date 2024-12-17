@@ -16,7 +16,8 @@ const { authUser } = useAuth()
 const { userInfo } = useUserApi()
 const { teacherCourses, getCourse, isTeacherCourseLoading } = useCourseApi()
 const { studentCourses, getJoinedCourses, isStudentCourseLoading } = useUserCourseApi()
-const { snackbarMessage, snackbarStatus } = useSnackBar()
+const { snackbarMessage, snackbarStatus, showSnackbar } = useSnackBar()
+
 const closeResetDialog = () => (isResetDialogOpen.value = false)
 const closeDeleteDialog = () => (isDeleteDialogOpen.value = false)
 const imageLoad = (loaded: boolean) => (isImageLoaded.value = loaded)
@@ -35,17 +36,22 @@ const handleEditOrDeleteAction = (actionId: number) => {
 }
 
 onMounted(async () => {
-  if (authUser.value) {
-    if (userInfo.value?.user.user_type === 1 && !teacherCourses.value) {
-      const idToken = await authUser.value.getIdToken()
-      teacherCourses.value = await getCourse(idToken)
-      isTeacherCourseLoading.value = false
+  try {
+    if (authUser.value) {
+      if (userInfo.value?.user.user_type === 1 && !teacherCourses.value) {
+        const idToken = await authUser.value.getIdToken()
+        teacherCourses.value = await getCourse(idToken)
+        isTeacherCourseLoading.value = false
+      }
+      else if (userInfo.value?.user.user_type === 0 && !studentCourses.value) {
+        const idToken = await authUser.value.getIdToken()
+        studentCourses.value = await getJoinedCourses(idToken)
+        isStudentCourseLoading.value = false
+      }
     }
-    else if (userInfo.value?.user.user_type === 0 && !studentCourses.value) {
-      const idToken = await authUser.value.getIdToken()
-      studentCourses.value = await getJoinedCourses(idToken)
-      isStudentCourseLoading.value = false
-    }
+  }
+  catch {
+    showSnackbar(UNEXPECTED_ERROR_MESSAGE, false)
   }
 })
 </script>

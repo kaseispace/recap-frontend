@@ -29,7 +29,7 @@ describe('AutoCompleteコンポーネントのテスト', () => {
 
   it('サジェストから1つクリックすると、emitが1回実行される', async () => {
     const wrapper = await mountSuspended(AutoComplete, {
-      props: { modelValue: '東京', inputId: 'schoolName', suggestionArray: MOCK_SCHOOLS }
+      props: { modelValue: 'フルスタック', inputId: 'schoolName', suggestionArray: MOCK_SCHOOLS }
     })
 
     await wrapper.find(`[data-testId="suggest-0"]`).trigger('click')
@@ -39,7 +39,7 @@ describe('AutoCompleteコンポーネントのテスト', () => {
 
   it('上矢印キーを押した後に、エンターキーを押すと、emitが1回実行される', async () => {
     const wrapper = await mountSuspended(AutoComplete, {
-      props: { modelValue: '東京', inputId: 'schoolName', suggestionArray: MOCK_SCHOOLS }
+      props: { modelValue: 'フルスタック', inputId: 'schoolName', suggestionArray: MOCK_SCHOOLS }
     })
 
     await wrapper.find('input').trigger('keydown.up')
@@ -50,7 +50,7 @@ describe('AutoCompleteコンポーネントのテスト', () => {
 
   it('下矢印キーを押した後に、エンターキーを押すと、emitが1回実行される', async () => {
     const wrapper = await mountSuspended(AutoComplete, {
-      props: { modelValue: '東京', inputId: 'schoolName', suggestionArray: MOCK_SCHOOLS }
+      props: { modelValue: 'フルスタック', inputId: 'schoolName', suggestionArray: MOCK_SCHOOLS }
     })
 
     await wrapper.find('input').trigger('keydown.down')

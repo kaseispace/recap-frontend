@@ -46,8 +46,7 @@ const handleDeleteAccount = handleSubmit(async (values, { resetForm }) => {
 
       await reauthenticateWithCredential(authUser.value, credential)
     }
-    catch (error) {
-      console.log('削除エラー', error)
+    catch {
       showSnackbar(ERROR_FIREBASE_RE_AUTHENTICATION_FAILED, false)
       return
     }
@@ -132,6 +131,7 @@ onMounted(() => {
           />
           <BaseFormTextInput
             v-model="password"
+            data-testId="input-password"
             input-id="password"
             input-type="password"
             autocomplete="current-password"

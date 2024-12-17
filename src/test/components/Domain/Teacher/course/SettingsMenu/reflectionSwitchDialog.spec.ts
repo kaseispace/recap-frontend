@@ -1,7 +1,7 @@
 // @vitest-environment nuxt
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import ReflectionSwitchDialog from '@/components/Domain/Teacher/course/SettingsMenu/ReflectionSwitchDialog.vue'
-import { MOCK_AUTH_USER, wait } from '@/test/mocks/index'
+import { MOCK_TEACHER_AUTH_USER, wait } from '@/test/mocks/index'
 import { registerCourseDateEndpoints } from '@/test/mocks/courseDate/endpoints'
 import { MOCK_COURSE_DATES } from '@/test/mocks/courseDate/index'
 
@@ -25,7 +25,7 @@ describe('ReflectionSwitchDialogコンポーネントのテスト', () => {
 
   describe('次回授業日がある場合', () => {
     it('振り返りを実施する場合、実施予定であることが表示され、振り返りを無効にできる', async () => {
-      auth.authUser.value = MOCK_AUTH_USER
+      auth.authUser.value = MOCK_TEACHER_AUTH_USER
       setting.nextCourseDate.value = MOCK_COURSE_DATES[4]
       courseDate.courseDates.value = MOCK_COURSE_DATES
       const wrapper = await mountSuspended(ReflectionSwitchDialog)
@@ -39,7 +39,7 @@ describe('ReflectionSwitchDialogコンポーネントのテスト', () => {
     })
 
     it('振り返りを実施しない場合、実施予定がないことが表示され、振り返りを有効にできる', async () => {
-      auth.authUser.value = MOCK_AUTH_USER
+      auth.authUser.value = MOCK_TEACHER_AUTH_USER
       setting.nextCourseDate.value = MOCK_COURSE_DATES[4]
       setting.nextCourseDate.value.is_reflection = false
       courseDate.courseDates.value = MOCK_COURSE_DATES

@@ -1,8 +1,8 @@
 // @vitest-environment nuxt
 import { mockComponent, mountSuspended } from '@nuxt/test-utils/runtime'
 import teacherLayout from '@/layouts/teacher.vue'
-import { MOCK_AUTH_USER, wait } from '@/test/mocks/index'
-import { MOCK_USER_SCHOOL } from '@/test/mocks/user/index'
+import { MOCK_TEACHER_AUTH_USER, wait } from '@/test/mocks/index'
+import { MOCK_TEACHER_USER_SCHOOL } from '@/test/mocks/user/index'
 import { registerCourseEndpoints } from '@/test/mocks/course/endpoints'
 
 mockComponent('BaseLayoutSideBar', {
@@ -36,8 +36,8 @@ describe('teacherLayoutのテスト', () => {
   })
 
   it('コンポーネントが正しく表示される', async () => {
-    auth.authUser.value = MOCK_AUTH_USER
-    user.userInfo.value = MOCK_USER_SCHOOL
+    auth.authUser.value = MOCK_TEACHER_AUTH_USER
+    user.userInfo.value = MOCK_TEACHER_USER_SCHOOL
     course.teacherCourses.value = null
     const wrapper = await mountSuspended(teacherLayout)
 

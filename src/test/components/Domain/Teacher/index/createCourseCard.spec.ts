@@ -1,8 +1,8 @@
 // @vitest-environment nuxt
 import { mockComponent, mountSuspended } from '@nuxt/test-utils/runtime'
 import CreateCourseCard from '@/components/Domain/Teacher/index/CreateCourseCard.vue'
-import { MOCK_AUTH_USER, wait } from '@/test/mocks/index'
-import { MOCK_USER_SCHOOL } from '@/test/mocks/user/index'
+import { MOCK_TEACHER_AUTH_USER, wait } from '@/test/mocks/index'
+import { MOCK_TEACHER_USER_SCHOOL } from '@/test/mocks/user/index'
 import { registerCourseEndpoints } from '@/test/mocks/course/endpoints'
 
 mockComponent('BaseButton', {
@@ -64,8 +64,8 @@ describe('CreateCourseCardコンポーネントのテスト', () => {
     })
 
     it('全ての入力フィールドに有効な値が入力されている場合、エラーメッセージが表示されず、授業を作成できる', async () => {
-      auth.authUser.value = MOCK_AUTH_USER
-      user.userInfo.value = MOCK_USER_SCHOOL
+      auth.authUser.value = MOCK_TEACHER_AUTH_USER
+      user.userInfo.value = MOCK_TEACHER_USER_SCHOOL
       course.teacherCourses.value = [] // まだ作成した授業がない
       const wrapper = await mountSuspended(CreateCourseCard)
 

@@ -1,7 +1,7 @@
 // @vitest-environment nuxt
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import AddDialog from '@/components/Domain/Teacher/course/SettingsMenu/AddDialog.vue'
-import { MOCK_AUTH_USER, MOCK_UUID, wait } from '@/test/mocks/index'
+import { MOCK_TEACHER_AUTH_USER, MOCK_UUID, wait } from '@/test/mocks/index'
 import { registerCourseDateEndpoints } from '@/test/mocks/courseDate/endpoints'
 import { EXPECTED_CREATE_COURSE_DATE } from '@/test/mocks/courseDate/index'
 
@@ -33,7 +33,7 @@ describe('AddDialogコンポーネントのテスト', () => {
 
   describe('次回授業日がまだない場合', () => {
     it('授業日を追加できる', async () => {
-      auth.authUser.value = MOCK_AUTH_USER
+      auth.authUser.value = MOCK_TEACHER_AUTH_USER
       course.courseUuid.value = MOCK_UUID
       courseDate.courseDates.value = []
       const wrapper = await mountSuspended(AddDialog)
@@ -50,7 +50,7 @@ describe('AddDialogコンポーネントのテスト', () => {
     })
 
     it('キャンセルボタンを押すと、ダイアログが閉じる', async () => {
-      auth.authUser.value = MOCK_AUTH_USER
+      auth.authUser.value = MOCK_TEACHER_AUTH_USER
       course.courseUuid.value = MOCK_UUID
       courseDate.courseDates.value = []
       const wrapper = await mountSuspended(AddDialog)

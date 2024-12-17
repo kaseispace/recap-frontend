@@ -1,7 +1,7 @@
 // @vitest-environment nuxt
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import EditDialog from '@/components/Domain/Teacher/course/SettingsMenu/EditDialog.vue'
-import { MOCK_AUTH_USER, wait } from '@/test/mocks/index'
+import { MOCK_TEACHER_AUTH_USER, wait } from '@/test/mocks/index'
 import { registerCourseDateEndpoints } from '@/test/mocks/courseDate/endpoints'
 import { MOCK_COURSE_DATES } from '@/test/mocks/courseDate/index'
 
@@ -25,7 +25,7 @@ describe('EditDialogコンポーネントのテスト', () => {
 
   describe('次回授業日がある場合', () => {
     it('授業日を編集できる', async () => {
-      auth.authUser.value = MOCK_AUTH_USER
+      auth.authUser.value = MOCK_TEACHER_AUTH_USER
       setting.nextCourseDate.value = MOCK_COURSE_DATES[4]
       courseDate.courseDates.value = MOCK_COURSE_DATES
       const wrapper = await mountSuspended(EditDialog)
@@ -41,7 +41,7 @@ describe('EditDialogコンポーネントのテスト', () => {
     })
 
     it('キャンセルボタンを押すと、ダイアログが閉じる', async () => {
-      auth.authUser.value = MOCK_AUTH_USER
+      auth.authUser.value = MOCK_TEACHER_AUTH_USER
       setting.nextCourseDate.value = MOCK_COURSE_DATES[4]
       courseDate.courseDates.value = MOCK_COURSE_DATES
       const wrapper = await mountSuspended(EditDialog)

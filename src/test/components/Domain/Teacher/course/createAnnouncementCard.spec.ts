@@ -1,7 +1,7 @@
 // @vitest-environment nuxt
 import { mockComponent, mountSuspended } from '@nuxt/test-utils/runtime'
 import CreateAnnouncementCard from '@/components/Domain/Teacher/course/CreateAnnouncementCard.vue'
-import { MOCK_AUTH_USER, MOCK_UUID, wait } from '@/test/mocks/index'
+import { MOCK_TEACHER_AUTH_USER, MOCK_UUID, wait } from '@/test/mocks/index'
 import { registerAnnouncementEndpoints } from '@/test/mocks/announcement/endpoints'
 import { MOCK_ANNOUNCEMENTS } from '@/test/mocks/announcement/index'
 
@@ -53,7 +53,7 @@ describe('CreateAnnouncementCardコンポーネントのテスト', () => {
     })
 
     it('テキストエリアが空でない場合、エラーメッセージが表示されず、お知らせを投稿できる', async () => {
-      auth.authUser.value = MOCK_AUTH_USER
+      auth.authUser.value = MOCK_TEACHER_AUTH_USER
       course.courseUuid.value = MOCK_UUID
       announcement.announcements.value = MOCK_ANNOUNCEMENTS
       const wrapper = await mountSuspended(CreateAnnouncementCard)

@@ -1,7 +1,7 @@
 // @vitest-environment nuxt
 import { mockComponent, mountSuspended } from '@nuxt/test-utils/runtime'
 import ShowPromptCard from '@/components/Domain/Teacher/course/ShowPromptCard.vue'
-import { MOCK_AUTH_USER, MOCK_EMPTY_UUID, MOCK_UUID, wait } from '@/test/mocks/index'
+import { MOCK_TEACHER_AUTH_USER, MOCK_EMPTY_UUID, MOCK_UUID, wait } from '@/test/mocks/index'
 import { registerPromptEndpoints } from '@/test/mocks/prompt/endpoints'
 
 mockComponent('BaseEmpty', {
@@ -38,7 +38,7 @@ describe('ShowPromptCardコンポーネントのテスト', () => {
 
   describe('プロンプトが存在しない場合', () => {
     it('プロンプトがないことを示すコンポーネントが表示される', async () => {
-      auth.authUser.value = MOCK_AUTH_USER
+      auth.authUser.value = MOCK_TEACHER_AUTH_USER
       course.courseUuid.value = MOCK_EMPTY_UUID
       const wrapper = await mountSuspended(ShowPromptCard)
 
@@ -50,7 +50,7 @@ describe('ShowPromptCardコンポーネントのテスト', () => {
 
   describe('プロンプトが存在する場合', () => {
     it('プロンプトカードが表示される', async () => {
-      auth.authUser.value = MOCK_AUTH_USER
+      auth.authUser.value = MOCK_TEACHER_AUTH_USER
       course.courseUuid.value = MOCK_UUID
       const wrapper = await mountSuspended(ShowPromptCard)
 
@@ -80,7 +80,7 @@ describe('ShowPromptCardコンポーネントのテスト', () => {
 
     describe('編集用ダイアログ', () => {
       it('選択したプロンプトから、問いかけを1つ減らして編集する', async () => {
-        auth.authUser.value = MOCK_AUTH_USER
+        auth.authUser.value = MOCK_TEACHER_AUTH_USER
         course.courseUuid.value = MOCK_UUID
         const wrapper = await mountSuspended(ShowPromptCard)
 
@@ -104,7 +104,7 @@ describe('ShowPromptCardコンポーネントのテスト', () => {
       })
 
       it('選択したプロンプトに、問いかけを1つ増やして編集する', async () => {
-        auth.authUser.value = MOCK_AUTH_USER
+        auth.authUser.value = MOCK_TEACHER_AUTH_USER
         course.courseUuid.value = MOCK_UUID
         const wrapper = await mountSuspended(ShowPromptCard)
 
@@ -131,7 +131,7 @@ describe('ShowPromptCardコンポーネントのテスト', () => {
     })
 
     it('有効化用ダイアログが表示され、プロンプトの有効化ができる', async () => {
-      auth.authUser.value = MOCK_AUTH_USER
+      auth.authUser.value = MOCK_TEACHER_AUTH_USER
       course.courseUuid.value = MOCK_UUID
       const wrapper = await mountSuspended(ShowPromptCard)
 
@@ -155,7 +155,7 @@ describe('ShowPromptCardコンポーネントのテスト', () => {
     })
 
     it('削除用ダイアログが表示され、アクティブなプロンプトを削除した場合、有効化されているプロンプトはなくなる', async () => {
-      auth.authUser.value = MOCK_AUTH_USER
+      auth.authUser.value = MOCK_TEACHER_AUTH_USER
       course.courseUuid.value = MOCK_UUID
       const wrapper = await mountSuspended(ShowPromptCard)
 

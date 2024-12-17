@@ -1,7 +1,7 @@
 // @vitest-environment nuxt
 import { mockComponent, mountSuspended } from '@nuxt/test-utils/runtime'
 import ShowCourseCard from '@/components/Domain/Teacher/index/ShowCourseCard.vue'
-import { MOCK_AUTH_USER, wait } from '@/test/mocks/index'
+import { MOCK_TEACHER_AUTH_USER, wait } from '@/test/mocks/index'
 import { registerCourseEndpoints } from '@/test/mocks/course/endpoints'
 import { MOCK_COURSES } from '@/test/mocks/course/index'
 
@@ -68,7 +68,7 @@ describe('ShowCourseCardコンポーネントのテスト', () => {
     })
 
     it('編集用ダイアログが表示され、授業の編集ができる', async () => {
-      auth.authUser.value = MOCK_AUTH_USER
+      auth.authUser.value = MOCK_TEACHER_AUTH_USER
       const wrapper = await mountSuspended(ShowCourseCard)
 
       course.teacherCourses.value = MOCK_COURSES
@@ -94,7 +94,7 @@ describe('ShowCourseCardコンポーネントのテスト', () => {
     })
 
     it('削除用ダイアログが表示され、授業を削除できる', async () => {
-      auth.authUser.value = MOCK_AUTH_USER
+      auth.authUser.value = MOCK_TEACHER_AUTH_USER
       const wrapper = await mountSuspended(ShowCourseCard)
 
       course.teacherCourses.value = MOCK_COURSES

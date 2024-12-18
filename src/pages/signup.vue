@@ -151,10 +151,10 @@ onMounted(async () => {
         />
         <BaseFormTextInput
           v-model.trim="name"
+          data-testId="input-name"
           input-id="name"
           input-placeholder="佐藤太郎"
           autocomplete="username"
-          data-testId="nameInput"
           :is-bg-color="false"
         />
         <BaseErrorValidationMessage
@@ -172,10 +172,10 @@ onMounted(async () => {
         />
         <BaseFormTextInput
           v-model.trim="email"
+          data-testId="input-email"
           input-id="email"
           input-placeholder="mail@sample.com"
           autocomplete="email"
-          data-testId="emailInput"
           :is-bg-color="false"
         />
         <BaseErrorValidationMessage
@@ -193,6 +193,7 @@ onMounted(async () => {
         />
         <BaseFormTextInput
           v-model.trim="password"
+          data-testId="input-password"
           input-id="password"
           input-type="password"
           autocomplete="new-password"
@@ -212,6 +213,7 @@ onMounted(async () => {
         />
         <BaseFormTextInput
           v-model.trim="passwordConfirm"
+          data-testId="input-password-confirm"
           input-id="passwordConfirm"
           input-type="password"
           autocomplete="new-password"

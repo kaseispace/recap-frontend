@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useForm, useField } from 'vee-validate'
 import { FirebaseError } from 'firebase/app'
+import { useAuth } from '@/composables/useAuth'
 
 definePageMeta({
   middleware: ['route']
@@ -36,6 +37,7 @@ const handleLogin = handleSubmit(async (values, { resetForm }) => {
       showSnackbar(ERROR_FIREBASE_INVALID_USER_INFO, false)
       return
     }
+
     authUser.value = user
 
     const idToken = await authUser.value.getIdToken()
@@ -100,6 +102,7 @@ onMounted(() => {
         />
         <BaseFormTextInput
           v-model="email"
+          data-testId="input-email"
           input-id="email"
           input-placeholder="mail@sample.com"
           autocomplete="email"
@@ -119,6 +122,7 @@ onMounted(() => {
         />
         <BaseFormTextInput
           v-model="password"
+          data-testId="input-password"
           input-id="password"
           input-type="password"
           autocomplete="current-password"

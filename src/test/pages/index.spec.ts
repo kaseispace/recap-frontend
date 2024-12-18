@@ -1,39 +1,55 @@
 // @vitest-environment nuxt
-import { mockComponent, mountSuspended } from '@nuxt/test-utils/runtime'
+import { mockComponent, mockNuxtImport, mountSuspended } from '@nuxt/test-utils/runtime'
 import IndexPage from '@/pages/index.vue'
+import { MOCK_STUDENT_AUTH_USER, wait } from '@/test/mocks/index'
+import { registerUserEndpoints } from '@/test/mocks/user/endpoints'
+import { MOCK_STUDENT_USER_SCHOOL } from '@/test/mocks/user/index'
 
-mockComponent('BaseForm', {
-  template: '<div data-testId="loginForm">stub login</div>'
+mockComponent('BaseLink', {
+  template: '<a>stub link</a>'
+})
+
+mockComponent('BaseButton', {
+  template: '<button data-testId="button">stub button</button>'
 })
 
 mockComponent('BaseDialogOverlay', {
   template: '<div data-testId="overlay">stub overlay</div>'
 })
 
-declare module '@vue/runtime-core' {
-  interface ComponentCustomProperties {
-    isLoading: Ref<boolean>
+mockNuxtImport('navigateTo', () => vi.fn())
+
+vi.mock('@/composables/useAuth', () => ({
+  useAuth: () => {
+    const authUser = ref(null)
+    const login = vi.fn(() => MOCK_STUDENT_AUTH_USER)
+    return { authUser, login }
   }
-}
+}))
 
 describe('indexページのテスト', () => {
-  it('ログインフォームが表示される', async () => {
-    const wrapper = await mountSuspended(IndexPage)
+  let user: UserApiReturnType
+  registerUserEndpoints()
 
-    expect(wrapper.find(`[data-testId="loginForm"]`).exists()).toBe(true)
+  beforeEach(() => {
+    user = useUserApi()
   })
 
-  it('読み込み画面が表示される', async () => {
+  afterEach(() => {
+    user.userInfo.value = null
+  })
+
+  it('ログイン成功時にユーザー情報が設定され、指定のページに遷移する', async () => {
     const wrapper = await mountSuspended(IndexPage)
 
-    const loading = wrapper.find(`[data-testId="overlay"]`)
+    await wrapper.get(`[data-testId="input-email"]`).setValue('mockstudent@example.com')
+    await wrapper.get(`[data-testId="input-password"]`).setValue('password')
 
-    expect((loading.element as HTMLElement).style.display).toBe('none')
+    await wrapper.get(`[data-testId="button"]`).trigger('click')
 
-    wrapper.vm.isLoading.value = true
+    await wait(10)
 
-    await wrapper.vm.$nextTick()
-
-    expect((loading.element as HTMLElement).style.display).not.toBe('none')
+    expect(user.userInfo.value).toEqual(MOCK_STUDENT_USER_SCHOOL)
+    expect(navigateTo).toHaveBeenCalledWith('/student')
   })
 })

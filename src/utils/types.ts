@@ -149,3 +149,4 @@ export type ReflectionHistoryReturnType = ReturnType<typeof useReflectionHistory
 export type SettingReturnType = ReturnType<typeof useSetting>
 export type UserApiReturnType = ReturnType<typeof useUserApi>
 export type UserCourseReturnType = ReturnType<typeof useUserCourseApi>
+export type SchoolApiReturnType = ReturnType<typeof useSchoolApi>

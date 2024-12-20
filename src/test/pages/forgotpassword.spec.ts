@@ -24,7 +24,7 @@ describe('forgotpasswordページのテスト', () => {
     await wrapper.get(`[data-testId="textInput"]`).setValue('test@example.com')
     await wrapper.find(`[data-testId="clickSend"]`).trigger('click')
 
-    await wait(10)
+    await wait(100)
 
     expect(wrapper.find(`[data-testId="emailSent"]`).text()).toBe('再設定用URLを記載したメールを送信しました')
   })

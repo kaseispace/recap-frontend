@@ -355,6 +355,6 @@ export const POLICY_LINKS = [
 ]
 
 export const SNS_LINKS = [
-  { value: 1, path: 'https://github.com/', iconName: 'fe:github', iconSize: '18px' },
-  { value: 2, path: 'https://github.com/', iconName: 'prime:twitter', iconSize: '16px' }
+  { value: 1, path: 'https://github.com/kaseispace', iconName: 'fe:github', iconSize: '18px' },
+  { value: 2, path: 'https://x.com/kaseispace', iconName: 'prime:twitter', iconSize: '16px' }
 ]

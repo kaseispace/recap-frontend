@@ -45,6 +45,23 @@ export default defineNuxtConfig({
     '@nuxt/test-utils/module'
   ],
   icon: {
+    collections: [
+      'eos-icons',
+      'fe',
+      'fluent',
+      'fluent-mdl2',
+      'gg',
+      'ic',
+      'material-symbols',
+      'mdi',
+      'mdi-light',
+      'mi',
+      'ooui',
+      'pajamas',
+      'prime',
+      'streamline',
+      'svg-spinners'
+    ],
     clientBundle: {
       scan: {
         globInclude: ['src/components/**/*.vue', 'src/layouts/*.vue', 'src/pages/**/*.vue'],

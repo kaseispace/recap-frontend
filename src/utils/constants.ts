@@ -245,6 +245,7 @@ export const TABLE_STATUSES = [
   { value: 4, name: 'gg:close-o', color: 'red', text: '：記入なし' }
 ]
 
+// ページのメタ情報を設定用
 export const LOGIN_META = {
   title: 'ログイン',
   meta: [
@@ -349,6 +350,7 @@ export const NOT_FOUND_META = {
   ]
 }
 
+// フッター
 export const POLICY_LINKS = [
   { value: 1, name: '利用規約', path: 'terms' },
   { value: 2, name: 'プライバシーポリシー', path: 'privacy' }

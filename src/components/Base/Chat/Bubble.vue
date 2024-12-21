@@ -16,7 +16,6 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <!-- 背景色は利用側で（例：bg-slate-200） -->
   <div
     data-testId="propsBgColor"
     class="relative rounded-lg px-3 py-2"

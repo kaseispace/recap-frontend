@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const activeTabId = ref(0)
 const isLoading = ref(true)
-const reflectionKey = ref(0) // 新しいkeyを持たせるための変数
+const reflectionKey = ref(0)
 const selectedReflection = ref<UserReflections | null>(null)
 const dialogRef = ref(null)
 
@@ -21,7 +21,7 @@ const setTab = (num: number) => {
     }
   }
 
-  reflectionKey.value++ // keyを更新して再生成をトリガー
+  reflectionKey.value++
 }
 
 const handleShowReflectionDialog = (reflection: UserReflections) => {
@@ -41,16 +41,14 @@ onMounted(async () => {
         return
       }
       else {
-        // 既に取得済みの場合は始めのデータをセットし直す
         setTab(sharedCourseReflections.value[0].id)
         return
       }
     }
 
-    // 各受講生の振り返りを見るとき用
     const idToken = await authUser.value.getIdToken()
     sharedCourseReflections.value = await getSharedReflections(courseUuid.value, idToken)
-    // マウント時は手動で授業日データをセット
+
     if (sharedCourseReflections.value.length > 0) {
       setTab(sharedCourseReflections.value[0].id)
     }
@@ -69,14 +67,12 @@ onMounted(async () => {
     v-if="isLoading"
     class="flex h-64 items-center justify-center"
   >
-    <!-- ローディング中のコンポーネント -->
     <BaseLoading border-color="border-cyan-900" />
   </div>
   <div
     v-else
   >
     <div v-if="sharedCourseReflections && sharedCourseReflections.length > 0">
-      <!-- Chips表示 -->
       <div class="my-4 flex flex-wrap">
         <div
           v-for="(courseDate, i) in sharedCourseReflections"
@@ -91,9 +87,7 @@ onMounted(async () => {
           />
         </div>
       </div>
-      <!-- Chips閉じ -->
 
-      <!-- 付箋表示 -->
       <div
         v-if="selectedCourseDateReflections && selectedCourseDateReflections.length > 0"
         class="grid grid-cols-1 place-items-center gap-x-5 gap-y-7 pt-4 xs2:grid-cols-2 xs2:place-items-stretch md2:grid-cols-3 lg2:grid-cols-4"
@@ -122,7 +116,6 @@ onMounted(async () => {
         </div>
       </div>
 
-      <!-- 授業日の振り返りがない -->
       <div
         v-else
         class="mt-10"
@@ -136,9 +129,7 @@ onMounted(async () => {
           />
         </div>
       </div>
-      <!-- 付箋閉じ -->
 
-      <!-- みんなの振り返り用ダイアログ -->
       <BaseDialogOverlay v-if="dialog">
         <div class="flex w-full justify-center px-4">
           <BaseDialog
@@ -200,7 +191,6 @@ onMounted(async () => {
       </BaseDialogOverlay>
     </div>
 
-    <!-- 授業日が1つもなく、表示できる振り返りが無い -->
     <div
       v-else
       class="mt-10"

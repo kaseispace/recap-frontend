@@ -53,7 +53,6 @@ const handleDeleteAccount = handleSubmit(async (values, { resetForm }) => {
 
     const idToken = await authUser.value.getIdToken()
 
-    // Firebase認証情報の削除
     await authUser.value.delete()
 
     try {
@@ -116,7 +115,6 @@ onMounted(() => {
         </div>
 
         <form>
-          <!-- ユーザー名フィールド（隠しフィールドとして追加） -->
           <input
             id="username"
             type="text"

@@ -74,8 +74,6 @@ const handleCreateAnnouncement = handleSubmit(async (values) => {
           title="お知らせを投稿"
           wide="large"
         >
-          <!-- 中身スタート -->
-
           <BaseFormTextarea
             v-model.trim="content"
             data-testId="content"

@@ -32,7 +32,7 @@ const onDateSelected = (selectedDate: string) => (courseDate.value = selectedDat
 // 授業日の編集
 const handleEditCourseDay = handleSubmit(async (values) => {
   const formattedSession = `第${values.courseSession}回`
-  // nullチェック
+
   if (authUser.value && nextCourseDate.value) {
     if (
       values.courseSession === nextCourseDate.value.course_number
@@ -52,13 +52,11 @@ const handleEditCourseDay = handleSubmit(async (values) => {
         idToken
       )
       if (courseDates.value) {
-        // 更新
         nextCourseDate.value = courseDateInfo
         const index = courseDates.value.findIndex(date => date.id === nextCourseDate.value?.id)
         courseDates.value[index] = courseDateInfo
       }
 
-      // 既に取得済みの場合のみ更新を行う
       if (dailyCourseReflections.value) {
         const index = dailyCourseReflections.value.findIndex(courseDay => courseDay.id === courseDateInfo.id)
         dailyCourseReflections.value[index] = {

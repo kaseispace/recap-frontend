@@ -10,8 +10,8 @@ const editDialogRef = ref(null)
 const enableDialogRef = ref(null)
 const deleteDialogRef = ref(null)
 const promptId = ref(0)
-const displayedContents = ref<PromptContent[]>([]) // 画面に表示する用
-const updatedPrompt = ref<Prompt>() // _destroy: trueを含める用
+const displayedContents = ref<PromptContent[]>([])
+const updatedPrompt = ref<Prompt>()
 
 const { authUser } = useAuth()
 const { courseUuid } = useCourseApi()
@@ -35,10 +35,8 @@ onClickOutside(deleteDialogRef, closeDeleteDialog)
 
 const addPromptContent = () => displayedContents.value.push({ content: '' })
 const removePromptContent = (contentIndex: number, prompt: PromptContent) => {
-  // 指定されたindexを削除し、画面に片影させる
   displayedContents.value.splice(contentIndex, 1)
 
-  // indexと同じ要素を引数で渡されるpromptを利用して、updatedPromptにdestroyを追加する
   if (updatedPrompt.value) {
     updatedPrompt.value.prompt_questions = updatedPrompt.value.prompt_questions.map(question =>
       question.id === prompt.id ? { ...question, _destroy: true } : question
@@ -50,14 +48,12 @@ const handlePromptMultipleActions = (actionId: number, prompt: Prompt) => {
   prompt.prompt_questions.forEach((question) => {
     delete question._destroy
   })
-  // セットアップ
+
   promptId.value = prompt.id
   title.value = prompt.title
   content.value = prompt.prompt_questions[0].content
   updatedPrompt.value = prompt
 
-  // displayedContents.value = []
-  // 必須項目である1つ目の質問を除いた質問を抽出
   prompt.prompt_questions.slice(1).forEach((prompt) => {
     displayedContents.value.push({ id: prompt.id, content: prompt.content })
   })
@@ -76,16 +72,14 @@ const handlePromptMultipleActions = (actionId: number, prompt: Prompt) => {
 // 編集
 const handleEditPrompt = handleSubmit(async (values) => {
   const existingContents = displayedContents.value.filter(content => content.id !== undefined)
-  // idの付与されていない追加分のcontentを探す（この際に空白やスペースを事前に取り除く）
+
   const newContents = displayedContents.value.filter(content => content.id === undefined && content.content && content.content.trim() !== '')
   if (updatedPrompt.value) {
-    // 変更あり・なしに関わらず、更新する
     updatedPrompt.value.title = values.title
     updatedPrompt.value.prompt_questions[0].content = values.content
     const firstContent = updatedPrompt.value.prompt_questions[0]
     updatedPrompt.value.prompt_questions = updatedPrompt.value.prompt_questions.filter(question => question._destroy === true)
 
-    // 追加分の質問を含める
     updatedPrompt.value.prompt_questions.push(firstContent, ...existingContents, ...newContents)
 
     if (authUser.value) {
@@ -125,7 +119,7 @@ const handleEditPrompt = handleSubmit(async (values) => {
   }
 })
 
-// 振り返りのactive
+// 振り返りをactive
 const handleActivePrompt = async () => {
   if (authUser.value) {
     isActivePromptClick.value = true
@@ -134,18 +128,15 @@ const handleActivePrompt = async () => {
       await updateActivePrompt(promptId.value, idToken)
 
       if (prompts.value) {
-        // リクエストのあったプロンプトの特定
         const promptToUpdate = prompts.value.find(prompt => prompt.id === promptId.value)
 
         if (promptToUpdate) {
-          // 既に有効済みな振り返りがある場合は、無効にする（見た目の変更）
           if (activePrompt.value) {
             const promptBeforeUpdate = prompts.value.find(prompt => prompt.id === activePrompt.value?.id)
             if (promptBeforeUpdate) {
               promptBeforeUpdate.active = false
             }
 
-            // 有効済みな振り返りを無効にする際
             if (activePrompt.value?.id === promptId.value) {
               activePrompt.value = null
               showSnackbar(SUCCESS_PROMPT_DISABLED(title.value), true)
@@ -154,7 +145,6 @@ const handleActivePrompt = async () => {
             }
           }
 
-          // リクエストした振り返りのactive化（画面に反映）
           promptToUpdate.active = true
           activePrompt.value = promptToUpdate
 
@@ -192,9 +182,8 @@ const handleDeletePrompt = async () => {
       const idToken = await authUser.value.getIdToken()
       await deletePrompt(promptId.value, idToken)
       if (prompts.value) {
-        // 削除されたidに該当しないデータをフィルタリング
         prompts.value = prompts.value.filter(prompt => prompt.id !== promptId.value)
-        // 削除したデータがactiveな場合、activeReflectionを初期化
+
         if (promptId.value === activePrompt.value?.id) {
           activePrompt.value = null
         }
@@ -241,13 +230,11 @@ onMounted(async () => {
       return
     }
 
-    // プロンプトを既に取得済みの場合は何もしない
     if (prompts.value) return
 
     const idToken = await authUser.value.getIdToken()
     prompts.value = await getTeacherPrompts(courseUuid.value, idToken)
     if (prompts.value) {
-      // マウント時にactiveな振り返りを保持しておく、無い場合はnull
       activePrompt.value = prompts.value.find(prompt => prompt.active === true) || null
     }
   }
@@ -265,7 +252,6 @@ onMounted(async () => {
     v-if="isLoading"
     class="flex h-64 items-center justify-center"
   >
-    <!-- ローディング中のコンポーネント -->
     <BaseLoading border-color="border-blue-900" />
   </div>
 
@@ -317,7 +303,6 @@ onMounted(async () => {
         </div>
       </div>
 
-      <!-- 振り返り編集用ダイアログ -->
       <BaseDialogOverlay
         v-if="isEditDialog"
         data-testId="editDialog"
@@ -328,8 +313,6 @@ onMounted(async () => {
             title="振り返りの編集"
             wide="large"
           >
-            <!-- 振り返り入力 -->
-
             <div>
               <BaseFormLabel
                 text="タイトル"
@@ -426,7 +409,6 @@ onMounted(async () => {
         </div>
       </BaseDialogOverlay>
 
-      <!-- 振り返り有効用ダイアログ -->
       <BaseDialogOverlay
         v-if="isEnableDialog"
         data-testId="statusDialog"
@@ -441,8 +423,6 @@ onMounted(async () => {
               <p>{{ activePrompt?.id === promptId ? MESSAGE_PROMPT_DISABLE : MESSAGE_PROMPT_ENABLE }}</p>
               <p>{{ activePrompt?.id === promptId ? '' : MESSAGE_PROMPT_DISABLE_WARNING }}</p>
             </div>
-
-            <!-- 振り返り入力 -->
 
             <template #footer>
               <BaseButton
@@ -476,7 +456,6 @@ onMounted(async () => {
         </div>
       </BaseDialogOverlay>
 
-      <!-- 振り返り削除用ダイアログ -->
       <BaseDialogOverlay
         v-if="isDeleteDialog"
         data-testId="deleteDialog"

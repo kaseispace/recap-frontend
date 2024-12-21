@@ -5,11 +5,8 @@ import type { User as firebaseUser } from 'firebase/auth'
 export const useAuth = () => {
   const { $firebaseAuth } = useNuxtApp()
   const { userInfo, getUserSchool } = useUserApi()
-  // user保持用
   const authUser = useState<firebaseUser | null>('user', () => null)
 
-  // firebaseにログイン
-  // ここではstateに保存しないでuserを返すだけ
   const login = async (email: string, password: string): Promise<firebaseUser | null> => {
     try {
       const { user } = await signInWithEmailAndPassword($firebaseAuth, email, password)
@@ -23,8 +20,6 @@ export const useAuth = () => {
     }
   }
 
-  // firebaseに新規登録
-  // ここではstateに保存しないでuserを返すだけ
   const signup = async (email: string, password: string): Promise<firebaseUser | null> => {
     try {
       const { user } = await createUserWithEmailAndPassword($firebaseAuth, email, password)
@@ -38,18 +33,13 @@ export const useAuth = () => {
     }
   }
 
-  // firebaseからログアウト
-  // stateの初期化
   const logout = async () => {
-    // 先にstate,cookie等を初期化
     userInfo.value = null
     authUser.value = null
     await signOut($firebaseAuth)
     await navigateTo('/')
   }
 
-  // firebaseへのログイン状態を管理
-  // ログイン中なら、ユーザー情報を更新
   const checkAuthState = async () => {
     if (import.meta.client) {
       return await new Promise<void>((resolve, reject) => {

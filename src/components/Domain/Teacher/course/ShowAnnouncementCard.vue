@@ -45,7 +45,7 @@ const handleEditAnnouncement = handleSubmit(async (values) => {
       const announcementInfo = await updateAnnouncement(announcementId.value, values.content, idToken)
       if (announcements.value) {
         const index = announcements.value.findIndex(announcement => announcement.id === announcementId.value)
-        // 編集したデータの更新
+
         announcements.value[index] = announcementInfo
         showSnackbar(SUCCESS_ANNOUNCEMENT_UPDATE, true)
         closeEditDialog()
@@ -114,7 +114,6 @@ onMounted(async () => {
       return
     }
 
-    // お知らせを既に取得済みの場合は何もしない
     if (announcements.value) return
 
     const idToken = await authUser.value.getIdToken()
@@ -138,7 +137,6 @@ onMounted(async () => {
   </div>
 
   <div v-else>
-    <!-- 表示するデータがある場合 -->
     <div v-if="announcements && announcements.length > 0">
       <div class="mt-7">
         <template
@@ -169,7 +167,6 @@ onMounted(async () => {
         </template>
       </div>
 
-      <!-- Cardコンポーネント編集用ダイアログ -->
       <BaseDialogOverlay
         v-if="isEditDialog"
         data-testId="editDialog"
@@ -180,7 +177,6 @@ onMounted(async () => {
             title="お知らせの編集"
             wide="large"
           >
-            <!-- お知らせ入力 -->
             <BaseFormTextarea
               v-model.trim="content"
               data-testId="content"
@@ -214,7 +210,6 @@ onMounted(async () => {
         </div>
       </BaseDialogOverlay>
 
-      <!-- Announcementコンポーネント削除用ダイアログ -->
       <BaseDialogOverlay
         v-if="isDeleteDialog"
         data-testId="deleteDialog"
@@ -252,7 +247,6 @@ onMounted(async () => {
       </BaseDialogOverlay>
     </div>
 
-    <!-- 表示するデータが無い場合 -->
     <div v-else>
       <div class="mt-5 flex flex-col items-center">
         <BaseEmpty

@@ -28,7 +28,6 @@ const { value: courseTime } = useField<string>('courseTime')
 onClickOutside(editDialogRef, closeEditDialog)
 onClickOutside(deleteDialogRef, closeDeleteDialog)
 
-// 編集、削除
 const handleEditOrDeleteAction = (actionId: number, course: Course) => {
   courseUuid.value = course.uuid
   name.value = course.name
@@ -44,7 +43,6 @@ const handleEditOrDeleteAction = (actionId: number, course: Course) => {
   }
 }
 
-// Menuコンポーネントのemit
 const onSelectWeek = (text: ValueText) => (dayOfWeek.value = text.text)
 const onSelectSchedule = (text: ValueText) => (courseTime.value = text.text)
 
@@ -135,7 +133,6 @@ const handleDeleteCourse = async () => {
       class="space-y-6"
     >
       <div class="grid grid-cols-1 gap-x-4 gap-y-7 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-7">
-        <!-- 授業カード開始 -->
         <template
           v-for="(course, i) in teacherCourses"
           :key="course"
@@ -173,9 +170,7 @@ const handleDeleteCourse = async () => {
             </template>
           </BaseCard>
         </template>
-        <!-- 授業カード終わり -->
 
-        <!-- Cardコンポーネント編集用ダイアログ -->
         <BaseDialogOverlay
           v-if="isEditDialog"
           data-testId="editDialog"
@@ -186,7 +181,6 @@ const handleDeleteCourse = async () => {
               title="授業の編集"
               wide="small"
             >
-              <!-- 授業名入力 -->
               <div>
                 <BaseFormLabel
                   text="授業名"
@@ -204,7 +198,6 @@ const handleDeleteCourse = async () => {
                 />
               </div>
 
-              <!-- 教員名入力 -->
               <div>
                 <BaseFormLabel
                   text="教員名"
@@ -221,7 +214,6 @@ const handleDeleteCourse = async () => {
                 />
               </div>
 
-              <!-- 開講日選択 -->
               <div>
                 <BaseFormLabel text="曜日" />
                 <BaseMenu
@@ -235,7 +227,6 @@ const handleDeleteCourse = async () => {
                 />
               </div>
 
-              <!-- 授業時間選択 -->
               <div>
                 <BaseFormLabel text="時限" />
                 <BaseMenu
@@ -270,7 +261,6 @@ const handleDeleteCourse = async () => {
           </div>
         </BaseDialogOverlay>
 
-        <!-- Cardコンポーネント削除用ダイアログ -->
         <BaseDialogOverlay
           v-if="isDeleteDialog"
           data-testId="deleteDialog"

@@ -58,13 +58,11 @@ const handleLeaveCourse = async () => {
     <BaseLoading border-color="border-cyan-900" />
   </div>
   <div v-else>
-    <!-- データが取得できたら表示するコンテンツ -->
     <div
       v-if="studentCourses && studentCourses.length > 0"
       class="space-y-6"
     >
       <div class="grid grid-cols-1 gap-x-4 gap-y-7 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-7">
-        <!-- 授業カード開始 -->
         <template
           v-for="(course, i) in studentCourses"
           :key="course"
@@ -103,9 +101,7 @@ const handleLeaveCourse = async () => {
             </template>
           </BaseCard>
         </template>
-        <!-- 授業カード終わり -->
 
-        <!-- Cardコンポーネント退出用ダイアログ -->
         <BaseDialogOverlay
           v-if="dialog"
           data-testId="leaveDialog"

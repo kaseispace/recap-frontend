@@ -47,7 +47,6 @@ onUnmounted(() => {
     v-if="userInfo && authUser?.email"
     class="flex h-full"
   >
-    <!-- サイドバー -->
     <BaseLayoutSideBar bg-color="hover:bg-blue-600/10">
       <template
         v-for="item in TEACHER_SIDEBAR_MENU_ITEMS"
@@ -85,9 +84,8 @@ onUnmounted(() => {
         />
       </BaseLayoutIconMenuList>
     </BaseLayoutSideBar>
-    <!-- サイドバー -->
+
     <main class="flex min-h-screen w-full flex-1 flex-col">
-      <!-- アプリケーションバー -->
       <BaseLayoutAppBar :school-name="userInfo.school.name">
         <template #icon>
           <BaseLayoutMobileSideBar

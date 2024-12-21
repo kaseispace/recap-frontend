@@ -49,7 +49,6 @@ const handleResetPassword = handleSubmit(async (values, { resetForm }) => {
     />
 
     <BaseForm title="パスワード再設定">
-      <!-- メールアドレス入力 -->
       <div v-if="isEmailSent">
         <BaseFormLabel
           text="メールアドレス"

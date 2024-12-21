@@ -8,12 +8,11 @@ definePageMeta({
 
 useHead(SIGNUP_META)
 
-// Menuコンポーネントから取得されるtextと組になるvalueを保存する用
 const roleValue = ref(0)
 const inputSchoolId = ref(0)
 const isClick = ref(false)
 const isLoading = ref(false)
-// Vee-Validate4のセットアップ
+
 const { errors, handleSubmit } = useForm({
   validationSchema: SignUpFormSchema,
   initialValues: {
@@ -37,12 +36,11 @@ const { userInfo, createUser, deleteUser, registerSchool } = useUserApi()
 const { snackbarMessage, snackbarStatus, showSnackbar } = useSnackBar()
 const { schoolInfo, getSchool } = useSchoolApi()
 
-// Menuコンポーネントからオブジェクトが返される
 const onSelectMenu = (role: ValueText): void => {
   roleText.value = role.text
   roleValue.value = role.value
 }
-// AutoCompleteコンポーネントからオブジェクトが返される
+
 const onSelectSuggestion = (selectedUniversity: University): void => {
   schoolName.value = selectedUniversity.name
   inputSchoolId.value = selectedUniversity.id
@@ -57,13 +55,11 @@ const handleRegistration = handleSubmit(async (values, { resetForm }) => {
   isClick.value = true
   isLoading.value = true
   try {
-    // 入力された学校が存在するか事前にチェック、学校が存在しない場合はエラーを出力
     checkSchoolId(values.schoolName)
     if (inputSchoolId.value === 0) {
       return showSnackbar(ERROR_SCHOOL_NOT_FOUND, false)
     }
 
-    // firebaseへの登録
     const user = await signup(values.email, values.password)
     if (user === null) {
       showSnackbar(ERROR_USER_REGISTRATION_FAILED, false)
@@ -74,7 +70,6 @@ const handleRegistration = handleSubmit(async (values, { resetForm }) => {
     const idToken = await authUser.value.getIdToken()
     const uid = authUser.value.uid
 
-    // バックエンドへのユーザー情報の登録
     try {
       await createUser(values.name, roleValue.value, idToken)
     }
@@ -84,7 +79,6 @@ const handleRegistration = handleSubmit(async (values, { resetForm }) => {
       return
     }
 
-    // 所属の登録
     try {
       userInfo.value = await registerSchool(inputSchoolId.value, idToken)
 
@@ -141,7 +135,6 @@ onMounted(async () => {
     />
 
     <BaseForm title="新規登録">
-      <!-- 名前入力 -->
       <div>
         <BaseFormLabel
           text="名前"
@@ -162,7 +155,6 @@ onMounted(async () => {
         />
       </div>
 
-      <!-- メールアドレス入力 -->
       <div>
         <BaseFormLabel
           text="メールアドレス"
@@ -183,7 +175,6 @@ onMounted(async () => {
         />
       </div>
 
-      <!-- パスワード入力 -->
       <div>
         <BaseFormLabel
           text="パスワード"
@@ -203,7 +194,6 @@ onMounted(async () => {
         />
       </div>
 
-      <!-- 確認用パスワード入力 -->
       <div>
         <BaseFormLabel
           text="パスワード（確認用）"
@@ -223,7 +213,6 @@ onMounted(async () => {
         />
       </div>
 
-      <!-- アカウントタイプ選択 -->
       <div>
         <BaseFormLabel text="ユーザータイプ" />
         <BaseMenu
@@ -239,7 +228,6 @@ onMounted(async () => {
         />
       </div>
 
-      <!-- 所属入力 -->
       <div>
         <BaseFormLabel
           text="所属学校"

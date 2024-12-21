@@ -30,7 +30,6 @@ const onSelectSchedule = (selectedTime: ValueText) => (courseTime.value = select
 
 // 新規作成
 const handleCreateCourse = handleSubmit(async (values) => {
-  // nullチェック
   if (authUser.value && userInfo.value && values.teacherName) {
     isClick.value = true
     try {
@@ -85,7 +84,6 @@ const handleCreateCourse = handleSubmit(async (values) => {
       />
     </BaseButton>
 
-    <!-- 授業作成ダイアログ開始 -->
     <BaseDialogOverlay
       v-if="isDialog"
       data-testId="dialog"
@@ -99,7 +97,6 @@ const handleCreateCourse = handleSubmit(async (values) => {
           title="授業の作成"
           wide="small"
         >
-          <!-- 授業名入力 -->
           <div>
             <BaseFormLabel
               text="授業名"
@@ -118,7 +115,6 @@ const handleCreateCourse = handleSubmit(async (values) => {
             />
           </div>
 
-          <!-- 教員名入力 -->
           <div>
             <BaseFormLabel
               text="教員名"
@@ -137,7 +133,6 @@ const handleCreateCourse = handleSubmit(async (values) => {
             />
           </div>
 
-          <!-- 開講日選択 -->
           <div>
             <BaseFormLabel text="曜日" />
             <BaseMenu
@@ -152,7 +147,6 @@ const handleCreateCourse = handleSubmit(async (values) => {
             />
           </div>
 
-          <!-- 授業時間選択 -->
           <div>
             <BaseFormLabel text="時限" />
             <BaseMenu
@@ -188,6 +182,5 @@ const handleCreateCourse = handleSubmit(async (values) => {
         </BaseDialog>
       </div>
     </BaseDialogOverlay>
-    <!-- ダイアログ終了 -->
   </div>
 </template>

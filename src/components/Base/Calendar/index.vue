@@ -22,7 +22,6 @@ const today = new Date()
 const yesterday = new Date()
 yesterday.setDate(today.getDate() - 1)
 
-// どの範囲を選択できなくするか
 const disabledDates = ref([{ start: null, end: yesterday }])
 
 watch(date, () => {
@@ -33,7 +32,6 @@ watch(date, () => {
 })
 
 onMounted(() => {
-  // propsが渡されている場合は、初期値をセット
   if (props.courseDate) {
     selectedDate.value = props.courseDate
   }
@@ -42,7 +40,6 @@ onMounted(() => {
 
 <template>
   <div class="relative">
-    <!-- 選択領域 -->
     <div class="flex items-center justify-between rounded border border-gray-300 bg-gray-50 p-2.5 sm:text-sm">
       <span class="text-sm">{{ selectedDate || '選択してください' }}</span>
       <div

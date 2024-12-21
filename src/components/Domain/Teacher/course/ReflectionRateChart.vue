@@ -18,7 +18,6 @@ const updateChartData = () => {
 
   if (dailyCourseReflections.value && joinedUsers.value) {
     dailyCourseReflections.value.forEach((course) => {
-      // 授業回
       courseNumbers.value.push(course.course_number)
       // 振り返りの件数を算出
       const count = course.users_reflections.filter(user => user.reflections.length > 0).length
@@ -33,7 +32,7 @@ const updateChartData = () => {
   }
 }
 
-// グラフ内のフォントの共通設定
+// グラフ内共通フォント
 const commonFont: Partial<FontSpec> = {
   family: 'Noto Sans JP',
   size: 12,
@@ -42,7 +41,6 @@ const commonFont: Partial<FontSpec> = {
 }
 
 const data: ComputedRef<ChartData<'line'>> = computed(() => ({
-  // updateChartDataでcourseNumbersが変更されると、computedが再計算する
   labels: courseNumbers.value,
   datasets: [
     {
@@ -73,7 +71,7 @@ const options: ComputedRef<ChartOptions<'line'>> = computed(() => ({
       }
     },
     legend: {
-      display: false // ラベルを非表示に設定
+      display: false
     },
     tooltip: {
       callbacks: {
@@ -83,7 +81,7 @@ const options: ComputedRef<ChartOptions<'line'>> = computed(() => ({
             label += ':'
           }
           if (context.parsed.y !== null) {
-            label += '振り返り率：' + context.parsed.y + '%' // ここで単位を追加
+            label += '振り返り率：' + context.parsed.y + '%'
           }
           return label
         }
@@ -95,9 +93,9 @@ const options: ComputedRef<ChartOptions<'line'>> = computed(() => ({
       bodyColor: '#3b82f6',
       displayColors: false,
       padding: 7,
-      backgroundColor: 'white', // 背景色
-      borderColor: '#cbd5e1', // 枠線の色
-      borderWidth: 1.5 // 枠線の太さ
+      backgroundColor: 'white',
+      borderColor: '#cbd5e1',
+      borderWidth: 1.5
     }
   },
 
@@ -114,20 +112,19 @@ const options: ComputedRef<ChartOptions<'line'>> = computed(() => ({
       beginAtZero: true,
       suggestedMax: 100,
       border: {
-        display: false // 縦線消す
+        display: false
       },
       ticks: {
         font: commonFont,
-        maxTicksLimit: 6, // 目盛りの最大表示数
+        maxTicksLimit: 6,
         callback: function (value) {
-          return value + '%' // ここで単位を追加
+          return value + '%'
         }
       }
     }
   }
 }))
 
-// 授業日の追加・編集。削除を検知できるようにdailyCourseReflectionsを監視
 watch(
   dailyCourseReflections,
   () => {
@@ -139,7 +136,6 @@ watch(
 updateChartData()
 </script>
 
-<!-- 高さのみ指定して、幅はautoで。 -->
 <template>
   <div class="mb-5 h-60 bg-white p-4">
     <Line

@@ -16,11 +16,9 @@ const props = withDefaults(defineProps<Props>(), {
 })
 const emit = defineEmits<Emits>()
 const localArray = ref<string[]>([])
-// サジェスト用
 const suggestRef = ref(null)
 const isSuggestionVisible = ref(false)
 const selectedSuggestionIndex = ref(-1)
-// サジェストが手動で閉じられたかどうかをチェックするフラグ
 let manuallyClosed = false
 
 const { isMenuAbove, checkMenuPosition } = useDropdownPosition(suggestRef)
@@ -84,7 +82,6 @@ const filteredSuggestions = computed(() => {
 })
 
 watchEffect((): void => {
-  // 親コンポーネントから渡されたsuggestionArrayをnameのみの新しい配列にする
   localArray.value = (props.suggestionArray || []).map(item => item.name)
 })
 

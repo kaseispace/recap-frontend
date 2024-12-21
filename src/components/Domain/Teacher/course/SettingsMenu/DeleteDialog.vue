@@ -39,7 +39,6 @@ const handleDeleteCourseDay = async () => {
         teacherReflectionFlag.value = null
       }
 
-      // 全ての処理が終わった時に初期化
       nextCourseDate.value = undefined
       showSnackbar(SUCCESS_COURSE_DATE_DELETION, true)
       closeDialog()

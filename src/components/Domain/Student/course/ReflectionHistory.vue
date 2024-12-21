@@ -27,7 +27,6 @@ onClickOutside(dialogRef, closeDialog)
 
 const setTab = (num: number) => (activeTabId.value = num)
 
-// 編集ボタン
 const handleEditAction = (date: CourseDate, reflection: Reflection) => {
   beforeMessage.value = reflection.message
   reflectionId.value = reflection.id
@@ -46,7 +45,6 @@ const check = (course: StudentCourseReflection) => {
 // 振り返りの編集
 const handleEditReflection = handleSubmit(async (values) => {
   if (authUser.value) {
-    //  編集前後で変更ない
     if (beforeMessage.value === values.message) {
       showSnackbar(ERROR_REFLECTION_CANNOT_UPDATE, false)
       return
@@ -122,7 +120,6 @@ onMounted(async () => {
     <div
       v-if="studentReflections && studentReflections.length > 0"
     >
-      <!-- Chips表示 -->
       <div class="my-4 flex flex-wrap">
         <div
           v-for="(courseDate, i) in studentReflections"
@@ -138,7 +135,6 @@ onMounted(async () => {
         </div>
       </div>
 
-      <!-- チャット履歴 -->
       <div
         v-for="(courseDate, i) in studentReflections"
         :key="i"
@@ -207,7 +203,6 @@ onMounted(async () => {
         </div>
       </div>
 
-      <!-- 振り返り編集用ダイアログ -->
       <BaseDialogOverlay
         v-if="dialog"
         data-testId="editDialog"

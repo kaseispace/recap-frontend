@@ -93,7 +93,6 @@ onMounted(() => {
     />
 
     <BaseForm title="ログイン">
-      <!-- メールアドレス入力 -->
       <div>
         <BaseFormLabel
           text="メールアドレス"
@@ -113,7 +112,6 @@ onMounted(() => {
         />
       </div>
 
-      <!-- パスワード入力 -->
       <div>
         <BaseFormLabel
           text="パスワード"

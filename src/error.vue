@@ -100,10 +100,7 @@ onMounted(async () => {
     </BaseLayoutSideBar>
 
     <main class="flex min-h-screen w-full flex-1 flex-col">
-      <!-- アプリケーションバー -->
       <BaseLayoutAppBar :school-name="userInfo ? userInfo.school.name : ''">
-        <!-- エラーの際もユーザーアイコンを表示させるかどうか -->
-
         <template
           v-if="userInfo"
           #icon

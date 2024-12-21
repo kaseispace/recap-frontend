@@ -46,7 +46,6 @@ const isMobile = computed(() => width.value < 640)
     data-testId="dialog"
     dialog-type="left"
   >
-    <!-- px-5 py-2 -->
     <div
       ref="dialogRef"
       class="slide-in-left flex w-full max-w-[320px] flex-col bg-white px-4 py-3"
@@ -125,7 +124,6 @@ const isMobile = computed(() => width.value < 640)
               :to="{ name: courseName, params: { id: course.uuid } }"
               @click="closeDialog"
             >
-              <!-- アイコンが無い分の余白 -->
               <div class="mr-[16px] border-r-2 px-2" />
               <li
                 :data-testId="`propsBgColor-${i}`"

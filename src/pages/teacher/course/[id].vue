@@ -36,7 +36,6 @@ onMounted(async () => {
 
     const idToken = await authUser.value.getIdToken()
 
-    // 授業一覧を既に取得済みの場合
     if (teacherCourses.value) {
       currentCourse.value = teacherCourses.value.find(course => course.uuid === route.params.id) || null
     }
@@ -47,16 +46,14 @@ onMounted(async () => {
     if (currentCourse.value) {
       useHead(TEACHER_COURSE_META(currentCourse.value.name))
       courseCode.value = currentCourse.value.course_code
+
       joinedUsers.value = await getJoinedUsers(courseUuid.value, idToken)
-      // 授業日一覧の取得
       courseDates.value = await getTeacherCourseDate(courseUuid.value, idToken)
 
-      // 今日の日付確認
       const today = new Date().toLocaleDateString()
       if (courseDates.value) {
-        // 今日の日付よりも後の授業日があるかどうか確認
         nextCourseDate.value = findNextCourseDate(courseDates.value)
-        // 一番最後に登録した授業日が今日であれば、振り返りを取得しにいく
+
         if (nextCourseDate.value?.course_date === today) {
           teacherReflectionFlag.value = await checkReflectionOnDate(
             nextCourseDate.value.course_id,
@@ -129,7 +126,6 @@ onUnmounted(() => {
         </div>
 
         <div>
-          <!-- タブ開始 -->
           <div class="flex w-full justify-between border-b">
             <div class="no-scrollbar flex overflow-x-auto text-center text-sm font-medium">
               <ul class="flex">
@@ -154,7 +150,6 @@ onUnmounted(() => {
               <DomainTeacherCourseSettingsMenuNoCourseDate v-else />
             </div>
           </div>
-          <!-- タブ終了 -->
 
           <div>
             <div
@@ -186,14 +181,11 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <!-- マウントが完了するまで表示するやつ -->
     <div
       v-else
       class="mx-auto my-16 w-full max-w-7xl space-y-16"
     >
       <div class="mx-6 flex flex-col">
-        <!-- <BaseLoading border-color="border-blue-900" /> -->
-
         <div
           v-if="isLoading"
           class="flex h-[298px] items-center justify-center"

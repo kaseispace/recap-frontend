@@ -34,12 +34,10 @@ const handleSendUserMessage = () => {
 
 const isMobile = computed(() => width.value < 640)
 
-// 空文字チェック
 watch(userInput, () => {
   checkUserInputStatus()
 })
 
-// チャットを開いている最中にactiveを更新したとき
 watch(activePrompt, () => {
   if (activePrompt.value) {
     const newPrompts = activePrompt.value.prompt_questions.map(prompt => prompt.content)
@@ -48,8 +46,7 @@ watch(activePrompt, () => {
   }
 })
 
-// 何か別の変数も監視の対象んする？
-// チャット画面の高さを一番下にする
+// チャット画面の高さを一番下に設定
 watch(
   chatHistory,
   async () => {
@@ -68,10 +65,8 @@ watch(isActive, () => {
   }
 })
 
-// 振り返りタブを開いたとき
 onMounted(() => {
   if (activePrompt.value) {
-    // const mountPrompts = activePrompt.value.prompt_contents.map((prompt) => prompt.content)
     const mountPrompts = activePrompt.value.prompt_questions.map(prompt => prompt.content)
     currentPrompts.value = []
     currentPrompts.value.push(...mountPrompts)
@@ -80,7 +75,6 @@ onMounted(() => {
 </script>
 
 <template>
-  <!-- チャットが開いていない状態 -->
   <BaseButton
     v-if="!isActive"
     data-testId="botButton"
@@ -95,7 +89,6 @@ onMounted(() => {
     />
   </BaseButton>
 
-  <!-- チャットが開いている状態 -->
   <div
     v-else
     data-testId="chatBot"
@@ -203,8 +196,6 @@ onMounted(() => {
         data-testId="chatInput"
         class="flex h-[60px] items-center rounded-b-sm border-t border-slate-200 bg-white p-2.5"
       >
-        <!-- @keydown.shift.enter.preventでデフォルトの改行を阻止しつつ、関数の実行（改行されなくなる） -->
-        <!-- ボタンが押せないよう状態でも、Shift + Enterで送信できてしまわないように注意 -->
         <BaseFormTextarea
           v-model.trim="userInput"
           data-testId="userInput"
@@ -214,7 +205,6 @@ onMounted(() => {
           @keydown.shift.enter.prevent="handleSendUserMessage"
         />
 
-        <!-- 送信できないようのボタン -->
         <button
           v-show="!isUserInputEmpty || isBotChatting"
           data-testId="sendMessageDisabled"

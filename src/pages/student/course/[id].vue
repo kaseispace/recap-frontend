@@ -36,7 +36,6 @@ onMounted(async () => {
 
     const idToken = await authUser.value.getIdToken()
 
-    // 参加授業一覧を既に取得済みの場合
     if (studentCourses.value) {
       currentStudentCourse.value = studentCourses.value.find(course => course.uuid === route.params.id) || null
     }
@@ -121,7 +120,6 @@ onUnmounted(() => {
           />
 
           <div>
-            <!-- タブ開始 -->
             <div class="no-scrollbar flex w-full overflow-x-auto border-b text-center text-sm font-medium">
               <ul class="flex">
                 <BaseTab
@@ -139,7 +137,6 @@ onUnmounted(() => {
                 </div>
               </ul>
             </div>
-            <!-- タブ終了 -->
 
             <div class="flex flex-col py-2">
               <div v-if="activeTabId === 1">
@@ -158,21 +155,17 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <!-- 振り返りbotをどのタブでも表示 -->
       <DomainStudentCourseReflectionBot
         v-if="showChat"
         class="fixed bottom-10 right-8 z-10"
       />
     </div>
 
-    <!-- マウントが完了するまで表示するやつ -->
     <div
       v-else
       class="mx-auto my-16 w-full max-w-7xl space-y-16"
     >
       <div class="mx-6 flex flex-col">
-        <!-- <BaseLoading border-color="border-blue-900" /> -->
-
         <div
           v-if="isLoading"
           class="flex h-[298px] items-center justify-center"

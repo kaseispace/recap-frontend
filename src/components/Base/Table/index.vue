@@ -1,7 +1,7 @@
 <script setup lang="ts">
 interface Props {
-  rows: DailyCourseReflection[] // header用授業回タイトル
-  columns: SimplifiedUser[] // 受講生一覧
+  rows: DailyCourseReflection[]
+  columns: SimplifiedUser[]
   rowTitle: string
 }
 
@@ -19,16 +19,12 @@ const pageSize = ref(10) // 最大表示件数
 
 const { checkReflections, convertDateFormat } = useReflectionHistory()
 
-// 当初の予定ではUserIdだけを渡す予定だったが、nameもほしくなった
-// const selectUser = (column: number, name :string) => emit('userSelected', column, name) // userIdを渡す用
 const selectUser = (column: number, name: string) => {
   const user = { id: column, name }
   emit('userSelected', user)
 }
 
-// Columnsを更新する
 const setCurrentColumns = ({ currentPage, currentPageSize }: { currentPage: number, currentPageSize: number }) => {
-  // 現在のページ数と、最大表示件数を引数から取得
   const start = (currentPage - 1) * currentPageSize
   const end = start + currentPageSize
   currentColumns.value = props.columns.slice(start, end) // sliceメソッドで切り取られるのは、endの1つ前まで（endは含まれない）
@@ -47,7 +43,6 @@ const { currentPage, isFirstPage, isLastPage, prev, next } = useOffsetPagination
   onPageSizeChange: setCurrentColumns
 })
 
-// 全データ中のどこのデータを表示しているか
 const currentDataRange = computed(() => {
   const start = (currentPage.value - 1) * pageSize.value
   const end = Math.min(start + pageSize.value, props.columns.length)
@@ -62,8 +57,6 @@ const getReflectionStatus = (row: DailyCourseReflection, column: SimplifiedUser)
   return reflectionStatusCache.value[key]
 }
 
-// reflectionStatusCacheはリアクティブで定義しているため、一度キャッシュリセットする（これで、更新された値がpropsで渡されてもアイコンの更新がされる）
-// 変更があったところだけのアイコンを更新したいので、配列の最後のキャッシュを削除する
 watch(
   () => props.rows,
   () => {
@@ -179,7 +172,6 @@ watch(
       </p>
 
       <div class="flex items-center justify-center">
-        <!-- 戻るボタン -->
         <BaseButton
           button-type="pagination"
           :is-enabled="isFirstPage"
@@ -203,7 +195,6 @@ watch(
           {{ currentPage }}ページ
         </p>
 
-        <!-- 次ボタン -->
         <BaseButton
           button-type="pagination"
           :is-enabled="isLastPage"

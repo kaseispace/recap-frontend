@@ -6,9 +6,8 @@ interface Props {
 }
 const props = defineProps<Props>()
 defineEmits(['update:modelValue'])
-const localHeight = ref(props.defaultHeight)
 
-// mountされてDOM要素が生成されるまではアクセス出来ないのでnull型
+const localHeight = ref(props.defaultHeight)
 const area = ref<HTMLElement | null>(null)
 
 const styles = computed(() => {
@@ -16,9 +15,7 @@ const styles = computed(() => {
 })
 
 const resize = async () => {
-  // リサイズ前にリセット
   localHeight.value = props.defaultHeight
-  // DOMの更新が完了する前のdefaultHeightを避けるために、更新が完了するのを待つ
   await nextTick()
   localHeight.value = area.value?.scrollHeight + 'px'
 }
@@ -30,7 +27,6 @@ watch(
   }
 )
 
-// DOMのレンダリングが完了し、表示状態になった時点
 onMounted(async () => {
   await resize()
 })

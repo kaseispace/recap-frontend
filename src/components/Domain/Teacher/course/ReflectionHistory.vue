@@ -12,7 +12,6 @@ const { dialog: isDialog, openDialog, closeDialog } = useDialog()
 const { showSnackbar } = useSnackBar()
 onClickOutside(dialogRef, closeDialog)
 
-// 親コンポーネントでemitを受け取った際の動作
 const onSelectUser = (selectUser: { id: number, name: string }) => {
   if (courseUserReflections.value) {
     userName.value = selectUser.name
@@ -22,7 +21,6 @@ const onSelectUser = (selectUser: { id: number, name: string }) => {
 }
 const setTab = (num: number) => (activeTabId.value = num)
 
-// 各学生の振り返り履歴を閲覧した際に、activeTabIdが最後に開いたidを保持したままで、別の学生を開く際に予期しない挙動になるのを防ぐ対策
 watch(
   () => isDialog.value,
   () => {
@@ -41,7 +39,6 @@ onMounted(async () => {
 
     if (courseUserReflections.value && dailyCourseReflections.value) return
 
-    // 各受講生の振り返りを見るとき用
     const idToken = await authUser.value.getIdToken()
     courseUserReflections.value = await getAllStudentReflections(courseUuid.value, idToken)
     const getAllStudentReflectionData = await getAllStudentReflectionStatus(courseUuid.value, idToken)
@@ -61,7 +58,6 @@ onMounted(async () => {
     v-if="isLoading"
     class="flex h-64 items-center justify-center"
   >
-    <!-- ローディング中のコンポーネント -->
     <BaseLoading border-color="border-blue-900" />
   </div>
   <div
@@ -96,7 +92,6 @@ onMounted(async () => {
     </BaseCardHistory>
   </div>
 
-  <!-- 振り返り詳細 -->
   <BaseDialogOverlay
     v-if="isDialog"
     dialog-type="right"
@@ -106,11 +101,7 @@ onMounted(async () => {
         ref="dialogRef"
         class="slide-in-right flex w-full max-w-[400px] flex-col bg-white p-3"
       >
-        <!-- ユーザー名 -->
         <div class="flex items-center justify-between border-b pb-2">
-          <!-- <BaseCardAvatar bg-color="bg-slate-600/20">
-          <Icon name="mdi:user" size="24px" color="#475569" />
-        </BaseCardAvatar> -->
           <div class="text-base font-medium xs:text-lg">
             {{ userName }}の振り返り履歴
           </div>
@@ -127,7 +118,6 @@ onMounted(async () => {
           </BaseButton>
         </div>
 
-        <!-- 表示するデータがある場合 -->
         <div
           v-if="userHistory && userHistory.user_reflections.length > 0"
           class="flex flex-col justify-between overflow-hidden"
@@ -159,7 +149,6 @@ onMounted(async () => {
               >
                 <!-- 各授業回の振り返りタイトル -->
                 <div class="flex flex-col justify-start pb-3">
-                  <!-- <h1 class="mb-1 text-xl">{{ `${courseDate.course_number}の振り返り` }}</h1> -->
                   <p class="text-sm text-gray-500">
                     {{ `授業日 ${courseDate.course_date}` }}
                   </p>
@@ -216,7 +205,6 @@ onMounted(async () => {
           </div>
         </div>
 
-        <!-- 表示するデータが無い場合 -->
         <div
           v-else
           class="flex h-full flex-col items-center justify-center p-2"

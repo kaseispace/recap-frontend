@@ -2,9 +2,9 @@ export const useReflectionApi = () => {
   const config = useRuntimeConfig()
   // 既に今日の振り返りが終わっているかどうかを判定するフラグ
   const studentReflections = useState<StudentCourseReflection[] | null>('studentReflections', () => null)
-  const isTodayReflected = useState<boolean | null>('isTodayReflected', () => null) // 学生自身が振り返り登録済みかどうか
+  // 学生自身が振り返り登録済みかどうか
+  const isTodayReflected = useState<boolean | null>('isTodayReflected', () => null)
   const teacherReflectionFlag = useState<boolean | null>('teacherReflectionFlag', () => null)
-
   // 授業内に登録された各ユーザーの振り返り
   const courseUserReflections = useState<CourseUserReflections[] | null>('courseUserReflections', () => null)
   const sharedCourseReflections = useState<SharedReflectionRecord[] | null>('sharedCourseReflections', () => null)
@@ -40,7 +40,6 @@ export const useReflectionApi = () => {
     return data
   }
 
-  // 授業日当日に既に灯篭済みの振り返りがあるかどうかの確認
   const checkReflectionOnDate = async (courseId: number, courseDateId: number, idToken: string): Promise<boolean> => {
     const data = await $fetch<boolean>(
       `${config.public.backendUrl}/reflections/check_reflection_on_date?id=${courseId}&course_date_id=${courseDateId}`,

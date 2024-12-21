@@ -4,7 +4,6 @@ export const useChat = () => {
   const isUserInputEmpty = ref(false)
   // bot
   const currentPrompts = useState<string[]>('currentPrompts', () => [])
-  // const currentPrompts = ref<string[]>([]) // 現在チャットに表示中のプロンプト
   const activePrompts = ref<string[]>([]) // activeなプロンプト（チャット画面を表示中にactiveなプロンプトを変更する際の対策）
   const currentPromptIndex = ref(-1) // プロンプトがどこまで進んだか
   const isBotChatting = ref(false) // 現在botが応答中かどうか（何枚もボタンを押せない、送信ボタンを押せない用）
@@ -24,11 +23,8 @@ export const useChat = () => {
     chatHistory.value = []
   }
 
-  // 教員ページで使う場合は、nextBotMessage関数をそのまま引数に渡す
-  // 学生ページで使う場合は、nextBotMessage関数に引数を渡した関数を渡す（拡張する）
   const sendUserMessage = async (handleBotMessage: () => Promise<void>) => {
     if (!isBotChatting.value && userInput.value.trim() !== '') {
-      // 計測終了
       endTime.value = performance.now()
       const timeDifference = endTime.value - startTime.value
       reflectionTimeInSeconds.value = Number((timeDifference / 1000).toFixed(2))
@@ -49,9 +45,10 @@ export const useChat = () => {
 
   //   教員ページで使う際は引数なし、学生ページで使う場合は引数あり
   const nextBotMessage = async (saveChatHistory?: () => void) => {
-    isBotChatting.value = true // ボタンを押せいないようにする
+    isBotChatting.value = true
     if (currentPromptIndex.value < currentPrompts.value.length - 1) {
       currentPromptIndex.value++
+
       // loading用オブジェクトを作成
       const botMessage: ChatMessage = {
         message_type: 'bot',
@@ -67,7 +64,7 @@ export const useChat = () => {
 
       const index = chatHistory.value.findIndex(message => message.isLoading === true)
       if (index !== -1) {
-        // 先ほど作成したloading用オブジェクトをmessage用オブジェクトに上書き
+        // loading用オブジェクトをmessage用オブジェクトに上書き
         chatHistory.value[index] = {
           message_type: 'bot',
           message: currentPrompts.value[currentPromptIndex.value],
@@ -75,11 +72,10 @@ export const useChat = () => {
           isLoading: false
         }
       }
-      // 計測開始
+
       startTime.value = performance.now()
     }
     else {
-      // プロンプト終了
       const botMessage: ChatMessage = {
         message_type: 'bot',
         message: '',
@@ -94,21 +90,21 @@ export const useChat = () => {
 
       const index = chatHistory.value.findIndex(message => message.isLoading === true)
       if (index !== -1) {
-        // 先ほど作成したloading用オブジェクトをmessage用オブジェクトに上書き
+        // loading用オブジェクトをmessage用オブジェクトに上書き
         chatHistory.value[index] = { message_type: 'bot', message: END_CHAT_MESSAGE, message_time: 0, isLoading: false }
       }
       if (saveChatHistory) {
         saveChatHistory()
       }
-      //   全ての会話が終了
+
       isChatEnded.value = true
     }
-    isBotChatting.value = false // botの会話が終わったのでボタンを押してもいいようにする
+    isBotChatting.value = false
   }
 
   const startChat = async () => {
-    isBotChatting.value = true // 会話始め
-    // activeなプロンプトに変更があった際
+    isBotChatting.value = true
+
     if (activePrompts.value.length !== 0) {
       currentPrompts.value = []
       currentPrompts.value.push(...activePrompts.value)
@@ -128,12 +124,12 @@ export const useChat = () => {
 
       chatHistory.value[i].isLoading = false
     }
-    isBotChatting.value = false // 会話終了
+    isBotChatting.value = false
     await nextBotMessage()
   }
 
   const noChat = async () => {
-    isChatEnded.value = true // ユーザーの入力はない
+    isChatEnded.value = true
     isBotChatting.value = true
     for (let i = 0; i < NO_CHAT_MESSAGES.length; i++) {
       const currentMessage = NO_CHAT_MESSAGES[i]
@@ -149,12 +145,12 @@ export const useChat = () => {
       }
       chatHistory.value[i].isLoading = false
     }
-    isBotChatting.value = false // 会話終了
+    isBotChatting.value = false
   }
 
-  // プロンプトが存在しない
+  // 今日のプロンプトが存在しない
   const pendingChat = async () => {
-    isChatEnded.value = true // ユーザーの入力はない
+    isChatEnded.value = true
     isBotChatting.value = true
     for (let i = 0; i < PENDING_CHAT_MESSAGES.length; i++) {
       const currentMessage = PENDING_CHAT_MESSAGES[i]
@@ -170,12 +166,12 @@ export const useChat = () => {
       }
       chatHistory.value[i].isLoading = false
     }
-    isBotChatting.value = false // 会話終了
+    isBotChatting.value = false
   }
 
   // 振り返り登録済み
   const completeChat = async () => {
-    isChatEnded.value = true // ユーザーの入力はない
+    isChatEnded.value = true
     isBotChatting.value = true
     for (let i = 0; i < COMPLETE_CHAT_MESSAGES.length; i++) {
       const currentMessage = COMPLETE_CHAT_MESSAGES[i]
@@ -191,7 +187,7 @@ export const useChat = () => {
       }
       chatHistory.value[i].isLoading = false
     }
-    isBotChatting.value = false // 会話終了
+    isBotChatting.value = false
   }
 
   const checkUserInputStatus = () => {

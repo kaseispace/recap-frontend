@@ -2,7 +2,6 @@ export const useUserApi = () => {
   const config = useRuntimeConfig()
   const userInfo = useState<UserSchool | null>('userInfo', () => null)
 
-  // バックエンドにユーザーの新規登録、stateには保存しない
   const createUser = async (name: string, accountType: number, idToken: string): Promise<User> => {
     const requestBody = { name, user_type: accountType }
     const data = await $fetch<User>(`${config.public.backendUrl}/users`, {
@@ -21,7 +20,6 @@ export const useUserApi = () => {
     return data
   }
 
-  // ユーザーの学校を登録
   const registerSchool = async (schoolId: number, idToken: string): Promise<UserSchool> => {
     const requestBody = { school_id: schoolId }
     const data = await $fetch<UserSchool>(`${config.public.backendUrl}/user_schools`, {
@@ -32,7 +30,6 @@ export const useUserApi = () => {
     return data
   }
 
-  // ユーザー情報を取得、stateには保存しない
   const getUserSchool = async (idToken: string): Promise<UserSchool> => {
     const data = await $fetch<UserSchool>(`${config.public.backendUrl}/user_schools`, {
       headers: { Authorization: `Bearer ${idToken}` }

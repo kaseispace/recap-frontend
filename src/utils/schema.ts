@@ -1,6 +1,5 @@
 import * as yup from 'yup'
 
-// useField関数の第1引数と結びつく（schemaのプロパティ名とuseField関数の第1引数を合致させる）
 export const LoginFormSchema = yup.object({
   email: yup.string().required('必須項目です').email('メールアドレスの形式で入力してください'),
   password: yup.string().required('必須項目です')

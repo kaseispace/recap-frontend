@@ -67,7 +67,6 @@ const handleJoinCourse = handleSubmit(async (values) => {
       />
     </BaseButton>
 
-    <!-- ダイアログ開始 -->
     <BaseDialogOverlay
       v-if="dialog"
       data-testId="dialog"
@@ -116,6 +115,5 @@ const handleJoinCourse = handleSubmit(async (values) => {
         </BaseDialog>
       </div>
     </BaseDialogOverlay>
-    <!-- ダイアログ終了 -->
   </div>
 </template>

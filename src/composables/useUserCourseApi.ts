@@ -28,7 +28,6 @@ export const useUserCourseApi = () => {
     return data
   }
 
-  // 参加中の授業から、退出する
   const leaveCourse = async (courseUuid: string, idToken: string): Promise<void> => {
     await $fetch(`${config.public.backendUrl}/user_courses/${courseUuid}`, {
       method: 'DELETE',

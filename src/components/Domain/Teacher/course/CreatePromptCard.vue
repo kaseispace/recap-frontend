@@ -28,7 +28,6 @@ const removePromptContent = (contentIndex: number) => contents.value.splice(cont
 
 // 振り返り作成
 const handleCreatePrompt = handleSubmit(async (values) => {
-  // 空白・スペースの確認
   const filteredContents = contents.value.filter(content => content.content && content.content.trim() !== '')
   promptQuestions.value.push({ content: values.content }, ...filteredContents)
   if (authUser.value && courseUuid.value) {
@@ -60,7 +59,6 @@ const handleCreatePrompt = handleSubmit(async (values) => {
   }
 })
 
-// 振り返りの追加用変数contentsは、resetFormの対処以外なので、isDialogを監視して初期化
 watch(isDialog, () => {
   contents.value = []
   promptQuestions.value = []
@@ -91,8 +89,6 @@ watch(isDialog, () => {
           title="振り返りを作成"
           wide="large"
         >
-          <!-- 中身スタート -->
-
           <div>
             <BaseFormLabel
               text="タイトル"

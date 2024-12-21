@@ -37,7 +37,6 @@ watch(isDropdown, async (newVal) => {
 </script>
 
 <template>
-  <!-- メインコンテンツ -->
   <div class="relative">
     <div
       ref="menuRef"

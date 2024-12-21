@@ -23,7 +23,6 @@ export const useCourseDateApi = () => {
     return data
   }
 
-  // 授業日の作成
   const createCourseDate = async (
     uuid: string,
     courseNumber: string,

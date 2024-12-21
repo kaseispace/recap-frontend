@@ -25,13 +25,11 @@ const handleUpdateReflectionStatus = async () => {
       const idToken = await authUser.value.getIdToken()
       const courseDateInfo = await updateReflectionStatus(nextCourseDate.value.id, idToken)
       if (courseDates.value) {
-        // 更新
         nextCourseDate.value = courseDateInfo
         const index = courseDates.value.findIndex(date => date.id === nextCourseDate.value?.id)
         courseDates.value[index] = courseDateInfo
       }
 
-      // 既に取得済みの場合、振り返りの有無をテーブルに反映
       if (dailyCourseReflections.value) {
         const index = dailyCourseReflections.value.findIndex(courseDay => courseDay.id === courseDateInfo.id)
         dailyCourseReflections.value[index] = {

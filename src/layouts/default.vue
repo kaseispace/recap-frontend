@@ -2,7 +2,6 @@
 const { userInfo } = useUserApi()
 </script>
 
-<!-- 真ん中に配置したい場合はh-screenを追加 -->
 <template>
   <div class="flex min-h-screen flex-col">
     <BaseLayoutAppBar>

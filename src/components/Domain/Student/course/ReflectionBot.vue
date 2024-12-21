@@ -105,8 +105,7 @@ watch(userInput, () => {
   checkUserInputStatus()
 })
 
-// 何か別の変数も監視の対象んする？
-// チャット画面の高さを一番下にする
+// チャット画面の高さを一番下に設定
 watch(
   chatHistory,
   async () => {
@@ -136,8 +135,7 @@ onMounted(async () => {
     if (studentReflections.value && studentFeedbacks.value) return
 
     const idToken = await authUser.value.getIdToken()
-    // 今までの振り返りを取得
-    // getStudentReflectionが何を返すかを確認
+
     studentReflections.value = await getStudentReflection(courseUuid.value, idToken)
     studentFeedbacks.value = await getStudentFeedbacks(courseUuid.value, idToken)
 
@@ -146,14 +144,12 @@ onMounted(async () => {
       month: 'numeric',
       day: 'numeric'
     })
-    // const today = new Date().toLocaleDateString()
-    // getReflectionDataから今日の日付を同じデータを探す、1つでも見つけた時点でその値が代入される
+
     isTodayReflected.value = !!studentReflections.value.find(date => date.course_date === today)
 
-    // 今日の振り返りが未登録
     if (isTodayReflected.value === false) {
       const reflectionData = await getStudentPrompt(courseUuid.value, idToken)
-      // プロンプトが用意されている場合はセット
+
       if (reflectionData && reflectionData.length > 0) {
         currentPrompts.value = reflectionData
       }
@@ -288,8 +284,6 @@ onMounted(async () => {
         v-if="!isChatEnded"
         class="flex h-[60px] items-center rounded-b-sm border-t border-slate-200 bg-white p-2.5"
       >
-        <!-- @keydown.shift.enter.preventでデフォルトの改行を阻止しつつ、関数の実行（改行されなくなる） -->
-        <!-- ボタンが押せないよう状態でも、Shift + Enterで送信できてしまわないように注意 -->
         <BaseFormTextarea
           v-model.trim="userInput"
           data-testId="userInput"
@@ -299,7 +293,6 @@ onMounted(async () => {
           @keydown.shift.enter.prevent="handleSendUserMessage"
         />
 
-        <!-- 送信できないようのボタン -->
         <button
           v-show="!isUserInputEmpty || isBotChatting"
           disabled

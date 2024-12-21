@@ -14,7 +14,6 @@ onMounted(async () => {
       return
     }
 
-    // お知らせを既に取得済みの場合は何もしない
     if (announcements.value) return
 
     const idToken = await authUser.value.getIdToken()
@@ -34,12 +33,10 @@ onMounted(async () => {
     v-if="isLoading"
     class="flex h-64 items-center justify-center"
   >
-    <!-- ローディング中のコンポーネント -->
     <BaseLoading border-color="border-cyan-900" />
   </div>
 
   <div v-else>
-    <!-- 表示するデータがある場合 -->
     <div
       v-if="announcements && announcements.length > 0"
       class="mt-4 px-5"
@@ -60,7 +57,6 @@ onMounted(async () => {
       </template>
     </div>
 
-    <!-- 表示するデータが無い場合 -->
     <div
       v-else
       class="mt-10"

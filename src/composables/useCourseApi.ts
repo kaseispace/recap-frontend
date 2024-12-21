@@ -14,7 +14,6 @@ export const useCourseApi = () => {
     return data
   }
 
-  // 見つからない場合はnullを返す
   const getCourseByUuid = async (courseUuid: string, idToken: string): Promise<Course | null> => {
     const data = await $fetch<Course | null>(`${config.public.backendUrl}/courses/${courseUuid}`, {
       headers: { Authorization: `Bearer ${idToken}` }
@@ -74,7 +73,6 @@ export const useCourseApi = () => {
     return data
   }
 
-  // 教師が作成した授業を削除（授業に参加していたユーザーの関連も削除）
   const deleteCourse = async (courseUuid: string, idToken: string): Promise<void> => {
     await $fetch(`${config.public.backendUrl}/courses/${courseUuid}`, {
       method: 'DELETE',

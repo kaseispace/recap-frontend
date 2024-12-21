@@ -19,9 +19,7 @@ const selectItem = (item: number) => emit('selectMenu', item)
 onClickOutside(menuRef, closeDropdown)
 </script>
 
-<!-- 教師用ページで利用中 -->
 <template>
-  <!-- メインコンテンツ -->
   <div class="relative">
     <div
       ref="menuRef"

@@ -49,7 +49,6 @@ const { currentPage, isFirstPage, isLastPage, prev, next } = useOffsetPagination
 
 // 全データ中のどこのデータを表示しているか
 const currentDataRange = computed(() => {
-  console.log('currentDataRange起動')
   const start = (currentPage.value - 1) * pageSize.value
   const end = Math.min(start + pageSize.value, props.columns.length)
   return { start, end }
@@ -57,11 +56,8 @@ const currentDataRange = computed(() => {
 
 const getReflectionStatus = (row: DailyCourseReflection, column: SimplifiedUser) => {
   const key = `${row.id}-${column.id}`
-  // console.log(key)
   if (!reflectionStatusCache.value[key]) {
-    // console.log('キャッシュされてません')
     reflectionStatusCache.value[key] = checkReflections(row, column)
-    // console.log(reflectionStatusCache.value)
   }
   return reflectionStatusCache.value[key]
 }

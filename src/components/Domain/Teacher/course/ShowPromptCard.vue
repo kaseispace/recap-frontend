@@ -133,9 +133,6 @@ const handleActivePrompt = async () => {
       const idToken = await authUser.value.getIdToken()
       await updateActivePrompt(promptId.value, idToken)
 
-      console.log(activePrompt.value)
-      console.log(promptId.value)
-
       if (prompts.value) {
         // リクエストのあったプロンプトの特定
         const promptToUpdate = prompts.value.find(prompt => prompt.id === promptId.value)

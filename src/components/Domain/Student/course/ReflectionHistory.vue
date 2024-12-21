@@ -98,9 +98,7 @@ onMounted(async () => {
 
     const idToken = await authUser.value.getIdToken()
     studentReflections.value = await getStudentReflection(courseUuid.value, idToken)
-    console.log('登録済みデータ', studentReflections.value)
     studentFeedbacks.value = await getStudentFeedbacks(courseUuid.value, idToken)
-    console.log('フィードバック', studentFeedbacks.value)
   }
   catch {
     showSnackbar(UNEXPECTED_ERROR_MESSAGE, false)

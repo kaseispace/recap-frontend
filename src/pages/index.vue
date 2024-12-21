@@ -69,7 +69,6 @@ const handleLogin = handleSubmit(async (values, { resetForm }) => {
       showSnackbar(ERROR_FIREBASE_INVALID_CREDENTIALS, false)
     }
     else {
-      console.log(error)
       await logout()
       showSnackbar(ERROR_FIREBASE_UNEXPECTED, false)
     }

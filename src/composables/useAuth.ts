@@ -56,17 +56,12 @@ export const useAuth = () => {
         onAuthStateChanged($firebaseAuth, async (user) => {
           try {
             if (user) {
-              console.log('firebaseにログイン中です')
               authUser.value = user
               const token = await user.getIdToken()
               userInfo.value = await getUserSchool(token)
             }
-            else {
-              console.log('firebaseにログインしていません、リセットします')
-            }
           }
           catch (error) {
-            console.error('エラーが発生しました:', error)
             reject(error)
           }
           finally {

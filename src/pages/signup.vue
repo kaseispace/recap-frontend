@@ -44,7 +44,6 @@ const onSelectMenu = (role: ValueText): void => {
 }
 // AutoCompleteコンポーネントからオブジェクトが返される
 const onSelectSuggestion = (selectedUniversity: University): void => {
-  console.log('サジェスト', selectedUniversity)
   schoolName.value = selectedUniversity.name
   inputSchoolId.value = selectedUniversity.id
 }
@@ -115,7 +114,6 @@ const handleRegistration = handleSubmit(async (values, { resetForm }) => {
       showSnackbar(ERROR_FIREBASE_EMAIL_ALREADY_IN_USE(values.email), false)
     }
     else {
-      console.log(error)
       showSnackbar(ERROR_FIREBASE_UNEXPECTED, false)
     }
   }

@@ -47,18 +47,11 @@ onMounted(async () => {
     if (currentStudentCourse.value) {
       useHead(STUDENT_COURSE_META(currentStudentCourse.value.name))
       courseDates.value = await getStudentCourseDate(courseUuid.value, idToken)
-      console.log('授業日を取得', courseDates.value)
       const today = new Date()
-      console.log(today.toLocaleDateString())
       const foundCourseDate = courseDates.value.find(course => course.course_date === today.toLocaleDateString())
-      console.log('foundCourseDateの値', foundCourseDate)
       if (foundCourseDate) {
-        console.log('今日は授業日です')
         todayCourseDate.value = foundCourseDate
         showChat.value = true
-      }
-      else {
-        console.log('今日は授業日ではありません')
       }
     }
     else {

@@ -30,9 +30,6 @@ watch(date, () => {
     selectedDate.value = date.value.toLocaleDateString()
     emit('dateSelected', selectedDate.value)
   }
-  else {
-    console.log(date.value)
-  }
 })
 
 onMounted(() => {

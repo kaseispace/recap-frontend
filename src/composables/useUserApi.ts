@@ -37,7 +37,6 @@ export const useUserApi = () => {
     const data = await $fetch<UserSchool>(`${config.public.backendUrl}/user_schools`, {
       headers: { Authorization: `Bearer ${idToken}` }
     })
-    console.log('ユーザーデータの取得完了')
     return data
   }
 

@@ -59,13 +59,8 @@ const handleCreateReflection = async () => {
           return `${chat.message_type}：${chat.message}`
         })
 
-        try {
-          const feedbackInfo = await createFeedback(courseUuid.value, todayCourseDate.value.id, format, idToken)
-          studentFeedbacks.value?.push(feedbackInfo)
-        }
-        catch (error) {
-          console.log(error)
-        }
+        const feedbackInfo = await createFeedback(courseUuid.value, todayCourseDate.value.id, format, idToken)
+        studentFeedbacks.value?.push(feedbackInfo)
       }
     }
     catch {
@@ -83,7 +78,6 @@ const handleNextBotMessage = async () => await nextBotMessage(handleCreateReflec
 const handleSendUserMessage = () => sendUserMessage(handleNextBotMessage)
 
 const chatToggle = async () => {
-  console.log('今日の変数', todayCourseDate.value)
   openToggle()
   if (!isActive.value) return
 
@@ -146,7 +140,6 @@ onMounted(async () => {
     // getStudentReflectionが何を返すかを確認
     studentReflections.value = await getStudentReflection(courseUuid.value, idToken)
     studentFeedbacks.value = await getStudentFeedbacks(courseUuid.value, idToken)
-    console.log('フィードバック', studentFeedbacks.value)
 
     const today = new Date(Date.now()).toLocaleDateString('ja-JP', {
       year: 'numeric',

@@ -55,9 +55,6 @@ const handleAddCourseDay = handleSubmit(async (values) => {
         }))
         dailyCourseReflections.value.push({ ...courseDateInfo, users_reflections: dummyUsersReflections })
       }
-      else {
-        console.log('まだないから更新しないよ')
-      }
 
       showSnackbar(SUCCESS_COURSE_DATE_CREATION, true)
       closeDialog()

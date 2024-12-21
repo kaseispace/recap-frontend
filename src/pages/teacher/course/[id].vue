@@ -26,10 +26,6 @@ const imageLoad = (loaded: boolean) => (isImageLoaded.value = loaded)
 
 const goToTeacherPage = async () => await navigateTo('/teacher')
 
-watch(nextCourseDate, () => {
-  console.log('更新されたし')
-})
-
 onMounted(async () => {
   courseUuid.value = route.params.id.toString()
   try {
@@ -60,18 +56,14 @@ onMounted(async () => {
       if (courseDates.value) {
         // 今日の日付よりも後の授業日があるかどうか確認
         nextCourseDate.value = findNextCourseDate(courseDates.value)
-        console.log('次の授業日', nextCourseDate.value)
         // 一番最後に登録した授業日が今日であれば、振り返りを取得しにいく
         if (nextCourseDate.value?.course_date === today) {
-          console.log('今日の日付の授業日あり')
           teacherReflectionFlag.value = await checkReflectionOnDate(
             nextCourseDate.value.course_id,
             nextCourseDate.value.id,
             idToken
           )
-          console.log('振り返りの有無', teacherReflectionFlag.value)
         }
-        console.log('振り返りの有無', teacherReflectionFlag.value)
       }
     }
     else {

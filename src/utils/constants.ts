@@ -360,3 +360,76 @@ export const SNS_LINKS = [
   { value: 1, path: 'https://github.com/kaseispace', iconName: 'fe:github', iconSize: '18px' },
   { value: 2, path: 'https://x.com/kaseispace', iconName: 'prime:twitter', iconSize: '16px' }
 ]
+
+// ウェルカムページ
+export const APP_FLOW_STEPS = [
+  {
+    timing: '授業開始前',
+    userType: '教員',
+    stepNumber: 'STEP1',
+    imagePath: 'recap-schedule_wpnox4.png',
+    subtitle: '授業日の登録'
+  },
+  {
+    timing: '授業開始前',
+    userType: '教員',
+    stepNumber: 'STEP2',
+    imagePath: 'recap-prompt-management_hcukme.png',
+    subtitle: 'プロンプトの作成・公開'
+  },
+  {
+    timing: '授業中',
+    userType: '学生',
+    stepNumber: 'STEP3',
+    imagePath: 'recap-reflection_wielix.png',
+    subtitle: '振り返りの登録'
+  },
+  {
+    timing: '振り返り終了後',
+    userType: '教員・学生',
+    stepNumber: 'STEP4',
+    imagePath: 'recap-reflection-history_kpmexb.png',
+    subtitle: 'フィードバックの確認',
+    subtitleAlt: '（振り返りの確認）'
+  }
+]
+
+export const FEATURE_DETAILS = [
+  {
+    name: 'プロンプト機能',
+    description: [
+      'プロンプト機能は、担当授業の教員が独自の質問を作成し、学生の振り返りを促すためのツールです。授業の目的や進行に応じて、毎回同じ質問を使うことも、単元や授業の回ごとに異なる質問を設定することもできます。',
+      'また、複数の質問を登録可能で、学生は教員が用意したプロンプトに沿って振り返りを進めることで、学びを整理しやすくなります。教員の判断に応じて、授業スタイルに合わせた振り返りを設計できるため、柔軟な運用が可能です。'
+    ],
+    imagePath: 'recap-prompt_jlp7wo.png',
+    isImageFirst: true
+  },
+  {
+    name: '振り返り機能',
+    description: [
+      '振り返り機能は、授業後の学びを整理し、学生が自身の理解を深めるためのツールです。アプリ内のチャットアイコンをクリックすると振り返りが開始され、プロンプト機能を使って教員が作成した質問に沿って進められます。',
+      '振り返りが完了すると登録内容は履歴ページに保存され、後から確認可能です。また、AIのフィードバックを受けることで、新たな視点やアドバイスを得て、学びをさらに深めることができます。 これにより、次回の授業に向けた準備や継続的な成長をサポートします。'
+    ],
+    imagePath: 'recap-reflection-page.jpg_womndh.png',
+    isImageFirst: false
+  },
+  {
+    name: 'みんなの振り返り機能',
+    description: [
+      'みんなの振り返り機能は、他の学生の振り返りを閲覧できるツールです。他の学生がどのように授業を振り返っているかを知ることで、新しい視点を得たり、自分の学びに役立てることができます。',
+      '画面には振り返りの一部が一覧表示され、カードをクリックすると、質問や省略された部分を含む詳細が表示されます。気になった振り返りをじっくり読むことで、異なる視点を知り、自分の学びに活かせます。'
+    ],
+    imagePath: 'recap-shared-reflections.jpg_rdfhxb.png',
+    isImageFirst: true
+  },
+  {
+    name: '振り返り履歴閲覧機能',
+    description: [
+      '振り返り履歴閲覧機能は、教員が各学生の振り返り状況を確認できるツールです。授業後の学習状況を把握し、適切なフォローを行うのに役立ちます。',
+      '授業回ごとの振り返り一覧では、記入済みはチェックマーク、未記入はバツ印で表示され、進捗をひと目で確認できます。学生名をクリックするとその学生の振り返り内容を閲覧でき、個々の学習の様子を詳細に把握することも可能です。',
+      'また、記入率を示すグラフにより、授業回ごとの振り返り状況を視覚的に把握でき、全体の傾向を確認しながら指導に活用できます。'
+    ],
+    imagePath: 'recap-review-dashboard_ydfzhe.png',
+    isImageFirst: false
+  }
+]

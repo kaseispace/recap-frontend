@@ -36,6 +36,7 @@ watch(() => route.path, () => {
       >
         <button
           class="text-sm font-medium hover:text-emerald-600"
+          data-testId="login"
           @click="openDialog"
         >
           ログイン

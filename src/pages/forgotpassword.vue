@@ -48,20 +48,26 @@ const handleResetPassword = handleSubmit(async (values, { resetForm }) => {
       :status="snackbarStatus"
     />
 
-    <BaseForm title="パスワード再設定">
+    <BaseForm
+      title="パスワード再設定"
+      @submit.prevent="handleResetPassword"
+    >
       <div v-if="isEmailSent">
         <BaseFormLabel
           text="メールアドレス"
           input-for="email"
         />
-        <BaseFormTextInput
+
+        <input
+          id="email"
           v-model="email"
-          data-testId="textInput"
-          input-id="email"
-          input-placeholder="mail@sample.com"
+          type="text"
           autocomplete="email"
-          :is-bg-color="false"
-        />
+          placeholder="mail@sample.com"
+          data-testId="textInput"
+          class="block w-full rounded border border-gray-300 bg-white p-2.5 text-sm text-gray-900"
+        >
+
         <BaseErrorValidationMessage
           v-if="errors.email"
           data-testId="errorEmail"
@@ -74,12 +80,11 @@ const handleResetPassword = handleSubmit(async (values, { resetForm }) => {
         class="pt-5"
       >
         <BaseButton
-          data-testId="clickSend"
+          type="submit"
           text="送信"
           button-type="none"
           :is-clicked="isClick"
           class="w-full bg-emerald-600 text-white hover:bg-emerald-600/75"
-          @click="handleResetPassword"
         />
       </div>
 

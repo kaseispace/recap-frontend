@@ -36,7 +36,7 @@ const handleCreatePrompt = handleSubmit(async (values) => {
       const idToken = await authUser.value.getIdToken()
       const promptInfo = await createPrompt(courseUuid.value, values.title, promptQuestions.value, idToken)
       if (prompts.value) {
-        prompts.value.push(promptInfo)
+        prompts.value.unshift(promptInfo)
         showSnackbar(SUCCESS_PROMPT_CREATION, true)
         closeDialog()
       }

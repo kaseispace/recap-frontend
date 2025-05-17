@@ -40,9 +40,10 @@ const isMobile = computed(() => width.value < 863)
 
       <ul class="space-y-2">
         <li
-          v-for="(desc, index) in description"
-          :key="index"
+          v-for="(desc, i) in description"
+          :key="i"
           class="text-sm font-medium leading-[24px] md2:text-[16px] md2:leading-[26px]"
+          :data-testId="`desc-${i}`"
         >
           {{ desc }}
         </li>

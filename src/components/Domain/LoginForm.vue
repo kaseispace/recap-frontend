@@ -135,7 +135,8 @@ const handleLogin = handleSubmit(async (values, { resetForm }) => {
         :text="!isClick ? 'ログイン' : '接続中...'"
         button-type="none"
         :is-clicked="isClick"
-        class="w-full bg-[#057767] text-white hover:bg-[#057767]/75"
+        class="w-full text-white"
+        :class="!isClick ? 'bg-[#057767] hover:bg-[#057767]/75' : 'bg-[#057767]/75'"
       />
     </div>
 

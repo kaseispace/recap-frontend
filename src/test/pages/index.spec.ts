@@ -1,55 +1,43 @@
 // @vitest-environment nuxt
-import { mockComponent, mockNuxtImport, mountSuspended } from '@nuxt/test-utils/runtime'
+import { mockComponent, mountSuspended } from '@nuxt/test-utils/runtime'
 import IndexPage from '@/pages/index.vue'
-import { MOCK_STUDENT_AUTH_USER, wait } from '@/test/mocks/index'
-import { registerUserEndpoints } from '@/test/mocks/user/endpoints'
-import { MOCK_STUDENT_USER_SCHOOL } from '@/test/mocks/user/index'
 
-mockComponent('BaseLink', {
-  template: '<a>stub link</a>'
+mockComponent('NuxtImg', {
+  template: '<div data-testId="img">stub img</div>'
 })
 
-mockComponent('BaseButton', {
-  template: '<button data-testId="button">stub button</button>'
+mockComponent('BaseFlowStep', {
+  template: '<div data-testId="flowStep">stub flow step</div>'
 })
 
-mockComponent('BaseDialogOverlay', {
-  template: '<div data-testId="overlay">stub overlay</div>'
+mockComponent('BaseFlowTriangle', {
+  template: '<div data-testId="flowTriangle">stub flow triangle</div>'
 })
 
-mockNuxtImport('navigateTo', () => vi.fn())
-
-vi.mock('@/composables/useAuth', () => ({
-  useAuth: () => {
-    const authUser = ref(null)
-    const login = vi.fn(() => MOCK_STUDENT_AUTH_USER)
-    return { authUser, login }
-  }
-}))
+mockComponent('BaseCardInfo', {
+  template: '<div data-testId="info">stub info</div>'
+})
 
 describe('indexページのテスト', () => {
-  let user: UserApiReturnType
-  registerUserEndpoints()
-
-  beforeEach(() => {
-    user = useUserApi()
-  })
-
-  afterEach(() => {
-    user.userInfo.value = null
-  })
-
-  it('ログイン成功時にユーザー情報が設定され、指定のページに遷移する', async () => {
+  it('主要な説明テキストが適切にレンダリングされる', async () => {
     const wrapper = await mountSuspended(IndexPage)
 
-    await wrapper.get(`[data-testId="input-email"]`).setValue('mockstudent@example.com')
-    await wrapper.get(`[data-testId="input-password"]`).setValue('password')
+    expect(wrapper.get('h1').text()).toContain('振り返りで')
+    expect(wrapper.get('h1').text()).toContain('学びをもっと深く')
 
-    await wrapper.get(`[data-testId="button"]`).trigger('click')
+    expect(wrapper.get(`[data-testId="catchphraseDescription"]`).text()).toContain('対話型振り返りシステム「ReCap」')
+    expect(wrapper.get(`[data-testId="catchphraseDescription"]`).text()).toContain('教員と学生のための振り返り学習プラットフォーム')
 
-    await wait(10)
+    const images = wrapper.findAll(`[data-testId="img"]`)
+    expect(images[0].attributes('src')).toBe('hero-banner_rkubku.png')
+    expect(images[1].attributes('src')).toBe('recap-pc_dwzb62.png')
 
-    expect(user.userInfo.value).toEqual(MOCK_STUDENT_USER_SCHOOL)
-    expect(navigateTo).toHaveBeenCalledWith('/student')
+    const sectionHeaders = wrapper.findAll('h2')
+    expect(sectionHeaders[0].text()).toBe('ReCapとは')
+    expect(sectionHeaders[1].text()).toBe('ReCapの主な機能')
+
+    expect(wrapper.find(`[data-testId="flowStep"]`).exists()).toBe(true)
+    expect(wrapper.find(`[data-testId="flowTriangle"]`).exists()).toBe(true)
+    expect(wrapper.find(`[data-testId="info"]`).exists()).toBe(true)
   })
 })

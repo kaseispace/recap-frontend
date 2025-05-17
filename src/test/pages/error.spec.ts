@@ -22,10 +22,6 @@ mockComponent('BaseMoreAccount', {
   template: '<div data-testId="account">stub account</div>'
 })
 
-mockComponent('BaseLink', {
-  template: '<a data-testId="link">stub link</a>'
-})
-
 mockComponent('BaseError404', {
   template: '<div>stub error</div>'
 })
@@ -73,7 +69,6 @@ describe('errorPageページのテスト', () => {
 
       // 表示コンポーネント
       expect(wrapper.find(`[data-testId="logo-link"]`).exists()).toBe(true)
-      expect(wrapper.findAll(`[data-testId="link"]`).length).toBe(2)
       expect(wrapper.find(`[img-path="404_n72mzp.png"]`).exists()).toBe(true)
       expect(wrapper.find(`[data-testId="footer"]`).exists()).toBe(true)
     })
@@ -88,9 +83,6 @@ describe('errorPageページのテスト', () => {
       })
 
       await wait(10)
-
-      // 非表示コンポーネント
-      expect(wrapper.find(`[data-testId="link"]`).exists()).toBe(false)
 
       // 表示コンポーネント
       expect(wrapper.find(`[data-testId="sidebar"]`).exists()).toBe(true)

@@ -1,5 +1,14 @@
 <script setup lang="ts">
+const dialogRef = ref(null)
+
+const route = useRoute()
 const { userInfo } = useUserApi()
+const { dialog, openDialog, closeDialog } = useDialog()
+onClickOutside(dialogRef, closeDialog)
+
+watch(() => route.path, () => {
+  closeDialog()
+})
 </script>
 
 <template>
@@ -25,12 +34,15 @@ const { userInfo } = useUserApi()
         v-if="!userInfo"
         class="flex items-center justify-center"
       >
-        <BaseLink
-          text="ログイン"
-          path="index"
-          class="font-medium hover:text-emerald-600"
-        />
+        <button
+          class="text-sm font-medium hover:text-emerald-600"
+          @click="openDialog"
+        >
+          ログイン
+        </button>
+
         <span class="mx-1.5">/</span>
+
         <BaseLink
           text="新規登録"
           path="signup"
@@ -40,6 +52,20 @@ const { userInfo } = useUserApi()
     </BaseLayoutAppBar>
     <main class="flex flex-1 flex-col py-10">
       <slot />
+
+      <BaseDialogOverlay
+        v-if="dialog"
+        data-testId="dialog"
+      >
+        <div class="flex w-full justify-center px-4">
+          <BaseDialog
+            ref="dialogRef"
+            wide="small"
+          >
+            <DomainLoginForm />
+          </BaseDialog>
+        </div>
+      </BaseDialogOverlay>
     </main>
     <BaseLayoutFooter />
   </div>

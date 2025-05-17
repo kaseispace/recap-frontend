@@ -11,6 +11,10 @@ mockComponent('BaseLink', {
   template: '<a data-testId="base-link">stub base-link</a>'
 })
 
+mockComponent('BaseDialogOverlay', {
+  template: '<div>stub overlay</div>'
+})
+
 mockComponent('BaseLayoutFooter', {
   template: '<div data-testId="footer">stub footer</div>'
 })
@@ -32,6 +36,7 @@ describe('defaultLayoutのテスト', () => {
       const wrapper = await mountSuspended(defaultLayout)
 
       expect(wrapper.find(`[data-testId="base-link"]`).exists()).toBe(true)
+      expect(wrapper.find(`[data-testId="login"]`).exists()).toBe(true)
       expect(wrapper.find(`[data-testId="nuxt-link"]`).exists()).toBe(true)
       expect(wrapper.find(`[data-testId="footer"]`).exists()).toBe(true)
     })
@@ -42,7 +47,8 @@ describe('defaultLayoutのテスト', () => {
       user.userInfo.value = MOCK_STUDENT_USER_SCHOOL
       const wrapper = await mountSuspended(defaultLayout)
 
-      expect(wrapper.find(`[data-testId="link"]`).exists()).toBe(false)
+      expect(wrapper.find(`[data-testId="base-link"]`).exists()).toBe(false)
+      expect(wrapper.find(`[data-testId="login"]`).exists()).toBe(false)
       expect(wrapper.find(`[data-testId="nuxt-link"]`).exists()).toBe(true)
       expect(wrapper.find(`[data-testId="footer"]`).exists()).toBe(true)
     })

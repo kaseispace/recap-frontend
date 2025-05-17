@@ -255,16 +255,6 @@ onMounted(async () => {
           @click="handleRegistration"
         />
       </div>
-
-      <template #footer>
-        <div class="border-t border-slate-300 pt-5">
-          <BaseLink
-            text="アカウントをお持ちの方はこちら"
-            path="index"
-            class="text-center text-blue-700 hover:underline"
-          />
-        </div>
-      </template>
     </BaseForm>
 
     <BaseDialogOverlay v-show="isLoading">

@@ -143,23 +143,6 @@ onMounted(async () => {
           :role="userInfo.user.user_type"
           @select-menu="handleEditOrDeleteAction"
         />
-
-        <div
-          v-else
-          class="flex items-center justify-center"
-        >
-          <BaseLink
-            text="ログイン"
-            path="index"
-            class="font-medium hover:text-sky-600"
-          />
-          <span class="mx-1.5">/</span>
-          <BaseLink
-            text="新規登録"
-            path="signup"
-            class="font-medium hover:text-sky-600"
-          />
-        </div>
       </BaseLayoutAppBar>
       <div class="flex-1">
         <DomainPasswordResetDialog

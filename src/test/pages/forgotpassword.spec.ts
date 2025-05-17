@@ -11,7 +11,7 @@ describe('forgotpasswordページのテスト', () => {
   it('無効なメールアドレスでエラーメッセージが表示される', async () => {
     const wrapper = await mountSuspended(ForgotPasswordPage)
 
-    await wrapper.find(`[data-testId="clickSend"]`).trigger('click')
+    await wrapper.get('form').trigger('submit')
 
     await wait(10)
 
@@ -22,9 +22,9 @@ describe('forgotpasswordページのテスト', () => {
     const wrapper = await mountSuspended(ForgotPasswordPage)
 
     await wrapper.get(`[data-testId="textInput"]`).setValue('test@example.com')
-    await wrapper.find(`[data-testId="clickSend"]`).trigger('click')
+    await wrapper.get('form').trigger('submit')
 
-    await wait(100)
+    await wait(10)
 
     expect(wrapper.find(`[data-testId="emailSent"]`).text()).toBe('再設定用URLを記載したメールを送信しました')
   })

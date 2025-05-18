@@ -134,20 +134,25 @@ onMounted(async () => {
       :status="snackbarStatus"
     />
 
-    <BaseForm title="新規登録">
+    <BaseForm
+      title="新規登録"
+      @submit.prevent="handleRegistration"
+    >
       <div>
         <BaseFormLabel
           text="名前"
           input-for="name"
         />
-        <BaseFormTextInput
+
+        <input
+          id="name"
           v-model.trim="name"
-          data-testId="input-name"
-          input-id="name"
-          input-placeholder="佐藤太郎"
+          type="text"
           autocomplete="username"
-          :is-bg-color="false"
-        />
+          placeholder="佐藤太郎"
+          data-testId="input-name"
+          class="block w-full rounded border border-gray-300 bg-white p-2.5 text-sm text-gray-900"
+        >
         <BaseErrorValidationMessage
           v-if="errors.name"
           :text="errors.name"
@@ -160,14 +165,15 @@ onMounted(async () => {
           text="メールアドレス"
           input-for="email"
         />
-        <BaseFormTextInput
+        <input
+          id="email"
           v-model.trim="email"
-          data-testId="input-email"
-          input-id="email"
-          input-placeholder="mail@sample.com"
+          type="text"
           autocomplete="email"
-          :is-bg-color="false"
-        />
+          placeholder="mail@sample.com"
+          data-testId="input-email"
+          class="block w-full rounded border border-gray-300 bg-white p-2.5 text-sm text-gray-900"
+        >
         <BaseErrorValidationMessage
           v-if="errors.email"
           :text="errors.email"
@@ -180,14 +186,15 @@ onMounted(async () => {
           text="パスワード"
           input-for="password"
         />
-        <BaseFormTextInput
+        <input
+          id="password"
           v-model.trim="password"
-          data-testId="input-password"
-          input-id="password"
-          input-type="password"
+          type="password"
           autocomplete="new-password"
-          :is-bg-color="false"
-        />
+          placeholder="mail@sample.com"
+          data-testId="input-password"
+          class="block w-full rounded border border-gray-300 bg-white p-2.5 text-sm text-gray-900"
+        >
         <BaseErrorValidationMessage
           v-if="errors.password"
           :text="errors.password"
@@ -199,14 +206,15 @@ onMounted(async () => {
           text="パスワード（確認用）"
           input-for="passwordConfirm"
         />
-        <BaseFormTextInput
+        <input
+          id="passwordConfirm"
           v-model.trim="passwordConfirm"
-          data-testId="input-password-confirm"
-          input-id="passwordConfirm"
-          input-type="password"
+          type="password"
           autocomplete="new-password"
-          :is-bg-color="false"
-        />
+          placeholder="mail@sample.com"
+          data-testId="input-password-confirm"
+          class="block w-full rounded border border-gray-300 bg-white p-2.5 text-sm text-gray-900"
+        >
         <BaseErrorValidationMessage
           v-if="errors.passwordConfirm"
           :text="errors.passwordConfirm"
@@ -248,11 +256,11 @@ onMounted(async () => {
 
       <div class="pt-5">
         <BaseButton
+          type="submit"
           text="登録"
           button-type="none"
           :is-clicked="isClick"
           class="w-full bg-emerald-600 text-white hover:bg-emerald-600/75"
-          @click="handleRegistration"
         />
       </div>
     </BaseForm>

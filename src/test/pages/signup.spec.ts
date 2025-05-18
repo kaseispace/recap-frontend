@@ -61,7 +61,7 @@ describe('signupページのテスト', () => {
     wrapper.vm.roleText.value = '学生'
     wrapper.vm.schoolName.value = 'フルスタック大学'
 
-    await wrapper.get(`[data-testId="button"]`).trigger('click')
+    await wrapper.get('form').trigger('submit')
 
     await wait(100)
 

@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: false },
   ssr: false,
-  spaLoadingTemplate: './spa-loading-template.html',
+  spaLoadingTemplate: './spa-loading-screen.html',
   srcDir: 'src/',
   app: {
     head: {

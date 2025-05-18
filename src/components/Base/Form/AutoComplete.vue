@@ -115,15 +115,15 @@ watch(isSuggestionVisible, async (newVal) => {
     <input
       :id="inputId"
       ref="suggestRef"
-      type="text"
       :value="modelValue"
+      type="text"
+      autocomplete="off"
       :placeholder="inputPlaceholder"
       class="block w-full rounded border border-gray-300 bg-white p-2.5 text-sm text-gray-900"
       @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
       @keydown.up.exact="handleUpKey"
       @keydown.down.exact="handleDownKey"
       @keydown.enter.exact="handleEnterKey"
-      @keydown.enter.prevent
     >
     <div>
       <ul

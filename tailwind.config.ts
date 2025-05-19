@@ -7,7 +7,7 @@ function generateSafelist(color: string) {
 }
 
 module.exports = {
-  content: ['./src/app.vue', './src/components/**/*.{js,vue,ts}', './src/layouts/**/*.vue', './src/pages/**/*.vue'],
+  content: ['./src/**/*.{vue,ts}'],
   theme: {
     extend: {
       maxWidth: {

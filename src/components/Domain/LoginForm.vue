@@ -18,6 +18,7 @@ const { value: password } = useField<string>('password')
 const route = useRoute()
 const { authUser, login, logout } = useAuth()
 const { userInfo, getUserSchool } = useUserApi()
+const { enableScroll } = useDialog()
 const { showSnackbar } = useSnackBar()
 
 const isSignupPage = computed(() => route.path === '/signup')
@@ -52,6 +53,7 @@ const handleLogin = handleSubmit(async (values, { resetForm }) => {
       }
 
       resetForm()
+      enableScroll()
     }
     catch {
       await logout()

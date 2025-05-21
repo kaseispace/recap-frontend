@@ -31,9 +31,16 @@ onMounted(async () => {
 <template>
   <div
     v-if="isLoading"
-    class="flex h-64 items-center justify-center"
+    class="mt-4 px-5 sm:px-2"
   >
-    <BaseLoading border-color="border-cyan-900" />
+    <template
+      v-for="n in 3"
+      :key="n"
+    >
+      <div class="sm:grid sm:grid-cols-8">
+        <BaseSkeletonAnnouncementCard class="sm:col-span-6 sm:col-start-2" />
+      </div>
+    </template>
   </div>
 
   <div v-else>

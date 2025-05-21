@@ -28,6 +28,12 @@
     }
   }
 
+  @keyframes pulse {
+    50% {
+      opacity: 0.8;
+    }
+  }
+
   .section-header {
     @apply w-full border-b-[1.5px] border-emerald-600 pb-2 font-bold;
   }

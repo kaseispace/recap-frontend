@@ -143,6 +143,11 @@ onUnmounted(() => {
           </div>
         </div>
       </div>
+
+      <DomainStudentCourseReflectionBot
+        v-if="showChat"
+        class="fixed bottom-10 right-8 z-10"
+      />
     </div>
 
     <div

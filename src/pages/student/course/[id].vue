@@ -86,7 +86,67 @@ onUnmounted(() => {
     />
 
     <div
-      v-if="!currentStudentCourse && !isLoading"
+      v-if="isLoading"
+      class="mx-auto my-16 w-full max-w-7xl"
+    >
+      <div class="mx-6 flex flex-col">
+        <BaseSkeletonTitle />
+        <BaseSkeletonNavigation />
+
+        <div class="mx-5 mt-3 sm:mx-2">
+          <template
+            v-for="n in 3"
+            :key="n"
+          >
+            <div class="sm:grid sm:grid-cols-8">
+              <BaseSkeletonAnnouncementCard class="sm:col-span-6 sm:col-start-2" />
+            </div>
+          </template>
+        </div>
+      </div>
+    </div>
+
+    <div
+      v-else-if="!isLoading && currentStudentCourse"
+      class="mx-auto my-16 w-full max-w-7xl"
+    >
+      <div class="mx-6 flex flex-col">
+        <BaseTitle :text="currentStudentCourse.name" />
+
+        <div>
+          <div class="no-scrollbar flex w-full overflow-x-auto border-b text-center text-sm font-medium">
+            <ul class="flex">
+              <BaseTab
+                v-for="(tab, i) in STUDENT_TABS"
+                :key="i"
+                :data-testId="`tabIndex-${i}`"
+                :text="tab.text"
+                :is-active="activeTabId === tab.id"
+                active-color="border-cyan-600  text-cyan-600"
+                @click-emit="setTab(tab.id)"
+              />
+            </ul>
+          </div>
+
+          <div class="flex flex-col py-2">
+            <div v-if="activeTabId === 1">
+              <DomainStudentCourseShowAnnouncementCard />
+            </div>
+
+            <div v-else-if="activeTabId === 2">
+              <DomainStudentCourseReflectionHistory />
+            </div>
+
+            <div v-else-if="activeTabId === 3">
+              <DomainStudentCourseSharedReflections />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      v-else
       class="flex flex-col items-center justify-center pt-[80px] sm:pt-[140px]"
     >
       <BaseError404
@@ -100,79 +160,6 @@ onUnmounted(() => {
         class="border px-3 py-2 hover:bg-gray-200"
         @click="goToStudentPage"
       />
-    </div>
-
-    <div v-else-if="currentStudentCourse && !isLoading">
-      <div class="mx-auto my-16 w-full max-w-7xl space-y-16">
-        <div class="mx-6 flex flex-col">
-          <div
-            v-if="isLoading"
-            class="flex h-8 items-center"
-          >
-            <BaseLoading
-              icon-size="small"
-              border-color="border-cyan-900"
-            />
-          </div>
-          <BaseTitle
-            v-else
-            :text="currentStudentCourse.name"
-          />
-
-          <div>
-            <div class="no-scrollbar flex w-full overflow-x-auto border-b text-center text-sm font-medium">
-              <ul class="flex">
-                <BaseTab
-                  v-for="(tab, i) in STUDENT_TABS"
-                  :key="i"
-                  :data-testId="`tabIndex-${i}`"
-                  :text="tab.text"
-                  :is-active="activeTabId === tab.id"
-                  active-color="border-cyan-600  text-cyan-600"
-                  @click-emit="setTab(tab.id)"
-                />
-                <div class="p-3">
-                  <!-- 三点リーダーのメニューをつけたい場合 -->
-                  <!-- <Icon class="hover:rounded-full hover:border" name="mi:options-vertical" size="20px" @click="open" /> -->
-                </div>
-              </ul>
-            </div>
-
-            <div class="flex flex-col py-2">
-              <div v-if="activeTabId === 1">
-                <DomainStudentCourseShowAnnouncementCard />
-              </div>
-
-              <div v-else-if="activeTabId === 2">
-                <DomainStudentCourseReflectionHistory />
-              </div>
-
-              <div v-else-if="activeTabId === 3">
-                <DomainStudentCourseSharedReflections />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <DomainStudentCourseReflectionBot
-        v-if="showChat"
-        class="fixed bottom-10 right-8 z-10"
-      />
-    </div>
-
-    <div
-      v-else
-      class="mx-auto my-16 w-full max-w-7xl space-y-16"
-    >
-      <div class="mx-6 flex flex-col">
-        <div
-          v-if="isLoading"
-          class="flex h-[298px] items-center justify-center"
-        >
-          <BaseLoading border-color="border-cyan-900" />
-        </div>
-      </div>
     </div>
   </div>
 </template>

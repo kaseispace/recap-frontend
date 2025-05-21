@@ -53,9 +53,16 @@ const handleLeaveCourse = async () => {
 <template>
   <div
     v-if="isStudentCourseLoading"
-    class="flex h-64 items-center justify-center"
+    class="space-y-6"
   >
-    <BaseLoading border-color="border-cyan-900" />
+    <div class="grid grid-cols-1 gap-x-4 gap-y-7 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-7">
+      <template
+        v-for="n in 8"
+        :key="n"
+      >
+        <BaseSkeletonCourseCard />
+      </template>
+    </div>
   </div>
   <div v-else>
     <div

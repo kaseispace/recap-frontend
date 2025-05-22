@@ -108,12 +108,16 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div
-    v-if="isLoading"
-    class="flex h-64 items-center justify-center"
-  >
-    <!-- ローディング中のコンポーネント -->
-    <BaseLoading border-color="border-cyan-900" />
+  <div v-if="isLoading">
+    <div class="my-4 flex flex-wrap">
+      <template
+        v-for="n in 6"
+        :key="n"
+      >
+        <BaseSkeletonChip />
+      </template>
+    </div>
+    <BaseSkeletonReflectionHistory />
   </div>
 
   <div v-else>

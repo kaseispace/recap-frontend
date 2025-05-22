@@ -43,7 +43,7 @@ describe('LoginFormコンポーネントのテスト', () => {
 
     await wrapper.get('form').trigger('submit')
 
-    await wait(10)
+    await wait(100)
 
     expect(user.userInfo.value).toEqual(MOCK_STUDENT_USER_SCHOOL)
     expect(navigateTo).toHaveBeenCalledWith('/student')

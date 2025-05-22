@@ -31,10 +31,10 @@ onMounted(async () => {
 <template>
   <div
     v-if="isLoading"
-    class="mt-4 px-5 sm:px-2"
+    class="mt-4 px-5"
   >
     <template
-      v-for="n in 3"
+      v-for="n in 4"
       :key="n"
     >
       <div class="sm:grid sm:grid-cols-8">

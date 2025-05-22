@@ -93,9 +93,9 @@ onUnmounted(() => {
         <BaseSkeletonTitle />
         <BaseSkeletonNavigation />
 
-        <div class="mx-5 mt-3 sm:mx-2">
+        <div class="mx-5 mt-3">
           <template
-            v-for="n in 3"
+            v-for="n in 4"
             :key="n"
           >
             <div class="sm:grid sm:grid-cols-8">

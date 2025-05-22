@@ -33,6 +33,21 @@
           <div class="size-10 rounded-full bg-gray-300" />
           <div class="ml-3 h-6 w-3/5 rounded-full bg-gray-300" />
         </div>
+
+        <div class="flex items-center">
+          <div class="size-10 rounded-full bg-gray-300" />
+          <div class="ml-3 h-6 w-4/5 rounded-full bg-gray-300" />
+        </div>
+
+        <div class="flex items-center">
+          <div class="size-10 rounded-full bg-gray-300" />
+          <div class="ml-3 h-6 w-1/3 rounded-full bg-gray-300" />
+        </div>
+
+        <div class="flex items-center">
+          <div class="size-10 rounded-full bg-gray-300" />
+          <div class="ml-3 h-6 w-1/3 rounded-full bg-gray-300" />
+        </div>
       </div>
     </div>
   </div>

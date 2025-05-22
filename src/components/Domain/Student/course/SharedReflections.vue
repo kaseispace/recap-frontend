@@ -63,12 +63,28 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div
-    v-if="isLoading"
-    class="flex h-64 items-center justify-center"
-  >
-    <BaseLoading border-color="border-cyan-900" />
+  <div v-if="isLoading">
+    <div class="my-4 flex flex-wrap">
+      <template
+        v-for="n in 6"
+        :key="n"
+      >
+        <BaseSkeletonChip />
+      </template>
+    </div>
+
+    <div
+      class="grid grid-cols-1 place-items-center gap-x-5 gap-y-7 pt-4 xs2:grid-cols-2 xs2:place-items-stretch md2:grid-cols-3 lg2:grid-cols-4"
+    >
+      <template
+        v-for="n in 16"
+        :key="n"
+      >
+        <BaseSkeletonPostIt />
+      </template>
+    </div>
   </div>
+
   <div
     v-else
   >

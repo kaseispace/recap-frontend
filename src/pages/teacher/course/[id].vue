@@ -100,24 +100,32 @@ onUnmounted(() => {
     />
 
     <div
-      v-if="!currentCourse && !isLoading"
-      class="flex flex-col items-center justify-center pt-[80px] sm:pt-[140px]"
+      v-if="isLoading"
+      class="mx-auto my-16 w-full max-w-7xl"
     >
-      <BaseError404
-        img-path="t-404_jngqh1.png"
-        @image-load="imageLoad"
-      />
-      <BaseButton
-        v-if="isImageLoaded"
-        text="トップページへ戻る"
-        button-type="circle"
-        class="border px-3 py-2 hover:bg-gray-200"
-        @click="goToTeacherPage"
-      />
+      <div class="mx-6 flex flex-col">
+        <BaseSkeletonTitle />
+        <BaseSkeletonNavigation />
+
+        <div class="mx-5 mt-3">
+          <div class="mb-4 flex justify-end">
+            <BaseSkeletonChip />
+          </div>
+
+          <template
+            v-for="n in 4"
+            :key="n"
+          >
+            <div class="sm:grid sm:grid-cols-8">
+              <BaseSkeletonAnnouncementCard class="sm:col-span-6 sm:col-start-2" />
+            </div>
+          </template>
+        </div>
+      </div>
     </div>
 
     <div
-      v-else-if="currentCourse && !isLoading"
+      v-else-if="!isLoading && currentCourse"
       class="mx-auto my-16 w-full max-w-7xl space-y-16"
     >
       <div class="mx-6 flex flex-col">
@@ -183,16 +191,19 @@ onUnmounted(() => {
 
     <div
       v-else
-      class="mx-auto my-16 w-full max-w-7xl space-y-16"
+      class="flex flex-col items-center justify-center pt-[80px] sm:pt-[140px]"
     >
-      <div class="mx-6 flex flex-col">
-        <div
-          v-if="isLoading"
-          class="flex h-[298px] items-center justify-center"
-        >
-          <BaseLoading border-color="border-blue-900" />
-        </div>
-      </div>
+      <BaseError404
+        img-path="t-404_jngqh1.png"
+        @image-load="imageLoad"
+      />
+      <BaseButton
+        v-if="isImageLoaded"
+        text="トップページへ戻る"
+        button-type="circle"
+        class="border px-3 py-2 hover:bg-gray-200"
+        @click="goToTeacherPage"
+      />
     </div>
   </div>
 </template>

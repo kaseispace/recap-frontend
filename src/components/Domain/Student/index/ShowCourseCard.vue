@@ -57,7 +57,7 @@ const handleLeaveCourse = async () => {
   >
     <div class="grid grid-cols-1 gap-x-4 gap-y-7 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-7">
       <template
-        v-for="n in 8"
+        v-for="n in 16"
         :key="n"
       >
         <BaseSkeletonCourseCard />

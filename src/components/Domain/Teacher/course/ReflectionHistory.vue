@@ -56,10 +56,17 @@ onMounted(async () => {
 <template>
   <div
     v-if="isLoading"
-    class="flex h-64 items-center justify-center"
+    class="mt-3 rounded-lg bg-gray-100 p-5"
   >
-    <BaseLoading border-color="border-blue-900" />
+    <div class="mb-5 flex flex-col justify-start">
+      <h1 class="text-xl">
+        活動履歴
+      </h1>
+    </div>
+    <BaseSkeletonChart />
+    <BaseSkeletonTable />
   </div>
+
   <div
     v-else
     class="mt-3 grid grid-cols-1"

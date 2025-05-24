@@ -7,6 +7,10 @@
   html {
     font-family: 'Noto Sans JP', sans-serif;
   }
+
+  html {
+    overflow-y: scroll;
+  }
 }
 
 @layer components {

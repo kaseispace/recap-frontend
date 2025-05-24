@@ -3,12 +3,12 @@ export const useDialog = (resetForm?: () => void) => {
 
   const disableScroll = (): void => {
     const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
-    document.body.style.overflow = 'hidden'
+    document.documentElement.style.overflowY = 'hidden'
     document.body.style.paddingRight = `${scrollbarWidth}px`
   }
 
   const enableScroll = (): void => {
-    document.body.style.overflow = 'auto'
+    document.documentElement.style.overflowY = 'scroll'
     document.body.style.paddingRight = '0'
   }
 

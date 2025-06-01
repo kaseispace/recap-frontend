@@ -22,7 +22,19 @@ const today = new Date()
 const yesterday = new Date()
 yesterday.setDate(today.getDate() - 1)
 
-const disabledDates = ref([{ start: null, end: yesterday }])
+const disabledDates = ref([{ start: new Date(0), end: yesterday }])
+
+const handleCalendarOpen = () => {
+  if (!date.value) {
+    date.value = new Date()
+  }
+}
+
+watch(isCalendarActive, (isOpen) => {
+  if (isOpen) {
+    handleCalendarOpen()
+  }
+})
 
 watch(date, () => {
   if (date.value) {

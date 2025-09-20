@@ -257,6 +257,8 @@ Vercel は特別な設定をせずにゼロコンフィグで GitHub リポジ�
 
 [Figma](https://www.figma.com/design/KDvVsfNRQkM56ZxVIV5VEr/ReCap-Design?node-id=189-2679&t=2H5lpZcVIpUr7ieO-1)
 
+![画面遷移図.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3954066/3c5b235e-f80f-41c2-9f0d-4664efc73b59.png)
+
 ## ER図
 ![ER図](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3954066/79290dda-a513-2b33-5694-1b5e00b33120.png)
 
@@ -474,7 +476,7 @@ end
 
 | スマートフォン | PC |
 | :---: | :---: |
-| ![スクリーンショット 2025-08-25 221253.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3954066/f92d24b6-5eab-4336-a8f0-25133e80a159.png) | ![スクリーンショット 2025-08-25 221149.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3954066/4cf66d16-27f2-4536-8b32-dac23322ff01.png) | 
+| ![スマホ版レイアウト.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3954066/6abd8347-d481-4734-b2ad-c09d2a46c1b7.png) | ![PC版レイアウト.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3954066/f2556194-9fcc-438f-aa92-01b4c9e3f16f.png) | 
 
 
 他の画面でも、ボタン配置・フォントサイズ・余白・コンポーネントの並び方などを細かく調整し、ユーザーがどの環境でも違和感なく使えるUIを目指して設計しています。

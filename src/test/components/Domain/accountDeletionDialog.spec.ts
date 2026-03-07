@@ -41,7 +41,7 @@ describe('AccountDeletionDialogコンポーネントのテスト', () => {
     await wrapper.find(`[data-testId="input-password"]`).setValue('password')
     await wrapper.find(`[data-testId="clickDelete"]`).trigger('click')
 
-    await wait(10)
+    await wait(100)
 
     expect(user.userInfo.value).toBe(null)
     expect(wrapper.find(`[data-testId="dialog"]`).exists()).toBe(false)

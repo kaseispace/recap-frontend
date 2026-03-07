@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col-reverse items-center justify-center border-t py-3.5 sm:flex-row sm:space-x-2">
     <p class="text-sm">
-      © 2025 ReCap.
+      © 2026 ReCap.
     </p>
 
     <div class="mb-2 flex items-center justify-center space-x-2 sm:mt-2">

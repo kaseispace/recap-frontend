@@ -56,7 +56,7 @@ describe('ReflectionHistoryコンポーネントのテスト', () => {
       course.courseUuid.value = MOCK_UUID
       const wrapper = await mountSuspended(ReflectionHistory)
 
-      await wait(100)
+      await wait(300)
 
       if (reflection.studentReflections.value) {
         for (let i = 0; i < reflection.studentReflections.value.length; i++) {
@@ -124,7 +124,7 @@ describe('ReflectionHistoryコンポーネントのテスト', () => {
       course.courseUuid.value = MOCK_UUID
       const wrapper = await mountSuspended(ReflectionHistory)
 
-      await wait(100)
+      await wait(300)
 
       expect(reflection.studentReflections.value).toBeTruthy()
 

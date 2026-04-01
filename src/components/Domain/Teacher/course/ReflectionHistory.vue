@@ -133,7 +133,7 @@ onMounted(async () => {
           <div class="mb-3 mt-5 flex flex-wrap">
             <div
               v-for="(courseDate, i) in userHistory?.user_reflections"
-              :key="i"
+              :key="courseDate.id"
             >
               <BaseChip
                 :text="courseDate.course_number"
@@ -147,7 +147,7 @@ onMounted(async () => {
           <div class="flex flex-col overflow-hidden">
             <div
               v-for="(courseDate, i) in userHistory?.user_reflections"
-              :key="i"
+              :key="courseDate.id"
               class="flex flex-col overflow-hidden"
             >
               <div
@@ -166,8 +166,8 @@ onMounted(async () => {
                   <div class="history-scrollbar overflow-y-auto">
                     <div class="flex flex-col space-y-3">
                       <div
-                        v-for="(reflection, j) in courseDate.reflections"
-                        :key="j"
+                        v-for="reflection in courseDate.reflections"
+                        :key="reflection.id"
                         class="flex items-center justify-start"
                       >
                         <div

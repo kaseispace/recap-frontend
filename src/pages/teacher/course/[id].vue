@@ -27,7 +27,31 @@ const imageLoad = (loaded: boolean) => (isImageLoaded.value = loaded)
 const goToTeacherPage = async () => await navigateTo('/teacher')
 
 onMounted(async () => {
-  courseUuid.value = route.params.id.toString()
+  const newUuid = route.params.id.toString()
+  const isSameCourse = courseUuid.value === newUuid && currentCourse.value !== null
+
+  courseUuid.value = newUuid
+
+  // 同じ授業かつデータ取得済みの場合はAPIの再呼び出しをスキップ
+  if (isSameCourse) {
+    isLoading.value = false
+    return
+  }
+
+  // 別授業に移動した場合は授業固有データをリセット
+  currentCourse.value = null
+  courseCode.value = null
+  joinedUsers.value = null
+  courseDates.value = null
+  announcements.value = null
+  prompts.value = null
+  activePrompt.value = null
+  teacherReflectionFlag.value = null
+  courseUserReflections.value = null
+  dailyCourseReflections.value = null
+  userHistory.value = undefined
+  nextCourseDate.value = undefined
+
   try {
     if (!authUser.value) {
       showSnackbar(ERROR_FIREBASE_AUTHENTICATION_FAILED, false)
@@ -76,19 +100,8 @@ onMounted(async () => {
 })
 
 onUnmounted(() => {
-  currentCourse.value = null
-  courseCode.value = null
-  joinedUsers.value = null
-  courseDates.value = null
-  announcements.value = null
-  prompts.value = null
-  activePrompt.value = null
+  // チャット状態のみリセット（授業データはcourseUuidと紐付けて保持し、onMountedで再利用を判断する）
   currentPrompts.value = []
-  teacherReflectionFlag.value = null
-  courseUserReflections.value = null
-  dailyCourseReflections.value = null
-  userHistory.value = undefined
-  nextCourseDate.value = undefined
 })
 </script>
 

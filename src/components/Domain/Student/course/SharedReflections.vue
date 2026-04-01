@@ -110,7 +110,7 @@ onMounted(async () => {
       >
         <div
           v-for="(reflection, i) in selectedCourseDateReflections"
-          :key="i"
+          :key="reflection.id"
         >
           <BaseCardPostIt
             :key="reflectionKey"
@@ -118,8 +118,8 @@ onMounted(async () => {
             @click="handleShowReflectionDialog(reflection)"
           >
             <template
-              v-for="(message, j) in reflection.reflections"
-              :key="j"
+              v-for="message in reflection.reflections"
+              :key="message.id"
             >
               <p
                 v-if="message.message_type === 'user'"
@@ -166,8 +166,8 @@ onMounted(async () => {
             </template>
 
             <div
-              v-for="(reflection, i) in selectedReflection?.reflections"
-              :key="i"
+              v-for="reflection in selectedReflection?.reflections"
+              :key="reflection.id"
               class="flex items-center justify-start"
             >
               <div

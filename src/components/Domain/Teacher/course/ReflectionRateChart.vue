@@ -5,32 +5,24 @@ import type { FontSpec, ChartData, ChartOptions } from 'chart.js'
 
 Chart.register(...registerables)
 
-const courseNumbers = ref<string[]>([])
-const reflectionCounts = ref<number[]>([])
-const reflectionRates = ref<number[]>([])
-
 const { joinedUsers } = useCourseApi()
 const { dailyCourseReflections } = useReflectionHistory()
 
-const updateChartData = () => {
-  courseNumbers.value = []
-  reflectionCounts.value = []
+// 授業回のラベルを算出
+const courseNumbers = computed<string[]>(() => {
+  if (!dailyCourseReflections.value) return []
+  return dailyCourseReflections.value.map(course => course.course_number)
+})
 
-  if (dailyCourseReflections.value && joinedUsers.value) {
-    dailyCourseReflections.value.forEach((course) => {
-      courseNumbers.value.push(course.course_number)
-      // 振り返りの件数を算出
-      const count = course.users_reflections.filter(user => user.reflections.length > 0).length
-      reflectionCounts.value.push(count)
-    })
-
-    // 少数点以下を切り捨て、記入率を算出
-    reflectionRates.value = reflectionCounts.value.map(reflectionCount =>
-    // @ts-expect-error: `joinedUsers.value.length` は一時的に未定義になる可能性があるが、後で処理されることが保証されているため無視
-      Math.floor((reflectionCount / joinedUsers.value.length) * 100)
-    )
-  }
-}
+// 少数点以下を切り捨て、振り返り率を算出
+const reflectionRates = computed<number[]>(() => {
+  if (!dailyCourseReflections.value || !joinedUsers.value) return []
+  const total = joinedUsers.value.length
+  return dailyCourseReflections.value.map((course) => {
+    const count = course.users_reflections.filter(user => user.reflections.length > 0).length
+    return Math.floor((count / total) * 100)
+  })
+})
 
 // グラフ内共通フォント
 const commonFont: Partial<FontSpec> = {
@@ -124,16 +116,6 @@ const options: ComputedRef<ChartOptions<'line'>> = computed(() => ({
     }
   }
 }))
-
-watch(
-  dailyCourseReflections,
-  () => {
-    updateChartData()
-  },
-  { deep: true }
-)
-
-updateChartData()
 </script>
 
 <template>

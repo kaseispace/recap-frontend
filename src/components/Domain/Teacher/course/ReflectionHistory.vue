@@ -75,7 +75,7 @@ onMounted(async () => {
       title="活動履歴"
       bg-color="bg-gray-100"
     >
-      <DomainTeacherCourseReflectionRateChart
+      <LazyDomainTeacherCourseReflectionRateChart
         v-if="dailyCourseReflections && dailyCourseReflections.length > 0 && joinedUsers && joinedUsers.length > 0"
       />
       <template

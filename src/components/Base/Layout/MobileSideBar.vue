@@ -116,7 +116,7 @@ const isMobile = computed(() => width.value < 640)
         <template v-if="courses && courses.length > 0">
           <ul
             v-for="(course, i) in courses"
-            :key="i"
+            :key="course.uuid"
           >
             <NuxtLink
               :data-testId="`link-${i}`"

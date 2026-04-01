@@ -127,7 +127,7 @@ onMounted(async () => {
       <div class="my-4 flex flex-wrap">
         <div
           v-for="(courseDate, i) in studentReflections"
-          :key="i"
+          :key="courseDate.id"
         >
           <BaseChip
             :data-testId="`chip-${i}`"
@@ -141,7 +141,7 @@ onMounted(async () => {
 
       <div
         v-for="(courseDate, i) in studentReflections"
-        :key="i"
+        :key="courseDate.id"
       >
         <div v-if="activeTabId === i">
           <BaseCardReflection
@@ -153,8 +153,8 @@ onMounted(async () => {
 
             <div class="flex flex-col space-y-3">
               <div
-                v-for="(reflection, j) in courseDate.reflections"
-                :key="j"
+                v-for="reflection in courseDate.reflections"
+                :key="reflection.id"
                 class="flex items-center justify-start"
               >
                 <div

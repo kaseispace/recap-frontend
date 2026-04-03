@@ -246,6 +246,48 @@ export const TABLE_STATUSES = [
 ]
 
 // ページのメタ情報を設定用
+export const HOME_META = {
+  title: '教員と学生のための振り返り学習プラットフォーム',
+  meta: [
+    {
+      name: 'description',
+      content: 'ReCapは、教育現場での振り返りを支援するプラットフォームです。対話型チャットで振り返りを記録し、AIフィードバックで学びを深める。教員・学生どちらも無料で利用できます。'
+    }
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://www.recaplearning.com' }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        'name': 'ReCap',
+        'url': 'https://www.recaplearning.com',
+        'description': 'ReCapは、教育現場での振り返りを支援するプラットフォームです。対話型チャットで振り返りを記録し、AIフィードバックで学びを深める。'
+      })
+    },
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        'name': 'ReCap',
+        'applicationCategory': 'EducationalApplication',
+        'operatingSystem': 'Web',
+        'url': 'https://www.recaplearning.com',
+        'description': 'ReCapは、教育現場での振り返りを支援するプラットフォームです。対話型チャットで振り返りを記録し、AIフィードバックで学びを深める。',
+        'offers': {
+          '@type': 'Offer',
+          'price': '0',
+          'priceCurrency': 'JPY'
+        }
+      })
+    }
+  ]
+}
+
 export const LOGIN_META = {
   title: 'ログイン',
   meta: [
@@ -263,6 +305,9 @@ export const SIGNUP_META = {
       name: 'description',
       content: '新規登録ページです。ReCapに新規登録して、授業の振り返りを手軽に始めてみませんか。数分で新しいアカウントを作成できます。'
     }
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://www.recaplearning.com/signup' }
   ]
 }
 
@@ -283,6 +328,9 @@ export const TERMS_OF_SERVICE_META = {
       name: 'description',
       content: '本サービスの利用条件を定めた利用規約ページです。ユーザーは本規約に従って本サービスをご利用いただきます。'
     }
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://www.recaplearning.com/terms' }
   ]
 }
 
@@ -293,6 +341,9 @@ export const PRIVACY_POLICY_META = {
       name: 'description',
       content: '本サービスのプライバシーポリシーページです。ユーザーの個人情報の取り扱いについて説明しています。'
     }
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://www.recaplearning.com/privacy' }
   ]
 }
 
@@ -302,7 +353,8 @@ export const TEACHER_COURSE_LIST_META = {
     {
       name: 'description',
       content: '教員が担当する授業の一覧ページです。授業の詳細や管理ができます。'
-    }
+    },
+    { name: 'robots', content: 'noindex, nofollow' }
   ]
 }
 
@@ -313,7 +365,8 @@ export const TEACHER_COURSE_META = (title: string) => {
       {
         name: 'description',
         content: `${title}の授業ページです。振り返りのプロンプトの作成や、学生の振り返り履歴を閲覧することができます。`
-      }
+      },
+      { name: 'robots', content: 'noindex, nofollow' }
     ]
   }
 }
@@ -324,7 +377,8 @@ export const STUDENT_COURSE_LIST_META = {
     {
       name: 'description',
       content: '学生が受講する授業の一覧ページです。授業への参加や退出ができます。'
-    }
+    },
+    { name: 'robots', content: 'noindex, nofollow' }
   ]
 }
 
@@ -335,7 +389,8 @@ export const STUDENT_COURSE_META = (title: string) => {
       {
         name: 'description',
         content: `${title}の授業ページです。授業の振り返りや自分の振り返り履歴を閲覧することができます。`
-      }
+      },
+      { name: 'robots', content: 'noindex, nofollow' }
     ]
   }
 }

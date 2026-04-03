@@ -38,14 +38,20 @@ const isMobile = computed(() => width.value < 863)
         {{ name }}
       </h3>
 
-      <ul class="space-y-2">
+      <ul class="space-y-3">
         <li
           v-for="(desc, i) in description"
           :key="i"
-          class="text-sm font-medium leading-[24px] md2:text-[16px] md2:leading-[26px]"
+          class="flex gap-x-2 text-sm font-medium leading-[24px] md2:text-[16px] md2:leading-[26px]"
           :data-testId="`desc-${i}`"
         >
-          {{ desc }}
+          <Icon
+            name="mdi:check-circle-outline"
+            size="20px"
+            class="mt-1 shrink-0"
+            style="color: #057767"
+          />
+          <span>{{ desc }}</span>
         </li>
       </ul>
     </div>

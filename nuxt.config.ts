@@ -22,10 +22,11 @@ export default defineNuxtConfig({
         { property: 'og:site_name', content: 'ReCap' },
         { property: 'og:locale', content: 'ja_JP' },
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:site', content: '@your_twitter_handle' },
+        { name: 'twitter:site', content: '@kaseispace' },
         { name: 'twitter:title', content: '教員と学生のための振り返り学習プラットフォーム - ReCap' },
         { name: 'twitter:description', content: 'ReCapは、教育現場での振り返りを支援するツールです。対話型の振り返りとフィードバック機能により、学びを深めるサポートをします。' },
-        { name: 'twitter:image', content: 'https://res.cloudinary.com/dbveryjmc/image/upload/v1733711476/OGP_zwixhe.png' }
+        { name: 'twitter:image', content: 'https://res.cloudinary.com/dbveryjmc/image/upload/v1733711476/OGP_zwixhe.png' },
+        { name: 'google-site-verification', content: 'RysY3tlP3riB4wsf8ZHLXk5PEgnOcBRCFldXb6eJsDM' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }

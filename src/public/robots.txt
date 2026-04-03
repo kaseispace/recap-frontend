@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Allow: /signup
+Allow: /terms
+Allow: /privacy
+Allow: /forgotpassword
+
+Disallow: /teacher
+Disallow: /teacher/
+Disallow: /student
+Disallow: /student/
+
+Sitemap: https://www.recaplearning.com/sitemap.xml

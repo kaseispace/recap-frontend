@@ -8,6 +8,9 @@ useHead(LOGIN_META)
 const { teacherCourses } = useCourseApi()
 const { studentCourses } = useUserCourseApi()
 const { snackbarMessage, snackbarStatus } = useSnackBar()
+const dialogRef = ref(null)
+const { dialog, openDialog, closeDialog } = useDialog()
+onClickOutside(dialogRef, closeDialog)
 
 onMounted(() => {
   teacherCourses.value = null
@@ -22,6 +25,7 @@ onMounted(() => {
       :status="snackbarStatus"
     />
 
+    <!-- ヒーローセクション -->
     <div class="relative h-[500px] w-full xs:h-[600px]">
       <NuxtImg
         format="webp"
@@ -60,6 +64,62 @@ onMounted(() => {
       </div>
     </div>
 
+    <!-- 3つの特徴セクション -->
+    <div class="flex w-full justify-center bg-white">
+      <div class="flex w-full flex-col px-6 py-14 xs:px-12 lg:w-[952px] lg:px-0 xl:w-[1080px] 2xl:w-[1128px]">
+        <div class="grid grid-cols-1 gap-5 sm:grid-cols-3">
+          <div class="flex flex-col items-start gap-y-3 rounded-2xl border border-gray-100 p-6 shadow-sm">
+            <div class="flex size-12 items-center justify-center rounded-xl bg-[#E6F4F2]">
+              <Icon
+                name="fluent-mdl2:chat-bot"
+                size="24px"
+                style="color: #057767"
+              />
+            </div>
+            <h3 class="text-lg font-bold">
+              対話型の振り返り
+            </h3>
+            <p class="text-sm leading-[24px] text-gray-600">
+              チャット形式のやりとりで、学生が自分の考えを自然に表現できます。
+            </p>
+          </div>
+
+          <div class="flex flex-col items-start gap-y-3 rounded-2xl border border-gray-100 p-6 shadow-sm">
+            <div class="flex size-12 items-center justify-center rounded-xl bg-[#E6F4F2]">
+              <Icon
+                name="mdi:robot-outline"
+                size="24px"
+                style="color: #057767"
+              />
+            </div>
+            <h3 class="text-lg font-bold">
+              AIによる個別フィードバック
+            </h3>
+            <p class="text-sm leading-[24px] text-gray-600">
+              振り返り後にAIが個別のフィードバックを提供し、新たな気づきをサポートします。
+            </p>
+          </div>
+
+          <div class="flex flex-col items-start gap-y-3 rounded-2xl border border-gray-100 p-6 shadow-sm">
+            <div class="flex size-12 items-center justify-center rounded-xl bg-[#E6F4F2]">
+              <Icon
+                name="mdi:account-group-outline"
+                size="24px"
+                style="color: #057767"
+              />
+            </div>
+            <h3 class="text-lg font-bold">
+              クラスでの学び合い
+            </h3>
+            <p class="text-sm leading-[24px] text-gray-600">
+              他の学生の振り返りを閲覧し、多様な視点から学びを深められます。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ReCapとはセクション -->
     <div class="flex w-full justify-center bg-[#F2F3F7]">
       <div class="flex w-full flex-col gap-y-8 px-6 py-20 xs:px-12 lg:w-[952px] lg:px-0 xl:w-[1080px] 2xl:w-[1128px]">
         <div class="flex flex-col gap-y-5">
@@ -100,6 +160,7 @@ onMounted(() => {
       </div>
     </div>
 
+    <!-- ReCapの主な機能セクション -->
     <div class="flex w-full justify-center bg-white">
       <div class="flex w-full flex-col gap-y-6 px-6 py-20 xs:px-12 lg:w-[952px] lg:px-0 xl:w-[1080px] 2xl:w-[1128px]">
         <div class="flex flex-col gap-y-12">
@@ -122,5 +183,43 @@ onMounted(() => {
         </div>
       </div>
     </div>
+
+    <!-- 下部CTAセクション -->
+    <div class="flex w-full justify-center bg-[#057767]">
+      <div class="flex w-full flex-col items-center gap-y-6 px-6 py-16 text-center xs:px-12 lg:w-[952px] lg:px-0 xl:w-[1080px] 2xl:w-[1128px]">
+        <p class="text-2xl font-bold text-white md2:text-[32px]">
+          ReCap を使って振り返りをはじめましょう
+        </p>
+        <p class="max-w-xl text-sm leading-[28px] text-white/80 xs:text-[16px]">
+          アカウント登録は無料です。<br>教員・学生どちらの立場でもすぐに使い始められます。
+        </p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <NuxtLink
+            to="/signup"
+            class="rounded-lg bg-white px-8 py-3 text-sm font-bold text-[#057767] transition-colors hover:bg-gray-100"
+          >
+            無料で始める
+          </NuxtLink>
+          <button
+            class="rounded-lg border-2 border-white/70 px-8 py-3 text-sm font-bold text-white transition-colors hover:bg-white/10"
+            @click="openDialog"
+          >
+            ログイン
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ログインダイアログ（ヒーロー・CTA両方から使用） -->
+    <BaseDialogOverlay v-if="dialog">
+      <div class="flex w-full justify-center px-4">
+        <BaseDialog
+          ref="dialogRef"
+          wide="small"
+        >
+          <DomainLoginForm />
+        </BaseDialog>
+      </div>
+    </BaseDialogOverlay>
   </div>
 </template>

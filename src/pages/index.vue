@@ -3,7 +3,7 @@ definePageMeta({
   middleware: ['route']
 })
 
-useHead(LOGIN_META)
+useHead(HOME_META)
 
 const { teacherCourses } = useCourseApi()
 const { studentCourses } = useUserCourseApi()
